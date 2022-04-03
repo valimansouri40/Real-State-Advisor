@@ -1,0 +1,47 @@
+.gallery-imagerow{
+    display: flex;
+    direction: ltr;
+}
+.gallery-target{
+    direction: ltr;
+}
+.gallery-Frist{
+    position: relative;
+    width: 40rem;
+    height: 40rem;
+}
+.gallery-lessnum{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%,-50%);
+    padding: 1rem 1.5rem;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    background: red;
+}
+.gallery-frist-img{
+    width: 40rem;
+    height: 40rem;
+}
+.gallery-addnum{
+    position: absolute;
+    top: 50%;
+   right: 5%;
+   width: 2rem;
+   height: 2rem;
+   background: red;
+   transform: translate(-50%,-50%);
+   padding: 1rem ;
+    font-size: 1.4rem;
+    border-radius: 50%;
+}
+.gallery-img{
+    width: 10rem;
+    height: 10rem;
+
+}
+
+.gallery-imagerow-box-active{
+    border: 1px solid rebeccapurple;
+}

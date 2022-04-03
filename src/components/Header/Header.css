@@ -1,0 +1,160 @@
+/* @import url(assets/font/Bakh/style.css); */
+*, a {
+  font: 15px iranyekanBakh;
+  direction: rtl;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+}
+
+svg {
+  transition: unset !important;
+}
+
+body {
+  background: #eeeeeec4;
+}
+
+header {
+  height: 80px;
+  border-bottom: 2px solid #cbcbcb;
+}
+header .header-items {
+  display: inline-flex;
+  width: 100%;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header-items .more {
+  display: inline-flex;
+}
+header .header-items .more .add-home {
+  margin-left: 15px;
+}
+header .header-items .more .add-home a {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 10px;
+  display: inline-flex;
+  border-radius: 10px;
+  color: #008000a6;
+  border: 2px solid #008000a6;
+}
+header .header-items .more .add-home a svg {
+  margin-top: 2px;
+  margin-left: 10px;
+  font-size: 18px;
+}
+header .header-items .more .add-home a:hover {
+  background: #008000a6;
+  color: #ffffff;
+}
+header .header-items .more .user {
+  position: relative;
+  cursor: pointer;
+}
+header .header-items .more .user a {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 10px;
+  display: inline-flex;
+  border-radius: 10px;
+  color: #333333;
+  border: 2px solid #cbcbcb;
+}
+header .header-items .more .user a svg {
+  margin-top: 2px;
+  margin-left: 10px;
+  font-size: 18px;
+}
+header .header-items .more .user a:hover {
+  background: #eeeeee;
+}
+header .header-items .more .user .user-menu {
+  position: absolute;
+  margin: 0;
+  list-style: none;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  width: 200px;
+  left: 30%;
+  top: 50%;
+  z-index: 1000;
+  display: none;
+}
+header .header-items .more .user .user-menu span {
+  font-size: 20px;
+  color: #3bb15d;
+  font-weight: 800;
+  cursor: auto;
+}
+header .header-items .more .user .user-menu a.dashboard {
+  border: none;
+  padding: 0;
+  margin: 5px 0 0;
+}
+header .header-items .more .user .user-menu a.dashboard:hover {
+  background: unset;
+}
+header .header-items .more .user .user-menu a.dashboard svg {
+  margin-right: 10px;
+}
+header .header-items .more .user .user-menu li a {
+  margin-bottom: 10px;
+  display: inline-flex;
+  width: 100%;
+}
+header .header-items .more .user .user-menu li a svg {
+  color: #555555;
+}
+header .header-items .more .user .user-menu li a.log-out {
+  border: 2px solid rgba(255, 0, 0, 0.56);
+}
+header .header-items .more .user .user-menu li a.log-out:hover {
+  background: rgba(255, 0, 0, 0.56);
+  color: #ffffff;
+}
+header .header-items .more .user .user-menu li a.log-out:hover svg {
+  color: #ffffff;
+}
+
+.modal-content .modal-body {
+  text-align: center;
+}
+.modal-content .modal-body form {
+  display: inline-flex;
+  flex-direction: column;
+}
+.modal-content .modal-body form input, .modal-content .modal-body form textarea, .modal-content .modal-body form select {
+  margin: 0 0 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #eeeeee;
+  border: 0;
+}
+.modal-content .modal-body form button {
+  border: none;
+  background: #3bb15d;
+  padding: 5px 30px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content .modal-body p {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.show {
+  display: block !important;
+}
+
+.notvalid{
+  background: red;
+}

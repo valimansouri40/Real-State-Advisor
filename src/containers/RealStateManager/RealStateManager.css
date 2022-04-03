@@ -1,0 +1,22 @@
+
+.card-change{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+}
+.card-edit{
+    width: 20px;
+    height: 20px;
+}
+
+.realstatemanager-modal{
+    z-index: 200000;
+    width: 20rem;
+    height: 20rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}

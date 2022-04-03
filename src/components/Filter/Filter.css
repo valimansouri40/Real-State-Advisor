@@ -1,0 +1,459 @@
+
+.search .search-box {
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid; */
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 0 14px 0 #0000002e;
+  margin-top: 50px;
+  padding: 15px;
+}
+.search .search-box .tab-content {
+  width: 100%;
+}
+.search .search-box .tab-content .tab-pane form.kharid {
+  display: flex;
+  width: 1200px;
+  justify-content: center;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  
+  margin: 20px 0;
+}
+.search .search-box .tab-content .tab-pane form.kharid select {
+  width: 150px;
+  margin: 0 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background: #eeeeee;
+  border: 0;
+  box-shadow: 0 0 10px 0 #9b9b9b;
+}
+.search .search-box .tab-content .tab-pane form.kharid select option {
+  padding: 5px 0;
+  border-bottom: 1px solid #ffffff;
+}
+.search .search-box .tab-content .tab-pane form.kharid button {
+  border: navajowhite;
+  background: #3bb15d;
+  padding: 5px 30px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 0 10px 0 #3bb15d;
+  margin-right: 10px;
+  justify-content: center;
+}
+.search .search-box .tab-content .tab-pane form.kharid button svg {
+  margin-right: 10px;
+  margin-top: 0;
+  font-size: 18px;
+}
+.search .search-box li {
+  display: inline-flex;
+  align-items: center;
+}
+.search .search-box li:last-child {
+  border-left: unset;
+}
+.search .search-box li button {
+  font-weight: 600;
+}
+.search .search-box li .nav-link.active {
+  color: #333333;
+  border-bottom: 4px solid #0d6efd;
+  background-color: transparent;
+}
+.search .search-box .nav-pills {
+  width: 100%;
+  border-bottom: 2px solid #f1f1f1;
+  display: inline-flex;
+  justify-content: center;
+}
+.search .engineering {
+  padding: 10px 50px;
+}
+.search .engineering .buttons {
+  border: 2px solid #eeeeee;
+  padding: 5px;
+}
+.search .engineering .buttons .nav-link {
+  margin: 10px 0;
+}
+.search .engineering .shows form.engener {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #eeeeee;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+}
+.search .engineering .shows form.engener span {
+  text-align: right;
+  padding-right: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: block;
+  margin: 10px 0;
+}
+.search .engineering .shows form.engener .foorm {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin: 20px 0 27px;
+}
+.search .engineering .shows form.engener .foorm input[type=text] {
+  margin: 0 0 0 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #7d7e7e;
+}
+.search .engineering .shows form.engener .foorm button[type=submit] {
+  border: navajowhite;
+  background: #3bb15d;
+  padding: 5px 30px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  align-items: center;
+  box-shadow: 0 0 4px 0 #3bb15d;
+}
+.search .engineering .shows .p-box {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #eeeeee;
+  padding: 15px 25px;
+  height: 343px;
+  width: 100%;
+  overflow: auto;
+}
+.search .engineering .shows .p-box p {
+  font-size: 1rem;
+  text-align: justify;
+  line-height: 1.8rem;
+}
+.search .engineering .shows .slider-box {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #eeeeee;
+  padding: 5px;
+  height: 343px;
+  width: 100%;
+  overflow: auto;
+  justify-content: space-around;
+  align-items: center;
+}
+.search .engineering .shows .slider-box .header {
+  width: 100%;
+  text-align: center;
+}
+.search .engineering .shows .slider-box span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: block;
+  margin: 10px 0;
+}
+.search .engineering .shows .slider-box p {
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.8rem;
+}
+.search .engineering .shows .slider-box .nemone-box {
+  height: 188px;
+  overflow: hidden;
+}
+.search .engineering .shows .slider-box .nemone-box a {
+  position: relative;
+  height: 100%;
+  display: block;
+}
+.search .engineering .shows .slider-box .nemone-box a img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.search .engineering .shows .slider-box .nemone-box a h3 {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #3333339e;
+  margin: 0;
+  padding: 10px 0;
+  color: #ffffff;
+}
+.search .investment {
+  padding: 10px 50px;
+}
+.search .investment .buttons {
+  border: 2px solid #eeeeee;
+  padding: 5px;
+}
+.search .investment .buttons .nav-link {
+  margin: 10px 0;
+}
+.search .investment .shows form.kharid-2 {
+  display: inline-flex;
+  justify-content: center;
+}
+.search .investment .shows form.kharid-2 select {
+  width: 150px;
+  margin: 0 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background: #eeeeee;
+  border: 0;
+  box-shadow: 0 0 10px 0 #9b9b9b;
+}
+.search .investment .shows form.kharid-2 select option {
+  padding: 5px 0;
+  border-bottom: 1px solid #ffffff;
+}
+.search .investment .shows form.kharid-2 button {
+  border: navajowhite;
+  background: #3bb15d;
+  padding: 5px 30px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 0 10px 0 #3bb15d;
+  margin-right: 10px;
+  justify-content: center;
+}
+.search .investment .shows form.kharid-2 button svg {
+  margin-right: 10px;
+  margin-top: 0;
+  font-size: 18px;
+}
+.search .investment .shows form.engener {
+  display: inline-flex;
+  flex-direction: row;
+  border: 2px solid #eeeeee;
+  height: 100%;
+  width: 100%;
+  padding: 30px 0;
+}
+.search .investment .shows form.engener span {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: block;
+  margin: 10px 0;
+}
+.search .investment .shows form.engener .foorm {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.search .investment .shows form.engener .foorm input[type=text] {
+  margin: 0 0 15px 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #7d7e7e;
+}
+.search .investment .shows form.engener .foorm button[type=submit] {
+  border: navajowhite;
+  background: #3bb15d;
+  padding: 5px 30px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  align-items: center;
+  box-shadow: 0 0 4px 0 #3bb15d;
+}
+.search .investment .shows form.engener2 {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #eeeeee;
+  height: 100%;
+  width: 100%;
+  padding: 30px 0;
+}
+.search .investment .shows form.engener2 span {
+  text-align: revert;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: block;
+  margin: 0 0 20px;
+  padding-right: 20px;
+}
+.search .investment .shows form.engener2 .foorm {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.search .investment .shows form.engener2 .foorm .form-check {
+  margin: 10px 0;
+}
+.search .investment .shows form.engener2 .foorm input[type=text] {
+  margin: 0 0 15px 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #7d7e7e;
+}
+.search .investment .shows form.engener2 .foorm button[type=submit] {
+  border: navajowhite;
+  background: #3bb15d;
+  padding: 5px 30px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  align-items: center;
+  box-shadow: 0 0 4px 0 #3bb15d;
+}
+.search .investment .shows .p-box {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #eeeeee;
+  padding: 15px 25px;
+  height: 343px;
+  width: 100%;
+  overflow: auto;
+}
+.search .investment .shows .p-box p {
+  font-size: 1rem;
+  text-align: justify;
+  line-height: 1.8rem;
+}
+.search .investment .shows .slider-box {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid #eeeeee;
+  padding: 5px;
+  height: 343px;
+  width: 100%;
+  overflow: auto;
+  justify-content: space-around;
+  align-items: center;
+}
+.search .investment .shows .slider-box .header {
+  width: 100%;
+  text-align: center;
+}
+.search .investment .shows .slider-box span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: block;
+  margin: 10px 0;
+}
+.search .investment .shows .slider-box p {
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.8rem;
+}
+.search .investment .shows .slider-box .nemone-box {
+  height: 188px;
+  overflow: hidden;
+}
+.search .investment .shows .slider-box .nemone-box a {
+  position: relative;
+  height: 100%;
+  display: block;
+}
+.search .investment .shows .slider-box .nemone-box a img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.search .investment .shows .slider-box .nemone-box a h3 {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #3333339e;
+  margin: 0;
+  padding: 10px 0;
+  color: #ffffff;
+}
+
+.posts .tabs {
+  margin-top: 150px;
+}
+.posts .tabs nav .nav-tabs {
+  justify-content: center;
+}
+.posts .tabs nav .nav-tabs .nav-link {
+  color: #333333;
+  background-color: transparent;
+  border: unset;
+  font-weight: 600;
+  font-size: 18px;
+}
+.posts .tabs nav .nav-tabs .active {
+  border: unset;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 5px solid #3bb05d;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: 15px;
+  padding: 10px;
+  outline: 0;
+  box-shadow: 0 0 14px 0 #0000002e;
+}
+.modal-content .modal-body {
+  text-align: center;
+}
+.modal-content .modal-body form {
+  display: inline-flex;
+  flex-direction: column;
+}
+.modal-content .modal-body form input, .modal-content .modal-body form textarea, .modal-content .modal-body form select {
+  margin: 0 0 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #eeeeee;
+  border: 0;
+}
+.modal-content .modal-body form button {
+  border: none;
+  background: #3bb15d;
+  padding: 5px 30px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content .modal-body p {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.show {
+  display: block !important;
+}
+
+/*# sourceMappingURL=style.css.map */

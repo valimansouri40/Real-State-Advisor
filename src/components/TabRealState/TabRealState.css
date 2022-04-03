@@ -1,0 +1,26 @@
+
+
+.tab-content{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+.realstate-box{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    flex-direction: column;
+    width: 20rem;
+    height: 25rem;
+    border: 1px solid #111;
+    direction: rtl;
+    position: relative;
+}
+
+.card-middle{
+    display: grid;
+    grid-template-columns: 10rem 10rem;
+}

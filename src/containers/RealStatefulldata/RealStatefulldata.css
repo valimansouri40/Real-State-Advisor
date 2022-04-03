@@ -1,0 +1,17 @@
+
+.target-all{
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    direction: ltr;
+}
+.target-rsdf-one{
+
+    width: 70%;
+
+}
+
+.target-rsdf-two{
+    width: 30%;
+}

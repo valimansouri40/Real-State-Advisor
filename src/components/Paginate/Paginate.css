@@ -1,0 +1,86 @@
+.paginatebox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    direction: ltr;
+}
+
+.btnpage{
+    padding: .5rem 1rem;
+    background: chocolate;
+    color: #fff;
+    border-radius: 5px;
+}
+.btnpage1{
+    height: 2.3rem;
+    width: 2.5rem;
+    background: chocolate;
+    color: #fff;
+    border-radius: 5px;
+    position: relative;
+}
+.btnpage1::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 2px;
+    height: .8rem;
+    background: cornsilk;
+    transform:rotate(-40deg);
+}
+.btnpage1::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 2px;
+    height: .8rem;
+    background: cornsilk;
+    transform:rotate(40deg);
+}
+
+.btnpage2{
+    height: 2.3rem;
+    width: 2.5rem;
+    background: chocolate;
+    color: #fff;
+    border-radius: 5px;
+    position: relative;
+}
+
+.btnpage2::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 2px;
+    height: .8rem;
+    background: cornsilk;
+    transform:rotate(40deg);
+}
+.btnpage2::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 2px;
+    height: .8rem;
+    background: cornsilk;
+    transform:rotate(-40deg);
+}
+
+.btnpageactive{
+    padding: .5rem 1rem;
+    background: rgb(76, 230, 140);
+    color: #fff;
+    border-radius: 5px;
+}
+.sp{
+    padding: .5rem 1rem;
+    background: chocolate;
+    color: #fff;
+    border-radius: 5px;
+}

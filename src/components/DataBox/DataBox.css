@@ -1,0 +1,9 @@
+
+.databox-target{
+    width: 100%;
+    border:1px solid #111;
+}
+.databox-tab-active{
+
+    background: crimson;
+}

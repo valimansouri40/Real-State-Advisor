@@ -1,0 +1,53 @@
+
+
+.changenum1::after ,.changenum1::before{
+
+    content: "";
+    width: 1.4rem;
+    height: 2px;
+    background: rgb(236, 228, 228);
+    position: absolute;
+    right: 1rem;
+}
+
+.changenum1::after{
+    top: 48%;
+    transform: rotate(40deg);
+}
+.changenum1::before{
+    top: 51.5%;
+    transform: rotate(-40deg);
+}
+
+
+.changenum2::after ,.changenum2::before{
+
+    content: "";
+    width: 1.4rem;
+    height: 2px;
+    background: rgb(236, 228, 228);
+    position: absolute;
+    left: 1rem;
+}
+
+.changenum2::after{
+    top: 48%;
+    transform: rotate(-40deg);
+}
+.changenum2::before{
+    top: 51.5%;
+    transform: rotate(40deg);
+}
+
+.leaseform{
+    display: flex;
+}
+.hidden{
+    display: none;
+}
+.fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    direction: 'rtl';
+}

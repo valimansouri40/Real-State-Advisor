@@ -1,0 +1,14 @@
+.logo {
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+  }
+  .logo img {
+    width: 30%;
+  }
+  .logo p {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0a3877;
+  }
