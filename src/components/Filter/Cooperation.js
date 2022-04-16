@@ -65,6 +65,7 @@ const Cooperation=(props)=>{
             if(pattern.test(data.PhoneNumber)){
             if(data.FristName !== '' && data.City !=='' && data.Area !==''){
                     sendreq(data, auth);
+                    console.log('anjam')
             }else{
              ShowAlert([], 'اطلاعات وارد شده ناقص است', 'fail')
             }}else{
@@ -140,7 +141,7 @@ const Cooperation=(props)=>{
             
 </select></div>
 
-                <Select
+                <Select val={tipic}
                 setvaluehandller={settipichandller}
                 array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
                             </form>
@@ -148,8 +149,8 @@ const Cooperation=(props)=>{
                                 <span>ثبت درخواست  مشارکت در ساخت </span>
                                 <div class="foorm">
                                     <div>
-                                        <input onChange={(e)=>setName(e.target.value)} type="text" placeholder="نام و نام خانوادگی"/>
-                                        <input className={valid?'inp':'notvalid'} onChange={(e)=>changephonenumber(e)} type="text" placeholder="شماره تماس"/>
+                                        <input onChange={(e)=>setName(e.target.value)} type="text" id='namee' placeholder="نام و نام خانوادگی"/>
+                                        <input className={valid?'inp':'notvalid'} onChange={(e)=>changephonenumber(e)} id="teel" type="text" placeholder="شماره تماس"/>
                                     </div>
                                   {tb === 'coopration'? <> <div class="form-check">
                                         <input onChange={()=>setcooper(e=>!e)} type="checkbox" value="" id="flexCheckDefault" />

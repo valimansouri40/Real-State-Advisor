@@ -9,7 +9,15 @@ const Filter= (props)=>{
         const {tab, settab,getallwsinit ,getallfilterinit, areaall,cityall,REALSTATEGETALLINIT, filter,
             worksampel ,changefilehandller, auth, sendreq}=props;
         const arraytab=['sell', 'rent','engine','cooperation'];
-        
+        useEffect(()=>{
+            const search= window.location.search;
+            console.log(search.includes('rahn'), 'asudhsaui')
+            if(search.includes('rahn')){
+                settab('rent')
+            }else if(search.includes('sell')){
+                settab('sell')
+            }   
+        },[])
         console.log(tab)
         const changeTab=(e)=>{
 
@@ -20,10 +28,12 @@ const Filter= (props)=>{
       
             switch(tab){
                 case 'sell':
-                    tabShow = <Seles getallfilterinit={getallfilterinit} filters={filter} REALSTATEGETALLINIT={REALSTATEGETALLINIT} changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Seles>;
+                    tabShow = <Seles getallfilterinit={getallfilterinit} filters={filter} auth={auth} REALSTATEGETALLINIT={REALSTATEGETALLINIT} changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Seles>;
                     break;
                 case 'rent':
-                    tabShow =<Rent getallfilterinit={getallfilterinit} filters={filter} REALSTATEGETALLINIT={REALSTATEGETALLINIT} changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Rent>;
+                    tabShow =<Rent getallfilterinit={getallfilterinit} filters={filter}
+                    auth={auth}
+                    REALSTATEGETALLINIT={REALSTATEGETALLINIT} changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Rent>;
                     break;
                 case 'engine':
                     tabShow=<Tabbar getallwsinit={getallwsinit} tab={tab} worksampel={worksampel} auth={auth} sendreq={sendreq}></Tabbar>;
@@ -32,10 +42,11 @@ const Filter= (props)=>{
                     tabShow= <Cooperation tab={tab} auth={auth} sendreq={sendreq} changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Cooperation>;
                     break;
                 default: tabShow= <Seles getallfilterinit={getallfilterinit} filters={filter}
+                auth={auth}
                  REALSTATEGETALLINIT={REALSTATEGETALLINIT} changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Seles>;
                     break;
             }
-
+            const path= window.location.hash;
     return(
 
         
@@ -52,14 +63,14 @@ const Filter= (props)=>{
                         <button onClick={()=>changeTab('rent')}
                          className={tab ==="rent"?"nav-link active":"nav-link"}  >رهن و اجاره</button>
                     </li>
-                    <li className="nav-item" >
+                   { path !== '#/search'?<><li className="nav-item" >
                         <button onClick={()=>changeTab('engine')}
                          className={tab ==="engine"?"nav-link active":"nav-link"}  >خدمات مهندسی</button>
                     </li>
                     <li className="nav-item" >
                         <button onClick={()=>changeTab('cooperation')}
                          className={tab ==="cooperation"?"nav-link active":"nav-link"}  id="pills-Fund-tab" >فرصت سرمایه گذاری</button>
-                    </li>
+                    </li></>:null}
                 </ul>
                 <div className="tab-content" id="pills-tabContent">
 

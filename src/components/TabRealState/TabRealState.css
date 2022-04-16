@@ -1,6 +1,12 @@
 
-
-.tab-content{
+/* .posts{
+    width: 100%;
+    background: crimson;
+}
+.tabs{
+    width: 100%;
+} */
+.tab-content1{
     display: flex;
     align-items: center;
     justify-content:space-around;

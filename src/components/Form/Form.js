@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Link ,Redirect} from "react-router-dom";
 import Inputs from "../UI/inputs/inputs";
 import classes from './Form.css';
@@ -9,7 +9,7 @@ import Timer from "../UI/Timer/Timer";
 
 const Form =(props)=>{
     const {data, setdata, onauth, loading ,location,changmyepassword
-         , error,expiresCode,changefilehandller, deleteexp}=props;
+         ,expiresCode,changefilehandller, deleteexp}=props;
     const  [bol,setbol]=useState('');
     const [timer, settime]= useState(0);
     const path=window.location.hash;
@@ -46,7 +46,7 @@ const Form =(props)=>{
             config:data[key]
         })
     }
-    console.log(formdata)
+    
 
     const clickresetfied=(id)=>{
         const chg= {...data,
@@ -59,17 +59,29 @@ const Form =(props)=>{
             }
             setdata(chg);
     }
-    const clickaddfied=(e,id)=>{
-       if(!data[id].value.includes(e)){ const chg= {...data,
+    const clickaddfied=(e,id, mp)=>{
+            
+       if(!data[id].value.includes(mp)){ const chg= {...data,
             [id]:{
                 ...data[id],
-                value:data[id].value + ' , ' + e,
+                value:data[id].value + ' , ' + mp,
                 touch:true,
                 valid:true
             }
             }
-            console.log(data[id].value)
-            setdata(chg);}
+            
+            setdata(chg);}else{
+                const chg2= {...data,
+                    [id]:{
+                        ...data[id],
+                        value:data[id].value.replace(' , ' + mp, ''),
+                        touch:true,
+                        valid:true
+                    }
+                    }
+                   
+                    setdata(chg2);
+            }
     }
     let inp= formdata.map((mp)=>
     (
@@ -77,19 +89,19 @@ const Form =(props)=>{
         valid={mp.config.valid}
         type={mp.config.eltype.type} 
         bol={bol}
+        img={mp.config.img}
         Click={()=>changebol(mp.id)}
         setbol={setbol}
-        clickaddfied={(e)=>clickaddfied(e.target.innerHTML,mp.id)}
+        id={mp.id}
+        clickaddfied={clickaddfied}
         clickresetfied={(e)=>clickresetfied(mp.id)}
         change={(e)=>ChangeValueHandller(e.target.value,mp.id)}></Inputs>));
         
-    console.log(formdata)
+    
 
     const submithandller=(e)=>{
         e.preventDefault();
-        console.log(data)
         const dataanderrors= autherrorhandling(data,path)
-            
         
         if(dataanderrors.er.length === 0 ){
          
@@ -102,7 +114,6 @@ const Form =(props)=>{
                 changmyepassword(dataanderrors.dtsb)
         }else if(path === '#/addcity'){
             const cdt= citydata(data);
-            console.log(cdt)
             changefilehandller(cdt,'writecity','')
         }else if(path === '#/addarea'){
             if(location){
@@ -133,7 +144,9 @@ const Form =(props)=>{
     }
 
     const twiceSendSMSHandller=()=>{
-            if(timer === 0 || 1){
+        console.log('madar jende')
+            if(timer  ){
+                console.log('madar jende')
             settime(180);
             const phone= localStorage.getItem('phn');
             

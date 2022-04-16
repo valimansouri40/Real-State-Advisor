@@ -5,48 +5,72 @@ import { connect } from "react-redux";
 import ok from '../../assets/icons/icons8-ok-32.png';
 import see from '../../assets/icons/icons8-hide-32.png';
 import pend from '../../assets/icons/icons8-data-pending-24.png';
+import { changeprice } from "../../components/UI/CardRealState/changePrice";
+import Header from "../../components/Header/Header";
+
+/// بخش درخواست های من در نوبار صفحه سایت
 
 const MyReqeust=(props)=>{
-    // const status =[{sta:'unseen', txt:'دیده نشده'}, {sta:'Pending', txt:'در حال بررسی'},{sta:'Accepted',txt:'تایید شده'}]
-        const tabsarrr= [{value:'Buy land', txt:'خرید زمین با قابلیت رشد'},
-        {value:'cooperation', txt:'مشارکت در ساخت'},{value:'sendrealstate', txt:'سپردن ملک'},
-       {value:'recr', txt:'درخواست همکاری'}, {value:'engine', txt:'خدمات مهندسی'}];
+        const {data, getallmyreqinit,auth, sendreq}=props;
+        
+       
         const [querytab, setquerytab]=useState('sendrealstate')
-        const {data, getallmyreqinit,auth}=props;
+        
         const objtab={mapdesign:"طراحی نقشه",Mapping:'نقشه برداری',Registrationwork:'کار های ثبتی',Advocacy:'وکالت دادگاهی',Executionandconstruction:'اجرا و ساخت',
         ExpertofJustice:'کارشناس دادگستری',endofwork:'پایان کار', lisense:'جواز'}
         
         useEffect(()=>{
-                getallmyreqinit(querytab,1 , 10)
+                getallmyreqinit(1 , 30)
         },[getallmyreqinit, querytab])
-        console.log(data)
-
-        const getdatatabinit=(e)=>{
-                setquerytab(e);
-              console.log(e)
-        }
-
+       
+        const objtype= {"Buy land" : "خرید زمین با قابلیت رشد",
+                "cooperation": "مشارکت در ساخت", "sendrealstate" : "سپردن ملک", 
+            "recr" : "درخواست همکاری", "engine" : "خدمات مهندسی"}
     return(
         <div className='req-target'>
-           <div className='req-headtabar'> {tabsarrr.map(ar=>(
-                <button onClick={()=>getdatatabinit(ar.value)} className='req-btn'>{ar.txt}</button>
-            ))}
-            </div>
+
+            <Header sendreq={sendreq} auth={auth}></Header>
+        
             <div className='req-box' style={{width:'100%',minHeight:'100vh',
              display:'flex',alignItems:'flex-start',
         justifyContent:'space-around',flexFlow:'row wrap'}}>
+             {data? data.length === 0?<div>موردی یافت نشد!!</div>:null:null} 
                     {data?data.map(mp=>(
                         <div style={{width:'30%',height:'10rem'}} className='req-card'>
-                          <h3 className='req-h3'> :{mp.Type}</h3>
-                          <p className='req-p'><span> {mp.Text} </span> <span> : توضیحات</span></p>
-                          <p className='req-p'> {mp.Job}</p>
-                          <p className='req-p'> {mp.Price}</p>
-                          <p className='req-p'> {mp.Area}</p>
-                          <p className='req-p'> {mp.City}</p>
-                          <p className='req-p'> {mp.TypeState}</p>
-                          {mp.Type === 'engine'?<p className='req-p'> درخواست: {objtab[mp.TypeWork]}</p>:null}
-                          <p className='req-p'> {mp.Cooperation?'  من آمادگی مشارکت در ساخت را دارم':null}</p>
-                          <p className='req-p'> {mp.Land?' من آمادگی سرمایه گذاری در زمین برای مشارکت در ساخت را دارم':null}</p>
+                           <div className='allreq-fieldbox'>
+                                            <h3 className='allreq-field'> نوع درخواست : {objtype[mp.Type]}</h3>
+                                        </div> 
+                                       { mp.TypeWork?<div className='allreq-fieldbox'>
+                                            <h3 className='allreq-field'>  نوع خدمات مهندسی : {objtab[mp.TypeWork]}</h3>
+                                        </div> :null}
+                                        {mp.City?<><div className='allreq-fieldbox'>
+                                            <h3 className='allreq-field'> شهر : {mp.City}</h3>
+                                        </div> 
+                                        <div className='allreq-fieldbox'>
+                                            <h3 className='allreq-field'> منطقه : {mp.Area}</h3>
+                                        </div></> :null}
+                                        {mp.TypeState?<div className='allreq-fieldbox'>
+                                            <h3 className='allreq-field'> نوع ملک : {mp.TypeState}</h3>
+                                        </div> :null}
+                                        {mp.Cooperation?<div className='allreq-fieldbox'>
+                                            <h3 className='allreq-field'> آمادگی مشارکت در ساخت را دارم</h3>
+                                        </div>:null }
+                                        {mp.Job?<div className='allreq-fieldbox'>
+                                            <h3 className='allreq-field'> نوع همکاری در خواست شده : {mp.Job} </h3>
+                                        </div>:null }
+                                        {mp.Land?<div className='allreq-fieldbox'>
+                                            <h3 className='allreq-field'> زمین با قابلیت رشد</h3>
+                                        </div>:null} 
+                                        {mp.Price?
+                                        <div className='allreq-fieldbox'>
+                                        <h3 className='allreq-field'> {changeprice(mp.Price)}</h3>
+                                    </div>
+                                        :null}
+                                    {mp.Text?
+                                        <div className='allreq-fieldboxtext'>
+                                        <p className='allreq-text'> توضیحات : {mp.Text}</p>
+                                    </div>
+                                        :null}
                           <p className='req-p'> 
                                     {mp.Status === 'unseen'?<span>دیده نشده<img src={see} /></span>:null}
                                     {mp.Status === 'Pending'? <span>در حال بررسی<img src={pend} /></span>:null}
@@ -68,6 +92,7 @@ const MapStateToProps=state=>{
 
 const MapDispatchToProps=dispatch=>{
     return{
+        sendreq:(data,authdt)=> dispatch(action.sendreq(data, authdt)),
         getallmyreqinit:(query,page,limit)=> dispatch(action.getallmyreqinit(query,page, limit))
     }
 }

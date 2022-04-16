@@ -4,6 +4,9 @@ import './BuildSampel.css';
 import * as action from '../../store/action/index';
 import picture from '../../assets/icons/icons8-picture-64.png';
 import close from '../../assets/icons/icons8-close-50.png'
+import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
+
+/// بخش ساخت و حذف نمونه کارها در پنل مدیریت
 
 const BuildSampel=(props)=>{
         const { getallwsinit, postwsinit, deletewsinit, workSampel}=props;
@@ -12,14 +15,20 @@ const BuildSampel=(props)=>{
         const [img, setimg]= useState();
         const [txt, settxt]= useState('');
         const [passage, setpassge]= useState('');
-        console.log(tabs)
+        
         const changeTabs=(e)=>{
             settab(e.target.value)
             setpassge('');
             settxt('');
-            setimg();        }
+            setimg();       
+           localStorage.setItem('sampeltab', e.target.value)
+        }
+        const storge= localStorage.getItem('sampeltab')
+
         useEffect(()=>{
-            console.log(tabs)
+            settab(storge)
+        },[])
+        useEffect(()=>{
                 getallwsinit(1,10,`Tab=${tabs}`);
         },[getallwsinit, tabs])
 
@@ -42,11 +51,12 @@ const BuildSampel=(props)=>{
                 Text:txt ,
                 Passage: passage
             }
-            console.log(data)
+           
         postwsinit(data);
+       window.location.reload();
         }
         const switcharr= ['Registrationwork','Advocacy', 'ExpertofJustice', 'endofwork', 'lisense']
-        console.log(switcharr.includes(tabs), tabs)
+        
         const arr={'mapdesign':'طراحی نقشه',
         'Mapping':'نقشه برداری',
         'Registrationwork':'کار های ثبتی',
@@ -56,7 +66,8 @@ const BuildSampel=(props)=>{
         'endofwork':' پایان کار',
         'License ':'جواز'}
     return(
-        <div className='sampel-target'>
+        <div className='changerole-target'>
+            <AdminPannelNav/>
             <div className='sampel-box'>
                 <div className='sampel-buildbox'>
                 <div style={{display:'flex', alignItems:'center',justifyContent:'center'}} class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">

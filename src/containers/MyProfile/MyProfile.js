@@ -4,9 +4,12 @@ import './MyProfile.css';
 import * as action from '../../store/action/index';
 import { getBase64 } from "../convertImgToBase64";
 import picture from '../../assets/icons/icons8-picture-64.png';
+import Header from "../../components/Header/Header";
+
+/// نمایش و تغییر اطلاعات کاربر در نوبار صفحه
 
 const MyProfile=(props)=>{
-        const {UpdateProfile,setauthgetmeinit, data} = props;
+        const {UpdateProfile,setauthgetmeinit, data, sendreq} = props;
         const [img, setimg]=useState();
         const [on, seton]= useState();        
 
@@ -35,7 +38,7 @@ const MyProfile=(props)=>{
             if(img){
                addim.Image = img
             }
-            console.log(on)
+           
           UpdateProfile(on);
           setauthgetmeinit();
         }
@@ -48,7 +51,6 @@ const MyProfile=(props)=>{
                         LastName:on.LastName,
                         _id: data._id
                     }
-                    console.log(nb)
                 seton(nb)
         }
         
@@ -59,11 +61,12 @@ const MyProfile=(props)=>{
                 LastName:e.target.value,
                 _id: data._id
             }
-            console.log(nb)
         seton(nb)
          }
+         const limitrole= ['advisor', 'employee'];
     return(
         <section className='profilesec'>
+            <Header auth={data} sendreq={sendreq}></Header>
                 <div className='profilebox'style={{display:'flex',alignItems:'center', justifyContent:'space-around',height:'100vh'}}>
                
                 {on?<div  className='profile'>
@@ -94,6 +97,10 @@ const MyProfile=(props)=>{
                             <label className='labelnm'>شماره تلفن</label>
                             <span className='name'> : {data.PhoneNumber}</span>
                         </div> 
+                        {limitrole.includes(data.role)?<div className='show' >
+                            <label className='labelnm'>آدرس املاک</label>
+                            <span className='name'> : {data.AdvisorAddress}</span>
+                        </div>:null}
                        {/* <div className='show'>
                             <label className='labelnm'>رمز</label>
                             <p className='name'>{on?data.Password:star}</p>
@@ -117,6 +124,7 @@ const MapStateToProps=state=>{
 const MapDispatchToProps=dispatch=>{
     return{
         setauthgetmeinit:()=>dispatch(action.setauthgetmeinit()),
+        sendreq:(data,authdt)=> dispatch(action.sendreq(data, authdt)),
          UpdateProfile:(data)=> dispatch(action.UpdateProfile(data))
     }
 }

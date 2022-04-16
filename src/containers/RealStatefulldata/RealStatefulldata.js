@@ -7,12 +7,19 @@ import Header from '../../components/Header/Header';
 import Gallery from "../../components/Gallery/Gallery";
 import Callender from "../../components/Callender/Callender";
 import DataBox from "../../components/DataBox/DataBox";
+import AdvisorData from "../../components/AdvisorData/AdvisorData";
+import CardRealState from "../../components/UI/CardRealState/CardRealState";
+import Map from '../../components/UI/GoogleMaps/GoogleMaps';
+import { Helmet } from "react-helmet-async";
+// صفحه نمایش اطلاعات کامل ملک
 
 const RealStatefulldata=(props)=>{
-        const {REALSTATEGETONEINIT, OneData}= props;
-
-        const [numimg, setnumimg]=useState(0);
-        
+        const {REALSTATEGETONEINIT,realstatestartfocinit, FocusData, addMarkinit, lessmarkinit
+            , auth, reviwes ,appogetoneinit ,
+            reviwegetinit, OneData ,appopostinit, sendreq, reviweandRatepostinit}= props;
+          
+        const [fristnum, setfristnum]= useState(0);
+        const [lastnum, setlastnum]= useState(3);
         useEffect(()=>{
             window.scrollTo({
                 top: 0,
@@ -21,52 +28,91 @@ const RealStatefulldata=(props)=>{
               });
         },[])
         const param = useParams().id;
-        console.log(OneData)
+        
         useEffect(()=>{
             REALSTATEGETONEINIT(param)
         },[REALSTATEGETONEINIT, param])
+        useEffect(()=>{
+            appogetoneinit(param);
+        },[appogetoneinit, param])
 
+        useEffect(()=>{
+            if(OneData){
+                
+                let querystr = `/mark?Tipic=${OneData.Tipic}&TypeState=${OneData.TypeState}&City=${OneData.City}&Area=${OneData.Area}&
+                Mortgage[gte]=${OneData.Mortgage * 1 - 100000000}&
+                Mortgage[lte]=${OneData.Mortgage * 1 + 100000000}&limit=10&page=1`
+                if(!auth){
+                    querystr = `/realstate?Tipic=${OneData.Tipic}&TypeState=${OneData.TypeState}&City=${OneData.City}&Area=${OneData.Area}&
+                Mortgage[gte]=${OneData.Mortgage * 1 - 100000000}&
+                Mortgage[lte]=${OneData.Mortgage * 1 + 100000000}&limit=10&page=1`
+                }
+            realstatestartfocinit(querystr);
+                   }
+        },[realstatestartfocinit, OneData, auth])
         let onedt= null;
         if(OneData){
             onedt= Object.entries(OneData);
-            console.log(OneData)
+            
         }
         
         const nextMyImage=()=>{
 
-            if( numimg < OneData.Image.length - 1 ){
-                    setnumimg(num=> num + 1)
-            }else{
-                setnumimg(0)
+            if( lastnum < FocusData.length - 1){
+                    setfristnum(num=> num + 1)
+                    setlastnum(nu=> nu + 1)
             }
             
         }
-        console.log(numimg)
+        
         const lastMyImage=()=>{
     
-            if( 0 < numimg ){
-                    setnumimg(num=> num - 1)
-            }else{
-                setnumimg(OneData.Image.length - 1)
-            }
+            if( fristnum > 0){
+                setfristnum(num=> num - 1)
+                setlastnum(nu=> nu - 1)
+        }
             
         }
-        console.log(numimg)
+        let FocusDataLimit ;
+        if(FocusData){
+           FocusDataLimit = FocusData.slice(fristnum, lastnum);
+        }
+      
     return(
         <section className='sec-rsdf'>
-            <Header></Header>
-            
+            <Header auth={auth} sendreq={sendreq}></Header>
+            {OneData?<Helmet>
+           <title>{OneData.Tipic === 'rahn'?`اجاره خانه در${" " +OneData.City + " " + OneData.Area}`:`خرید خانه در${" " +OneData.City + " " + OneData.Area}`}</title>
+          <meta name="description" content="App Description" />
+          <meta name="theme-color" content="#008f68" />
+        </Helmet>:null}
              <div className='target-all'>
            { OneData?<div className="target-rsdf-one">
                 
-            <Gallery Image={OneData.Image}></Gallery>   
-            <DataBox OneData={OneData}></DataBox>
+            {OneData?<><Gallery Image={OneData.Image}></Gallery>   
+            <DataBox reviwegetinit={reviwegetinit}  auth={auth} reviwes={reviwes} OneData={OneData}
+             reviweandRatepostinit={reviweandRatepostinit} OneData={OneData}></DataBox></>:null}
                
             </div>:null}
             <div className='target-rsdf-two'>
-            <Callender></Callender>   
+            <Callender 
+                auth={auth}
+            OneData={OneData} appopostinit={appopostinit}></Callender> 
+            {OneData?<>
+            {OneData.AdvisorId?<AdvisorData OneData={OneData} ></AdvisorData>:null}
+            
+           <div className='map-rstf'> <Map location={OneData.Location}></Map></div></>:null  }
                 </div>
+          
             </div> 
+            <div className='rsdf-row'>
+                <div className='rstf-ch' onClick={lastMyImage}>قبلی</div>
+                {FocusDataLimit?FocusDataLimit.map((mp, i)=><CardRealState 
+                addMarkinit={addMarkinit} lessmarkinit={lessmarkinit} auth={auth}
+                FocusData={mp} realstatestartfocinit={realstatestartfocinit}></CardRealState>):null}
+                <div className='rstf-ch' onClick={nextMyImage}>بعدی</div>
+            
+            </div>
         </section>
     )
 }
@@ -74,14 +120,26 @@ const RealStatefulldata=(props)=>{
 const MapStateToProps=state=>{
 
     return{
-        OneData: state.realstate.OneData
+        OneData: state.realstate.OneData,
+        FocusData: state.realstate.focusData,
+        oneAppointment: state.appointment.onedata,
+        auth: state.auth.data,
+        reviwes: state.rate.reviwes
     }
 }
 
 const MapDispatchToProps=dispatch=>{
 
     return{
-        REALSTATEGETONEINIT:(id)=> dispatch(action.REALSTATEGETONEINIT(id))
+        sendreq:(data,authdt)=> dispatch(action.sendreq(data, authdt)),
+        REALSTATEGETONEINIT:(id)=> dispatch(action.REALSTATEGETONEINIT(id)),
+        realstatestartfocinit:(query)=> dispatch(action.realstatestartfocinit(query)),
+        appopostinit: (data)=> dispatch(action.appopostinit(data)),
+        appogetoneinit: (id)=> dispatch(action.appogetoneinit(id)),
+        addMarkinit: (data)=> dispatch(action.addmarkinit(data)),
+        lessmarkinit: (id)=> dispatch(action.lessmarkinit(id)),
+        reviweandRatepostinit:(dt)=>dispatch(action.reviweandRatepostinit(dt)),
+        reviwegetinit: (id)=> dispatch(action.reviwegetinit(id))
     }
 }
 

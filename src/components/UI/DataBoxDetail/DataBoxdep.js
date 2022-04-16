@@ -5,11 +5,11 @@ import React from "react";
 
 const DataBoxdep= (props)=>{
         const {dt}= props;
-        console.log(dt)
+
 
         return(
             <div className='databoxps-box'>
-                    saijdihsauidhuias
+                   
                     <div className='databoxps-block'>
                     <h2 className='databoxsp-h2'>
                     <span className='databoxps-spn'> جهت نما </span> :

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import DataBoxdep from "../UI/DataBoxDetail/DataBoxdep";
 import DataBoxsp from "../UI/DataBoxDetail/DataBoxsp";
 import './DataBox.css';
-
+import Comment from "../Comment/Comment";
 
 const DataBox=(props)=>{
-        const {OneData}= props;
+        const {OneData, reviwegetinit,
+        reviweandRatepostinit, auth, reviwes}= props;
         const [tabDatabox, settabdb]= useState('data');
 
         const changetabHandller=(e)=>{
@@ -20,8 +21,10 @@ const DataBox=(props)=>{
                 case 'dep':
                     detail= <DataBoxdep dt={OneData}></DataBoxdep>
                     break;
-                case '':
-                    detail= null
+                case 'comment':
+                    detail= <Comment reviwegetinit={reviwegetinit}
+                    auth={auth} reviwes={reviwes} OneData={OneData}
+                    reviweandRatepostinit={reviweandRatepostinit} ></Comment>
                     break;
             }
     return(

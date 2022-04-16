@@ -35,6 +35,7 @@ export const REALSTATEPOSTINIT=(data)=>{
         }).then(res=>{
                 if(res.data){
                     dispatch(REALSTATEPOST());
+
                 }
         }).catch(er=>{
             dispatch(errorrealState())
@@ -43,26 +44,20 @@ export const REALSTATEPOSTINIT=(data)=>{
     }
 }
 
-// export const REALSTATEPOSTIMAGEINIT=(data)=>{
+export const savetabserchbox=(data)=>{
+    return{
+        type: action.SAVETABSEARCHBOX ,
+        data: data
+    }
+}
 
-//     return dispatch=>{
-//         dispatch(startrealState());
+export const savetabserchboxinit= (tab)=>{
 
-//         axios(apidomain + `/realstate`,{
-//             data:data,
-//             method:'post',
-//             headers:{ 'Authorization': `Bearer ${cookiejwt}`}
-//         }).then(res=>{
-//                 if(res.data){
-//                     console.log(res.data)
-//                 }
-//         }).catch(er=>{
-//             dispatch(errorrealState())
-//             ShowAlert([],'انجام نشد','fail')
-//         })
-//     }
-// }
+    return dispatch=>{
 
+        dispatch(savetabserchbox(tab))
+    }
+}
 
 export const REALSTATEGETALL=(data)=>{
     return{
@@ -71,17 +66,18 @@ export const REALSTATEGETALL=(data)=>{
     }
 }
 
-export const REALSTATEGETALLINIT=(page,query)=>{
+export const REALSTATEGETALLINIT=(page,query, auth)=>{
 
     return dispatch=>{
         dispatch(startrealState());
-
+        
         axios(apidomain + `/realstate?page=${page}&limit=20&${query}`,{
-            method:'get'
+            method:'get',
+            headers:{'Authorization':'application/json'}
         }).then(res=>{
                 if(res.data){
                     dispatch(REALSTATEGETALL(res.data));
-                    console.log(res)
+                    
                 }
         }).catch(er=>{
             dispatch(errorrealState())
@@ -108,7 +104,7 @@ export const REALSTATEGETONEINIT=(id)=>{
         }).then(res=>{
                 if(res.data){
                     dispatch(REALSTATEGETONE(res.data.data));
-                    console.log(res.data)
+                
                 }
         }).catch(er=>{
             dispatch(errorrealState())
@@ -129,7 +125,7 @@ export const REALSTATEPATCHINIT=(data,id)=>{
 
     return dispatch=>{
         dispatch(startrealState());
-            console.log(data,'patch')
+            
         axios(apidomain + `/realstate/${id}`,{
             data:data,
             method:'patch',
@@ -137,7 +133,7 @@ export const REALSTATEPATCHINIT=(data,id)=>{
         }).then(res=>{
                 if(res.data){
                     dispatch(REALSTATEPOST());
-                    console.log(res.data)
+                   
                 }
         }).catch(er=>{
             dispatch(errorrealState())
@@ -154,7 +150,7 @@ export const REALSTATEDELETEONEINIT=(id)=>{
 
     return dispatch=>{
        
-            console.log(id)
+           
         axios(apidomain + `/realstate/${id}`,{
             method:'delete',
             headers:{ 'Authorization': `Bearer ${cookiejwt}`}
@@ -213,7 +209,7 @@ export const changefilehandller=(data, path, query)=>{
             data:data,
             headers:{ 'Authorization': `Bearer ${cookiejwt}`}
         }).then(res=>{
-                console.log(res.data)
+                
                 switch(path){
                     case 'getcity':
                         dispatch(cityget(res.data.data));
@@ -240,5 +236,39 @@ export const changefilehandller=(data, path, query)=>{
         }).catch(er=>{
            console.log('error writefile')
         })
+    }
+}
+
+
+export const realstatestartfocstart= ()=>{
+    return{
+        type: action.REALSTATEFOCUSSTART
+    }
+}
+
+
+export const realstatestartfoc= (foc)=>{
+    return{
+        type: action.REALSTATEFOCUS,
+        foc:foc
+    }
+}
+
+
+export const realstatestartfocinit= (query)=>{
+    return dispatch=>{
+            dispatch(realstatestartfocstart());
+          
+            axios(apidomain + query,{
+                method: 'get',
+                headers:{ 'Authorization': `Bearer ${cookiejwt}`}
+            }).then(res=>{
+                if(res.data){
+                    dispatch(realstatestartfoc(res.data.data));
+                
+                }
+            }).catch(er=>{
+                console.log(er)
+            })
     }
 }

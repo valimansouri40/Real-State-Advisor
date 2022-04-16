@@ -1,18 +1,18 @@
 import React,{useEffect, useState} from "react";
-import './Filter.css';
+
 import Select from "../UI/Select/Select";
-import close from '../../assets/icons/icons8-close-50.png';
+
 import Box from "../UI/Box/Box";
-import Radio from "../UI/Radio/Radio";
+
 
 
 
 const Rent=(props)=>{
-    const {areaall,cityall,filters,getallfilterinit,
+    const {areaall,cityall,filters,getallfilterinit,auth,
         changefilehandller, REALSTATEGETALLINIT}=props;
    
    const [room, setsomerom]= useState('')
-   const [posibel, setposibel]=useState(false)
+  
    const [city, setcity]=useState('');
    const [area, setarea]= useState('');
     const [tipic, settipic]= useState('')
@@ -22,7 +22,7 @@ const Rent=(props)=>{
    const [yaearbuild, setyearbuild]=useState('')
        const [maesures, setmeasures]=useState('')
        const [price, setprice]=useState('')
-   const fl=['باغ','مزروعی','صنعتی']
+  
    const [ps, setps]=useState([
     {OfStorage:false, name:'انباری',dis:false},
     {Parking:false, name:'پارکینگ',dis:false},
@@ -38,6 +38,8 @@ const Rent=(props)=>{
         Tipic:'rahn',
            City: city,
            SomeRoom: room,
+           Lease:lease,
+           Area: area,
            TypeState: tipic,
            Mortgage: price,
            YearBuild: yaearbuild,
@@ -65,13 +67,11 @@ const Rent=(props)=>{
        })
 
        console.log(st)
-       
-       const strquery= `City=${city}&SomeRoom=${''}&
-       TypeState=${''}
-       `
-        REALSTATEGETALLINIT(1 ,st);
-
+       if(auth){
+        // REALSTATEGETALLINIT(1 ,`${st}&_id=${auth._id}`,);
+        window.location.hash = 'search'
         //console.log(gteprice)
+        window.location.search = st}
    }
    useEffect(()=>{
        getallfilterinit('rh')
@@ -84,6 +84,9 @@ const Rent=(props)=>{
            setcity(e)
          
           changefilehandller(null, 'getallarea',`id=${citid._id}`)
+  }else{
+      setcity('')
+      setarea('')
   }
 
    }
@@ -111,27 +114,7 @@ const Rent=(props)=>{
                setsomerom('')
            }
        }
-       let bn=[]
-       const bolhandller=(id,r)=>{
-               console.log(id, r)
-           if(r === 'del'){
-               const ok2= [...ps];
-               ok2[id]={
-                   ...ps[id],
-                   dis:false
-               }
-               setps(ok2)
-           }else if(r === 'ad'){
-              
-               const ok= [...ps];
-               ok[id]={
-                   ...ps[id],
-                   dis:!ps[id].dis
-               }
-               setps(ok)
-               
-           }
-       }
+     
 
        const posibelhandllerr=(e)=>{
         console.log(e)
@@ -151,16 +134,36 @@ const Rent=(props)=>{
            setextra(e=>!e)
        }
        
-     
+       const typestateinc= ['آپارتمان','ویلایی','تجاری']
+       useEffect(()=>{
+         if( !typestateinc.includes(tipic)){
+             console.log('vhhhh')
+             setsomerom('');
+             setps([
+                 {OfStorage:false, name:'انباری',dis:false},
+                 {Parking:false, name:'پارکینگ',dis:false},
+                 {Pasio:false, name:'پاسیو',dis:false},
+                 {Pool:false, name:'استخر',dis:false}
+                 ,{Security:false, name:'نگهبان',dis:false},
+                 {Sona:false, name:'سونا'},
+                 {Assansor:false, name:'آسانسور',dis:false}])
+         }
+       },[tipic])
       
            console.log(filters)
+
+           const changeextraall=()=>{
+               if(extra){
+                  setextra(false) 
+               }
+           }
    return(
-       <div class="tab-pane fade show active" id="pills-Buy" role="tabpanel" aria-labelledby="pills-Buy-tab">
+       <div  onClick={()=>changeextraall()} class="tab-pane fade show active" id="pills-Buy" role="tabpanel" aria-labelledby="pills-Buy-tab">
        <div action="" class="kharid">
                {/* <Select array={} setvaluehandller={}></Select> */}
                <div className='selectbox'>
                              <label className='label'>   شهر</label>
-               <select className='select' onChange={(e)=>setareahandller(e.target.value)}  >
+               <select className='select' value={city !==''?city: 'شهر'} onChange={(e)=>setareahandller(e.target.value)}  >
                <option className='option'  >
                        شهر
                    </option>
@@ -173,7 +176,7 @@ const Rent=(props)=>{
        
       <div className='selectbox'>
                <label className='label'> منطقه</label>
-          <select className='select' disabled={areaall && city !== ''?false:true} 
+          <select className='select' value={area !==''?area: 'منطقه'} disabled={areaall && city !== ''?false:true} 
           onChange={(e)=>setarea(e.target.value)} >
                    <option className='option'>
                        منطقه
@@ -187,48 +190,64 @@ const Rent=(props)=>{
 </select></div>
               
               <Select
+              val={tipic}
                setvaluehandller={settipichandller}
                array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
 
                <div className='extra'>
-                   <button onClick={changeextra}>امکانات اضافی</button>
+                   <button  onClick={changeextra}>امکانات اضافی</button>
                {filters ?<Box filter={filters} 
                 yaearbuild={yaearbuild} extra={extra} setyearbuild={setyearbuild}
                 maesures={maesures} setmeasures={setmeasures} 
-                price={price} setprice={setprice} lease={lease} setlease={setlease}/>
-               
-                :null}
-               </div>
-               { tipic !== 'باغ' && tipic !== 'مزروعی' && tipic!== 'صنعتی'?<>
-               
-               <Select array={['همه','چهار خواب','سه خواب','دو خواب','یک خواب']} 
-               setvaluehandller={roomhandller}>تعداد اتاق خواب</Select></>:null}
-               
-             { tipic !== 'باغ' && tipic !== 'مزروعی' && tipic!== 'صنعتی'?<div className='selectbox'>
-                        {/* <div style={{width:'10rem'}} onClick={()=>setposibel(e=>!e)} > 
-                        <span className='spn-label'>امکانات
-                        {ps.map((mp, id)=>(mp.dis?<div>{mp.name}
-                         <img src={close} width='20px' height='20px' onClick={()=>bolhandller(id,'del')} /></div>:null)) }
-                         </span>
-                        </div> */}
-                       {/* { posibel?<div className='spn-box'>
-                            {ps.map((mi,id)=>(
-                                <span onClick={()=>bolhandller(id,'ad')} 
-                                className={mi.dis?'valid-spn-option':'spn-option'}>
-                                    {mi.name}
-                                </span>
-                            ))}
-                        </div>:null} */}
-                          { tipic !== 'باغ' && tipic !== 'مزروعی' && tipic!== 'صنعتی'?<div className='selectbox'>
+                price={price} setprice={setprice} lease={lease} setlease={setlease}>
+                 <div className='selectbox'>
+                          <div className='selectbox'>
                          
                          {ps.map((mp, i)=><label>
                              {mp.name}
-                             <input type='checkbox' onChange={()=>posibelhandllerr(i)}
+                             <input type='checkbox' disabled={!typestateinc.includes(tipic)?true:false} onChange={()=>posibelhandllerr(i)}
                               className='check-posibel' name='pos' /></label>)}
-                      </div>:null}
-       </div>:null}
+                      </div>
+            </div>
+               </Box>
+                :null}
+               </div>
 
-           <button onClick={searchhandller} type="submit" >جستجو<i class="fad fa-search"></i></button>
+                 <div className='selectbox'>
+                               <label className='label'> رهن </label>
+                       <select onChange={(e)=>setprice(e.target.value)} className='select'  
+                        >
+                           {filters?filters.Price?filters.Price.map((mp,i)=>(
+                           <option value={mp.value} className='option'>
+                                            {mp.text}</option>
+                                )):null:null}
+                              </select>
+                                    </div>
+                              
+                  <div className='selectbox'>
+                               <label className='label'> اجاره </label>
+                       <select onChange={(e)=>setlease(e.target.value)} className='select'  >
+                           {filters?filters.Lease?filters.Lease.map((mp)=>(
+                           <option value={mp.value} className='option'>
+                                            {mp.text}</option>
+                                )):null:null}
+                              </select>
+                  </div>      
+                  <div className='selectbox'>
+                       <label className='label'> متراژ </label>
+                         <select onChange={(e)=>setmeasures(e.target.value)} className='select'  
+                            >
+                        {filters?filters.Measure?filters.Measure.map((mp,i)=>(
+                        <option value={mp.value} className='option'>
+                                    {mp.text}</option>
+                        )):null:null}
+                              </select>
+                    </div>
+               <Select val={room} disabled={!typestateinc.includes(tipic)}
+                  array={['همه','چهار خواب','سه خواب','دو خواب','یک خواب']} 
+                setvaluehandller={roomhandller}>تعداد اتاق خواب</Select>
+
+           <button onClick={searchhandller} type="submit" >جستجو</button>
        </div>
    </div>
    )

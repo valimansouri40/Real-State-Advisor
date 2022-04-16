@@ -13,6 +13,7 @@
 }
 .search .search-box .tab-content {
   width: 100%;
+  background: #ffffff;
 }
 .search .search-box .tab-content .tab-pane form.kharid {
   display: flex;
@@ -427,7 +428,8 @@
   display: inline-flex;
   flex-direction: column;
 }
-.modal-content .modal-body form input, .modal-content .modal-body form textarea, .modal-content .modal-body form select {
+.modal-content .modal-body form input,
+ .modal-content .modal-body form textarea, .modal-content .modal-body form select {
   margin: 0 0 10px;
   padding: 5px 10px;
   border-radius: 5px;
@@ -456,4 +458,3 @@
   display: block !important;
 }
 
-/*# sourceMappingURL=style.css.map */

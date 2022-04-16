@@ -6,6 +6,11 @@ import { connect } from 'react-redux';
 import * as action from '../../store/action/index';
 import GoogleMaps from '../../components/UI/GoogleMaps/GoogleMaps';
 import DeleteBox from '../../components/UI/DeleteBox/DeleteBox';
+const AdminPannelNav= React.lazy(()=>{
+    return import("../../components/AdminPannelNav/AdminPannelNav")
+})
+
+///  اضافه کردن شهر ها و منطقه ها در پنل مدیریت
 
 const AddAreaAndCity=(props)=>{
 
@@ -49,7 +54,9 @@ const AddAreaAndCity=(props)=>{
     }
    console.log(field2)
     return(
-        <section style={{display:'flex'
+        <section className='changerole-target' >
+            <AdminPannelNav/>
+            <div style={{display:'flex'
         ,alignItems:'flex-start', justifyContent:'space-around'}} className='addsection'>
                  <Form  data={data} 
                   setdata={setdata} location={loc} changefilehandller={changefilehandller} />
@@ -57,6 +64,7 @@ const AddAreaAndCity=(props)=>{
                       <GoogleMaps location={loc} setlocation={setloc}/></div> :null}
                       <DeleteBox setsearch={setsearch} deleterealstatepost={deleterealstatepost}
                        findhandller={findhandller} data={path==='#/addarea'?field:field2} />
+            </div>
         </section>
     )
 }

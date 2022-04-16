@@ -11,7 +11,6 @@ const DeleteBox=(props)=>{
         }
 
         const keyPressHandller=(e)=>{
-            console.log(e)
                 if(e.charCode === 13){
                     findhandller()
                 }

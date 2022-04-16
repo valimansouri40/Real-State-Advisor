@@ -1,12 +1,11 @@
 import React,{useEffect, useState} from "react";
 
 import Select from "../UI/Select/Select";
-import close from '../../assets/icons/icons8-close-50.png';
 import Box from "../UI/Box/Box";
 
 
 const Seles=React.memo((props)=>{
-    const {areaall,cityall,filters,getallfilterinit,
+    const {areaall,cityall,filters,getallfilterinit,auth,
          changefilehandller, REALSTATEGETALLINIT}=props;
     
     const [room, setsomerom]= useState('')
@@ -60,7 +59,11 @@ const Seles=React.memo((props)=>{
         })
 
         console.log(st)
-         REALSTATEGETALLINIT(1 ,st);
+        if(auth){
+            // REALSTATEGETALLINIT(1 ,`${st}&_id=${auth._id}`,);
+            window.location.hash = 'search'
+            //console.log(gteprice)
+            window.location.search = st}
     }
     useEffect(()=>{
         getallfilterinit('sell')
@@ -73,8 +76,10 @@ const Seles=React.memo((props)=>{
             setcity(e)
           
            changefilehandller(null, 'getallarea',`id=${citid._id}`)
-   }
-
+   }else{
+    setcity('')
+    setarea('')
+}
     }
 
     const settipichandller=(e)=>{
@@ -109,18 +114,47 @@ const Seles=React.memo((props)=>{
         let obj= [...ps];
         obj[e]={
             ...ps[e],
-            dis: true
+            dis: !ps[e].dis
         }
         setps(obj)
       }
+      const setareahl=(e)=>{
+          if(e !== 'منطقه'){
+              setarea(e)
+          }else{
+              setarea('')
+          }
+      }
+      console.log(area)
+      const typestateinc= ['آپارتمان','ویلایی','تجاری']
+      useEffect(()=>{
+        if( !typestateinc.includes(tipic)){
+            console.log('vhhhh')
+            setsomerom('');
+            setps([
+                {OfStorage:false, name:'انباری',dis:false},
+                {Parking:false, name:'پارکینگ',dis:false},
+                {Pasio:false, name:'پاسیو',dis:false},
+                {Pool:false, name:'استخر',dis:false}
+                ,{Security:false, name:'نگهبان',dis:false},
+                {Sona:false, name:'سونا'},
+                {Assansor:false, name:'آسانسور',dis:false}])
+        }
+      },[tipic])
+      
+      const changeextraall=()=>{
+        if(extra){
+           setextra(false) 
+        }
+    }
 
     return(
-        <div class="tab-pane fade show active" id="pills-Buy" role="tabpanel" aria-labelledby="pills-Buy-tab">
+        <div onClick={changeextraall} class="tab-pane fade show active" >
         <div  class="kharid">
                 {/* <Select array={} setvaluehandller={}></Select> */}
                 <div className='selectbox'>
                               <label className='label'>   شهر</label>
-                <select className='select' onChange={(e)=>setareahandller(e.target.value)}  >
+                <select className='select' value={city !==''?city: 'شهر'} onChange={(e)=>setareahandller(e.target.value)}  >
                 <option className='option'  >
                         شهر
                     </option>
@@ -133,8 +167,8 @@ const Seles=React.memo((props)=>{
         
        <div className='selectbox'>
                 <label className='label'> منطقه</label>
-           <select className='select' disabled={areaall && city !== ''?false:true} 
-           onChange={(e)=>setarea(e.target.value)} >
+           <select className='select' value={area !==''?area: 'منطقه'} disabled={areaall && city !== ''?false:true} 
+           onChange={(e)=>setareahl(e.target.value)} >
                     <option className='option'>
                         منطقه
                     </option>
@@ -147,6 +181,7 @@ const Seles=React.memo((props)=>{
 </select></div>
                
                <Select
+                val={tipic}
                 setvaluehandller={settipichandller}
                 array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
 
@@ -155,21 +190,40 @@ const Seles=React.memo((props)=>{
                 {filters ?<Box filter={filters} 
                  yaearbuild={yaearbuild} extra={extra} setyearbuild={setyearbuild}
                  maesures={maesures} setmeasures={setmeasures} 
-                 price={price} setprice={setprice}/>:null}
-                </div>
-                { tipic !== 'باغ' && tipic !== 'مزروعی' && tipic!== 'صنعتی'?<>
-                
-                <Select array={['همه','چهار خواب','سه خواب','دو خواب','یک خواب']} 
-                setvaluehandller={roomhandller}>تعداد اتاق خواب</Select></>:null}
-                
-              { tipic !== 'باغ' && tipic !== 'مزروعی' && tipic!== 'صنعتی'?<div className='selectbox'>
-                         
+                 price={price} setprice={setprice}>
+                     <div  className='selectbox'>
                             {ps.map((mp, i)=><label>
                                 {mp.name}
-                                <input type='checkbox' onChange={()=>posibelhandllerr(i)}
+                                <input disabled={!typestateinc.includes(tipic)?true:false}
+                                 type='checkbox' checked={mp.dis} onChange={()=>posibelhandllerr(i)}
                                  className='check-posibel' name='pos' /></label>)}
-                         </div>:null}
-        
+                         </div>
+                 </Box>:null}
+                </div>
+
+                <div className='selectbox'>
+                               <label className='label'> قیمت </label>
+                       <select onChange={(e)=>setprice(e.target.value)} className='select'  
+                        >
+                           {filters?filters.Price.map((mp,i)=>(
+                           <option value={mp.value} className='option'>
+                                            {mp.text}</option>
+                                )):null}
+                              </select>
+                                    </div>
+                 <div className='selectbox'>
+                       <label className='label'> متراژ </label>
+                         <select onChange={(e)=>setmeasures(e.target.value)} className='select'  
+                            >
+                        {filters?filters.Measure.map((mp,i)=>(
+                        <option value={mp.value} className='option'>
+                                    {mp.text}</option>
+                        )):null}
+                              </select>
+                    </div>
+                <Select val={room} disabled={!typestateinc.includes(tipic)}
+                  array={['همه','چهار خواب','سه خواب','دو خواب','یک خواب']} 
+                setvaluehandller={roomhandller}>تعداد اتاق خواب</Select>
 
             <button onClick={searchhandller} type="submit" >جستجو
             </button>

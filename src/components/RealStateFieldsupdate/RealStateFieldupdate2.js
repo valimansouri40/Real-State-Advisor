@@ -7,9 +7,9 @@ import  './RealStateFields.css'
 import imgicon from '../../assets/icons/icons8-picture-64.png';
 
 const RealStateFieldupdate2= (props)=>{
-    const {setDataPosttwo,numpage, setnumpage, SubmitDataHandller,OneData}=props;
+    const {setDataPosttwo,numpage, setnumpage,role, SubmitDataHandller,OneData}=props;
     const mpimg= OneData.Image.map(m=>{ return 'data:image/jpeg;base64,' + m})
-    console.log(mpimg)
+    
     const [sub, setsub]=useState(OneData.Subject)
     const [explain, setexplain]=useState(OneData.Explain)
     const [masahat, setmasahat]=useState(OneData.Masahat)
@@ -38,7 +38,7 @@ const RealStateFieldupdate2= (props)=>{
     const [Jacuzzi, setJacuzzi]=useState(OneData.Jacuzzi)
     const [labi, setlabi]=useState(OneData.Labi)
     const [conferencehall, setconferencehall]=useState(OneData.ConferaenceHall)
-    console.log(typeof image)
+    const limitrole= ['employee', 'admin'];
     
     const [numimg, setnumimg]=useState(0);
 
@@ -52,7 +52,6 @@ const RealStateFieldupdate2= (props)=>{
   
     const submitHandller= ()=>{
 
-       
             const datatwo={
                 Subject:sub,
                 Explain:explain,
@@ -83,9 +82,14 @@ const RealStateFieldupdate2= (props)=>{
                 Labi:labi,
                 ConferaenceHall:conferencehall
             }
-            console.log(datatwo)
+            
         setDataPosttwo(datatwo);
-        SubmitDataHandller()
+
+        if(!limitrole.includes(role.role)){
+            SubmitDataHandller()
+        }else{
+            setnumpage(3);
+        }
     }
 
     const sendimage=(e)=>{
@@ -95,16 +99,12 @@ const RealStateFieldupdate2= (props)=>{
         if(e.target.files){
             const entires= Object.entries(e.target.files);
              entires.map(file=>getBase64(file[1]).then(result=>encods.push(result)))
-                // for(let i= 0 ;  i > image.length ; i++){
-                //     encods.append('Image', image[i])
-                // }
         }        
         setimage(encods);
-        console.log(encods)
         setnumimg(0)
 
     }
-    console.log(image)
+  
     const nextMyImage=()=>{
 
         if( numimg < image.length - 1 ){
@@ -114,7 +114,7 @@ const RealStateFieldupdate2= (props)=>{
         }
         
     }
-    console.log(numimg)
+   
     const lastMyImage=()=>{
 
         if( 0 < numimg ){
@@ -122,8 +122,8 @@ const RealStateFieldupdate2= (props)=>{
         }else{
             setnumimg(image.length - 1)
         }
-        
     }
+    
     return(
         <div className={numpage === 2?'fields':'hidden'} >
             <div className='field'>
@@ -166,12 +166,12 @@ const RealStateFieldupdate2= (props)=>{
             </div>
             
             <div className='field'>
-            <Select val={coolerSystem} array={["","کولر","هواساز","فاقد"]} setvaluehandller={setcoolerSystem}></Select>
-            <Select val={heaterSystem} array={["","شوفاژ","هواساز","پکیج","بخاری"]} setvaluehandller={setheaterSystem}></Select>
-            <Select val={propertySituation} array={["","تخلیه","در دست مالک","در دست مستاجر"]} setvaluehandller={setpropertySituation}></Select>
-            <Select val={documentSituation} array={["","شخصی","تعاونی","اوقافی","زمین شهری","قولنامه ای"]} setvaluehandller={setdocumentSituation}></Select>
-            <Select val={documentOnership} array={["","شش دانگ","مشاعی"]} setvaluehandller={setdocumentOnership}></Select>
-            <Select val={entry} array={["","از حیاط","از خیابان","از محوطه"]} setvaluehandller={setentry}></Select>
+            <Select val={coolerSystem} array={["","کولر","هواساز","فاقد"]} setvaluehandller={setcoolerSystem}> سیستم سرمایشی </Select>
+            <Select val={heaterSystem} array={["","شوفاژ","هواساز","پکیج","بخاری"]} setvaluehandller={setheaterSystem}> سیستم گرمایشی </Select>
+            <Select val={propertySituation} array={["","تخلیه","در دست مالک","در دست مستاجر"]} setvaluehandller={setpropertySituation}> وضعیت اسکان ملک </Select>
+            <Select val={documentSituation} array={["","شخصی","تعاونی","اوقافی","زمین شهری","قولنامه ای"]} setvaluehandller={setdocumentSituation}> وضعیت سند </Select>
+            <Select val={documentOnership} array={["","شش دانگ","مشاعی"]} setvaluehandller={setdocumentOnership}> مالکیت سند </Select>
+            <Select val={entry} array={["","از حیاط","از خیابان","از محوطه"]} setvaluehandller={setentry}> ورودی ملک </Select>
             
             <CheckBox val={pasio} changeval={setpasio} >پاسیو</CheckBox>
             <CheckBox val={pool} changeval={setpool} >استخر</CheckBox>
@@ -179,7 +179,10 @@ const RealStateFieldupdate2= (props)=>{
             <CheckBox val={labi} changeval={setlabi} >لابی</CheckBox>
             <CheckBox val={conferencehall} changeval={setconferencehall} >سالن اجتماعات</CheckBox>
             <button className='send' onClick={()=>setnumpage(1)}>بازگشت</button>
-            <button className='send' onClick={submitHandller}>ارسال</button>
+            {role?limitrole.includes(role.role)?<button className='send' 
+            onClick={submitHandller}>صفحه بعد</button>:null:null}
+            {role?!limitrole.includes(role.role)?<button className='send' 
+            onClick={submitHandller}>ارسال</button>:null:null}
 
             </div>
 

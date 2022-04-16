@@ -5,7 +5,9 @@ import * as actiontype from '../action/actionType';
 export const initialstate={
     data:null,
     loading:false,
-    filter: null
+    filter: null,
+    alldata:null,
+   
 }
 
 
@@ -29,6 +31,18 @@ const Reducer=(state=initialstate, action)=>{
                 ...state,
                 loading:true,
                 filter:action.data
+            }
+        case actiontype.ALLREQ:
+            return{
+                ...state,
+                loading: false,
+                alldata: action.data,
+                length: action.length
+            }
+        case actiontype.PATCHREQ:
+            return{
+                ...state,
+                loading: false
             }
         default:return state;
     }

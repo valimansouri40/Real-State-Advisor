@@ -6,13 +6,14 @@ import './RealStateFields.css';
 
 
 const RealStateFieldupdate1=(props)=>{
-        const {setnumpage ,numpage,OneData , setDataPostOne, changefilehandller,
+        const {setnumpage,role ,numpage,OneData , setDataPostOne, changefilehandller,
              cityall,tab, areaall}=props;
-        console.log(OneData)
+        
         const [city, setcity]=useState(OneData.City);
+        const [cityid, setcityid]=useState('');
         const [erea, seterea]= useState(OneData.Area);
         const [allerea, setallerea]= useState([]);
-        const [areadetail, setareadetail]=useState(OneData.AreaDetails);
+        // const [areadetail, setareadetail]=useState(OneData.AreaDetails);
         const [typeAdrress, settypeAdrress]=useState(OneData.Type);
         const [typestate, settypestate]= useState(OneData.TypeState);
         const [years, setyears]= useState(OneData.YearBuild);
@@ -23,19 +24,30 @@ const RealStateFieldupdate1=(props)=>{
         const [fullmortgage, setfullmortgage]= useState(OneData.FullMortgage);
         const [aggrement, setagrement]= useState(OneData.Aggrement);
         const [location, setlocation]=useState(OneData.Location);
+        const [cityandareaid, setcityandareaid]= useState();
+        const [esquirename, setesquiername]= useState(OneData.EsquierName)
+        const [esquireph, setesquierph]= useState(OneData.EsquierPhoneNumber)
+        const [esquirephtest, setesquierphts]= useState('');
+        const rolear2= ['admin','employee', 'advisor']
 
+        const rolear= ['admin','dealer']
         useEffect(()=>{
             changefilehandller(null, 'getallcity','')
         },[])
-       
-        console.log(tab)
-        const submitHandller=()=>{
-            console.log('vali')
+        useEffect(()=>{
+            if(role){ if(!rolear2.includes(role.role)){
+                 setesquiername(role.FristName + ' ' + `${role.LastName?role.LastName:''}`);
+                 setesquierph(role.PhoneNumber)
+             }}
+        },[ role])
+
+         const submitHandller=()=>{
+            
+           
             const data=tab === 'rahn'?{
                 Tipic:tab,
                 City:city,
                 Area: erea,
-                AreaDetails:areadetail,
                 Type:typeAdrress,
                 TypeState:typestate,
                 YearBuild: years,
@@ -44,7 +56,10 @@ const RealStateFieldupdate1=(props)=>{
                 Mortgage:mortgage,
                 Immediatly: immediat,
                 Aggrement: aggrement,
-                Location: location
+                Location: location,
+                cityandareaid: cityandareaid ,
+                EsquierName: esquirename,
+                EsquierPhoneNumber: esquirephtest
             }:{
                 Tipic:tab,
                 City:city,
@@ -57,26 +72,36 @@ const RealStateFieldupdate1=(props)=>{
                 Immediatly: immediat,
                 FullMortgage: fullmortgage,
                 Aggrement: aggrement,
-                Location: location
+                Location: location,
+                cityandareaid: cityandareaid ,
+                EsquierName: esquirename,
+                EsquierPhoneNumber: esquirephtest
             }
+           
             setDataPostOne(data)
             setnumpage(2)
-            console.log(data);
-
-            
+           
         }
         useEffect(()=>{
             setallerea(areaall)
         },[areaall])
 
         const setvaluehandller= (e)=>{
-            if(e && e !== 'شهر'){
+            if(role){
+                if(e && e !== 'شهر' && rolear.includes(role.role)){
              const citid= cityall.find(er=>  er.name === e);
              setcity(e)
-            console.log(citid._id,e)
+
             changefilehandller(null, 'getallarea',`id=${citid._id}`)
-            console.log(areaall)
-    }
+            
+    }else{
+        const citid= cityall.find(er=>  er.name === role.City[e].name);
+            changefilehandller(null, 'getallarea',`id=${citid._id}`)
+        setcity(role.City[e].name);
+        setcityid(role.City[e]._id);
+
+    }}
+            
         }
 
       const setareahandller=(e)=>{
@@ -85,13 +110,24 @@ const RealStateFieldupdate1=(props)=>{
           const oneeria= areaall.find(rs=> rs.areaName === e);
          
           seterea(oneeria.areaName);
-          setareadetail(oneeria)
+        //   setareadetail(oneeria)
         }else{
                 seterea();
           }
       }
-      console.log(numpage)
-        console.log('daugududy',immediat, typestate)
+      const setesquierphhandller=(e)=>{
+        
+        setesquierph(e);
+      
+    }
+    useEffect(()=>{
+        if(new RegExp('^(\\0|0)?9\\d{9}$').test(esquireph)){
+            setesquierphts(esquireph);
+        }else{
+            setesquierphts();
+        }
+    },[esquireph])
+     
     return(
         <div className={numpage === 1?'leaseform': 'hidden'} >
                 <div style={{width:'40rem',height:'40rem'}} className='googelmapbox'>
@@ -100,63 +136,59 @@ const RealStateFieldupdate1=(props)=>{
                 <div className='formbox'>
                     <div className='selectbox'>
                     <label className='label'>   شهر</label>
-                <select className='select' value={city} onChange={(e)=>setvaluehandller(e.target.value)}  >
+                <select className='select'   onChange={(e)=>setvaluehandller(e.target.value)}  >
                 <option className='option'  >
-                        شهر
+                       شهر
                     </option>
-            {cityall?cityall.map(mp=>(
+                    {cityid === '' ?<option selected>{OneData.City}
+                     </option>:null}
+                    {role?cityall && rolear.includes(role.role)?cityall.map(mp=>(
                 <option className='option'>
                     {mp.name}</option>
-            )):null}
+            )):null:null}
+            {role?!rolear.includes(role.role) && role.CitysAndAreas.length > 0?role.City.map((mp, i)=>(
+                cityid === '' && mp.name === OneData.City? null:
+                <option value={i} className='option'>
+                {mp.name}</option>
+            )):null:null}
         </select>
         </div>
         
-       <div className='selectbox'>
+        {role?rolear.includes(role.role) && allerea?  <div value={erea} className='selectbox'>
                 <label className='label'> منطقه</label>
-           <select className='select' 
-          value={erea} onChange={(e)=>setareahandller(e.target.value)} >
+           <select className='select' value={erea} disabled={allerea && city !== ''?false:true} 
+           onChange={(e)=>setareahandller(e.target.value)} >
                     <option className='option'  >
                         منطقه
                     </option>
-            {allerea?allerea.map(mp=>(
+            {allerea.map(mp=>(
                 <option className='option' 
                 >
                     {mp.areaName}</option>
-            )):null}
-            
+            ))}
 </select>
- </div>
-   {/*              <div className='selectbox'>
-                <label className='label'> نوع کاربری</label>
-           <select className='select'  onChange={(e)=>settype(e.target.value)} >
-                    
-           <option className='option'>  اداری</option>
-           <option className='option'> تجاری </option>
-           <option className='option'> مسکونی </option>
-            
-</select></div> */}
-<Select val={typestate} setvaluehandller={settypestate}
-                array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
-{/* 
-<div className='selectbox'>
-                <label className='label'> نوع کاربری</label>
-           <select className='select'  onChange={(e)=>settypestate(e.target.value)} >
-              {type=== 'اداری'? <>
-              <option className='option'> </option>
-         <option className='option'>  دفتر</option>
-           <option className='option'> شرکت </option></>:null}  
+ </div>:null:null}
+{ role?!rolear.includes(role.role) && role.CitysAndAreas.length > 0? <div className='selectbox'>
+                <label className='label'> منطقه</label>
+           <select value={erea} className='select'  
+           onChange={(e)=>setareahandller(e.target.value)} >
+                    <option className='option'  >
+                        منطقه
+                    </option>
+                    {cityid === '' ?<option selected>{OneData.Area}
+                     </option>:null}
+             {role.CitysAndAreas.map(mp=>(
+                mp.objid._id === cityid ?<option className='option'>
+                    {mp.areaName}</option>:null
+            ))}
+</select>
+ </div>:null:null}
+   
+  
+ <Select val={typestate} setvaluehandller={settypestate}
+                            array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']}
+                            >نوع ملک</Select>
 
-            {type=== 'تجاری'? <>
-            <option className='option'>  </option>
-         <option className='option'>  مغازه </option>
-           <option className='option'> پاساژ </option></>:null}    
-
-            {type=== 'مسکونی'? <>
-            <option className='option'> </option>
-         <option className='option'>  آپارتمان</option>
-           <option className='option'> ویلا </option>
-           </>:null}       
-</select></div> */}
                 <div className='inpcls'><label className='label'>متراژ</label>
                  <input type='number' value={measure} className='inp' onChange={(e)=>setmesure(e.target.value)} /></div>
                 <div className='inpcls'><label className='label'>
@@ -169,6 +201,10 @@ const RealStateFieldupdate1=(props)=>{
                <input type='number' value={lease} className='inp' onChange={(e)=>setlease(e.target.value)} /></div>:null}
                <div className='inpcls'><label className='label'> آدرس</label> 
                <input type='text' value={typeAdrress} onChange={(e)=>settypeAdrress(e.target.value)}  /></div>
+               {role?rolear2.includes(role.role)?<><div className='inpcls'><label className='label'> شماره مالک</label> 
+               <input type='tel' value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
+               <div className='inpcls'><label className='label'> نام مالک</label> 
+               <input type='text' value={esquirename} onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
                {tab === 'rahn'?
                <button className={fullmortgage?'btnui-ok':'btnui'} onClick={()=>setfullmortgage(e=>!e)} >رهن کامل</button>:null}
                {/* <Button val={aggrement} setvalue={()=>setagrement(true)} >قیمت توافقی</Button> */}
@@ -177,12 +213,6 @@ const RealStateFieldupdate1=(props)=>{
                <button className={immediat?'btnui-ok':'btnui'} onClick={()=>setimmediet(e=>!e)}>فوری</button>
                 
                 <button className='send' onClick={submitHandller}>صفحه بعد</button>
-              {/* { erea?<div> 
-                <p className='pragraf'>   قیمت هر متر : <span> {erea.ReginonalPrice} </span></p>
-                <p className='pragraf'> راه های دسترسی  : <span>{erea.subwayAvailability} </span> </p>
-                <p className='pragraf'>   مردم  : <span> {erea.humanTissue} </span></p>
-              <p className='pragraf'> نوع بافت : <span> {erea.landUse}</span> </p>
-               </div>:null} */}
                 </div>
         </div>
     )

@@ -3,7 +3,7 @@ import './Logo.css';
 import logoIcon from '../../assets/goooya-logo.png';
 
 
-const Logo=(props)=>{
+const Logo=()=>{
 
 
     return(

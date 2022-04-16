@@ -10,6 +10,7 @@ export const login= {
             required:true,
             isPhoneNumber:true
         },
+        img: <img width='40px' height='40px' src="https://img.icons8.com/windows/32/000000/phone.png"/>,
         value:'',
         touch:false,
         valid:false
@@ -24,6 +25,7 @@ export const login= {
             max: 20,
             min:6
         },
+        img: <img width='40px' height='40px' src="https://img.icons8.com/ios-glyphs/32/000000/lock--v1.png"/> ,
         value:'',
         touch:false,
         valid:false
@@ -43,6 +45,7 @@ export const sineup= {
         },
         value:'',
         touch:false,
+        img: <img width='40px' height='40px' src="https://img.icons8.com/windows/32/000000/phone.png"/>,
         valid:false
     },
     Password:{
@@ -57,6 +60,7 @@ export const sineup= {
         },
         value:'',
         touch:false,
+        img: <img width='40px' height='40px' src="https://img.icons8.com/ios-glyphs/32/000000/lock--v1.png"/> ,
         valid:false
     },
     FristName:{
@@ -71,6 +75,7 @@ export const sineup= {
         }
         ,
         value:'',
+        img: <img width='40px' height='40px' src="https://img.icons8.com/windows/32/000000/collaborator-male.png"/>,
         touch:false,
         valid:false
     },
@@ -85,6 +90,7 @@ export const sineup= {
                 min:2
             },
             value:'',
+            img: <img width='40px' height='40px' src="https://img.icons8.com/windows/32/000000/collaborator-male.png"/>,
             touch:false,
             valid:false}
 }
@@ -101,6 +107,7 @@ export const forgotpassword= {
             isPhoneNumber:true
         },
         value:'',
+        img: <img width='40px' height='40px' src="https://img.icons8.com/windows/32/000000/phone.png"/>,
         touch:false,
         valid:false
     },
@@ -120,6 +127,7 @@ export const ressetpassword= {
         },
         value:'',
         touch:false,
+        img: <img width='40px' height='40px' src="https://img.icons8.com/ios-glyphs/32/000000/lock--v1.png"/> ,
         valid:false
     }
 };
@@ -139,6 +147,7 @@ export const SMS= {
         },
         value:'',
         touch:false,
+        img: <img width='40px' height='40px' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABmJLR0QA/wD/AP+gvaeTAAABV0lEQVRIiWNUvezPQEvARFPTRy0gBrAwMDDc0tlAI9PVrgTQxQdw26hoLjxU6B7JDrwmh9XnHlKfa8drRIkIAqhe9v////////9VL/urXvZ//usNhPvs12tKROBm0j2Iap5NffH77fPfb2qfTqNEBA4YVS/7Q2KcFqmIvvmARvmZ5j5gHNkVjiiLYLSQF341LPil8Zu+WLFZiV2GkZFxydutuJSR6QMRFoEFio1K7DL3fz7d9fE4HpWELYgW8hJlEUQWEWURXKLYosoud+/nk5j7Na/+vCPfghhh73qptMWKzXA74CFz7+eT2Pu1r/+8x28CAQu2fzxy++cjJXaZpYqtYixCyCETd7+OoOkMxOQDZCczMDAQ73aifMDAwPD6z/vo+9UQf5DkdmItYGBgePvnY8L9+rs/n9wlIlbRAAlFhTALP8Qy4k1nICmjkWo0BAzusogYAACtc/V+DJ6NeAAAAABJRU5ErkJggg=="/> ,
         valid:false
     }
 };

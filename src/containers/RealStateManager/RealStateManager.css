@@ -1,10 +1,16 @@
+.changerole-target{
+    width: 100%;
+    height: 100vh;
+    display: flex;
 
+}
 .card-change{
     position: absolute;
     top: 0;
     left: 0;
     width: 40px;
 }
+
 .card-edit{
     width: 20px;
     height: 20px;
@@ -19,4 +25,7 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+}
+.posts{
+    width: 100%;
 }

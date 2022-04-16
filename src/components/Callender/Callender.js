@@ -1,24 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import './Callender.css';
+import { toPersian } from "./persiannumber";
 
 
 const Callender=(props)=>{
-        const {}=props;
+        const {appopostinit,auth ,OneData}=props;
+
+        
+
     let date = new Date();
-    const dateios= date.toISOString().slice(0, 10);
+    
 
       let datearr= [];
 
       for(let i =0; i <= 10 ; i++){
           const date1= new Date();
-        date1.setTime(date.getTime()-((226896 - i)*24*60*60*1000 ) );
-        const dateios1= date1.toISOString().slice(0,10)
-        datearr.push(dateios1)
+        date1.setTime(date.getTime()-((226895 - i)*24*60*60*1000 ) );
+        const dateios1= date1.toISOString().slice(0,10).replace('-','/').replace('-','/');
+        const persiandate= toPersian(dateios1);
+        datearr.push(persiandate)
       }
       let timearr=[];
       for(let j =10; j <= 19 ; j++){
-            timearr.push(`ساعت ${j}`)
+             const persianhour= toPersian(JSON.stringify(j))
+            
+            timearr.push(`ساعت ${persianhour}`)
     }
+    const [time, settime]= useState(timearr[0]);
+    const [appointment, setappointment]= useState(datearr[0]);
+   
+    const subhandllerdfs = ()=>{
+       console.log('saiodsa saihd')
+       if(auth){
+        const data= {
+            Appointment: appointment,
+            Time: time,
+            AdvisorId: OneData.AdvisorId._id,
+            UserId:auth._id ,
+            RealStateId:OneData._id,
+            RealStateNumber: OneData.RealStateNumber
+        }
+        console.log(data)
+        appopostinit(data)
+        }else{
+            window.location.hash = '#/login'
+        }
+    }
+
     return(
         <div className='callender-target'>
                 <div className='callender-box'>
@@ -27,18 +55,13 @@ const Callender=(props)=>{
                 </div>
                 <div className='callender-date-box'>
                    <div style={{display:'flex'}} className='callender-date'>
-                       {/* <span className='callender-lessdate'></span>
-                        <p className='callender-'>{}</p>
-                        <span className='callender-adddate'></span> */}
-                        {/* <input type='number'  min='1401' max='1405' defaultValue={`${dateios.slice(0,4)}`}  />/
-                        <input type='number' min='1' max='12' defaultValue={`${dateios.slice(5,7)}`}  />/
-                        <input type='number' min='1' max='31' defaultValue={`${dateios.slice(8, 10)}`} /> */}
-                        <select >
+                      
+                        <select value={appointment} onChange={(e)=>setappointment(e.target.value)} >
                             {datearr.map(mp=>(
-                                <option>{mp}</option>
+                                <option >{mp}</option>
                             ))}
                         </select>
-                        <select >
+                        <select value={time} onChange={(e)=>settime(e.target.value)} >
                             {timearr.map(mp=>(
                                 <option>{mp}</option>
                             ))}
@@ -46,7 +69,7 @@ const Callender=(props)=>{
                    </div>
                 </div>
                     <div className='callender-btn-box'>
-                        <button className='callender-btn'>ثبت رزرو</button>
+                        <button onClick={subhandllerdfs} className='callender-btn'>ثبت رزرو</button>
                     </div>
                 </div>
         </div>

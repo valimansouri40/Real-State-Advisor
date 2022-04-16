@@ -4,7 +4,6 @@ import  './Paginate.css';
 const Paginate=(props)=>{
         const {length,setpage,page}=props;
         const pages= Math.ceil(length /20);
-        console.log(page,pages,length)
         const scrolltopzero=()=>{
             window.scrollTo({
                 top: 0,

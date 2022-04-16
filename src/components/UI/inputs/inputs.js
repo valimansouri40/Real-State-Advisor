@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import ok from '../../../assets/icons/icons8-circled-thin-32.png';
 import circle from '../../../assets/icons/icons8-ok-32.png'
 import classes from './input.css';
 
 const Inputs=(props)=>{
-    const {type,value,change,clickresetfied,clickaddfied, option,valid,touch,eltype,setbol}= props;
-    const [mult,setmult]=useState(false);
+    const {type,value,change, img,clickaddfied,id,valid,touch,eltype,setbol}= props;
 
     let cssclass=[classes.input];
     if(!valid && touch){
@@ -17,7 +16,7 @@ const Inputs=(props)=>{
     let input;
     switch(type){
         case 'input':
-           return input=<div><input {...eltype} value={value}
+           return input=<div>{img}<input {...eltype} value={value}
              onChange={change} className={cssclass.join(' ')}/></div>;
             
         case 'texterea':
@@ -42,17 +41,17 @@ const Inputs=(props)=>{
         </div>
         case 'multiplieselect':
             return input = <div className='multiplebox'>
-                    <label  onClick={()=>setmult(e=>!e)} className='label'>  <span  className='labelspn'> {eltype.placeholder}</span > 
-                    <span className='labelspn'>{value}</span></label>
-                   { mult?<div className='box'>
-                   <p onClick={clickresetfied} className='field'>reset</p>
-                        {eltype.options.map(mp=>(
-                            <p onClick={clickaddfied} className='field'>{mp}</p>
+                   
+                    {eltype.options.map(mp=>(
+                            <label>
+                                {mp}
+                                <input type='checkbox' name='areaval' onChange={(e)=>clickaddfied(e,id, mp)} /></label>
                         ))}
-                    </div>:null}
+                   
             </div>
         default:
             input=<div   className={classes.block}>
+                {img}
              <input {...eltype} value={value}
              onClick={()=>{setbol(eltype.placeholder)}}
              onChange={change} className={cssclass.join(' ')}/></div>

@@ -1,0 +1,18 @@
+.cardrealstate-target{
+    width: 20rem ;
+    height: 20rem;
+    margin: 1rem;
+    background: cornflowerblue;
+}
+.cardrealstate-boxdetail{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-flow: row wrap;
+
+}
+.cardrealstate-boxonedetail{
+    display: flex;
+    margin: 1rem;
+}

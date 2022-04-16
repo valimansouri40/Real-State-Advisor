@@ -10,7 +10,8 @@ export const initialstate={
     data:null,
     role:null,
     expiresCode:null,
-    pass:false
+    pass:false,
+    advisor: null
 };
 
 
@@ -72,7 +73,6 @@ export const initialstate={
             case actiontype.CHANGEROLE:
                 return{
                     ...state,
-                    changeroledata: action.data,
                     load: false
                 }
             case actiontype.FINDPHONENUMBER:
@@ -80,6 +80,11 @@ export const initialstate={
                     ...state,
                     changeroledata: action.data,
                     load: false
+                }
+            case actiontype.GETADVISOR:
+                return{
+                    ...state,
+                    advisor: action.advisor
                 }
             default :return state;
     }

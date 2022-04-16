@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import {sineup ,login, forgotpassword, ressetpassword, SMS, changepassword} from '../../datajson';
 import Form from "../../components/Form/Form";
 
+/// بخش اهراز هویت که شامل 5 بخش ساخت حساب ورود به حساب فراموش کردن رمز عبور و وارد کردن کد ارسالی با اس ام اس میباشد
+
 
 const Auth=(props)=>{
     const {loading, error, onAuthenticate, expiressCode, deleteexp, changmyepassword}= props;

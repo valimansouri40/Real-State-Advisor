@@ -1,17 +1,38 @@
-
+.sec-rsdf{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .target-all{
 
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     direction: ltr;
 }
 .target-rsdf-one{
 
-    width: 70%;
+    width: 69%;
 
 }
 
 .target-rsdf-two{
     width: 30%;
+}
+.rsdf-row{
+    display: flex;
+    direction: ltr;
+    width: 100%;
+    background: chocolate;
+}
+
+.map-rstf{
+    width: 20rem;
+    height: 20rem;
+}
+
+.rstf-ch{
+    width: 3rem;
+    height: 4rem;
+    background: cornsilk;
 }

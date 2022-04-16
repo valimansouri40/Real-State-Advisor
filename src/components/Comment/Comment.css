@@ -1,0 +1,15 @@
+.comment-createreviwe-box{
+    display: flex;
+}
+
+.comment-textbox{
+    display: flex;
+}
+
+.comment-start{
+    border:1px solid #111 ;
+}
+
+.comment-my{
+    background: cornflowerblue;
+}

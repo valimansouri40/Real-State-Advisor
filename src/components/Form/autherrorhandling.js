@@ -35,6 +35,7 @@ exports.autherrorhandling=(data,path)=>{
             datasub={
                 Password:data.Password.value
             }
+            break
         case '#/changepassword':
             datasub={
                 NewPassword:data.NewPassword.value
@@ -44,6 +45,9 @@ exports.autherrorhandling=(data,path)=>{
             datasub={
                 smspass:data.SMScode.value
             }
+            break
+        default: datasub = null;
+            break
     }
     let dt=[];
     for(let key in data){
@@ -61,7 +65,7 @@ exports.autherrorhandling=(data,path)=>{
 
 
 exports.validateor=(value,rules)=>{
-    console.log(value,rules)
+   
     let valid  = true;
     if(!rules){
         return true;
@@ -78,7 +82,7 @@ exports.validateor=(value,rules)=>{
     
 if (rules.isPhoneNumber) {
     const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
-    console.log(pattern.test(value))
+    
     valid = pattern.test(value) && valid;
 }
 
@@ -108,13 +112,6 @@ exports.citydata=(data)=>{
         "bakhsh":data.bakhsh.value,
         "weather" : data.weather.value
     } 
-    // const all= areas;
-
-    // areas.push(dt);
-    //  console.log(all )
-   
-    // const vb= fs.readFileSync('./areas', 'utf-8')
-    // console.log(vb )
     
 }
 

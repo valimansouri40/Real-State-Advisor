@@ -1,0 +1,10 @@
+.adnav-target{
+    width: 20%;
+    min-height: 100vh;
+    background: rgb(144, 145, 148);
+}
+.adnav-box{
+    width: 100%;
+    height: 100%;
+}
+

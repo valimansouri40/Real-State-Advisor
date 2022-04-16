@@ -1,0 +1,24 @@
+
+.allreq-target{
+    width: 70%;
+    
+}
+.allreq-frame{
+    width: 100%;
+    
+}
+
+
+.allreq-box{
+    display: flex;
+    background: cyan;
+    margin: 1rem;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+.allreq-field{
+    margin: 1rem;
+}

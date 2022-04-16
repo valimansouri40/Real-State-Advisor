@@ -1,0 +1,19 @@
+.mymarks-frame{
+    width: 100% ;
+    min-height:100vh;
+    margin: 1rem;
+   
+}
+.mymarks-boximg{
+    width: 20rem ;
+    height: 20rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-flow: row wrap;
+
+}
+.cardrealstate-boxonedetail{
+    display: flex;
+    margin: 1rem;
+}

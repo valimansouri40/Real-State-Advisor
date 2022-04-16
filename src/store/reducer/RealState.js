@@ -10,7 +10,9 @@ export const initialState={
     cityall:null,
     areaone:null,
     areaall:null,
-    length:null
+    length:null,
+    focusData:null,
+    Tab: 'sell'
 }
 
 
@@ -40,9 +42,9 @@ const Reducer= (state= initialState, action)=>{
              return {
                             ...state,
                             AllData: action.data.data,
-                            length:action.data.length,
-                             loading:false,
-                         error:false
+                            length:action.data.length, 
+                            loading:false,
+                            error:false
               }
              case actionType.REALSTATEGETONE:
                     return {
@@ -77,6 +79,22 @@ const Reducer= (state= initialState, action)=>{
                     ...state,
                     areaall:action.data
                 }
+                case actionType.REALSTATEFOCUSSTART:
+                    return{
+                        ...state,
+                         focusData: null
+                    }
+                case actionType.REALSTATEFOCUS:
+                    
+                    return{
+                        ...state,
+                        focusData: action.foc
+                    }
+                case actionType.SAVETABSEARCHBOX:
+                    return{
+                        ...state,
+                        Tab: action.data
+                    }
             default: return state;
     }
 }

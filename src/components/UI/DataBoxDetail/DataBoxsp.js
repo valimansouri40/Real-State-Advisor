@@ -1,15 +1,15 @@
 import React from "react";
-// import './DataBoxDetail.css';
+import { changeprice } from "../CardRealState/changePrice";
+ import './DataBoxDetail.css';
 
 
 
 const DataBoxsp= (props)=>{
         const {dt}= props;
-        console.log(dt)
-
+        const tsinclude=['آپارتمان','تجاری'];
         return(
             <div className='databoxps-box'>
-                    saijdihsauidhuias
+                    
                     <div className='databoxps-block'>
                     <h2 className='databoxsp-h2'>
                     <span className='databoxps-spn'> منطقه </span> :
@@ -24,10 +24,15 @@ const DataBoxsp= (props)=>{
                     </div>
                     <div className='databoxps-block'>
                     <h2 className='databoxsp-h2'>
-                    <span className='databoxps-spn'>قیمت</span> :
-                            <span className='databoxps-spn'> {dt.Mortgage} </span>
+                    <span className='databoxps-spn'>{dt.Tab === 'sells'? 'قیمت':"رهن"}</span> :
+                            <span className='databoxps-spn'>   {changeprice(dt.Mortgage)} </span>
                             
                              </h2>
+                             {dt.Lease?<h2 className='databoxsp-h2'>
+                    <span className='databoxps-spn'>اجاره</span> :
+                            <span className='databoxps-spn'>   {changeprice(dt.Lease)} </span>
+                            
+                             </h2>:null}
                              <h2 className='databoxsp-h2'>
                              <span className='databoxps-spn'>تعداد اتاق خواب</span> :
                             <span className='databoxps-spn'> {dt.SomeRoom} </span>
@@ -40,6 +45,10 @@ const DataBoxsp= (props)=>{
                     <span className='databoxps-spn'> نوع ملک </span> :
                             <span className='databoxps-spn'> {dt.TypeState} </span>
                              </h2>
+                            {tsinclude.includes(dt.TypeState) ? <h2 className='databoxsp-h2'>
+                    <span className='databoxps-spn'> طبقه </span> :
+                            <span className='databoxps-spn'> {dt.Floors} </span>
+                             </h2>:null}
                              <h2 className='databoxsp-h2'>
                              <span className='databoxps-spn'>آشپز خانه</span> : 
                             <span className='databoxps-spn'> {dt.Kitchen} </span>
@@ -52,7 +61,7 @@ const DataBoxsp= (props)=>{
                             
                              </h2>
                              <h2 className='databoxsp-h2'>
-                             <span className='databoxps-spn'></span> :
+                             <span className='databoxps-spn'> وضعیت مالکیت </span> :
                             <span className='databoxps-spn'> {dt.DocumentOnership} </span>
                             
                              </h2>

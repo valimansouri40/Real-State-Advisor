@@ -27,8 +27,6 @@ const Gallery=(props)=>{
             }
             
         }
-
-        console.log(Image)
     return(
         <div className='gallery-target' >
             <div className='gallery-Frist'>
@@ -49,13 +47,3 @@ const Gallery=(props)=>{
 }
 
 export default Gallery;
-
-
-// <div style={{direction:'ltr'}} className='callender-date'>
-//                        {/* <span className='callender-lessdate'></span>
-//                         <p className='callender-'>{}</p>
-//                         <span className='callender-adddate'></span> */}
-//                         <input type='number' min='1401' max='1401'  defaultValue='1401' />/
-//                         <input type='number' min='1' max='12' defaultValue='1' />/
-//                         <input type='number' min='1' max='31' defaultValue='1'  />
-//                    </div>

@@ -28,28 +28,62 @@ export const setauthlogininit=(data,sine,settime)=>{
         dispatch(startauth());
         const rephash= sine.replace('#','');
             
-            console.log(rephash)
+           console.log(rephash , data)
         axios(apidomain + '/auth' + rephash,{
             method:'post',
             data:data,
             headers:{'Content-Type':'application/json'}
         }).then(res=>{
             if(res.data){
-                console.log(res.data);
+                
                 dispatch(setauthlogin(sine));
-                if(rephash === '/login' || rephash === '/resetpassword'){
-                    sendcookie('car',res.data.data)
-                    window.location.hash = '/';
-                }else if(rephash === '/sineup'){
-                    
-                    window.location.hash = '/sendsmscode';
-                    localStorage.setItem('phn',  data.PhoneNumber);
-                    
-                }else if(rephash === '/sendsmscode'){
-                    sendcookie('car',res.data.data)
-                    window.location.hash = '/';
-                    localStorage.removeItem('phn')
+
+                switch(rephash){
+                    case '/login':
+                        sendcookie('car',res.data.data)
+                        window.location.hash = '/';
+                        window.location.reload();
+                        break;
+                    case '/resetpassword':
+                        sendcookie('car',res.data.data)
+                        window.location.hash = '/';
+                        window.location.reload();
+                        break;
+                    case '/sineup':
+                        window.location.hash = '/sendsmscode';
+                        localStorage.setItem('phn',  data.PhoneNumber);
+                        break;
+                    case '/forgotpassword':
+                        window.location.hash = '/sendsmscode';
+                        localStorage.setItem('phn',  data.PhoneNumber);
+                        break;
+                    case '/sendsmscode':
+                        sendcookie('car',res.data.data)
+                        window.location.hash = '/';
+                        localStorage.removeItem('phn');
+                        window.location.reload();
+                    break;
                 }
+                // if(rephash === '/login' || rephash === '/resetpassword'){
+                //     sendcookie('car',res.data.data)
+                //     window.location.hash = '/';
+                //     window.location.reload();
+                // }else if(rephash === '/sineup'){
+                    
+                //     window.location.hash = '/sendsmscode';
+                //     localStorage.setItem('phn',  data.PhoneNumber);
+                    
+                    
+                // }else if(rephash === '/sendsmscode'){
+                //     sendcookie('car',res.data.data)
+                //     window.location.hash = '/';
+                //     localStorage.removeItem('phn');
+                //     window.location.reload();
+                // }else if(rephash === '/forgotpassword'){
+                //     window.location.hash = '/sendsmscode'
+                //     localStorage.setItem('phn',  data.PhoneNumber);
+
+                // }
             }
         }).catch((er)=>{
             dispatch(errorauth())
@@ -75,7 +109,7 @@ export const setauthgetmeinit=()=>{
             headers:{"Authorization": `Bearer ${cookiejwt}`}
         }).then(res=>{
             if(res.data){
-                console.log(res.data);
+             
                 dispatch(setauthgetme(res.data.data));
             }
         }).catch((er)=>{
@@ -102,7 +136,7 @@ export const setchangepasswordinit=(pas, url)=>{
             headers:{"Authorization": `Bearer ${cookiejwt}`}
         }).then(res=>{
             if(res.data){
-                console.log(res.data);
+                
                 dispatch(setchangepassword(res.data.data));
             }
         }).catch((er)=>{
@@ -130,7 +164,7 @@ export const sensSMSinit=(dt)=>{
         }).then(res=>{
 
             if(res.data){
-                console.log(res.data);
+                
                 dispatch(sendSms());
                 ShowAlert([],'باموفقیت انجام شد.','success');
                 sendcookie('car',res.data.data)
@@ -176,22 +210,21 @@ export const sendreq= (data, authdt)=>{
         axios(apidomain + `/auth/sendreq?id=${authdt?authdt._id:null}`,{
             method:'post',
             data: data,
-            headers:{'Content-Type':'application/json'}
+            headers:{'Authorization': `Bearea ${cookiejwt}`}
         }).then(res=>{
 
             if(res.data){
-                console.log(res.data)
-                if(!res.data.token){
+               
+                if(cookiejwt){
+                    ShowAlert([], 'درخواست شما با موفقیت ثبت شد','success')
+                
+                
+            }else {
                 window.location.hash = '/sendsmscode';
                 localStorage.setItem('phn',  data.PhoneNumber);
                 ShowAlert([], 'لطفا کد ارسالی را وارد کنید','success')
-                // dispatch(sendreq())
-            }else{
-                ShowAlert([], 'درخواست شما با موفقیت ثبت شد','success')
-               
-                sendcookie('car',res.data.token)
-            
             }
+          
 
             }
         }).catch(er=>{
@@ -248,7 +281,7 @@ export const changeroleget=(changerole)=>{
 export const fineduserinit=(data)=>{
     return dispatch=>{
             dispatch(startchangerole())
-            console.log(data)
+            
         axios(apidomain + `/auth/changerole/${data}`,{
             method:'get',
             headers:{'Authorization':`Bearer ${cookiejwt}`}
@@ -256,7 +289,7 @@ export const fineduserinit=(data)=>{
             if(res.data){
                ShowAlert([], ' با موفقیت انجام شد','success');
                dispatch(changeroleget(res.data.data))
-               console.log(res.data.data)
+              
             }
         }).catch(er=>{
            ShowAlert([],'با موفقیت انجام نشد','fail')
@@ -283,10 +316,38 @@ export const changeroleinit=(data, number)=>{
             if(res.data){
                ShowAlert([], ' با موفقیت انجام شد','success');
                dispatch(changerole(res.data.data))
-               console.log(res.data)
+              
             }
         }).catch(er=>{
            ShowAlert([],'با موفقیت انجام نشد','fail')
+        })
+    }
+}
+
+
+export const getadvisor= (data)=>{
+
+    return{
+        type: action.GETADVISOR,
+        advisor: data
+    }
+}
+
+
+export const getadvisorinit = (cityid, area )=>{
+
+    return dispatch=>{
+
+        axios(apidomain + `/auth/getadvisor?CityId=${cityid}&area=${area}`,{
+            method:'get',
+            headers:{'Authorization':`Bearer ${cookiejwt}`}
+        }).then(res=>{
+            if(res.data){
+                
+                dispatch(getadvisor(res.data.data));
+            }
+        }).catch(er=>{
+            console.log(er)
         })
     }
 }

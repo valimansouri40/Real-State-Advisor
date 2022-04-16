@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import CheckBox from '../UI/CheckBox/CheckBox';
 import InputField from '../UI/InputField/InputField';
@@ -7,7 +6,8 @@ import  './RealStateFields.css'
 import imgicon from '../../assets/icons/icons8-picture-64.png';
 
 const Fields2= (props)=>{
-    const {setDataPosttwo,numpage, setnumpage, SubmitDataHandller}=props;
+    const {setDataPosttwo,numpage,
+         setnumpage,role, SubmitDataHandller}=props;
 
     const [sub, setsub]=useState('')
     const [explain, setexplain]=useState('')
@@ -37,6 +37,7 @@ const Fields2= (props)=>{
     const [Jacuzzi, setJacuzzi]=useState(false)
     const [labi, setlabi]=useState(false)
     const [conferencehall, setconferencehall]=useState(false)
+    const limitrole= ['employee', 'admin'];
     
     const [numimg, setnumimg]=useState(0);
 
@@ -47,7 +48,7 @@ const Fields2= (props)=>{
         reader.onerror = (error) => reject('Error: ', error);
     })
 
-  
+    
     const submitHandller= ()=>{
 
         let encods=[];
@@ -90,9 +91,13 @@ const Fields2= (props)=>{
                 Labi:labi,
                 ConferaenceHall:conferencehall
             }
-            console.log(datatwo)
         setDataPosttwo(datatwo);
+
+        if(!limitrole.includes(role.role)){
         SubmitDataHandller()
+    }else{
+        setnumpage(3);
+    }
     }
 
     const sendimage=(e)=>{
@@ -102,7 +107,6 @@ const Fields2= (props)=>{
         setnumimg(0)
 
     }
-    console.log(image)
     const nextMyImage=()=>{
 
         if( numimg < image.length - 1 ){
@@ -112,7 +116,7 @@ const Fields2= (props)=>{
         }
         
     }
-    console.log(numimg)
+    
     const lastMyImage=()=>{
 
         if( 0 < numimg ){
@@ -138,10 +142,12 @@ const Fields2= (props)=>{
                     <img src={imgicon} className='iconimg' />
                      </label>
                    
-                    <input type='file'accept="image/png, image/jpeg" multiple={true} style={{display:'none'}} id='img' name='img'
+                    <input type='file' accept="image/png, image/jpeg" multiple={true} style={{display:'none'}} id='img' name='img'
                      onChange={(e)=>sendimage(e)} />
-                     {image?<div style={{position:'relative', width:'300px' ,height:'400px'}} className='imgtarget'>
-                         <img src={URL.createObjectURL(image[numimg])} width='100%' height='100%'  className='inputimg'/>
+                     {image?<div style={{position:'relative', width:'300px' ,height:'400px'}} 
+                     className='imgtarget'>
+                         <img src={URL.createObjectURL(image[numimg])} width='100%' height='100%'
+                           className='inputimg'/>
                          {image.length > 1?<><span className='changenum2' onClick={lastMyImage}></span>
                         <span className='changenum1' onClick={nextMyImage}></span></>:null}
                      </div>:null}
@@ -164,12 +170,12 @@ const Fields2= (props)=>{
             </div>
             
             <div className='field'>
-            <Select val={coolerSystem} array={["","کولر","هواساز","فاقد"]} setvaluehandller={setcoolerSystem}></Select>
-            <Select val={heaterSystem} array={["","شوفاژ","هواساز","پکیج","بخاری"]} setvaluehandller={setheaterSystem}></Select>
-            <Select val={propertySituation} array={["","تخلیه","در دست مالک","در دست مستاجر"]} setvaluehandller={setpropertySituation}></Select>
-            <Select val={documentSituation} array={["","شخصی","تعاونی","اوقافی","زمین شهری","قولنامه ای"]} setvaluehandller={setdocumentSituation}></Select>
-            <Select val={documentOnership} array={["","شش دانگ","مشاعی"]} setvaluehandller={setdocumentOnership}></Select>
-            <Select val={entry} array={["","از حیاط","از خیابان","از محوطه"]} setvaluehandller={setentry}></Select>
+            <Select val={coolerSystem} array={["","کولر","هواساز","فاقد"]} setvaluehandller={setcoolerSystem}> سیستم سرمایشی </Select>
+            <Select val={heaterSystem} array={["","شوفاژ","هواساز","پکیج","بخاری"]} setvaluehandller={setheaterSystem}> سیستم گرمایشی </Select>
+            <Select val={propertySituation} array={["","تخلیه","در دست مالک","در دست مستاجر"]} setvaluehandller={setpropertySituation}> وضعیت اسکان ملک </Select>
+            <Select val={documentSituation} array={["","شخصی","تعاونی","اوقافی","زمین شهری","قولنامه ای"]} setvaluehandller={setdocumentSituation}> وضعیت سند </Select>
+            <Select val={documentOnership} array={["","شش دانگ","مشاعی"]} setvaluehandller={setdocumentOnership}> مالکیت سند </Select>
+            <Select val={entry} array={["","از حیاط","از خیابان","از محوطه"]} setvaluehandller={setentry}> ورودی ملک </Select>
             
             <CheckBox val={pasio} changeval={setpasio} >پاسیو</CheckBox>
             <CheckBox val={pool} changeval={setpool} >استخر</CheckBox>
@@ -177,7 +183,10 @@ const Fields2= (props)=>{
             <CheckBox val={labi} changeval={setlabi} >لابی</CheckBox>
             <CheckBox val={conferencehall} changeval={setconferencehall} >سالن اجتماعات</CheckBox>
             <button className='send' onClick={()=>setnumpage(1)}>بازگشت</button>
-            <button className='send' onClick={submitHandller}>ارسال</button>
+            {role?limitrole.includes(role.role)?<button className='send' 
+            onClick={submitHandller}>صفحه بعد</button>:null:null}
+            {role?!limitrole.includes(role.role)?<button className='send' 
+            onClick={submitHandller}>ارسال</button>:null:null}
 
             </div>
 

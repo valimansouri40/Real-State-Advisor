@@ -1,0 +1,15 @@
+.advisordata-target{
+    direction: ltr;
+    width: 20rem;
+    height: 23rem;
+    background: rgb(108, 183, 226);
+}
+.advisordata-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.advisordata-phbox{
+    display: flex;
+}

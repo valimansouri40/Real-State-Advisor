@@ -39,7 +39,7 @@ export const postwsinit=(data)=>{
         }).then(res=>{
             if(res.data){
                 ShowAlert([],'با موفقیت انجام','success');
-                console.log(res.data)
+              
                 dispatch(postws())
             }
         }).catch(er=>{
@@ -64,14 +64,14 @@ export const getallwsinit=(page,limit,query)=>{
 
     return dispatch=>{
         dispatch(startws());
-        console.log(query, 'aimans')
+      
         axios(apidomain + `/worksampel?page=${page}&limit=${limit}&${query}`,{
             method:'get',
             headers: {'Content-Type' : 'application/json'}
         }).then(res=>{
             if(res.data){
                dispatch(getallws(res.data.data));
-                console.log(res.data.data)    
+                
             }
         }).catch(er=>{
            
@@ -84,7 +84,7 @@ export const getallwsinit=(page,limit,query)=>{
 export const deletewsinit=(id)=>{
 
     return dispatch=>{
-            console.log(id)
+           
         axios(apidomain + `/worksampel/${id}`,{
             method:'delete',
             headers: {'Authorization': `Bearer ${cookiejwt}`}
