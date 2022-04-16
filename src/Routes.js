@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { HashRouter,Route} from 'react-router-dom';
+import { HashRouter,Route, Redirect} from 'react-router-dom';
 import Auth from './containers/Auth/Auth';
 import RealStateBuilder from './containers/RealStateBuilder/RealStateBuilder';
 import MyProfile from './containers/MyProfile/MyProfile';
@@ -41,22 +41,31 @@ const Routes=(props)=>{
     {route:'/forgotpassword', compnent:Auth},{route:'/resetpassword', compnent:Auth}
     ,{route:'/sendsmscode', compnent:Auth},{route:'/changepassword', compnent:Auth}]
 
-        let limitRoutes=<>{ routes.map((mp)=><Route path={mp.route} exact component={mp.compnent} />)}
-        </>
+        let limitRoutes=<HashRouter>
+               <Route path='/' exact  component={Home}/>
+        <Route path='/search' exact  component={Home}/>
+        <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+        <Redirect to="/" />
+            { routes.map((mp)=><Route path={mp.route} exact component={mp.compnent} />)}
+        </HashRouter>
 
         if(role){
             switch(role){
                 case 'user':
-                    limitRoutes =<>
+                    limitRoutes =<HashRouter>
                     <Route path='/myprofile' exact component={MyProfile} />
                     <Route path='/myrequest' exact component={MyRequest} />
                    <Route path='/myappointments' exact component={AllAppointments} />
                     <Route path='/mymarks' exact component={MyMarks} />
                     <Route  path='/changepassword' exact component={Auth}/>
-                    </>
+                    <Route path='/' exact  component={Home}/>
+                    <Route path='/search' exact  component={Home}/>
+                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                    <Redirect to="/" />
+                    </HashRouter>
                     break;
                 case 'dealer':
-                    limitRoutes=<>
+                    limitRoutes=<HashRouter>
                     <Route path='/buildrealstatepost' exact component={RealStateBuilder} />
                     <Route path='/myprofile' exact component={MyProfile} />
                    <Route path='/myrequest' exact component={MyRequest} />
@@ -64,10 +73,14 @@ const Routes=(props)=>{
                    <Route  path='/changepassword' exact component={Auth}/>
                    <Route path='/myappointments' exact component={AllAppointments} />
                    <Route path='/alladvisorappointments' exact component={AllAppointments} />
-                   </>
+                   <Route path='/' exact  component={Home}/>
+                    <Route path='/search' exact  component={Home}/>
+                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                     <Redirect to="/" />
+                   </HashRouter>
                      break;
                 case 'advisor':
-                    limitRoutes=<>
+                    limitRoutes=<HashRouter>
                      <Route path='/buildrealstatepost' exact component={RealStateBuilder} />
                      <Route path='/myprofile' exact component={MyProfile} />
                     <Route path='/myrequest' exact component={MyRequest} />
@@ -75,16 +88,22 @@ const Routes=(props)=>{
                     <Route path='/mymarks' exact component={MyMarks} />
                     <Route  path='/changepassword'  component={Auth}/>
                    <Route path='/myappointments' exact component={AllAppointments} />
-
-                    </>
+                   <Route path='/' exact  component={Home}/>
+                    <Route path='/search' exact  component={Home}/>
+                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                    <Redirect to="/" />
+                    </HashRouter>
                     break;
                 case 'employee':
-                    limitRoutes=<>
+                    limitRoutes=<HashRouter>
                     <Route path='/buildrealstatepost' exact component={RealStateBuilder} />
                     <Route path='/myprofile' exact component={MyProfile} />
                    <Route path='/myrequest' exact component={MyRequest} />
                    <Route path='/myappointments' exact component={AllAppointments} />
-                   
+                   <Route path='/' exact  component={Home}/>
+                    <Route path='/search' exact  component={Home}/>
+                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                    <Redirect to="/" />
                    <Route path='/mymarks' exact component={MyMarks} />
                    <Route path='/addarea' exact component={AddAreaAndCity} />
                     <Route path='/addcity' exact component={AddAreaAndCity} />
@@ -97,10 +116,14 @@ const Routes=(props)=>{
                     <Route  path='/changepassword' exact component={Auth}/>
                     <Route path='/alladvisorappointments' exact component={AllAppointments} />
                     <Route path='/commentmanagement' exact component={AcceptComment}/>
-                   </>
+                   </HashRouter>
                     break;
                 case 'admin':
-                    limitRoutes=<>
+                    limitRoutes=<HashRouter>
+                    <Route path='/' exact  component={Home}/>
+                    <Route path='/search' exact  component={Home}/>
+                <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                     <Redirect to="/" />
                     <Route path='/buildrealstatepost' exact component={RealStateBuilder} />
                     <Route path='/myprofile' exact component={MyProfile} />
                    <Route path='/myrequest' exact component={MyRequest} />
@@ -117,31 +140,24 @@ const Routes=(props)=>{
                     <Route path='/commentmanagement' exact component={AcceptComment}/>
                     <Route path='/allrequest' exact component={AllRequest} />
                     <Route  path='/changepassword' exact component={Auth}/>
-                   </>
+                   </HashRouter>
                     break;
-                default: limitRoutes=<>{ routes.map((mp)=><Route path={mp.route} exact component={mp.compnent} />)}
-                </>
+                default: limitRoutes=<HashRouter>
+                       <Route path='/' exact  component={Home}/>
+                    <Route path='/search' exact  component={Home}/>
+                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                    <Redirect to="/" />
+                    { routes.map((mp)=><Route path={mp.route} exact component={mp.compnent} />)}
+                </HashRouter>
                     break
             }
         }
 
 
     return(
-           <Suspense  fallback={<p style={{background:'#111',position: 'fixed', direction:'ltr',top:'10%', left:'10%'}}>لطفا کمی صبر کنید ...</p>}>
-          <HashRouter>
-              
-          <Route path='/' exact  component={Home}/>
-        <Route path='/search' exact  component={Home}/>
-        <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
-            
+           <Suspense  fallback={<p style={{background:'#111',
+           position: 'fixed', direction:'ltr',top:'10%', left:'10%'}}>لطفا کمی صبر کنید ...</p>}>
               {limitRoutes}
-              
-              
-               {/* <Route exact render={()=><div>
-                   <h1>ERROR 404</h1>
-                   <p>page not found  </p></div>}  /> */}
-          </HashRouter>
-         
           </Suspense>
 
     )
