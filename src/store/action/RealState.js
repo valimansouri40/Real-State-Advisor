@@ -35,7 +35,7 @@ export const REALSTATEPOSTINIT=(data)=>{
         }).then(res=>{
                 if(res.data){
                     dispatch(REALSTATEPOST());
-
+                    ShowAlert([], 'ملک با موفقیت ساخته شد', 'success')
                 }
         }).catch(er=>{
             dispatch(errorrealState())
@@ -133,7 +133,7 @@ export const REALSTATEPATCHINIT=(data,id)=>{
         }).then(res=>{
                 if(res.data){
                     dispatch(REALSTATEPOST());
-                   
+                    ShowAlert([], 'ملک با موفقیت بروزرسانی شد', 'success')
                 }
         }).catch(er=>{
             dispatch(errorrealState())

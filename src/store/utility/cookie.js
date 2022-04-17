@@ -9,3 +9,12 @@ exports.sendcookie=(name,token)=>{
     
 }
 
+exports.deletecookie=()=>{
+    let date = new Date();
+    date.setTime(date.getTime()+(100));
+    document.cookie = 'car' + " = " + "token" + "; expires = " +date.toGMTString();
+
+    setTimeout(() => {
+        window.location.reload();
+    }, 1000);
+}

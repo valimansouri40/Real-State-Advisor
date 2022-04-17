@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ShowAlert } from "../../store/utility/alert";
+import { deletecookie } from "../../store/utility/cookie";
 import Modal from "../UI/Modal/Modal";
 import Navigation from "../UI/Navigation/Navigation";
 import './Header.css';
@@ -135,8 +136,8 @@ const Header= (props)=>{
                                                 ساخت ملک</NavLink></li>:null } */}
                                                 { roleslimit.includes(auth.role)?<li><NavLink to='/buildrealstatepost'>
                                                 پنل مدیریت</NavLink></li>:null }
-                                            <li>
-                                            خروج</li>
+                                            <li onClick={()=>deletecookie()}>
+                                            خروج از حساب</li>
                                         </ul>:
                                         <ul style={{position:'absolute', left:'30%' , top:'40%'}}>
                                         <li><NavLink to='/sineup'>

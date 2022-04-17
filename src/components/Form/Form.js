@@ -105,7 +105,7 @@ const Form =(props)=>{
         
         if(dataanderrors.er.length === 0 ){
          
-         if(path === '#/sineup'){
+         if(path === '#/sineup' ){
             onauth(dataanderrors.dtsb,path,settime);
          }else{
              if(path !== '#/addcity' && path!== '#/addarea'&& path !== '#/changepassword'){
@@ -144,9 +144,9 @@ const Form =(props)=>{
     }
 
     const twiceSendSMSHandller=()=>{
-        console.log('madar jende')
+       
             if(timer  ){
-                console.log('madar jende')
+                
             settime(180);
             const phone= localStorage.getItem('phn');
             

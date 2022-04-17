@@ -8,8 +8,9 @@ const Timer=(props)=>{
     const [minutes, setminutes]=useState('00');
     const [seconds, setseconds]= useState('00');
 
+    
     useEffect(()=>{
-        if(expiresCode > 0){
+        if(expiresCode > 1){
             settime(expiresCode);
         }
     },[expiresCode])

@@ -5,6 +5,7 @@ import * as action from '../../store/action/index';
 import picture from '../../assets/icons/icons8-picture-64.png';
 import close from '../../assets/icons/icons8-close-50.png'
 import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
+import { ShowAlert } from "../../store/utility/alert";
 
 /// بخش ساخت و حذف نمونه کارها در پنل مدیریت
 
@@ -15,7 +16,8 @@ const BuildSampel=(props)=>{
         const [img, setimg]= useState();
         const [txt, settxt]= useState('');
         const [passage, setpassge]= useState('');
-        
+        const switcharr= ['Registrationwork','Advocacy', 'ExpertofJustice', 'endofwork', 'lisense'];
+
         const changeTabs=(e)=>{
             settab(e.target.value)
             setpassge('');
@@ -51,11 +53,33 @@ const BuildSampel=(props)=>{
                 Text:txt ,
                 Passage: passage
             }
-           
-        postwsinit(data);
-       window.location.reload();
+            console.log(data);
+           if(!switcharr.includes(data.Tab) ){
+               if(data.Img && data.Text){
+                postwsinit(data);
+            }else{
+                ShowAlert([], 'لطفا عکس و متن  را وارد کنید', 'fail')
+            }
+           }else{
+            if(data.Passage){
+                postwsinit(data);
+            }else{
+                ShowAlert([], 'لطفا متن را وارد کنید', 'fail')
+            }
+           }
+       
+        setTimeout(() => {
+            getallwsinit(1,10,`Tab=${tabs}`);
+        }, 1000);
+        
         }
-        const switcharr= ['Registrationwork','Advocacy', 'ExpertofJustice', 'endofwork', 'lisense']
+       const deleteSampelHandller=(id)=>{
+
+        deletewsinit(id)
+        setTimeout(() => {
+            getallwsinit(1,10,`Tab=${tabs}`);
+        }, 100);
+       }
         
         const arr={'mapdesign':'طراحی نقشه',
         'Mapping':'نقشه برداری',
@@ -100,7 +124,7 @@ const BuildSampel=(props)=>{
                                 <div style={{width:'200px', height:'300px', background:'blue'}} 
                                 className='card-bx'>
                                             <img src={close} width='20px'
-                                            height='20px' onClick={()=>deletewsinit(mi._id)} />
+                                            height='20px' onClick={()=>deleteSampelHandller(mi._id)} />
                                            { mi.Image?<img className='card-img'
                                             width='150px' height='150px'
                                              src={`data:image/jpeg;base64,${mi.Image}`} />:null}

@@ -58,9 +58,9 @@ export const setauthlogininit=(data,sine,settime)=>{
                         localStorage.setItem('phn',  data.PhoneNumber);
                         break;
                     case '/sendsmscode':
+                        localStorage.removeItem('phn');
                         sendcookie('car',res.data.data)
                         window.location.hash = '/';
-                        localStorage.removeItem('phn');
                         window.location.reload();
                     break;
                 }

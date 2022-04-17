@@ -82,7 +82,13 @@ const DataBoxdep= (props)=>{
                    { dt.Security?<h2 className='databoxsp-h2'>
                                 نگهبان دارد
                              </h2>:null}
-                           
+                  
+                    </div>
+                    <div>
+                   <h2 className='databoxsp-h2'>
+                              آیدی ملک : {dt.RealStateNumber}
+                             </h2>
+                  
                     </div>
             </div>
         )

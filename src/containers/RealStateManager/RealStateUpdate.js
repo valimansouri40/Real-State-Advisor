@@ -110,7 +110,7 @@ const RealStateUpdate=(props)=>{
         })
         
       if(errorhandller.length === 0){ 
-         REALSTATEPATCHINIT(DataPost, paramid);
+          REALSTATEPATCHINIT(DataPost, paramid);
         }else{
             ShowAlert(errorhandller, 'را وارد نکردید', 'fail')
         }
