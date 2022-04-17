@@ -147,7 +147,7 @@ export const SMS= {
         },
         value:'',
         touch:false,
-        img: <img width='40px' height='40px' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABmJLR0QA/wD/AP+gvaeTAAABV0lEQVRIiWNUvezPQEvARFPTRy0gBrAwMDDc0tlAI9PVrgTQxQdw26hoLjxU6B7JDrwmh9XnHlKfa8drRIkIAqhe9v////////9VL/urXvZ//usNhPvs12tKROBm0j2Iap5NffH77fPfb2qfTqNEBA4YVS/7Q2KcFqmIvvmARvmZ5j5gHNkVjiiLYLSQF341LPil8Zu+WLFZiV2GkZFxydutuJSR6QMRFoEFio1K7DL3fz7d9fE4HpWELYgW8hJlEUQWEWURXKLYosoud+/nk5j7Na/+vCPfghhh73qptMWKzXA74CFz7+eT2Pu1r/+8x28CAQu2fzxy++cjJXaZpYqtYixCyCETd7+OoOkMxOQDZCczMDAQ73aifMDAwPD6z/vo+9UQf5DkdmItYGBgePvnY8L9+rs/n9wlIlbRAAlFhTALP8Qy4k1nICmjkWo0BAzusogYAACtc/V+DJ6NeAAAAABJRU5ErkJggg=="/> ,
+        img: <img src="https://img.icons8.com/windows/32/000000/sms-token.png"/>,
         valid:false
     }
 };

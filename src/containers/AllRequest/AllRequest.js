@@ -5,6 +5,7 @@ import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
 import { connect } from "react-redux";
 import Paginate from '../../components/Paginate/Paginate';
 import { changeprice } from "../../components/UI/CardRealState/changePrice";
+import Spinner from "../../components/UI/spinner/Spinner";
 
 // بخش مدیریت درخواست ها در پنل مدیریت
 
@@ -82,7 +83,7 @@ const AllRequest= props=>{
 
                 </div>
                     <div className='allreq-frame'>
-                    {AllData? AllData.length === 0?<div>موردی یافت نشد!!</div>:null:null} 
+                    {AllData? AllData.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>} 
                             {AllData?AllData.map((mp, i)=><div className='allreq-box'>
                             <div className='allappointment-delete' onClick={()=>deletehandller(mp._id)}>
                                     <img width='50px' height='50px'

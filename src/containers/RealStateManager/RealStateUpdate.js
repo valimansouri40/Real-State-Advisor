@@ -7,6 +7,7 @@ import * as action from '../../store/action/index';
 import { ShowAlert } from "../../store/utility/alert";
 import RealStateFieldupdate3 from "../../components/RealStateFieldsupdate/RealStateFieldupdate3";
 import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
+import Spinner from "../../components/UI/spinner/Spinner";
 
 // صفحه آپدیت ملک در پنل مدیریت
 
@@ -144,7 +145,7 @@ const RealStateUpdate=(props)=>{
                     setnumpage={setnumpage}
                      setDataPostthree={setDataPostthree} SubmitDataHandller={SubmitDataHandller}
                      />:null:null}
-            </div>:null}
+            </div>:<Spinner/>}
         </section>
     )
 }

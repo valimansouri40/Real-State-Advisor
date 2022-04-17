@@ -11,6 +11,7 @@ import AdvisorData from "../../components/AdvisorData/AdvisorData";
 import CardRealState from "../../components/UI/CardRealState/CardRealState";
 import Map from '../../components/UI/GoogleMaps/GoogleMaps';
 import { Helmet } from "react-helmet-async";
+import Spinner from "../../components/UI/spinner/Spinner";
 // صفحه نمایش اطلاعات کامل ملک
 
 const RealStatefulldata=(props)=>{
@@ -86,14 +87,14 @@ const RealStatefulldata=(props)=>{
           <meta name="description" content="App Description" />
           <meta name="theme-color" content="#008f68" />
         </Helmet>:null}
-             <div className='target-all'>
-           { OneData?<div className="target-rsdf-one">
+        { OneData?<><div className='target-all'>
+           <div className="target-rsdf-one">
                 
-            {OneData?<><Gallery Image={OneData.Image}></Gallery>   
+            <Gallery Image={OneData.Image}></Gallery>   
             <DataBox reviwegetinit={reviwegetinit}  auth={auth} reviwes={reviwes} OneData={OneData}
-             reviweandRatepostinit={reviweandRatepostinit} OneData={OneData}></DataBox></>:null}
+             reviweandRatepostinit={reviweandRatepostinit} OneData={OneData}></DataBox>
                
-            </div>:null}
+            </div>
             <div className='target-rsdf-two'>
             <Callender 
                 auth={auth}
@@ -112,7 +113,7 @@ const RealStatefulldata=(props)=>{
                 FocusData={mp} realstatestartfocinit={realstatestartfocinit}></CardRealState>):null}
                 <div className='rstf-ch' onClick={nextMyImage}>بعدی</div>
             
-            </div>
+            </div></>:<Spinner/>}
         </section>
     )
 }

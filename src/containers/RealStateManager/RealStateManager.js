@@ -9,6 +9,7 @@ import Paginate from '../../components/Paginate/Paginate';
 import { Link } from "react-router-dom";
 import Modal from "../../components/UI/Modal/Modal";
 import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
+import Spinner from "../../components/UI/spinner/Spinner";
 // صفحه مدیریت ملک در پنل مدیریت
 
 const RealStateManager=(props)=>{
@@ -220,7 +221,7 @@ const RealStateManager=(props)=>{
                               
                               <button className="card-btn"><Link to={`/viewrealstate/${mp._id}`}> مشاهده صفحه </Link></button>
                               </div>
-                      )):null}
+                      )):<Spinner/>}
                       
                        </div>
                        <Paginate setpage={setpage} page={page} length={length} />

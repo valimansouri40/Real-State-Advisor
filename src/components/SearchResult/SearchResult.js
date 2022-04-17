@@ -4,6 +4,7 @@ import './SearchResult.css';
 import Paginate from '../Paginate/Paginate';
 import { Link } from "react-router-dom";
 import { changeprice } from "../UI/CardRealState/changePrice";
+import Spinner from "../UI/spinner/Spinner";
 
 
 const SearchResult=(props)=>{
@@ -49,6 +50,7 @@ const SearchResult=(props)=>{
         <section class="posts">
     <div class="container">
                 <div className="tab-content1"  >
+                {filter? filter.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>}
                   {filter? filter.map((mp,i)=>(
                       <div className='realstate-box'>
                           <div className='card-imbox'>

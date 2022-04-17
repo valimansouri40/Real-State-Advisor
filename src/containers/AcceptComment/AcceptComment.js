@@ -5,6 +5,7 @@ import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
 import { connect } from "react-redux";
 import StarRatings from 'react-star-ratings'
 import Paginate from '../../components/Paginate/Paginate';
+import Spinner from "../../components/UI/spinner/Spinner";
 
 
 ///   بخش مدیریت کامنت ها در پنل مدیریت
@@ -51,6 +52,7 @@ const AcceptComment =props=>{
                         <button onClick={()=>setbol('all')} className={bol === 'all'?"nav-link-active":"nav-link "}> همه</button>
                         <button onClick={()=>setbol('limit')} className={bol === 'limit'?"nav-link-active":"nav-link "}>تایید نشده</button>
                     </div>
+                    {data? data.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>} 
                         <div className='acceptcoment-frame'>
                         {data? data.map(mp=>mp.RealStateId?<div className='allappointment-box'>
                                      <div className='allappointment-delete' onClick={()=>deletehandller(mp._id)}>

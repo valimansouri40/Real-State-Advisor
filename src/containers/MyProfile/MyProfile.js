@@ -5,6 +5,8 @@ import * as action from '../../store/action/index';
 import { getBase64 } from "../convertImgToBase64";
 import picture from '../../assets/icons/icons8-picture-64.png';
 import Header from "../../components/Header/Header";
+import Spinner from "../../components/UI/spinner/Spinner";
+import Footer from "../../components/Footer/Footer";
 
 /// نمایش و تغییر اطلاعات کاربر در نوبار صفحه
 
@@ -107,9 +109,9 @@ const MyProfile=(props)=>{
                         </div>  */}
                         <button onClick={PatchProfile}>ارسال تغییرات</button>
                     
-                    </div>:null}
+                    </div>:<Spinner/>}
                 </div>
-          
+                <Footer/>
         </section>
     )
 }

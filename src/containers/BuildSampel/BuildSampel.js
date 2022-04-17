@@ -6,6 +6,7 @@ import picture from '../../assets/icons/icons8-picture-64.png';
 import close from '../../assets/icons/icons8-close-50.png'
 import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
 import { ShowAlert } from "../../store/utility/alert";
+import Spinner from "../../components/UI/spinner/Spinner";
 
 /// بخش ساخت و حذف نمونه کارها در پنل مدیریت
 
@@ -132,7 +133,7 @@ const BuildSampel=(props)=>{
                                              <p className='card-txt'>{mi.Text}</p>
                                             <p className='card-txt'>{mi.Passage}</p>
                                     </div>
-                            )):null}
+                            )):<Spinner/>}
                 </div>
             </div>
         </div>

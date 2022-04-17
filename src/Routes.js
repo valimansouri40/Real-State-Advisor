@@ -8,6 +8,7 @@ import MyRequest from './containers/MyProfile/MyRequest';
 import RealStatefulldata from './containers/RealStatefulldata/RealStatefulldata';
 import MyMarks from './containers/MyMarks/MyMarks';
 import AllAppointments from './containers/AllAppointments/AllAppointments';
+import Spinner from './components/UI/spinner/Spinner';
 const AcceptComment = React.lazy(()=>{
    return import("./containers/AcceptComment/AcceptComment");
 });
@@ -155,8 +156,7 @@ const Routes=(props)=>{
 
 
     return(
-           <Suspense  fallback={<p style={{background:'#111',
-           position: 'fixed', direction:'ltr',top:'10%', left:'10%'}}>لطفا کمی صبر کنید ...</p>}>
+           <Suspense  fallback={<Spinner></Spinner>}>
               {limitRoutes}
           </Suspense>
 

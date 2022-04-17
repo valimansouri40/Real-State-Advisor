@@ -4,6 +4,7 @@ import Paginate from '../Paginate/Paginate';
 import { Link } from "react-router-dom";
 import { changeprice } from "../UI/CardRealState/changePrice";
 import {Helmet} from 'react-helmet-async';
+import Spinner from "../UI/spinner/Spinner";
 
 const TabRealState=(props)=>{
         const {REALSTATEGETALLINIT,length, auth, addMarkinit,  lessmarkinit, filter}=props;
@@ -66,6 +67,7 @@ const TabRealState=(props)=>{
                     </div>
                 </nav>
                 <div className="tab-content1"  >
+                {filter? filter.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>}
                   {filter? filter.map((mp,i)=>( <>
                       <div className='realstate-box'>
                   

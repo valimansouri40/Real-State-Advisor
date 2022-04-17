@@ -7,6 +7,8 @@ import Filter from "../../components/Filter/Filter";
 import TabRealState from "../../components/TabRealState/TabRealState";
 import SearchResult from "../../components/SearchResult/SearchResult";
 import './Home.css';
+import Footer from "../../components/Footer/Footer";
+import Spinner from "../../components/UI/spinner/Spinner";
 
 // صفحه اصلی و صفحه نتایج سرچ
 
@@ -34,7 +36,7 @@ const Home= (props)=>{
         return(<div>
            <Header tab={Tab} settab={settab} auth={auth} sendreq={sendreq}></Header>
            <Logo></Logo>
-
+            
            <div className={!limitpath?'home-searchboxbox':'search-searchbox'}>
                <div className={limitpath?'search-filters':'home-filters'}><Filter worksampel={worksampel}
                 filter={filter} tab={Tab} settab={settab}
@@ -53,7 +55,9 @@ const Home= (props)=>{
                     addMarkinit={addMarkinit} lessmarkinit={lessmarkinit} auth={auth}
                     REALSTATEGETALLINIT={REALSTATEGETALLINIT} length={length} filter={AllData}
                     ></TabRealState></div>:null}
+                   
             </div>
+            <Footer tab={Tab} settab={settab} auth={auth} />
         </div>)
 
 

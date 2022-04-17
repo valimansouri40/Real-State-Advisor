@@ -125,7 +125,7 @@ const RealStateFieldsForlease=(props)=>{
               setesquierphts();
           }
       }
-      
+      console.log(immediat)
     return(
         <div className={numpage === 1?'leaseform': 'hidden'} >
                 <div style={{width:'40rem',height:'40rem'}} className='googelmapbox'>
@@ -201,9 +201,9 @@ const RealStateFieldsForlease=(props)=>{
                
                {role?rolear2.includes(role.role)?<>
             <div className='inpcls'><label className='label'> شماره مالک</label> 
-               <input type='tel' value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
+               <input type='tel' name='tell' value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
             <div className='inpcls'><label className='label'> نام مالک</label> 
-               <input type='text' onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
+               <input type='text' name='tell' onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
                
                {tab === 'rahn'?
                <button className={fullmortgage?'btnui-ok':'btnui'} 

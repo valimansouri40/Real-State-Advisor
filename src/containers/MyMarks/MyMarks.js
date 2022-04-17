@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import Header from "../../components/Header/Header";
 import { Link } from "react-router-dom";
 import Paginate from "../../components/Paginate/Paginate";
+import Spinner from "../../components/UI/spinner/Spinner";
+import Footer from "../../components/Footer/Footer";
 
 /// بخش نشانک های من در نوبار صفحه سایت
 
@@ -27,7 +29,7 @@ const MyMarks=props=>{
             <Header auth={auth} sendreq={sendreq}></Header>
             
             <div className='mymarks-frame'>
-            {FocusData? FocusData.length === 0?<div>موردی یافت نشد!!</div>:null:null} 
+            {FocusData? FocusData.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>} 
            {   FocusData?FocusData.map(mp=> <> 
              <div  className='mymarks-boximg'>
                 <img width='25px' height='25px' onClick={()=>lessmarkhandller(mp.RealStateId._id)}
@@ -62,6 +64,8 @@ const MyMarks=props=>{
             </div>
             </>):null}</div>
             <Paginate page={page} setpage={setpage} length={length}></Paginate>
+
+            <Footer/>
         </div>
     )
 }

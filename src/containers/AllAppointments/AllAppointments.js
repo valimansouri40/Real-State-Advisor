@@ -6,6 +6,8 @@ import * as action from '../../store/action/index';
 import { changeprice } from "../../components/UI/CardRealState/changePrice";
 import Header from "../../components/Header/Header";
 import Paginate from "../../components/Paginate/Paginate";
+import Spinner from "../../components/UI/spinner/Spinner";
+import Footer from "../../components/Footer/Footer";
 
 const AdminPannelNav= React.lazy(()=>{
     return import("../../components/AdminPannelNav/AdminPannelNav")
@@ -85,7 +87,7 @@ const AllAppointments= props=>{
                     <div className='allappointment-frame'>
                     
                             {tabbar}
-                    {data? data.length === 0?<div>موردی یافت نشد!!</div>:null:null} 
+                    {data? data.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>} 
                         {data? data.map(mp=>mp.Accept?<div className='allappointment-box'>
                                     <div className='allappointment-delete' onClick={()=>deletehandller(mp._id)}>
                                     <img width='50px' height='50px'
@@ -155,6 +157,7 @@ const AllAppointments= props=>{
                     </div>
                     <Paginate length={length} page={page} setpage={setpage}></Paginate>
                 </div>
+                {path === '#/myappointments'? <Footer/>:null}
         </section>
     )
 }

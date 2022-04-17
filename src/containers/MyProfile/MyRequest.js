@@ -7,6 +7,8 @@ import see from '../../assets/icons/icons8-hide-32.png';
 import pend from '../../assets/icons/icons8-data-pending-24.png';
 import { changeprice } from "../../components/UI/CardRealState/changePrice";
 import Header from "../../components/Header/Header";
+import Spinner from "../../components/UI/spinner/Spinner";
+import Footer from "../../components/Footer/Footer";
 
 /// بخش درخواست های من در نوبار صفحه سایت
 
@@ -34,7 +36,7 @@ const MyReqeust=(props)=>{
             <div className='req-box' style={{width:'100%',minHeight:'100vh',
              display:'flex',alignItems:'flex-start',
         justifyContent:'space-around',flexFlow:'row wrap'}}>
-             {data? data.length === 0?<div>موردی یافت نشد!!</div>:null:null} 
+             {data? data.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>} 
                     {data?data.map(mp=>(
                         <div style={{width:'30%',height:'10rem'}} className='req-card'>
                            <div className='allreq-fieldbox'>
@@ -79,6 +81,7 @@ const MyReqeust=(props)=>{
                         </div>
                     )):null}
             </div>
+            <Footer/>
         </div>
     )
 }
