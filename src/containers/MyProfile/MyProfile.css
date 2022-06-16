@@ -1,0 +1,107 @@
+/* my request */
+.req-card{
+    width: 95%;
+    min-height: 7rem;
+    background: rgb(228, 224, 224);
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    padding: 1rem;
+    margin: 1rem 0;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+.allreq-fieldboxtext{
+    grid-row: 1/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.allreq-fieldboxtext{
+    margin: 1rem;
+}
+.req-p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.req-box{
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.req-p img{
+    margin-right: 1rem;
+}
+.allreq-text{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: .9rem;
+}
+
+.allreq-fieldbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* my profile */
+
+.profilesec{
+    width: 100%;
+    min-height: 100vh;
+}
+.profile{
+    
+}
+.profilebox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 50rem;
+    margin-top: 2rem;
+}
+.sampel-label{
+    position: relative;
+}
+.sampel-label-img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+}
+.small-img{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+}
+.show{
+    margin-top: .7rem;
+}
+.labelnm{
+    padding: .5rem;
+    font-size: 1.2rem;
+    color: rgb(51, 94, 151);
+    display: block;
+}
+.name{
+
+    border-radius: 6px;
+    padding: .3rem;
+    font-size: 1.2rem;
+    color: #111;
+}
+
+@media (max-width: 800px){
+
+    .req-card{
+        width: 90%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-flow: row wrap;
+    }
+}

@@ -6,13 +6,13 @@ import * as action from './actionType';
 
 export const startrealState=()=>{
     return{
-        type:action.STARTAUTH
+        type:action.REALSTATESTART
     }
 }
 
 export const errorrealState=()=>{
     return{
-        type:action.ERRORAUTH
+        type:action.REALSTATEERROR
     }
 }
 
@@ -35,7 +35,9 @@ export const REALSTATEPOSTINIT=(data)=>{
         }).then(res=>{
                 if(res.data){
                     dispatch(REALSTATEPOST());
+                    window.location.reload();
                     ShowAlert([], 'ملک با موفقیت ساخته شد', 'success')
+                  
                 }
         }).catch(er=>{
             dispatch(errorrealState())
@@ -66,12 +68,12 @@ export const REALSTATEGETALL=(data)=>{
     }
 }
 
-export const REALSTATEGETALLINIT=(page,query, auth)=>{
+export const REALSTATEGETALLINIT=(page,query, limit)=>{
 
     return dispatch=>{
         dispatch(startrealState());
         
-        axios(apidomain + `/realstate?page=${page}&limit=20&${query}`,{
+        axios(apidomain + `/realstate?page=${page}&limit=${limit?limit:20}&${query}`,{
             method:'get',
             headers:{'Authorization':'application/json'}
         }).then(res=>{
@@ -132,7 +134,7 @@ export const REALSTATEPATCHINIT=(data,id)=>{
             headers:{ 'Authorization': `Bearer ${cookiejwt}`}
         }).then(res=>{
                 if(res.data){
-                    dispatch(REALSTATEPOST());
+                    dispatch(REALSTATEPATCH());
                     ShowAlert([], 'ملک با موفقیت بروزرسانی شد', 'success')
                 }
         }).catch(er=>{
@@ -270,5 +272,21 @@ export const realstatestartfocinit= (query)=>{
             }).catch(er=>{
                 console.log(er)
             })
+    }
+}
+
+export const searchfielschange = (value, id)=>{
+
+    return{
+        type: action.SEARCHFIELDSCHANGE,
+        value: value,
+        id: id
+    }
+}
+
+export const searchfielschangeinit = (value, id)=>{
+
+    return dispatch =>{
+            dispatch(searchfielschange(value, id))
     }
 }

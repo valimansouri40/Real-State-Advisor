@@ -1,7 +1,4 @@
 
-.btnui-ok{
-    background: yellow;
-}
 .changenum1::after ,.changenum1::before{
 
     content: "";
@@ -11,13 +8,16 @@
     position: absolute;
     right: 1rem;
 }
-
+.leaseform-update{
+    background: red;
+    width: 80%;
+}
 .changenum1::after{
     top: 48%;
     transform: rotate(40deg);
 }
 .changenum1::before{
-    top: 51.5%;
+    top: 53.5%;
     transform: rotate(-40deg);
 }
 
@@ -37,7 +37,7 @@
     transform: rotate(-40deg);
 }
 .changenum2::before{
-    top: 51.5%;
+    top: 53.5%;
     transform: rotate(40deg);
 }
 
@@ -53,3 +53,36 @@
     justify-content: space-around;
     direction: 'rtl';
 }
+
+.btnui{
+    width: 40%;
+    margin-right: .5rem;
+    padding: .3rem 0;
+    height: 2rem;
+    border:1px solid rgb(29, 47, 138);
+    border-radius: 5px;
+    margin-bottom: 1rem ;
+    color: rgb(29, 47, 138);
+    font-size: 1rem;
+ }
+ .btnui:hover{
+     background: rgb(160, 203, 160);
+ }
+ .btnui-ok{
+     width: 40%;
+     margin-right: .5rem;
+     padding: .3rem 0;
+     height: 2rem;
+     border:1px solid rgb(29, 47, 138);
+     border-radius: 5px;
+     margin-bottom: 1rem ;
+     color: rgb(29, 47, 138);
+     font-size: 1rem;
+     background: rgb(130, 179, 130);
+ }
+/* .btnui-ok{
+    background: green;
+}
+.btnui{
+    background: red;
+} */

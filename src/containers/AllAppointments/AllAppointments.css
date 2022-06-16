@@ -1,24 +1,168 @@
 
 .allappointment-target{
-    width: 70%;
+    width: 100%;
     
 }
+.changerole-target-appo{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    
+}
+/* myappointment */
+.myappointment-target{
+    width: 100%;
+}
+.myappointment-frame{
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: inherit;
+}
+.myappointment-box{
+    padding: .5rem;
+    display: grid;
+    background: rgb(228, 224, 224);
+    border-radius: 6px;
+    margin: 2rem 0;
+    width: 97%;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 4rem 4rem;
+    position: relative;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+}
+
+
+/* allappointment */
+
 .allappointment-frame{
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    min-height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: rgb(180, 179, 181);
+}
+.allreq-slect{
+    margin: 1rem 0;
+}
+/* .changerole-target2{
+    min-height: 100vh;
+    background: red;
+} */
+
+.allappointment-target{
+    width: 80%;
+    min-height: 100vh;
     
 }
 
-
-.allappointment-box{
-    display: flex;
-    background: cyan;
-    margin: 1rem;
+.acceptcoment-tabbox{
     width: 100%;
-    align-items: flex-start;
-    justify-content: space-around;
-    flex-flow: row wrap;
+
+}
+.nav-link-active{
+    border: none;
+    border-bottom: 2px solid rgb(37, 65, 131) ;
+    padding: .4rem 1rem;
+    outline: none;
+    font-size: 1.4rem;
+    color: black;
+}
+.nav-link{
+    border: none;
+    padding: .4rem 1.2rem;
+    margin: 0 1rem;
+    outline: none;
+    font-size: 1.4rem;
+    color: black;
+}
+.allappointment-box{
+    padding: .5rem;
+    display: grid;
+    background: rgb(228, 224, 224);
+    border-radius: 6px;
+    margin: 2rem 0;
+    width: 97%;
+    grid-template-columns: 19% 21% 20% 20% 20%;
+    grid-template-rows: 4rem 4rem;
+    position: relative;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+}
+.allappointment-fieldbox{
+  
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+   
+    
+}
+.allappointment-delete{
+    position: absolute;
+    top: -1.3rem;
+    right: 1rem;
+    padding: .25rem .4rem .2rem .4rem;
+    box-shadow: 0 .1rem .2rem #111;
+    border-radius: 50%;
+    background: rgb(180, 179, 181);
+    transition: all .4s ease;
+}
+.allappointment-field{
+    font-size: .9rem;
+    word-break: break-all;
+   
+    max-width: 100%;
+
+}
+.allappointment-delete:hover{
+    transform: translate(1px);
+}
+.allreq-slect{
+    padding: .3rem 1rem ;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
 .allappointment-field{
     margin: 1rem;
+}
+
+@media (max-width:1000px){
+    .myappointment-box{
+        width: 90%;
+        grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 4rem 4rem 4rem;
+    }
+    .allappointment-fieldbox:nth-child(9){
+        grid-column: 2/4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .allappointment-field{
+        word-break: keep-all;
+    }
+}
+
+@media (max-width:500px){
+    .myappointment-box{
+        width: 90%;
+        grid-template-columns: 50% 50%;
+    grid-template-rows: 4rem 4rem 4rem 4rem;
+    }
+    .allappointment-fieldbox:nth-child(9){
+        grid-column: 2/3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .allappointment-field{
+        word-break: keep-all;
+    }
 }

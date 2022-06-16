@@ -88,3 +88,18 @@ export const lessmarkinit= (id)=>{
          })
     }
 }
+
+export const closeModal =(dt, dt2)=>{
+    return{
+        type: action.CLOSEMODAL,
+        dt: dt,
+        dt2: dt2
+    }
+}
+
+export const closeModalInit =(dt, dt2)=>{
+
+    return dispatch =>{
+        dispatch(closeModal(dt, dt2));
+    }
+}

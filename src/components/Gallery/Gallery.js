@@ -29,10 +29,17 @@ const Gallery=(props)=>{
         }
     return(
         <div className='gallery-target' >
+            <div className="gallery-frame">
+            <div className="gallery-labelbox">
+                <h3 className="gallery-label">
+                    گالری
+                </h3>
+                <span className="gallery-border"></span>
+            </div>
             <div className='gallery-Frist'>
-                    <span className='gallery-lessnum' onClick={lastMyImage}>{'>'}</span>
+            {Image.length > 1?<span className='gallery-lessnum' onClick={lastMyImage}></span>:null}
                     <img src={`data:image/jpeg;base64,${Image[num]}`} className='gallery-frist-img' />
-                    <span className='gallery-addnum' onClick={nextMyImage}>{'<'}</span>
+                    {Image.length > 1?<span className='gallery-addnum' onClick={nextMyImage}></span>:null}
             </div>
             <div  className='gallery-imagerow'>
                    {  Image.map((mp, i)=><div onClick={()=>changefullimage(i)}
@@ -41,7 +48,7 @@ const Gallery=(props)=>{
                     </div>)}
                     
             </div>
-            
+            </div>
         </div>
     )
 }

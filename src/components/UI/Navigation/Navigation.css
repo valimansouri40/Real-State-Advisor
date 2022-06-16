@@ -27,3 +27,17 @@ header .header-items .menu ul {
   header .header-items .menu ul li:last-child {
     margin-left: 0;
   }
+
+
+  @media (max-width: 992px){
+
+    .list{
+      display: none;
+    }
+    .list-item{
+      display: none;
+    }
+    .list-item-link{
+      display: none;
+    }
+  }

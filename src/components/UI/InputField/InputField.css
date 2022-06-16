@@ -1,0 +1,15 @@
+ /* .inpcls{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 1rem ;
+}
+
+.label{
+    font-size: 1rem;
+    color: rgb(29, 47, 138);
+    padding: .7rem 0;
+    padding-bottom: .3rem;
+} */

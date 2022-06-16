@@ -1,14 +1,79 @@
 .changerole-target{
-    width: 100%;
+    max-width: 100%;
     height: 100vh;
     display: flex;
+    
+}
 
+.changerole-target3{
+    width: 100%;
+    background-color: rgb(221, 211, 211);
+    display: grid;
+   grid-template-columns: 20% 80%;
+   overflow-x:hidden ;
+}
+.changerole-target-update{
+    width: 100%;
+    background-color: rgb(221, 211, 211);
+    display: grid;
+   grid-template-columns: 20% 80%;
+   overflow-x:hidden ;
+}
+.not-exist-state{
+    width: 100%;
+    text-align: center;
+    margin-top: 3rem;
+}
+.builder-update{
+    width: 100%;
+    height: 90%;
+    margin: 0;
+    background: red;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    border-radius: 6px;
+    z-index: 4000;
+}
+.search-frame{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    
+}
+.search-frame{
+   width: 100%;
+   min-height: 100vh;
+    margin: 0 auto;
+background: rgb(201, 196, 196);
+/* background: rgb(249, 248, 248); */
+}
+.searc-target{
+    width: 80%;
+}
+.searc-box{
+    margin-top: 1rem;
+    width: 100%;
+    height: 18rem;
+    box-shadow: 0 .2rem .3rem #111;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background: rgb(212, 212, 218);
+    border-radius: 6px;
+}
+.selectbox-one{
+    grid-column: 1/3;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin:0 5rem ;
 }
 .card-change{
     position: absolute;
     top: 0;
     left: 0;
-    width: 40px;
+    display: flex;
 }
 
 .card-edit{
@@ -18,14 +83,110 @@
 
 .realstatemanager-modal{
     z-index: 200000;
-    width: 20rem;
+    width: 100%;
     height: 20rem;
-    background: white;
+    background: rgb(241, 238, 238);
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    border-radius: 12px;
 }
 .posts{
     width: 100%;
+}
+
+.search-inputbox{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-direction: column;
+}
+.search-inp{
+    background: rgb(188, 184, 184);
+    font-size: 1rem;
+    padding: .2rem ;
+    width: 67%;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+}
+.search-btnbox{
+    grid-column: 1/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+.search-btn{
+    margin-left: 6rem;
+    background: green;
+}
+.container3{
+    width: 100%;
+
+}
+.realstatemanager-modal-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.realstatemanager-modal-box-btn{
+    width: 40%;
+    padding: .3rem 0;
+    border: none;
+    border-radius: 6px;
+    background: green;
+    font-size: 1rem;
+    color: aliceblue;
+}
+.red{
+    background: rgb(228, 39, 39);
+}
+.tab-content-management{
+    width: 100%;
+   
+}
+.realstate-box-2{
+    width: 80%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 .2rem .3rem #111;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    height: 14rem;
+    margin: 2rem auto;
+}
+.card-imbox-management{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.management-img{
+    width: 100%;
+    height: 100%;
+}
+.card-edit{
+    margin-top: .4rem;
+    margin-left: .4rem;
+    width: 25px;
+    height: 25px;
+    padding: .2rem;
+    background: rgba(84, 83, 83, 0.616);
+    border-radius: 3px;
+    transition: all .5s ease;
+}
+.card-edit:hover{
+    background: rgba(126, 124, 124, 0.616);
+    transform: translate(1px);
+}
+.card-mid-box{
+    margin: 1rem;
+    margin-right: 2rem;
+    width: 100%;
+    height: 6rem;
+    display: grid;
+    grid-template-columns: 45% 45% ;
 }

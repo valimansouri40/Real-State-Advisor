@@ -17,7 +17,7 @@ const Footer=(props)=>{
                 behavior: 'smooth'
             });
             settab(dt)
-            console.log(tab)
+           
     }
 
     return(
@@ -61,7 +61,7 @@ const Footer=(props)=>{
                 <div class="inamad">
                     <h4>نماد های اعتماد</h4>
                     <img src={enamad} alt=""/>
-                    <img src={samandehi} alt=""/>
+                    <img width="150px" heigth="150px" src={samandehi} alt=""/>
                     <img src={enamad} alt=""/>
                 </div>
 

@@ -1,10 +1,41 @@
-.adnav-target{
+
+.adnav-all{
     width: 20%;
+    height: 100vh;
+    position: relative;
+    margin: 0;
+}
+.adnav-target{
+    width: 100%; 
     min-height: 100vh;
-    background: rgb(144, 145, 148);
+    margin: 0;
 }
 .adnav-box{
-    width: 100%;
+    width: 20%;
+    background: rgb(144, 145, 148);
     height: 100%;
+    margin: 1rem 1rem;
+    position: fixed;
+    top: -2.3%;
+    right: -1%;
 }
-
+.adnav-link-active{
+    text-decoration: none;
+    color: black;
+    padding: .5rem 0;
+    font-size: 1rem;
+    background: rgb(76, 132, 201);
+}
+.adnav-h1{
+    margin: 1rem;
+    font-size: 1.4rem;
+    color: bisque;
+}
+.adnav-h2{
+    font-size: 1rem;
+    padding: .5rem 0;
+}
+.adnav-link{
+    text-decoration: none;
+    color: black;
+}

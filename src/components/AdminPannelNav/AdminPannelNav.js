@@ -50,13 +50,19 @@ const AdminPannelNav=props=>{
             }
         }
     return(
+        <div className="adnav-all">
         <div className='adnav-target'>
+          
+            
             <div className='adnav-box'>
-                    {rolelimitnav?rolelimitnav.map(mp=><NavLink className={path === mp.path?'adnav-link active':'adnav-link'}
+            <h1 className="adnav-h1"> پنل مدیریت  </h1>
+                    {rolelimitnav?rolelimitnav.map(mp=><NavLink 
+                    className={'adnav-link'}
                      to={mp.path}>
                             {mp.icon}
-                            <h2 className='adnav-h2'>{mp.text}</h2>
+                            <h2 className={path === mp.path?'adnav-link-active':'adnav-h2'}>{mp.text}</h2>
                     </NavLink>):null}
+            </div>
             </div>
         </div>
     )

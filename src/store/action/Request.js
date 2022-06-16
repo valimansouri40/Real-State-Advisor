@@ -20,11 +20,11 @@ export const getallmyreq=(data, length)=>{
 }
 
 
-export const getallmyreqinit=( query,page, limit)=>{
+export const getallmyreqinit=( query)=>{
 
     return dispatch=>{
         dispatch(startreq());
-        axios(apidomain + `/request/getallrequest?page=${1}&limit=${30}`,
+        axios(apidomain + `/request/getallrequest?_id=${query}&page=${1}&limit=${30}`,
         {
             method:'get',
             headers:{'Authorization': `Bearer ${cookiejwt}`}

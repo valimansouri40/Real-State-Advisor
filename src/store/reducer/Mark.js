@@ -3,7 +3,9 @@ import * as actionType from '../action/actionType';
 export const initialState={
         loading: false,
         myMark: null ,
-        length: null
+        length: null,
+        modal: false,
+        modal2: false
 }
 
 
@@ -28,6 +30,12 @@ const Reducer=(state = initialState, action)=>{
                 return{
                     ...state,
                     loading: false
+                }
+            case actionType.CLOSEMODAL:
+                return{
+                    ...state,
+                    modal: action.dt,
+                    modal2: action.dt2
                 }
             default: return state;
         }

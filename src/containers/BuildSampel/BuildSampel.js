@@ -46,6 +46,7 @@ const BuildSampel=(props)=>{
                 getBase64(e.target.files[0]).then(result=>setimg(result));
            
         }
+        
         const submithandllerss=()=>{
             
             const data= {
@@ -54,7 +55,7 @@ const BuildSampel=(props)=>{
                 Text:txt ,
                 Passage: passage
             }
-            console.log(data);
+            
            if(!switcharr.includes(data.Tab) ){
                if(data.Img && data.Text){
                 postwsinit(data);
@@ -89,50 +90,58 @@ const BuildSampel=(props)=>{
         'Executionandconstruction':' اجرا و ساخت',
         'ExpertofJustice':' کارشناس دادگستری',
         'endofwork':' پایان کار',
-        'License ':'جواز'}
+        'lisense':'جواز',
+        'contracting':'پیمان کاری'}
     return(
         <div className='changerole-target'>
             <AdminPannelNav/>
             <div className='sampel-box'>
                 <div className='sampel-buildbox'>
-                <div style={{display:'flex', alignItems:'center',justifyContent:'center'}} class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <button class={tabs !== 'mapdesign'?"nav-link ":"nav-link-active"} onClick={changeTabs} value='mapdesign' >طراحی نقشه</button>
-                        <button class={tabs !== 'Mapping'?"nav-link ":"nav-link-active"} onClick={changeTabs} value='Mapping' >نقشه برداری</button>
-                        <button class={tabs !== 'Registrationwork'?"nav-link ":"nav-link-active"} onClick={changeTabs} value='Registrationwork' >کار های ثبتی</button>
-                        <button class={tabs !== 'Advocacy'?"nav-link ":"nav-link-active"} onClick={changeTabs} value='Advocacy' >وکالت دادگاهی</button>
-                        <button class={tabs !== 'Executionandconstruction'?"nav-link ":"nav-link-active"} onClick={changeTabs} value='Executionandconstruction' >اجرا و ساخت</button>
-                        <button class={tabs !== 'ExpertofJustice'?"nav-link ":"nav-link-active"} onClick={changeTabs} value='ExpertofJustice' >کارشناس دادگستری</button>
-                        <button class={tabs !== 'endofwork'?"nav-link ":"nav-link-active"} onClick={changeTabs} value='endofwork' >پایان کار</button>
-                        <button class={tabs !== 'lisense'?"nav-link ":"nav-link-active"} onClick={changeTabs} value='lisense' >جواز</button>
+                <div style={{display:'flex', alignItems:'center',justifyContent:'center'}}>
+                        <button class={tabs !== 'mapdesign'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='mapdesign' >طراحی نقشه</button>
+                        <button class={tabs !== 'Mapping'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='Mapping' >نقشه برداری</button>
+                        <button class={tabs !== 'Registrationwork'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='Registrationwork' >کار های ثبتی</button>
+                        <button class={tabs !== 'Advocacy'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='Advocacy' >وکالت دادگاهی</button>
+                        <button class={tabs !== 'Executionandconstruction'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='Executionandconstruction' >اجرا و ساخت</button>
+                        <button class={tabs !== 'ExpertofJustice'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='ExpertofJustice' >کارشناس دادگستری</button>
+                        <button class={tabs !== 'endofwork'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='endofwork' >پایان کار</button>
+                        <button class={tabs !== 'lisense'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='lisense' >جواز</button>
+                        <button class={tabs !== 'contracting'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='contracting' >پیمان کاری</button>
+                    
                     </div>
                     <div className='sampel-form' >
                         {!switcharr.includes(tabs) ?
                         <React.Fragment><label className='sampel-label' for='picture'>
-                             <img src={picture} className='sampel-label-img'/>
+                             {!img?<img src={picture} className='sampel-label-img'/>:
+                             <img src={img} className='sampel-label-img'/>}
                         انتخاب تصویر</label>
                         <input type='file' multiple id='picture' accept='image/jpeg , image/png'
                          style={{display:'none'}}
                          onChange={imghdl}  />
-                         <input type='text' placeholder='متن' 
+                         <textarea type='text' placeholder='متن' 
                          className='sampel-text' value={txt} onChange={(e)=>settxt(e.target.value)} /></React.Fragment>:
-                         <textarea value={passage} onChange={(e)=>setpassge(e.target.value)}></textarea>}
+                         <textarea placeholder='متن'  className='sampel-text' value={passage} onChange={(e)=>setpassge(e.target.value)}></textarea>}
                          {/* <input type='submit' className='sampel-submit' value='ارسال'/> */}
-                         <button onClick={submithandllerss}>ثبت</button>
+                         <button className="sampel-btn" onClick={submithandllerss}>ثبت</button>
                     </div>
                 </div>
-                <div className='card-tg' style={{width:'100%', minHeight:'100vh', display:'flex', alignItems:'flex-start',justifyContent:'space-around', flexFlow:'row wrap'}} >
+                <div className='card-tg'  >
                             {workSampel?workSampel.map(mi=>(
-                                <div style={{width:'200px', height:'300px', background:'blue'}} 
-                                className='card-bx'>
+                                mi.Image?<div className='card-bx'>
                                             <img src={close} width='20px'
-                                            height='20px' onClick={()=>deleteSampelHandller(mi._id)} />
-                                           { mi.Image?<img className='card-img'
-                                            width='150px' height='150px'
+                                            height='20px' className="sampel-card-icon" onClick={()=>deleteSampelHandller(mi._id)} />
+                                           { mi.Image?<img className='card-img-sampel'
+                                           
                                              src={`data:image/jpeg;base64,${mi.Image}`} />:null}
                                              <h1 className='card-head'>{arr[mi.Tab]} </h1>
                                              <p className='card-txt'>{mi.Text}</p>
                                             <p className='card-txt'>{mi.Passage}</p>
-                                    </div>
+                                    </div>:
+                                    <div className='card-bx-passage'>
+                                     <h1 className='card-head'>{arr[mi.Tab]} </h1>
+                                     {/* <p className='card-txt'>{mi.Text}</p> */}
+                                    <p className='card-txt'>{mi.Passage}</p>
+                            </div>
                             )):<Spinner/>}
                 </div>
             </div>

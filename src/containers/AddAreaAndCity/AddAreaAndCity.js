@@ -35,7 +35,7 @@ const AddAreaAndCity=(props)=>{
     },[path])
     
     const findhandller=()=>{
-            console.log(search)
+           
             if(path === '#/addarea'){
                 changefilehandller(null, 'getarea',`area=${search}`)
             }else if(path === '#/addcity'){
@@ -52,18 +52,21 @@ const AddAreaAndCity=(props)=>{
 
         }
     }
-   console.log(field2)
+   
     return(
-        <section className='changerole-target' >
+        <section className='addareaandcity-target' >
             <AdminPannelNav/>
-            <div style={{display:'flex'
-        ,alignItems:'flex-start', justifyContent:'space-around'}} className='addsection'>
+            <div  className='addsection'>
+               {/* <div className='addareaandcity-formbox'></div> */}
+               <div>
+               <DeleteBox setsearch={setsearch} deleterealstatepost={deleterealstatepost}
+                       findhandller={findhandller} data={path==='#/addarea'?field:field2} />
+               {path === '#/addarea'?<div  className='googelmapbox'>
+                      <GoogleMaps location={loc} setlocation={setloc}/></div> :null}
+                      </div>    
                  <Form  data={data} 
                   setdata={setdata} location={loc} changefilehandller={changefilehandller} />
-                  {path === '#/addarea'?<div style={{width:'40rem',height:'40rem'}} className='googelmapbox'>
-                      <GoogleMaps location={loc} setlocation={setloc}/></div> :null}
-                      <DeleteBox setsearch={setsearch} deleterealstatepost={deleterealstatepost}
-                       findhandller={findhandller} data={path==='#/addarea'?field:field2} />
+                 
             </div>
         </section>
     )
@@ -87,3 +90,6 @@ const MapDispatchToProps=dispatch=>{
 
 
 export default connect(MapStateToProps, MapDispatchToProps)(AddAreaAndCity);
+ // "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
+//  "dev:start": "nodemon ./server-build/index.js",
+//  "dev": "npm-run-all --parallel build dev:*",

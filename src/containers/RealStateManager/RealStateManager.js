@@ -2,7 +2,6 @@ import React ,{useState, useEffect} from "react";
 import './RealStateManager.css';
 import * as action from '../../store/action/index';
 import { connect } from "react-redux";
-import video1 from '../../assets/icons/icons8-car-cleaning-48.png';
 import Edit from '../../assets/icons/icons8-edit-32.png';
 import Trash from '../../assets/icons/icons8-trash-can-64.png';
 import Paginate from '../../components/Paginate/Paginate';
@@ -10,13 +9,15 @@ import { Link } from "react-router-dom";
 import Modal from "../../components/UI/Modal/Modal";
 import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
 import Spinner from "../../components/UI/spinner/Spinner";
+import { changeprice } from "../../components/UI/CardRealState/changePrice";
 // صفحه مدیریت ملک در پنل مدیریت
 
 const RealStateManager=(props)=>{
-    const {REALSTATEGETALLINIT,length , AllData, changefilehandller, REALSTATEDELETEONEINIT,
+    const {REALSTATEGETALLINIT,length , AllData,
+         changefilehandller, REALSTATEDELETEONEINIT,
          role, cityall, areaall}=props;
     
-    const [Tab, settab]=useState('rahn');
+    const [Tab, settab]=useState('');
     const [page, setpage]=useState(1)
     const [modal, setmodal]=useState(false);
     const [cardid,setcardid]=useState();
@@ -27,18 +28,31 @@ const RealStateManager=(props)=>{
     const [esquireph, setesquierph]= useState('')
     const [cityid, setcityid]=useState('');
     const [allerea, setallerea]= useState([]);
-  
+    const [AdvisorId, setAdvisorId] = useState()
+
+   
     useEffect(()=>{
+        // if(!localStorage.getItem('tipicManager')){
+        //     localStorage.setItem('tipicManager', 'rahn')
+        // }
+        settab(localStorage.getItem('tipicManager'))
+        changefilehandller(null, 'getallcity','')
+    },[])
+    useEffect(()=>{
+        if(areaall){
         setallerea(areaall)
+    }
     },[areaall])
     useEffect(()=>{
 
         REALSTATEGETALLINIT(page, `Tipic=${Tab}`, role)
+        
     },[REALSTATEGETALLINIT, Tab,page])
-       
+      
     const setvaluehd=(e)=>{
         settab(e.target.value);
         setpage(1);
+        localStorage.setItem('tipicManager', e.target.value)
     }
 
     const realstateDeleteHandller=(id)=>{
@@ -84,10 +98,13 @@ const RealStateManager=(props)=>{
     if(modal){
         mdl =<Modal modal={modal} setmodal={setmodal}><div className='realstatemanager-modal' >
                 <h3  className="realstatemanager-h3"> اطمینان دارید از حذف این مورد؟</h3>
-                <button className='ok' onClick={realstateDeleteHandller}>حذف شود</button>
-                <button className='cancel' onClick={()=>setmodal(false)}>لغو</button>
+                <div className="realstatemanager-modal-box">
+                    <button className='realstatemanager-modal-box-btn' onClick={realstateDeleteHandller}>حذف شود</button>
+                <button className='realstatemanager-modal-box-btn red' onClick={()=>setmodal}>لغو</button>
+                </div>
         </div></Modal>
     }
+    
     const searchhandller=()=>{
         const data= {
             Tipic:Tab,
@@ -95,7 +112,8 @@ const RealStateManager=(props)=>{
             Area: area,
             RealStateNumber:realstatenum,
             EsquierName: esquirename,
-            EsquierPhoneNumber: esquireph
+            EsquierPhoneNumber: esquireph,
+            NoneId: AdvisorId
         }
         const dataenterise= Object.entries(data);
 
@@ -109,15 +127,27 @@ const RealStateManager=(props)=>{
         REALSTATEGETALLINIT(page, querystr,role)
     }
     return(
-        <section class="changerole-target">
+        <section class="changerole-target3">
             <AdminPannelNav/>
             {mdl}
+            <div className="search-frame">
             <div className='searc-target'>
                 <div className='searc-box'>
+                <div className="selectbox-one">
+                <label className='label' >   ملک برای </label>
+                    <select className='select' value={Tab} onChange={setvaluehd}  >
+                        <option value="rahn" className='option'>
+                        رهن و اجاره
+                        </option> 
+                        <option value="sells" className='option'>
+                        فروش
+                        </option> 
+                    </select>
+                </div>
                 <div className='selectbox'>
                     <label className='label'>   شهر</label>
                 <select className='select' onChange={(e)=>setvaluehandller(e.target.value)}  >
-                <option className='option'  >
+                <option className='option'>
                         شهر
                     </option>
             {role?cityall && rolear.includes(role.role)?cityall.map(mp=>(
@@ -158,40 +188,89 @@ const RealStateManager=(props)=>{
 </select>
  </div>:null:null}
                     <div className='search-inputbox'>
-                        <label className='search-label'>آیدی ملک</label>
+                        <label className='label'>آیدی ملک</label>
                         <input className='search-inp' value={realstatenum}
                          onChange={(e)=> setrealstatenum(e.target.value)} type='number' name='id' />
+                    </div>
+                    <div className='search-inputbox'>
+                        <label className='label'>آیدی مشاور</label>
+                        <input className='search-inp' value={AdvisorId}
+                         onChange={(e)=> setAdvisorId(e.target.value)} type='number' name='advisor-Id' />
                         </div>
                         <div className='search-inputbox'>
-                        <label className='search-label'>شماره همراه مالک</label>
+                        <label className='label'>شماره همراه مالک</label>
                         <input className='search-inp' value={esquireph}
                          onChange={(e)=> setesquierph(e.target.value)} type='number' name='tell' />
                         </div>
                         <div className='search-inputbox'>
-                        <label className='search-label'>نام مالک</label>
+                        <label className='label'>نام مالک</label>
                         <input className='search-inp' value={esquirename}
                          onChange={(e)=>setesquiername(e.target.value)} type='text' name='nam' />
                         </div>
+                        <div className="search-btnbox">
                         <button className='search-btn' onClick={searchhandller} >جستجو</button>
+                        </div>
                 </div>
                 
             </div>
-        <div class="container">
+        <div class="container3">
+                    <div className="tab-content-management"  >
+                    {AllData? AllData.length === 0?<div className="not-exist-state">موردی یافت نشد!!</div>:null:
+                <div className="not-exist-realstate"><Spinner/></div>}   
+                      { AllData?.map((mp,i)=>(
+                          <div className='realstate-box-2'>
+                             
+                             <div className='card-middle2'>
+                              <div className='card-headbox2'>
+                              <h2 className='field'>  {mp.TypeState + " " + mp.Area}</h2>
+                             <div className="card-textandicon"> 
+                              <img width='20px' height='20px' 
+                            src="https://img.icons8.com/ios-filled/50/000000/marker.png"/>
+                            <h2 className='field'>    {mp.Type}</h2>
+                            </div>
+                              </div>
+                          <div className="card-mid-box3">
+                          <div className="card-textandicon"> 
+                          <img width="20px" heigth="20px" 
+                          src="https://img.icons8.com/material-rounded/24/000000/2016.png"/>
 
-            <div class="row">
-                <div class="tabs">
-                    <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            {/* <button onClick={setvaluehd} className={Tab !==""?"nav-link":"nav-link active"} value="" >پیشنهاد ویژه سایت</button> */}
-                            <button onClick={setvaluehd} className={Tab !=="rahn"?"nav-link":"nav-link active"}value="rahn" >رهن و اجاره</button>
-                            <button onClick={setvaluehd} className={Tab !=="sells"?"nav-link":"nav-link active"} value="sells" >خرید ملک</button>
-                            
-                        </div>
-                    </nav>
-                    <div className="tab-content1"  >
-                      {AllData? AllData.map((mp,i)=>(
-                          <div className='realstate-box'>
-                              <div className='card-imbox'>
+                              <h2 className='field'>{`${mp.YearBuild} سال ساخت  `}</h2>
+                          </div>
+                          <div className="card-textandicon"> 
+                          <img 
+                              width='20px' height='20px'
+                              src="https://img.icons8.com/fluency-systems-filled/48/000000/double-bed.png"/>
+                              <h2 className='field'> 
+                               {mp.EsquierName}</h2>
+                              </div>
+                         <div className="card-textandicon"> 
+                         <img width="20px" heigth="20px" 
+                         src="https://img.icons8.com/ios-filled/50/000000/equal-housing-opportunity.png"
+                         />
+                              <h2 className='field'>  {mp.EsquierPhoneNumber}</h2>
+                              </div>
+                        <div className="card-textandicon"> 
+                        <img 
+                            width="25px"  height="25px"
+                        src="https://img.icons8.com/external-photo3ideastudio-solid-photo3ideastudio/64/000000/external-measure-home-tools-photo3ideastudio-solid-photo3ideastudio.png"/>
+                              <h2 className='field'>   {mp.RealStateNumber}</h2>
+                              </div>
+                            </div> 
+                            <div className="card-foot" >
+                            {/* {mp.Mark?<img width='25px' height='25px' onClick={()=>lessmarkhandller(mp._id)} 
+                            src="https://img.icons8.com/ios-glyphs/30/000000/like--v1.png"/>
+                            :<img width='25px' height='25px' onClick={()=>addmarkhandller(mp._id)}
+                            src="https://img.icons8.com/ios/50/000000/like--v1.png"
+                            />} */}
+                                {/* <h2 className='field'> متراژ : {mp.Measure} متر</h2> */}
+                                <h2 className='field'> {mp.Tab === 'sells'? 'قیمت':"رهن"} : {changeprice(mp.Mortgage)}</h2>
+                               
+                                {/* {mp.Lease? <h2 className='field'> اجاره : {changeprice(mp.Lease)}</h2>:null } */}
+                               </div>
+                                </div>
+                              {/* <button className="card-btn"><Link to={`/viewrealstate/${mp._id}`}> مشاهده صفحه </Link></button> */}
+                              
+                              <div className='card-imbox-management'>
                                 <div className='card-change'>  
                                 <Link to={`/realstateupdate/${mp._id}`}> 
                                 <img src={Edit} className='card-edit' />
@@ -199,34 +278,19 @@ const RealStateManager=(props)=>{
                                  <img src={Trash} onClick={()=>showmodalhandller(mp._id)}
                                   className='card-edit' /> 
                                 </div>
-                                <img src={`data:image/jpeg;base64,${mp.Image[0]}`}
-                                 width='100px' height='100px' />
+                                 <Link to={`/viewrealstate/${mp._id}`}> <img src={`data:image/jpeg;base64,${mp.Image[0]}`}
+                                 className="management-img" />
+                                 </Link>
                                 <span className="card-status">{mp.Tipic?"":""}</span>
-                                <img src={video1} />
+                                {/* <img src={video1} /> */}
                               </div>
-                              <div className='card-middle'>
-                                  <div className='card-headbox'>
-                                  <h2 className='card-head'>{mp.TypeState}</h2>
-                                    <h3 className='card-address'>{mp.Type}</h3>
-                                  </div>
-                                    <p className='field'>{`${mp.YearBuild} سال ساخت`}</p>
-                                    <p className='field'>{mp.TypeState}</p>
-                                    <p className='field'>{mp.Type}</p>
-                                    <p className='field'>{mp.SomeRoom}</p>
-                                    <p className='field'>{mp.Measure}</p>
-                                    <p className='field'>{mp.Mortgage}</p>
-                                    
-                                    
-                                    </div>
-                              
-                              <button className="card-btn"><Link to={`/viewrealstate/${mp._id}`}> مشاهده صفحه </Link></button>
                               </div>
-                      )):<Spinner/>}
+                      ))}
                       
                        </div>
                        <Paginate setpage={setpage} page={page} length={length} />
                 </div>
-            </div>
+            
         </div>
     </section>
     )

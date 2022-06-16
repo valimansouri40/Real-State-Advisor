@@ -5,7 +5,8 @@ export const initialstate={
 
     reviwes: null,
     loading: false,
-    length: null
+    length: null,
+    bestOfAdvisor: null
 }
 
 
@@ -33,6 +34,11 @@ const Reducer=(state=initialstate, action)=>{
             return{
                 ...state,
                 loading:false
+            }
+        case actiotype.GETBESTOFADVISOR:
+            return{
+                ...state,
+                bestOfAdvisor: action.data
             }
         default: return state;
     }

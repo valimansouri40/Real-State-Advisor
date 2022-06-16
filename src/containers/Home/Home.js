@@ -8,12 +8,14 @@ import TabRealState from "../../components/TabRealState/TabRealState";
 import SearchResult from "../../components/SearchResult/SearchResult";
 import './Home.css';
 import Footer from "../../components/Footer/Footer";
-import Spinner from "../../components/UI/spinner/Spinner";
+import BestOfArea from "../../components/BestOf/BestOfArea";
+import CloseComponent from "../../components/CloseComponent/CloseComponent";
+
 
 // صفحه اصلی و صفحه نتایج سرچ
 
 const Home= (props)=>{
-        const {areaall,cityall,length,Tab ,   addMarkinit, lessmarkinit, 
+        const {areaall,cityall,length,Tab , getbestofadinit,bestOf,  addMarkinit, lessmarkinit, 
             savetabserchboxinit, getallfilterinit,AllData, changefilehandller,getallwsinit,filter,
             worksampel, auth, sendreq, REALSTATEGETALLINIT}= props;
         const [tab, settab]=useState(Tab);
@@ -21,6 +23,7 @@ const Home= (props)=>{
 
         useEffect(()=>{
             changefilehandller(null, 'getallcity', '');
+            getbestofadinit();
         },[])
           
         useEffect(()=>{
@@ -33,12 +36,15 @@ const Home= (props)=>{
         },[tab])
         
         const limitpath= path === '#/search';
-        return(<div>
+        return(<div >
+           
            <Header tab={Tab} settab={settab} auth={auth} sendreq={sendreq}></Header>
+           <CloseComponent>
            <Logo></Logo>
             
            <div className={!limitpath?'home-searchboxbox':'search-searchbox'}>
-               <div className={limitpath?'search-filters':'home-filters'}><Filter worksampel={worksampel}
+               <div className={limitpath?'search-filters':'home-filters'}>
+                   <Filter worksampel={worksampel}
                 filter={filter} tab={Tab} settab={settab}
                  REALSTATEGETALLINIT={REALSTATEGETALLINIT} 
                 auth={auth} sendreq={sendreq} getallwsinit={getallwsinit} getallfilterinit={getallfilterinit}
@@ -48,15 +54,22 @@ const Home= (props)=>{
                     REALSTATEGETALLINIT={REALSTATEGETALLINIT} 
                     length={length} filter={AllData} auth={auth}
                     addMarkinit={addMarkinit} lessmarkinit={lessmarkinit}
-                    />:null}
+                    />
+                    :null}
                 
-                    {!limitpath?
+                    {!limitpath?<>
                     <div className='home-tabs'><TabRealState
                     addMarkinit={addMarkinit} lessmarkinit={lessmarkinit} auth={auth}
                     REALSTATEGETALLINIT={REALSTATEGETALLINIT} length={length} filter={AllData}
-                    ></TabRealState></div>:null}
-                   
+                    ></TabRealState>
+                   <BestOfArea bestOf={bestOf}/>
+                    </div>
+                    
+                    </>:null}
+                    
+                  
             </div>
+            </CloseComponent>
             <Footer tab={Tab} settab={settab} auth={auth} />
         </div>)
 
@@ -73,7 +86,8 @@ const MapStateToProps=state=>{
         worksampel: state.sampel.data,
         filter: state.request.filter,
         length: state.realstate.length,
-        Tab: state.realstate.Tab
+        Tab: state.realstate.Tab,
+        bestOf: state.rate.bestOfAdvisor
     }
 }
 
@@ -83,11 +97,12 @@ const MapDispatchToProps=dispatch=>{
          getallwsinit: (page, limit, query)=> dispatch(action.getallwsinit(page,limit,query)),
         changefilehandller:(dt, path, id)=>dispatch(action.changefilehandller(dt, path, id)),
         sendreq:(data,authdt)=> dispatch(action.sendreq(data, authdt)),
-        REALSTATEGETALLINIT:(page,query)=>dispatch(action.REALSTATEGETALLINIT(page,query)),
+        REALSTATEGETALLINIT:(page,query,limit)=>dispatch(action.REALSTATEGETALLINIT(page,query,limit)),
         getallfilterinit:(qu)=>dispatch(action.getallfilterinit(qu)),
         savetabserchboxinit: (tab)=> dispatch(action.savetabserchboxinit(tab)),
         addMarkinit: (data)=> dispatch(action.addmarkinit(data)),
-        lessmarkinit: (id)=> dispatch(action.lessmarkinit(id))
+        lessmarkinit: (id)=> dispatch(action.lessmarkinit(id)),
+        getbestofadinit: ()=> dispatch(action.getbestofadinit())
     }
 }
 

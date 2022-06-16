@@ -16,7 +16,7 @@ const Cooperation=(props)=>{
     const [valid, setvalid]=useState(true);
     const [cooperations, setcooper]= useState(false);
     const [land, setland]= useState(false)
-   console.log(areaall)
+  
     const changephonenumber=(e)=>{
         setPhoneNumber(e.target.value);
         const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
@@ -60,12 +60,12 @@ const Cooperation=(props)=>{
                 Type: 'Buy land',
                 TypeState: tipic
             }
-            console.log(data)
+           
             const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
             if(pattern.test(data.PhoneNumber)){
             if(data.FristName !== '' && data.City !=='' && data.Area !==''){
                     sendreq(data, auth);
-                    console.log('anjam')
+                    
             }else{
              ShowAlert([], 'اطلاعات وارد شده ناقص است', 'fail')
             }}else{
@@ -86,7 +86,7 @@ const Cooperation=(props)=>{
             const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
             if(pattern.test(data.PhoneNumber)){
             if(data.FristName !== '' && data.City !=='' && data.area !=='' ){
-                sendreq(data);
+                sendreq(data, auth?._id);
             }else{
                 ShowAlert([], 'اطلاعات وارد شده ناقص است', 'fail')
             }
@@ -101,18 +101,20 @@ const Cooperation=(props)=>{
            
         <div class="tab-pane fade" id="pills-Fund" role="tabpanel" aria-labelledby="pills-Fund-tab">
         <div class="investment">
-            <div class="col-12 d-flex align-items-start">
-                <div class="col-3 buttons">
-                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab2" >
-                        <button class={tb !== 'Buy land'?"nav-link ":"nav-link-active"} onClick={changetb} value='Buy land'>خرید زمین با قابلیت رشد</button>
-                        <button class={tb !== 'coopration'?"nav-link ":"nav-link-active"} onClick={changetb} value='coopration'>مشارکت در ساخت</button>
+            <div class="col-12 d-flex align-items-start-cop">
+                
+                    <div class="nav-pills3"  >
+                        <button class={tb !== 'Buy land'?"nav-link-cop ":"nav-links-active"}
+                         onClick={changetb} value='Buy land'>خرید زمین با قابلیت رشد</button>
+                        <button class={tb !== 'coopration'?"nav-link-cop ":"nav-links-active"} 
+                        onClick={changetb} value='coopration'>مشارکت در ساخت</button>
                     </div>
-                </div>
+                
                 <div class="col-9 shows">
                     <div class="tab-content" id="v-pills-tabContent2">
                        
                         <div class="tab-pane fade" id="v-pills-mosharekat" role="tabpanel" aria-labelledby="v-pills-mosharekat-tab">
-                            <form action="" class="engener kharid-2">
+                            <form action="" class="engener-2">
                                 <div className='selectbox'>
                               <label className='label'>   شهر</label>
                 <select className='select' onChange={(e)=>setareahandller(e.target.value)}  >
@@ -145,26 +147,30 @@ const Cooperation=(props)=>{
                 setvaluehandller={settipichandller}
                 array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
                             </form>
-                            <form onSubmit={submithandller} class="engener2">
+                            <form onSubmit={submithandller} class="engener-2">
                                 <span>ثبت درخواست  مشارکت در ساخت </span>
                                 <div class="foorm">
-                                    <div>
-                                        <input onChange={(e)=>setName(e.target.value)} type="text" id='namee' placeholder="نام و نام خانوادگی"/>
-                                        <input className={valid?'inp':'notvalid'} onChange={(e)=>changephonenumber(e)} id="teel" type="text" placeholder="شماره تماس"/>
+                                    <div className="foorm-div">
+                                        <input onChange={(e)=>setName(e.target.value)} 
+                                        type="text" id='namee'  placeholder="نام و نام خانوادگی"/>
+                                        <input 
+                                        onChange={(e)=>changephonenumber(e)} id="teel" type="text" 
+                                        placeholder="شماره تماس"/>
                                     </div>
-                                  {tb === 'coopration'? <> <div class="form-check">
-                                        <input onChange={()=>setcooper(e=>!e)} type="checkbox" value="" id="flexCheckDefault" />
+                                  {tb === 'coopration'? <> <div className="foorm-div" class="form-check">
+                                        <input onChange={()=>setcooper(e=>!e)} type="checkbox"  id="flexCheckDefault" />
                                         <label class="form-check-label" for="flexCheckDefault">
                                             من آمادگی مشارکت در ساخت را دارم
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input onChange={()=>setland(e=>!e)} type="checkbox" value="" id="flexCheckChecked" />
+                                        <input   onChange={()=>setland(e=>!e)} type="checkbox"  
+                                        id="flexCheckChecked" />
                                         <label class="form-check-label" for="flexCheckChecked">
                                             من آمادگی سرمایه گذاری در زمین برای مشارکت در ساخت را دارم
                                         </label>
                                     </div></>:null}
-                                    <input type='submit' value='ثبت'/>
+                                    <input className="search-ok" type='submit' value='ثبت'/>
                                 </div>
                             </form>
                         </div>

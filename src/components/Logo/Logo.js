@@ -8,7 +8,7 @@ const Logo=()=>{
 
     return(
         <section>
-            <div class="container">
+            <div class="container2">
                 <div class="row">
                     <div class="logo">
                         <img src={logoIcon} alt=""/>

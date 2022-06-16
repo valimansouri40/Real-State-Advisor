@@ -1,48 +1,44 @@
 import React,{useEffect, useState} from "react";
 
 import Select from "../UI/Select/Select";
-import Box from "../UI/Box/Box";
+import Box2 from "../UI/Box/Box2";
 
 
 const Seles=React.memo((props)=>{
-    const {areaall,cityall,filters,getallfilterinit,auth,
-         changefilehandller, REALSTATEGETALLINIT}=props;
-    
-    const [room, setsomerom]= useState('')
+    const {areaall,cityall,getallfilterinit,
+         changefilehandller}=props;
+    const [AllArea, setArea]= useState();
+    // const [search, setsearch]= useState('');
+    // const [room, setsomerom]= useState('')
     const [city, setcity]=useState('');
     const [area, setarea]= useState('');
      const [tipic, settipic]= useState('')
      const [extra, setextra]= useState(false);
-    const [yaearbuild, setyearbuild]=useState('')
-        const [maesures, setmeasures]=useState('')
-        const [price, setprice]=useState('')
-    const [ps, setps]=useState([
-    {OfStorage:false, name:'انباری',dis:false},
-    {Parking:false, name:'پارکینگ',dis:false},
-    {Pasio:false, name:'پاسیو',dis:false},
-    {Pool:false, name:'استخر',dis:false}
-    ,{Security:false, name:'نگهبان',dis:false},
-    {Sona:false, name:'سونا'},
-    {Assansor:false, name:'آسانسور',dis:false}])
+    // const [yaearbuild, setyearbuild]=useState('')
+    //     const [maesures, setmeasures]=useState('')
+    //     const [price, setprice]=useState('')
+    // const [ps, setps]=useState([
+    // {OfStorage:false, name:'انباری',dis:false},
+    // {Parking:false, name:'پارکینگ',dis:false},
+    // {Pasio:false, name:'پاسیو',dis:false},
+    // {Pool:false, name:'استخر',dis:false}
+    // ,{Security:false, name:'نگهبان',dis:false},
+    // {Sona:false, name:'سونا'},
+    // {Assansor:false, name:'آسانسور',dis:false}])
 
+    useEffect(()=>{
+        if(areaall){
+            setArea(areaall)
+        }
+    },[areaall])
     const searchhandller=(e)=>{
         e.preventDefault()
+        
         const data={
             Tipic:'sells',
             City: city,
             Area:area,
-            SomeRoom: room,
-            TypeState: tipic,
-            Mortgage: price,
-            YearBuild: yaearbuild,
-            Measure: maesures,
-            Parking: ps[1].dis,
-            OfStorage: ps[0].dis,
-            Pasio: ps[2].dis,
-            Pool: ps[3].dis,
-            Security: ps[4].dis,
-            Sona: ps[5].dis,
-            Assansor: ps[6].dis
+            TypeState: tipic
         }
 
         const obj= Object.entries(data);
@@ -59,11 +55,13 @@ const Seles=React.memo((props)=>{
         })
 
         console.log(st)
-        if(auth){
             // REALSTATEGETALLINIT(1 ,`${st}&_id=${auth._id}`,);
-            window.location.hash = 'search'
+          
+            window.location.assign(`${st}#/search`)
+            
+           
             //console.log(gteprice)
-            window.location.search = st}
+            // window.location.search = st
     }
     useEffect(()=>{
         getallfilterinit('sell')
@@ -76,6 +74,7 @@ const Seles=React.memo((props)=>{
             setcity(e)
           
            changefilehandller(null, 'getallarea',`id=${citid._id}`)
+           setarea('')
    }else{
     setcity('')
     setarea('')
@@ -98,26 +97,26 @@ const Seles=React.memo((props)=>{
                 }
             
 
-        const roomhandller=(e)=>{
-            if(e !== 'همه'){
-                setsomerom(e)
-            }else{
-                setsomerom('')
-            }
-        }
+    //     const roomhandller=(e)=>{
+    //         if(e !== 'همه'){
+    //             setsomerom(e)
+    //         }else{
+    //             setsomerom('')
+    //         }
+    //     }
 
-        const changeextra=()=>{
-            setextra(e=>!e)
-        }
+    //     const changeextra=()=>{
+    //         setextra(e=>!e)
+    //     }
         
-      const posibelhandllerr=(e)=>{
-        let obj= [...ps];
-        obj[e]={
-            ...ps[e],
-            dis: !ps[e].dis
-        }
-        setps(obj)
-      }
+    //   const posibelhandllerr=(e)=>{
+    //     let obj= [...ps];
+    //     obj[e]={
+    //         ...ps[e],
+    //         dis: !ps[e].dis
+    //     }
+    //     setps(obj)
+    //   }
       const setareahl=(e)=>{
           if(e !== 'منطقه'){
               setarea(e)
@@ -125,36 +124,42 @@ const Seles=React.memo((props)=>{
               setarea('')
           }
       }
-      console.log(area)
-      const typestateinc= ['آپارتمان','ویلایی','تجاری']
-      useEffect(()=>{
-        if( !typestateinc.includes(tipic)){
-            console.log('vhhhh')
-            setsomerom('');
-            setps([
-                {OfStorage:false, name:'انباری',dis:false},
-                {Parking:false, name:'پارکینگ',dis:false},
-                {Pasio:false, name:'پاسیو',dis:false},
-                {Pool:false, name:'استخر',dis:false}
-                ,{Security:false, name:'نگهبان',dis:false},
-                {Sona:false, name:'سونا'},
-                {Assansor:false, name:'آسانسور',dis:false}])
-        }
-      },[tipic])
+    //   console.log(area)
+    //   const typestateinc= ['آپارتمان','ویلایی','تجاری']
+    //   useEffect(()=>{
+    //     if( !typestateinc.includes(tipic)){
+    //         console.log('vhhhh')
+    //         setsomerom('');
+    //         setps([
+    //             {OfStorage:false, name:'انباری',dis:false},
+    //             {Parking:false, name:'پارکینگ',dis:false},
+    //             {Pasio:false, name:'پاسیو',dis:false},
+    //             {Pool:false, name:'استخر',dis:false}
+    //             ,{Security:false, name:'نگهبان',dis:false},
+    //             {Sona:false, name:'سونا'},
+    //             {Assansor:false, name:'آسانسور',dis:false}])
+    //     }
+    //   },[tipic])
       
-      const changeextraall=()=>{
-        if(extra){
-           setextra(false) 
-        }
-    }
+    //   const changeextraall=()=>{
+    //     if(extra){
+    //        setextra(false) 
+    //     }
+    // }
+
+ 
 
     return(
-        <div onClick={changeextraall} class="tab-pane fade show active" >
+        <div  class="tab-pane fade show active" >
         <div  class="kharid">
                 {/* <Select array={} setvaluehandller={}></Select> */}
                 <div className='selectbox'>
                               <label className='label'>   شهر</label>
-                <select className='select' value={city !==''?city: 'شهر'} onChange={(e)=>setareahandller(e.target.value)}  >
+                              <input type="search"  list="sellscity" className="select-search"
+                value={city}
+                name="sl1"
+                onChange={(e)=>setareahandller(e.target.value)} />
+                <datalist  id="sellscity" value={city !==''?city: 'شهر'}   >
                 <option className='option'  >
                         شهر
                     </option>
@@ -162,13 +167,20 @@ const Seles=React.memo((props)=>{
                 <option className='option'>
                     {mp.name}</option>
             )):null}
-        </select>
+        </datalist>
         </div>
         
        <div className='selectbox'>
                 <label className='label'> منطقه</label>
-           <select className='select' value={area !==''?area: 'منطقه'} disabled={areaall && city !== ''?false:true} 
-           onChange={(e)=>setareahl(e.target.value)} >
+                <input type="search" list="sellsarea" className="select-search"
+                value={area}
+                name="sl2"
+                onChange={(e)=>setareahl(e.target.value)}
+                disabled={areaall && city !== ''?false:true} />   
+           <datalist id="sellsarea"  value={area !==''?area: 'منطقه'}
+            disabled={areaall && city !== ''?false:true} 
+            >
+                   
                     <option className='option'>
                         منطقه
                     </option>
@@ -178,28 +190,31 @@ const Seles=React.memo((props)=>{
                     {mp.areaName}</option>
             )):null}
             
-</select></div>
-               
-               <Select
-                val={tipic}
-                setvaluehandller={settipichandller}
-                array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
-
-                <div className='extra'>
-                    <button onClick={changeextra}>امکانات بیشتر</button>
-                {filters ?<Box filter={filters} 
+</datalist></div>
+{/* <div className='extra'>
+                    <button className="extra-btn" onClick={changeextra}>امکانات بیشتر</button>
+                {filters ?<Box2 filter={filters} 
+                changeextraall={changeextraall}
                  yaearbuild={yaearbuild} extra={extra} setyearbuild={setyearbuild}
                  maesures={maesures} setmeasures={setmeasures} 
                  price={price} setprice={setprice}>
                      <div  className='selectbox'>
-                            {ps.map((mp, i)=><label>
+                     <div  className='selectbox-bx'>
+                            {ps.map((mp, i)=><label onClick={()=>setextra(true)} for={i} title={!typestateinc.includes(tipic)?"ابتدا باید نوع ملک را مشخص کنید":""}>
                                 {mp.name}
-                                <input disabled={!typestateinc.includes(tipic)?true:false}
+                                <input title={!typestateinc.includes(tipic)?"":"ابتدا باید نوع ملک را مشخص کنید"} disabled={!typestateinc.includes(tipic)}
                                  type='checkbox' checked={mp.dis} onChange={()=>posibelhandllerr(i)}
-                                 className='check-posibel' name='pos' /></label>)}
+                                 className='check-posibel' id={i} name='pos' /></label>)}
                          </div>
-                 </Box>:null}
-                </div>
+                         </div>
+                 </Box2>:null}
+                </div> */}
+               <Select
+                val={tipic}
+                setvaluehandller={settipichandller}
+                array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
+{/* 
+             
 
                 <div className='selectbox'>
                                <label className='label'> قیمت </label>
@@ -223,10 +238,11 @@ const Seles=React.memo((props)=>{
                     </div>
                 <Select val={room} disabled={!typestateinc.includes(tipic)}
                   array={['همه','چهار خواب','سه خواب','دو خواب','یک خواب']} 
-                setvaluehandller={roomhandller}>تعداد اتاق خواب</Select>
-
-            <button onClick={searchhandller} type="submit" >جستجو
+                setvaluehandller={roomhandller}>تعداد اتاق خواب</Select> */}
+            <div className="extra">
+            <button className="search-ok" onClick={searchhandller} type="submit" >جستجو
             </button>
+            </div>
         </div>
     </div>
     )

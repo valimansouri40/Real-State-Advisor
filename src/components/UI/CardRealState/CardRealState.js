@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './CardRealState.css';
 import { changeprice } from "./changePrice";
 
@@ -14,6 +15,14 @@ const CardRealState=props=>{
             querystr = `/realstate?Tipic=${FocusData.Tipic}&TypeState=${FocusData.TypeState}&City=${FocusData.City}&Area=${FocusData.Area}&
         Mortgage[gte]=${FocusData.Mortgage * 1 - 100000000}&
         Mortgage[lte]=${FocusData.Mortgage * 1 + 100000000}&limit=10&page=1`
+        }
+
+        const scrolTopHandller = ()=>{
+            window.scrollTo({
+                top:0,
+                left:0,
+                behavior:'smooth'
+            })
         }
 
         const addmarkhandller= ()=>{
@@ -39,14 +48,23 @@ const CardRealState=props=>{
         
     return(
         <div className='cardrealstate-target'>
+            
              <div  className='cardrealstate-boximg'>
-            { FocusData.Mark?<img width='25px' height='25px' onClick={lessmarkhandller}
+           <p className="cardrealstate-box-mark"> { FocusData.Mark?
+           <img width='25px' height='25px' className="cardrealstate-mark" onClick={lessmarkhandller}
               src="https://img.icons8.com/ios-filled/64/000000/bookmark-ribbon.png"/>:
-              <img width='25px' height='25px' onClick={addmarkhandller}
+            
+              
+              <img className="cardrealstate-mark" width='25px' height='25px' onClick={addmarkhandller}
+              
                src="https://img.icons8.com/ios/50/000000/bookmark-ribbon--v1.png" />}
-                     {FocusData?<img width='250px' height='150px' src={`data:image/jpeg;base64,${FocusData.Image[0]}`} />:null}
-
+               </p>
+               <Link onClick={scrolTopHandller} className="cardrealstate-link" to={`/viewrealstate/${FocusData._id}`}>
+                     {FocusData?<img className="cardrealstate-img" 
+                     src={`data:image/jpeg;base64,${FocusData.Image[0]}`} />:null}</Link>
+                
             </div>
+            <Link onClick={scrolTopHandller} className="cardrealstate-link" to={`/viewrealstate/${FocusData._id}`}>
             <div className='cardrealstate-boxdetail'>
                <div className='cardrealstate-boxonedetail' >
                <img width='25px' height='25px' src="https://img.icons8.com/color/48/000000/measure.png"/>
@@ -65,12 +83,15 @@ const CardRealState=props=>{
                <h3 className='cardrealstate-detail'>  {FocusData.TypeState}</h3>
                </div>
                <div className='cardrealstate-boxonedetail' >
-               <h3 className='cardrealstate-detail'> قیمت  : </h3>
-               <h3 className='cardrealstate-detail'>  { changeprice(FocusData.Mortgage) }  </h3> 
+               <h3 className='cardrealstate-detail'>  { changeprice(FocusData.Mortgage) }  </h3>
+               <h3 className='cardrealstate-detail'> : {FocusData.Tipic === "sells" ?"قیمت":"رهن"}   </h3>
+             
                
                </div>
             </div>
+            </Link>
         </div>
+       
     )
 }
 

@@ -1,17 +1,136 @@
 .changerole-target{
     width: 100%;
     height: 100vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    
+    
 
 }
-.changerole-frame{
+.changerole-frame3{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column; 
+}
+
+.changerole-searchtarget{
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.changerole-searchbox{
+    width: 23rem;
+    height: 10rem;
+    border-radius: 8px;
+    box-shadow: 0 .2rem .2rem rgb(95, 94, 94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to left, rgb(1, 45, 81), rgb(38, 111, 128));
+}
+
+.changerole-searchtarget-input{
+    padding: .4rem;
+    width: 15rem;
+    background: rgb(215, 207, 207);
+    border-radius: 8px;
+    margin: 2rem 0;
+    box-shadow: 0 .2rem .2rem rgb(41, 41, 41);
+
+}
+.changerole-searchtarget-submit{
+    padding: .4rem;
+    width: 10rem;
+    background: green;
+    border-radius: 8px;
+    font-size: 1rem;
+    color:aliceblue;
+    box-shadow: 0 .2rem .2rem rgb(50, 49, 49);
+}
+
+.changerole-changetarget{
+   width: 100%;
+
+
+}
+.changerole-selectbox{
+    grid-column: 1/3;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 80%;
-    background: cornflowerblue;
+    flex-flow: row wrap;
+}
+.changerole-changebox{
+    width: 90%;
+    height: 30rem;
+    background: linear-gradient(to left, rgb(1, 45, 81), rgb(38, 111, 128));
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 .2rem .2rem rgb(50, 49, 49);
+}
+.changerole-imgbox{
+    grid-column: 1/3;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.changerole-img{
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+
+}
+.changerole-h4box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.changerole-h4{
+    margin-right: 1rem;
+    color: aliceblue;
+}
+.changerole-btnbox{
+    width: 100%;
+    grid-column: 1/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.changerole-address{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.changerole-img{
-    border-radius: 40%;
+.changerole-addressinput{
+    margin-right: 1rem;
+    padding: .4rem;
+    width: 65%;
+    background: rgb(215, 207, 207);
+    border-radius: 8px;
+    box-shadow: 0 .2rem .2rem rgb(41, 41, 41);
+}
+
+.check-posibel{
+    color: aliceblue;
+    margin-right:.5rem;
+}
+.changerole-label{
+    color:aliceblue;
+    font-size: 1rem;
+}
+
+.rolechg{
+    color: aliceblue;
 }

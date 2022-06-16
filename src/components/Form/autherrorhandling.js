@@ -1,6 +1,5 @@
 
-// import areas from './areas.json';
-// const areas =require('./areas.json')
+
 
 exports.autherrorhandling=(data,path)=>{
 

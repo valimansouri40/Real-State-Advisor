@@ -83,3 +83,27 @@ export const reviwepatchinit=(dt, id)=>{
         })
     }
 }
+
+
+export const getbestofad = (data)=>{
+
+    return{
+        type: action.GETBESTOFADVISOR,
+        data: data
+    }
+} 
+
+export const getbestofadinit =()=>{
+
+    return dispatch=>{
+
+        axios(apidomain + '/RateAdvisor/getbestof',{
+            method: 'get',
+            headers:{"Content-type": "application/json"}
+        }).then(res=>{
+                dispatch(getbestofad(res.data.data))
+        }).catch(er=>{
+            console.log(er)
+        })
+    }
+}

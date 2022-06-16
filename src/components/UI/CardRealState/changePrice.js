@@ -7,12 +7,12 @@ exports.changeprice=(price)=>{
 
     if( pricestr >= 1000000000){
         const latin= pricestr / 1000000000
-        const lk= toPersian(JSON.stringify(latin));
+        const lk= toPersian(latin.toFixed(0));
         
         pricestr = ` ${lk} میلیارد تومان  `
     }else {
         const latin= pricestr / 1000000
-        const lk= toPersian(JSON.stringify(latin));
+        const lk= toPersian(latin.toFixed(0));
         pricestr = ` ${lk} میلیون تومان  `
 
     }

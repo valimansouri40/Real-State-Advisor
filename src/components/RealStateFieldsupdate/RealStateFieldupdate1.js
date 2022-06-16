@@ -95,13 +95,14 @@ const RealStateFieldupdate1=(props)=>{
             changefilehandller(null, 'getallarea',`id=${citid._id}`)
             
     }else{
-        const citid= cityall.find(er=>  er.name === role.City[e].name);
-            changefilehandller(null, 'getallarea',`id=${citid._id}`)
-        setcity(role.City[e].name);
-        setcityid(role.City[e]._id);
+        seterea('')
+        // const citid= cityall.find(er=>  er.name === role.City[e].name);
+        //     changefilehandller(null, 'getallarea',`id=${citid._id}`)
+        //     console.log('vali',citid)
+        setcity('');
+        setcityid('');
 
-    }}
-            
+    }}      
         }
 
       const setareahandller=(e)=>{
@@ -130,9 +131,7 @@ const RealStateFieldupdate1=(props)=>{
      
     return(
         <div className={numpage === 1?'leaseform': 'hidden'} >
-                <div style={{width:'40rem',height:'40rem'}} className='googelmapbox'>
-                      <Map location={location} setlocation={setlocation}></Map>
-                </div>
+                
                 <div className='formbox'>
                     <div className='selectbox'>
                     <label className='label'>   شهر</label>
@@ -154,24 +153,26 @@ const RealStateFieldupdate1=(props)=>{
         </select>
         </div>
         
-        {role?rolear.includes(role.role) && allerea?  <div value={erea} className='selectbox'>
+        {role?rolear.includes(role.role) ?  <div  className='selectbox'>
                 <label className='label'> منطقه</label>
-           <select className='select' value={erea} disabled={allerea && city !== ''?false:true} 
-           onChange={(e)=>setareahandller(e.target.value)} >
+           <select className='select' value={erea}  
+           onChange={(e)=>setareahandller(e.target.value)}  disabled={ city !== ''?false:true} >
                     <option className='option'  >
                         منطقه
                     </option>
-            {allerea.map(mp=>(
+            {allerea?allerea.map(mp=>(
                 <option className='option' 
                 >
                     {mp.areaName}</option>
-            ))}
+            )):<option className='option' 
+            >
+                {erea}</option>}
 </select>
  </div>:null:null}
 { role?!rolear.includes(role.role) && role.CitysAndAreas.length > 0? <div className='selectbox'>
                 <label className='label'> منطقه</label>
            <select value={erea} className='select'  
-           onChange={(e)=>setareahandller(e.target.value)} >
+           onChange={(e)=>setareahandller(e.target.value)}  disabled={cityid && city !== ''?false:true} >
                     <option className='option'  >
                         منطقه
                     </option>
@@ -200,19 +201,24 @@ const RealStateFieldupdate1=(props)=>{
                {tab === 'rahn'?<div className='inpcls'><label className='label'> اجاره</label> 
                <input type='number' value={lease} className='inp' onChange={(e)=>setlease(e.target.value)} /></div>:null}
                <div className='inpcls'><label className='label'> آدرس</label> 
-               <input type='text' value={typeAdrress} onChange={(e)=>settypeAdrress(e.target.value)}  /></div>
+               <input type='text' className="inp" value={typeAdrress} onChange={(e)=>settypeAdrress(e.target.value)}  /></div>
                {role?rolear2.includes(role.role)?<><div className='inpcls'><label className='label'> شماره مالک</label> 
-               <input type='tel' value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
+               <input type='tel' className="inp" value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
                <div className='inpcls'><label className='label'> نام مالک</label> 
-               <input type='text' value={esquirename} onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
+               <input type='text' className="inp" value={esquirename} onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
+               <div className="btn-box">
                {tab === 'rahn'?
+               
                <button className={fullmortgage?'btnui-ok':'btnui'} onClick={()=>setfullmortgage(e=>!e)} >رهن کامل</button>:null}
                {/* <Button val={aggrement} setvalue={()=>setagrement(true)} >قیمت توافقی</Button> */}
-               <button className={aggrement?'btnui-ok':'btnui'} onClick={()=>setagrement(e=>!e)}>قیمت توافقی</button>
+               <button className={aggrement?'btnui-ok':'btnui'} onClick={()=>setagrement(e=>!e)}>پیشنهاد ویژه سایت</button>
                 {/* <Button val={immediat} setvalue={setimmediet} >فوری</Button> */}
                <button className={immediat?'btnui-ok':'btnui'} onClick={()=>setimmediet(e=>!e)}>فوری</button>
-                
-                <button className='send' onClick={submitHandller}>صفحه بعد</button>
+                </div>
+                <button className='send1' onClick={submitHandller}>صفحه بعد</button>
+                </div>
+                <div  className='rstf-googelmapbox'>
+                      <Map location={location} setlocation={setlocation}></Map>
                 </div>
         </div>
     )

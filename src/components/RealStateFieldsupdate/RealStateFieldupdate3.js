@@ -1,11 +1,10 @@
 import React from "react";
-import Select from "../UI/Select/Select";
 import './RealStateFields.css'
 
 
 
 const RealStateFieldupdate3 = (props)=>{
-            const {numpage, OneData ,setDataPostthree, DataPostthree, advisor, setnumpage, SubmitDataHandller}= props;
+            const {numpage, OneData ,setDataPostthree,loading, DataPostthree, advisor, setnumpage, SubmitDataHandller}= props;
 
         const setAdvisorHandller= ( mp)=>{
             
@@ -33,8 +32,11 @@ const RealStateFieldupdate3 = (props)=>{
                     {mp.FristName + ' ' + `${mp.LastName?mp.LastName:''}` + ' : ' +  mp.PhoneNumber}</option>:null
             )):null} 
         </select>
+        <div className="btn-box2">
         <button className='send' onClick={()=>setnumpage(2)}>بازگشت</button>
-        <button className='send' onClick={SubmitDataHandller}>ارسال</button>
+        <button className='send2' onClick={SubmitDataHandller}>{!loading?"ارسال":<>درحال ارسال<span className="spin">
+            </span></>}</button>
+            </div>
         </div>
                     </div>
             </div>

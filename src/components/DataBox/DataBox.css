@@ -1,9 +1,47 @@
 
 .databox-target{
-    width: 100%;
-    border:1px solid #111;
+    width: 95%;
+    margin: 0 auto;
+    direction: rtl;
+    margin-bottom: 1rem;
+    min-height: 20rem;
+    border-left:1px solid rgb(139, 144, 144) ;
+    border-top:1px solid rgb(139, 144, 144) ;
+    border-right:1px solid rgb(29, 30, 31) ;
+    border-bottom:1px solid rgb(29, 30, 31) ;
+    box-shadow: 0 .1rem .3rem rgb(81, 79, 79);
+    border-radius: 5px;
 }
-.databox-tab-active{
+.databox-tabbox{
+    width: 100%;
+    
+    padding-top: 1rem;
+}
+.databox-tab{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(28, 29, 31);
+    margin-left:1.5rem;
+    background: inherit;
+    margin-right: .2rem;
+    padding: .5rem .2rem;
+    font-size: 1.2rem;
+}
 
-    background: crimson;
+.databox-tab-active{
+   border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(14, 86, 164);
+    margin-left:1.5rem;
+    background: inherit;
+    margin-right: .2rem;
+    padding: .3rem .2rem;
+    font-size: 1.2rem;
+}
+
+
+@media (max-width:700px){
+    .databox-target{
+        display: none;
+    }
 }

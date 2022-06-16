@@ -5,8 +5,8 @@ import './RealStateFields.css'
 
 
 const RealStateFields3 = (props)=>{
-            const {numpage ,setDataPostthree, DataPostthree, advisor, setnumpage, SubmitDataHandller}= props;
-
+            const {numpage ,setDataPostthree,  loading, advisor, setnumpage, SubmitDataHandller}= props;
+        
         const setAdvisorHandller= ( mp)=>{
             
             if(mp !== 'مشاور املاک'){
@@ -30,11 +30,15 @@ const RealStateFields3 = (props)=>{
                     {mp.FristName + ' ' + `${mp.LastName?mp.LastName:''}` + ' : ' +  mp.PhoneNumber}</option>
             )):null} 
         </select>
+        </div>
+        <div className="btn-box2">
         <button className='send' onClick={()=>setnumpage(2)}>بازگشت</button>
-        <button className='send' onClick={SubmitDataHandller}>ارسال</button>
+        <button className='send2' onClick={SubmitDataHandller}>{!loading?"ارسال":<>درحال ارسال<span className="spin">
+            </span></>}</button>
+        </div>
         </div>
                     </div>
-            </div>
+           
         </section>
     )
 }

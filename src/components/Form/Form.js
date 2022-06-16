@@ -111,7 +111,7 @@ const Form =(props)=>{
              if(path !== '#/addcity' && path!== '#/addarea'&& path !== '#/changepassword'){
             onauth(dataanderrors.dtsb,path);
         }else if(path === '#/changepassword'){
-                changmyepassword(dataanderrors.dtsb)
+                changmyepassword(dataanderrors.dtsb, '/changepassword')
         }else if(path === '#/addcity'){
             const cdt= citydata(data);
             changefilehandller(cdt,'writecity','')
@@ -137,15 +137,15 @@ const Form =(props)=>{
 
     let sineupandlogin;
     if(path === '#/login' || path==='#/forgotpassword'){
-        sineupandlogin= <Link to='sineup'><p  className={classes.pra}>ساخت حساب</p></Link>
+        sineupandlogin= <Link className="form-navlink" to='sineup'><p  className={"pra"}>ساخت حساب</p></Link>
     }else if(path === '#/sineup' ){
-        sineupandlogin= <Link to="login"><p  className={classes.pra}>ورود به حساب</p></Link>
+        sineupandlogin= <Link className="form-navlink" to="login"><p  className={"pra"}>ورود به حساب</p></Link>
         
     }
 
     const twiceSendSMSHandller=()=>{
        
-            if(timer  ){
+            if(timer < 2 ){
                 
             settime(180);
             const phone= localStorage.getItem('phn');
@@ -156,18 +156,18 @@ const Form =(props)=>{
     }
 
     let twicesendsms= path === '#/sendsmscode'?<p style={{cursor:'pointer',color:'blue'}}
-     onClick={twiceSendSMSHandller} className={classes.twice}> ارسال دوباره کد</p>:null;
+     onClick={twiceSendSMSHandller} className={"twice"}> ارسال دوباره کد</p>:null;
 
      
     return(
         
-        <form  className={classes.form}>
+        <form  className={"form"} autoComplete='on'>
             {props.children}
            {inp}
-           {path === '#/login'?<Link to="forgotpassword"><p  className={classes.pra}>پسوورد خود را فراموش کردم؟</p></Link>:null} 
+           {path === '#/login'?<Link className="form-navlink" to="/forgotpassword"><p  className={"pra"}>پسوورد خود را فراموش کردم؟</p></Link>:null} 
            {twicesendsms}
            {path === '#/sendsmscode'?<Timer timer={timer} deleteexp={deleteexp} expiresCode={expiresCode} settime={settime} ></Timer>:null}
-          <button onClick={submithandller} className={classes.button}>ثبت {loading?<span className={classes.spinner}></span>:null}</button>
+          <button onClick={submithandller} className={"form-button"}>ثبت {loading?<span className={"spinner"}></span>:null}</button>
             {sineupandlogin}
             {localStorage.getItem('phn') ?<Redirect to='/sendsmscode'></Redirect>:null}
         </form>

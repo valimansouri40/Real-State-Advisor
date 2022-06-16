@@ -4,9 +4,10 @@ import InputField from '../UI/InputField/InputField';
 import Select from '../UI/Select/Select';
 import  './RealStateFields.css'
 import imgicon from '../../assets/icons/icons8-picture-64.png';
+import { ShowAlert } from '../../store/utility/alert';
 
 const Fields2= (props)=>{
-    const {setDataPosttwo,numpage,
+    const {setDataPosttwo,numpage,loading,
          setnumpage,role, SubmitDataHandller}=props;
 
     const [sub, setsub]=useState('')
@@ -94,6 +95,7 @@ const Fields2= (props)=>{
         setDataPosttwo(datatwo);
 
         if(!limitrole.includes(role.role)){
+           
         SubmitDataHandller()
     }else{
         setnumpage(3);
@@ -101,10 +103,20 @@ const Fields2= (props)=>{
     }
 
     const sendimage=(e)=>{
-        
-        setimage(e.target.files);
+        let sizeimg = 0;
+        for(let i = 0; i < e.length ; i++){
+                sizeimg = e[i].size + sizeimg;
+               
+        }
+      
+        if(sizeimg < 50000000){
+
+            setimage(e);
         
         setnumimg(0)
+        }else{
+            ShowAlert([],'حجم عکس بیشتر از 50 مگابایت است','fail')
+        }
 
     }
     const nextMyImage=()=>{
@@ -128,33 +140,34 @@ const Fields2= (props)=>{
     }
     return(
         <div className={numpage === 2?'fields':'hidden'} >
-            <div className='field'>
+            <div className='rstb-field'>
             <InputField val={sub} setval={setsub} >عنوان</InputField>
             <div className='selectbox'>
                     <label className='label'>   توضیحات</label>
-                    <textarea value={explain} className='inputfield' 
+                    <textarea value={explain} className='inputfield-textarea' 
                     onChange={e=>setexplain(e.target.value)}></textarea>
                     </div>
             <InputField val={masahat} setval={setmasahat} >مساحت (متر مبع)</InputField>
             <InputField val={floors} setval={setfloors} >تعداد طبقات</InputField>
             <div className='setimgbox'>
-                    <label className='label' for='img'>  <span className='labeltxt'> افزودن تصویر</span>
+                    <label className='uploadimage-label' for='img'>  <span className='labeltxt'> افزودن تصویر</span>
                     <img src={imgicon} className='iconimg' />
                      </label>
                    
-                    <input type='file' accept="image/png, image/jpeg" multiple={true} style={{display:'none'}} id='img' name='img'
-                     onChange={(e)=>sendimage(e)} />
-                     {image?<div style={{position:'relative', width:'300px' ,height:'400px'}} 
+                    <input type='file' accept="image/png, image/jpeg" 
+                    multiple={true} style={{display:'none'}} id='img' name='img'
+                     onChange={(e)=>sendimage(e.target.files)} />
+                     {image?<div 
                      className='imgtarget'>
                          <img src={URL.createObjectURL(image[numimg])} width='100%' height='100%'
                            className='inputimg'/>
-                         {image.length > 1?<><span className='changenum2' onClick={lastMyImage}></span>
-                        <span className='changenum1' onClick={nextMyImage}></span></>:null}
+                         {image.length > 1?<><span className='changenum-2' onClick={lastMyImage}></span>
+                        <span className='changenum-1' onClick={nextMyImage}></span></>:null}
                      </div>:null}
                     </div>
             </div>
             
-            <div className='field'>
+            <div className='rstb-field'>
             <Select val={someroom} array={['','یک خواب','دو خواب','سه خواب','چهار خواب']} setvaluehandller={setsomerom}>تعداد اتاق خواب</Select>
             <Select val={propertyDirection} array={['','شرقی','غربی','جنوبی','شمالی']} setvaluehandller={setpropertyDirection}>جهت نما</Select>
             <Select val={balcony} array={['',"آجر","سنگ","سایر"]} setvaluehandller={setbalcony}>نوع نما</Select>
@@ -169,7 +182,7 @@ const Fields2= (props)=>{
             <CheckBox val={assansor} changeval={setassansor} >آسانسور</CheckBox>
             </div>
             
-            <div className='field'>
+            <div className='rstb-field'>
             <Select val={coolerSystem} array={["","کولر","هواساز","فاقد"]} setvaluehandller={setcoolerSystem}> سیستم سرمایشی </Select>
             <Select val={heaterSystem} array={["","شوفاژ","هواساز","پکیج","بخاری"]} setvaluehandller={setheaterSystem}> سیستم گرمایشی </Select>
             <Select val={propertySituation} array={["","تخلیه","در دست مالک","در دست مستاجر"]} setvaluehandller={setpropertySituation}> وضعیت اسکان ملک </Select>
@@ -182,12 +195,15 @@ const Fields2= (props)=>{
             <CheckBox val={Jacuzzi} changeval={setJacuzzi} >جکوزی</CheckBox>
             <CheckBox val={labi} changeval={setlabi} >لابی</CheckBox>
             <CheckBox val={conferencehall} changeval={setconferencehall} >سالن اجتماعات</CheckBox>
+           
+           <div className='btn-2-box'>
             <button className='send' onClick={()=>setnumpage(1)}>بازگشت</button>
             {role?limitrole.includes(role.role)?<button className='send' 
             onClick={submitHandller}>صفحه بعد</button>:null:null}
-            {role?!limitrole.includes(role.role)?<button className='send' 
-            onClick={submitHandller}>ارسال</button>:null:null}
-
+            {role?!limitrole.includes(role.role)? <button className='send2' 
+            onClick={submitHandller}>{!loading?"ارسال":<>درحال ارسال<span className="spin">
+            </span></>}</button>:null:null}
+                </div>
             </div>
 
         </div>

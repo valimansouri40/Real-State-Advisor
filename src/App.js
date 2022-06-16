@@ -1,25 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { HashRouter,Route} from 'react-router-dom';
 import Routes from './Routes';
-
+import { Helmet } from "react-helmet-async";
 import * as action from './store/action/index';
 import { cookiejwt } from './store/utility/cookie';
 
-
-
  function App(props){
-      
+     
       const {setauthgetmeinit, role}= props;
-
+     
      const path= window.location.hash;
-
+ 
 
           useEffect(()=>{
                if(cookiejwt){
                     setauthgetmeinit()
-                    var data = JSON.parse(document.getElementById('data123').innerHTML);
-                    console.log(data)
+                    
                }
           },[cookiejwt, setauthgetmeinit, path])
 
@@ -27,6 +23,12 @@ import { cookiejwt } from './store/utility/cookie';
 
       return(
         <div>
+              <Helmet>
+           <title>GOOOYA</title>
+          <meta name="description" content="App Description" />
+          <meta name="theme-color" content="#008f68" />
+        </Helmet>
+       
            <Routes role={role}></Routes>
         </div>
 

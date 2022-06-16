@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import './ChangeRole.css';
 import * as action from '../../store/action/index';
 import { connect } from "react-redux";
-import Select from "../../components/UI/Select/Select";
 import { ShowAlert } from "../../store/utility/alert";
 import gallery from '../../assets/icons/icons8-picture-50.png';
 import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
@@ -10,13 +9,24 @@ import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
 // بخش مدیریت کاربران در پنل مدیریت
 
 const ChangeRole=(props)=>{
-        const {changeroledata, changefilehandller,areaall, cityall, fineduserinit, changeroleinit}= props;
+        const {changeroledata,auth, changefilehandller,areaall, cityall, fineduserinit, changeroleinit}= props;
         const [role, setrole]=useState();
         let [limit, setlimit]= useState([]);
         let [Citys, setCity]= useState([]);
         const [Adress, setadress]= useState();
 
-        const rolearr= ['admin','user','advisor', 'employee', 'dealer']
+
+        let rolearr= [{role:'admin', roleText:'ادمین'},
+        {role:'employee', roleText:'همکار'},
+        {role:'user', roleText:'کاربر'},
+        {role:'advisor', roleText:'مشاور'}, 
+         {role:'dealer', roleText:'فروشنده'}];
+
+        if(auth && auth.role === "employee"){
+            rolearr= [ {role:'user', roleText:'کاربر'},
+            {role:'advisor', roleText:'مشاور'}, 
+             {role:'dealer', roleText:'فروشنده'}]
+        }
         const rolelimit= ['advisor', 'employee', 'dealer']
         useEffect(()=>{
             if(changeroledata){
@@ -27,7 +37,14 @@ const ChangeRole=(props)=>{
             }
         },[changeroledata])
 
-       
+        useEffect(()=>{
+            if(role === 'user' || role === "admin" ){
+                setCity([])
+                setadress();
+                setlimit([])
+            }
+        },[role])
+      
 
         const keyPressHandller=(e)=>{
             if(e.keys === '13'){
@@ -84,24 +101,36 @@ const ChangeRole=(props)=>{
     return(
         <section className='changerole-target'>
             <AdminPannelNav/>
-            <div className='changerole-frame'>
+            <div className='changerole-frame3'>
                 <div className='changerole-searchtarget'>
                         <form onSubmit={submithandller} className='changerole-searchbox'>
-                                <input type='search' name='tell' onKeyPress={keyPressHandller} placeholder='شماره تلفن'  />
-                                <input type='submit' value='جستجو' />
+                                <input type='search' className="changerole-searchtarget-input" name='tell' onKeyPress={keyPressHandller} 
+                                placeholder='شماره تلفن'  />
+                                <input type='submit' className="changerole-searchtarget-submit" value='جستجو' />
                         </form>
                 </div>
                 <div className='changerole-changetarget'>
                    { changeroledata?<div className='changerole-changebox'>
                                 <div className='changerole-imgbox'>
-                                    <img width='60px' height='80px' src={changeroledata.Image?changeroledata.Image:gallery}
+                                    <img width='60px' height='80px' src=
+                                    {changeroledata.Image?changeroledata.Image:gallery}
                                      className='changerole-img' />
                                 </div>
-                                <Select  val={role} setvaluehandller={setrole}
-                                array={rolearr} > نقش </Select>
-                        
+                                {/* <Select  val={role} setvaluehandller={setrole}
+                                array={rolearr} > نقش </Select> */}
+                         <div className='selectbox'>
+                            <label className='label rolechg'> نقش</label>
+                    <select className='select'  
+                    onChange={(e)=>setrole(e.target.value)} >
+                                
+                        {rolearr.map(mp=>(
+                            <option value={mp.role} className='option'>
+                                {mp.roleText}</option>
+                        ))}
+                            </select>
+                            </div>
                     <div className='selectbox'>
-                    <label className='label'>   شهر</label>
+                    <label className='label rolechg'>   شهر</label>
                 <select className='select' disabled={!rolelimit.includes(role)?true:false}
                  onChange={(e)=>setvaluehandller(e.target.value)}  >
                 <option className='option'  >
@@ -113,21 +142,30 @@ const ChangeRole=(props)=>{
             )):null}
         </select>
         </div>
-        { areaall?<div className='selectbox'>
+        { areaall && rolelimit.includes(role)?<div className='changerole-selectbox'>
                          {areaall.map((mp, i)=>
-                        <label>
+                        <label className="changerole-label">
                              {mp.areaName}
                              <input disabled={!rolelimit.includes(role)?true:false} type='checkbox'
                              checked={ limit.filter(lm => lm.areaName === mp.areaName).length > 0?true:false}
                              onChange={(e)=>posibelhandllerr(e,mp)}
                               className='check-posibel' name='pos' /></label>)}
                       </div>:null}
-                                {role === 'advisor' || role === 'employee'?<input type='text' name='address' value={Adress}
+                                {role === 'advisor' || role === 'employee'?
+                                <div className="changerole-address">
+                                    <label className="changerole-label"></label>
+                                    <input type='text' className="changerole-addressinput" name='address' value={Adress}
                                 placeholder='آدرس مشاور املاک'
-                                 onChange={(e)=>setadress(e.target.value)} />:null}
-                                <h4 className='changerole-h4'>{changeroledata.FristName} : نام</h4>
-                                <h4 className='changerole-h4'>{changeroledata.LastName} : نام خانوادگی</h4>
-                                <button onClick={patchRoleHandller} >ثبت</button>
+                                 onChange={(e)=>setadress(e.target.value)} /></div>:null}
+                                 <div className="changerole-h4box">
+                                <h4 className='changerole-h4'> نام  : {changeroledata.FristName} </h4>
+                                </div>
+                                <div className="changerole-h4box">
+                                <h4 className='changerole-h4'>  نام خانوادگی  : {changeroledata.LastName} </h4>
+                                </div>
+                                <div className="changerole-btnbox">
+                                <button className='send2' style={{fontSize:"1.3rem"}} onClick={patchRoleHandller} >ثبت</button>
+                                </div>
                         </div>:null}
                 </div>
             </div>
@@ -141,6 +179,7 @@ const MapStateToProps= state=>{
         changeroledata: state.auth.changeroledata,
         areaall: state.realstate.areaall,
         cityall: state.realstate.cityall,
+        auth : state.auth.data
     }
 }
 

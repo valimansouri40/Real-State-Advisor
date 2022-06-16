@@ -45,22 +45,26 @@ const AllRequest= props=>{
                 }
                 
                 patchreqinit(data, id);
-                switch(e.target.value){
-                    case 'unseen':
-                allreqinit(`/request/allrequest?Status=${bol}&page=${page}&limit=20`);
-                    break;
-                 case 'Pending':
-                        allreqinit(`/request/allrequest?Status=${bol}&page=${page}&limit=20`);
-                            break;
-                    case 'Accepted':
-                        allreqinit(`/request/allrequest?Status=${bol}&page=${page}&limit=20`);
-                                    break;
-                }
+
+                setTimeout(() => {
+                    switch(e.target.value){
+                        case 'unseen':
+                    allreqinit(`/request/allrequest?Status=${bol}&page=${page}&limit=20`);
+                        break;
+                     case 'Pending':
+                            allreqinit(`/request/allrequest?Status=${bol}&page=${page}&limit=20`);
+                                break;
+                        case 'Accepted':
+                            allreqinit(`/request/allrequest?Status=${bol}&page=${page}&limit=20`);
+                                        break;
+                    }
+                }, 100);
+               
         }
         
         const objtab={mapdesign:"طراحی نقشه",Mapping:'نقشه برداری',
         Registrationwork:'کار های ثبتی',Advocacy:'وکالت دادگاهی',Executionandconstruction:'اجرا و ساخت',
-        ExpertofJustice:'کارشناس دادگستری',endofwork:'پایان کار', lisense:'جواز'};
+        ExpertofJustice:'کارشناس دادگستری',endofwork:'پایان کار', lisense:'جواز',"contracting": "پیمان کاری"};
 
         const objtype= {"Buy land" : "خرید زمین با قابلیت رشد",
                 "cooperation": "مشارکت در ساخت", "sendrealstate" : "سپردن ملک", 
@@ -73,7 +77,7 @@ const AllRequest= props=>{
         }
 
     return(
-        <section className='changerole-target'>
+        <section className='changerole-target-req'>
             <AdminPannelNav/>
             <div className='allreq-target'>
                 <div className='allreq-tabbar'>
@@ -86,9 +90,15 @@ const AllRequest= props=>{
                     {AllData? AllData.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>} 
                             {AllData?AllData.map((mp, i)=><div className='allreq-box'>
                             <div className='allappointment-delete' onClick={()=>deletehandller(mp._id)}>
-                                    <img width='50px' height='50px'
+                                    <img className="deleteicon" width='30px' height='30px'
                                      src="https://img.icons8.com/windows/32/000000/multiply.png"/>
                                     </div>
+                                    {mp.Text?
+                                        <div className='allreq-fieldbox-extra'>
+                                        <h3 className="allreq-field-extra">  توضیحات : </h3>
+                                        <p className='allreq-field-extra-2'> {mp.Text}</p>
+                                    </div>
+                                        :null}
                             { mp.Objid?<><div className='allreq-fieldbox'>
                                           <h3 className='allreq-field'> نام درخواست کننده :
                                              {mp.Objid.FristName 
@@ -127,15 +137,11 @@ const AllRequest= props=>{
                                         <h3 className='allreq-field'> {changeprice(mp.Price)}</h3>
                                     </div>
                                         :null}
-                                    {mp.Text?
-                                        <div className='allreq-fieldboxtext'>
-                                        <p className='allreq-text'> توضیحات : {mp.Text}</p>
-                                    </div>
-                                        :null}
-                                    <div className='allreq-checkblock'>
-                                        <label className='allreq-label'>
+                                    
+                                    <div className='allreq-fieldbox'>
+                                        {/* <label className='allreq-label'>
                                             وضعیت درخواست :
-                                        </label >
+                                        </label > */}
                                         <select value={mp.Status} onChange={(e)=>statushandller(e,i,mp._id)} className='allreq-slect'>
                                         <option  className='allreq-option' value='unseen'  >دیده نشده</option>
                                         <option className='allreq-option' value='Pending'> در حال بررسی</option>

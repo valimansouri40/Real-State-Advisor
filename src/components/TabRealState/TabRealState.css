@@ -1,32 +1,477 @@
-
-/* .posts{
-    width: 100%;
-    background: crimson;
-}
-.tabs{
-    width: 100%;
-} */
-.tab-content1{
-    display: flex;
-    align-items: center;
-    justify-content:space-around;
-    flex-flow: row wrap;
+.posts1{
+    
     width: 100%;
 }
-
-.realstate-box{
-    display: flex;
+.tabs1{
+    width: 100%;
+    
+}
+.nav-box{
+    width: 100%;
+    display:flex ;
     align-items: center;
-    justify-content:flex-start;
-    flex-direction: column;
-    width: 20rem;
-    height: 25rem;
+    justify-content: center;
+}
+.nav-tabs2{
+    width: 70%;
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 0 2rem 0;
+    border-bottom: 4px solid rgb(241, 41, 41);
+}
+
+.tab-link{
+    background: inherit;
+    border: 1px solid rgb(194, 191, 191);
+    border-bottom:none;
+    font-size: 1.2rem;
+    padding: 1.2rem 3.5rem;
+    margin: 0 -1.5rem;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, -10% 150%);
+    z-index: 0;
+    background: rgb(194, 191, 191);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.tab-link-active{
+    z-index: 0;
+    color: #fff;
+    background: rgb(241, 41, 41);
+    border: 1px solid rgb(241, 41, 41);
+    border-bottom:none;
+    font-size: 1.2rem;
+    margin: 0 -1.5rem;
+    padding: 1.2rem 3.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, -10% 150%);
+}
+.tab-content4{
+    display: grid;
+    grid-template-columns: 48% 48%;
+   
+    grid-template-rows: 14rem 14rem 14rem;
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    /* margin: 2rem; */
+    min-height: 50rem;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 1.5rem;
+}
+
+.realstate-box2{
+    display: flex;
+    margin: 1rem 0;
+    width: 95%;
+    height: 100%;
     border: 1px solid #111;
+    direction: ltr;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+   margin-right:2.5rem ;
+   box-shadow: 0 .1rem .1rem rgb(160, 155, 155)
+}
+.add-mark{
+    position: absolute;
+    top: 0;
+    left: .5rem;
+    padding: .1rem .05rem;
+    background: rgba(26, 25, 25, 0.5);
+}
+.card-middle3{
+    width: 65%;
+    height: 96%;
+    margin: auto 1rem;
     direction: rtl;
+}
+.card-middle-4{
+    width: 90%;
+    height: 96%;
+    margin: auto 1rem;
+    direction: rtl;
+}
+.card-headbox2{
+    width: 90%;
+    height: 3rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: .4rem 1.3rem 0 0;
+}
+.card-mid-box3{
+    margin: 1rem;
+    margin-right: 2rem;
+    width: 80%;
+    height: 6rem;
+    display: grid;
+    grid-template-columns: 49% 45% ;
+}
+.card-foot{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 80% ;
+}
+.card-textandicon{
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: .3rem;
+}
+.field, .field-tb{
+    width: 100%;
+    font-size: 1rem;
+    color: #111;
+    
+    display: inline;
+}
+.card-imbox{
+    width: 30%;
+    height: 100%;
     position: relative;
 }
-
-.card-middle{
-    display: grid;
-    grid-template-columns: 10rem 10rem;
+.card-imbox-icon1{
+    position: absolute;
+    bottom: .5rem;
+    right: 1rem;
+    width: 25px;
+    height: 25px;
+    padding: .2rem ;
+    background: rgba(100, 99, 99, 0.541);
 }
+.card-imbox-icon2{
+    position: absolute;
+    bottom: .5rem;
+    right: 3.2rem;
+    width: 25px;
+    height: 25px;
+    padding: .2rem ;
+    background: rgba(100, 99, 99, 0.692);
+}
+.forwhat{
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    padding: .2rem ;
+    color: #fff;
+    background: rgba(136, 135, 135, 0.872);
+    border-radius: 5px;
+}
+.btn-more-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.btn-more{
+    padding: .3rem 1.4rem;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    background: rgb(241, 41, 41);
+    border: none;
+    outline:none;
+
+}
+.not-exist-realstate{
+    grid-column: 1/3;
+}
+ .realstate-special{
+  padding: .2rem .5rem;
+  background-color: rgb(218, 44, 44);
+  margin: 0 auto;
+    position: absolute;
+    font-size: .6rem;
+    left: -2%;
+    top: 8%;
+    z-index:1;
+    transform: rotate(-40deg);
+    border-radius: 5px;
+    color: #fff;
+}
+.realstate-immediate{
+    padding: .2rem .5rem;
+  background-color: rgb(218, 44, 44);
+  margin: 0 auto;
+    position: absolute;
+    
+    left: 2%;
+    bottom: 8%;
+    z-index: 300000;
+    
+    border-radius: 5px;
+    color: #fff;
+}
+.field-tb{
+    color: rgb(75, 72, 72);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.field{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+@media (max-width: 1300px){
+    .tab-content4{
+        display: grid;
+        grid-template-columns: 48% 48%;
+       
+        grid-template-rows: 12rem 12rem 12rem;
+        width: 100%;
+        margin: 0 auto;
+        overflow-x: hidden;
+        /* margin: 2rem; */
+        min-height: 50rem;
+        grid-row-gap: 1rem;
+        grid-column-gap: 1rem;
+    }
+    .card-headbox2{
+        width: 90%;
+        height: 2.5rem;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: .2rem 1.3rem 0 0;
+    }
+    .card-mid-box3{
+        margin: .5rem;
+        margin-right: 2rem;
+        width: 80%;
+        height: 5.5rem;
+        display: grid;
+        grid-template-columns: 45% 45% ;
+    }
+    
+}
+@media (max-width: 1050px){
+    .tab-content4{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        
+        overflow-x: hidden;
+        /* margin: 2rem; */
+        min-height: 50rem;
+        grid-row-gap: .5rem;
+        grid-column-gap: .5rem;
+    }
+    .realstate-box2{
+        margin: 1rem auto;
+    }
+    .card-imbox{
+        height: 16rem;
+        
+    }
+}
+@media (max-width:700px){
+    .nav-tabs2{
+        width: 100%;
+        display:flex ;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0 1rem 0;
+        background: rgb(255, 254, 254);
+        border-bottom: none;
+
+    }
+    .field-tb{
+        font-size: 1rem;
+    }
+    .tab-link{
+        background: inherit;
+        border:none;
+        border-bottom:none;
+        font-size: 1.2rem;
+        padding: 1.2rem 1.5rem;
+        clip-path: none;
+        z-index: 0;
+        background: inherit;
+        margin: 0 .5rem;
+    }
+    .tab-link-active{
+        z-index: 0;
+        color: rgb(28, 26, 26);
+        background: inherit;
+        border:none;
+        border-bottom: 2px solid rgb(47, 109, 189);
+        font-size: 1.2rem;
+        margin: 0 .5rem;
+        padding: 1.2rem 1.5rem;
+        
+        clip-path: none;
+    }
+    .card-imbox{
+        height: 16rem;
+        width: 40%;
+    }
+    .card-middle2{
+        width: 55%;
+        margin: .2;
+        height: 100%;
+    }
+    .card-headbox2{
+        width: 90%;
+        height: 4rem;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: .4rem 1.3rem 0 0;
+    }
+    .card-mid-box3{
+        margin: 1rem;
+        margin-right: 2rem;
+        width: 90%;
+        height: 6rem;
+        display: grid;
+        grid-template-columns: 45% 45% ;
+    }
+}
+
+@media (max-width:500px){
+    .tab-link{
+        background: inherit;
+        border:none;
+        border-bottom:none;
+        font-size: 1.2rem;
+        padding: 1.2rem 1rem;
+        clip-path: none;
+        z-index: 0;
+        background: inherit;
+        margin: 0 .5rem;
+    }
+    .realstate-special{
+        top:6%
+    }
+    .card-middle3{
+        width: 100%;
+    }
+    .tab-link-active{
+        z-index: 0;
+        color: rgb(28, 26, 26);
+        background: inherit;
+        border:none;
+        border-bottom: 2px solid rgb(47, 109, 189);
+        font-size: 1.2rem;
+        margin: 0 .5rem;
+        padding: 1.2rem 1rem;
+        
+        clip-path: none;
+    }
+    .realstate-box2{
+        width: 90%;
+        height: 26rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+    .card-imbox{
+        height: 12rem;
+        width: 100%;
+    }
+    .card-middle2{
+        width: 100%;
+        margin: .4;
+        height: 100%;
+    }
+    
+    .card-mid-box3{
+        margin: 1rem;
+        margin-right: 2rem;
+        width: 90%;
+        height: 5rem;
+        display: grid;
+        grid-template-columns: 45% 45% ;
+    }
+    .card-foot{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%  ;
+    }
+}
+
+@media (max-width:406px){
+    .nav-tabs2{
+        margin-right :0 ;
+        margin-left: 0;
+    }
+    .tab-link{
+        background: inherit;
+        border:none;
+        border-bottom:none;
+        font-size: 1.2rem;
+        padding: 1.2rem .7rem;
+        clip-path: none;
+        z-index: 0;
+        background: inherit;
+        margin: 0 .5rem;
+    }
+    .tab-link-active{
+        z-index: 0;
+        color: rgb(28, 26, 26);
+        background: inherit;
+        border:none;
+        border-bottom: 2px solid rgb(47, 109, 189);
+        font-size: 1.2rem;
+        margin: 0 .5rem;
+        padding: 1.2rem .7rem;
+        
+        clip-path: none;
+    }
+} 
+
+@media (max-width:380px){
+    .tab-link{
+        background: inherit;
+        border:none;
+        border-bottom:none;
+        font-size: 1.1rem;
+        padding: .4rem .5rem;
+        clip-path: none;
+        z-index: 10;
+        background: inherit;
+        margin: 0 .5rem;
+    }
+    .tab-link-active{
+        z-index: 100;
+        color: rgb(28, 26, 26);
+        background: inherit;
+        border:none;
+        border-bottom: 2px solid rgb(47, 109, 189);
+        font-size: 1.1rem;
+        margin: 0 .5rem;
+        padding: .4rem .5rem;
+        
+        clip-path: none;
+    }
+} 
+.field{
+    font-size: 1.1rem;
+}
+.field2{
+    font-size: .8rem;
+    letter-spacing: -1px;
+}
+.field3{
+    font-size: .9rem;
+    letter-spacing: -1px;
+}
+/*
+.nav-link{
+    background: inherit;
+    color: green;
+    border: none;
+    outline: none;
+}
+.nav-link-active{
+    background: inherit;
+    color: rgb(41, 84, 176);
+    border: none;
+    outline: none;
+} */

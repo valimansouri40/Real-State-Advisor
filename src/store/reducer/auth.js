@@ -36,7 +36,7 @@ export const initialstate={
             }
         case actiontype.SETAUTHLOGIN:
                 let date;
-                if(action.path === '#/sineup' ){
+                if(action.path === '#/sineup' || action.path === '#/forgotpassword' ){
                     date= 180;
                 }else{
                     date= null;

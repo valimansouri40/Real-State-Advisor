@@ -5,9 +5,10 @@ import InputField from '../UI/InputField/InputField';
 import Select from '../UI/Select/Select';
 import  './RealStateFields.css'
 import imgicon from '../../assets/icons/icons8-picture-64.png';
+import { ShowAlert } from '../../store/utility/alert';
 
 const RealStateFieldupdate2= (props)=>{
-    const {setDataPosttwo,numpage, setnumpage,role, SubmitDataHandller,OneData}=props;
+    const {setDataPosttwo,numpage,loading, setnumpage,role, SubmitDataHandller,OneData}=props;
     const mpimg= OneData.Image.map(m=>{ return 'data:image/jpeg;base64,' + m})
     
     const [sub, setsub]=useState(OneData.Subject)
@@ -93,15 +94,26 @@ const RealStateFieldupdate2= (props)=>{
     }
 
     const sendimage=(e)=>{
+        let sizeimg = 0;
+        for(let i = 0; i < e.length ; i++){
+                sizeimg = e[i].size + sizeimg;
+               
+        }
+      
+        if(sizeimg < 50000000){
+            let encods=[];
 
-        let encods=[];
-
-        if(e.target.files){
-            const entires= Object.entries(e.target.files);
-             entires.map(file=>getBase64(file[1]).then(result=>encods.push(result)))
-        }        
-        setimage(encods);
-        setnumimg(0)
+            if(e){
+                const entires= Object.entries(e);
+                 entires.map(file=>getBase64(file[1]).then(result=>encods.push(result)))
+            }        
+            setimage(encods);
+            setnumimg(0)
+           
+        }else{
+            ShowAlert([],'حجم عکس بیشتر از 50 مگابایت است','fail')
+        }
+      
 
     }
   
@@ -130,7 +142,7 @@ const RealStateFieldupdate2= (props)=>{
             <InputField val={sub} setval={setsub} >عنوان</InputField>
             <div className='selectbox'>
                     <label className='label'>   توضیحات</label>
-                    <textarea value={explain} className='inputfield' 
+                    <textarea value={explain} className='inputfield-textarea' 
                     onChange={e=>setexplain(e.target.value)}></textarea>
                     </div>
             <InputField val={masahat} setval={setmasahat} >مساحت (متر مبع)</InputField>
@@ -140,9 +152,10 @@ const RealStateFieldupdate2= (props)=>{
                     <img src={imgicon} className='iconimg' />
                      </label>
                    
-                    <input type='file'accept="image/png, image/jpeg" multiple={true} style={{display:'none'}} id='img' name='img'
-                     onChange={(e)=>sendimage(e)} />
-                     {image.length > 0?<div style={{position:'relative', width:'300px' ,height:'400px'}} className='imgtarget'>
+                    <input type='file'accept="image/png, image/jpeg" multiple={true}
+                     style={{display:'none'}} id='img' name='img'
+                     onChange={(e)=>sendimage(e.target.files)} />
+                     {image.length > 0?<div  className='imgtarget'>
                          <img src={image[numimg]} width='100%' height='100%'  className='inputimg'/>
                          {image.length > 1?<><span className='changenum2' onClick={lastMyImage}></span>
                         <span className='changenum1' onClick={nextMyImage}></span></>:null}
@@ -178,12 +191,14 @@ const RealStateFieldupdate2= (props)=>{
             <CheckBox val={Jacuzzi} changeval={setJacuzzi} >جکوزی</CheckBox>
             <CheckBox val={labi} changeval={setlabi} >لابی</CheckBox>
             <CheckBox val={conferencehall} changeval={setconferencehall} >سالن اجتماعات</CheckBox>
+            <div className='btn-2-box'>
             <button className='send' onClick={()=>setnumpage(1)}>بازگشت</button>
             {role?limitrole.includes(role.role)?<button className='send' 
             onClick={submitHandller}>صفحه بعد</button>:null:null}
-            {role?!limitrole.includes(role.role)?<button className='send' 
-            onClick={submitHandller}>ارسال</button>:null:null}
-
+            {role?!limitrole.includes(role.role)?<button className='send2' onClick={SubmitDataHandller}>
+                {!loading?"ارسال":<>درحال ارسال<span className="spin">
+            </span></>}</button>:null:null}
+            </div>
             </div>
 
         </div>

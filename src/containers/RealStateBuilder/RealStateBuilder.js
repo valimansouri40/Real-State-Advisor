@@ -1,7 +1,7 @@
 
 import React,{useEffect, useState} from "react";
 import { connect } from "react-redux";
-import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
+import { Link } from "react-router-dom";
 import Fields2 from "../../components/RealStateFields/RealStateField2";
 import RealStateFields3 from "../../components/RealStateFields/RealStateField3";
 import RealStateFieldsForlease from "../../components/RealStateFields/RealStateFieldsForlase";
@@ -12,7 +12,7 @@ import './RealStateBuilder.css';
 // صفحه ساخت ملک در پنل مدیریت
 
 const RealStateBuilder=(props)=>{
-      const {RealStatePostData,changefilehandller,
+      const {RealStatePostData,changefilehandller, loading,
          advisor, getadvisorinit , role ,cityall, areaall}=props;
       const [tab, settab]= useState('rahn');
       const [numpage, setnumpage]= useState(1);
@@ -46,7 +46,16 @@ const RealStateBuilder=(props)=>{
         EsquierName: "نام ملک",
         EsquierPhoneNumber: "شماره مالک"}
         }
-
+        let responsive = '' ;
+            
+        switch(numpage){
+            case 1 : responsive= 'rstb-target-1';
+            break;
+            case 2 : responsive = 'rstb-target-2';
+            break;
+            default: responsive = 'rstb-target-3';
+            break;
+        }
    
     const [DataPost, setDataPost]=useState();
         useEffect(()=>{
@@ -65,7 +74,8 @@ const RealStateBuilder=(props)=>{
             setDataPost({Tab:tab,...DataPostOne, ...DataPosttwo });
 }    },[DataPostOne,DataPosttwo, tab])
 
-    const SubmitDataHandller=()=>{        
+    const SubmitDataHandller=()=>{    
+           
         switch(role.role){
             case 'employee':
                 DataPost.AdvisorId = DataPostthree
@@ -76,15 +86,19 @@ const RealStateBuilder=(props)=>{
             case  'dealer':
                 DataPost.AdvisorId = 1234;
             case 'advisor':
-                DataPostthree.AdvisorId = role._id
+                DataPost.AdvisorId = role._id
                 break
+            default:DataPost.AdvisorId = ''
         }
+       
         DataPost.RegistrarId = role._id;
+         
 
        const er= Object.entries(errorarr);
        let errorhandller = []
 
        const entiresData= Object.entries(DataPost);
+        
 
         entiresData.map((mp, index)=>{
             if(mp[1] === '' || mp[1] === undefined ){
@@ -101,7 +115,7 @@ const RealStateBuilder=(props)=>{
                     }
                 }
         })
-      
+        
       if(errorhandller.length === 0){ 
         
           RealStatePostData(DataPost);
@@ -109,10 +123,12 @@ const RealStateBuilder=(props)=>{
             ShowAlert(errorhandller, 'را وارد نکردید', 'fail')
         }
     }
-    const lmrole=['admin','employee']
+    const lmrole=['advisor','dealer']
     return(
-        <section className='changerole-target'>
-                <AdminPannelNav/>
+        <section className={`rstb-target ${responsive}` }>
+              <Link className="rstb-btn"
+                to={'/'}>بازگشت به صفحه اصلی
+               </Link>
             <div className='builder'>
                 <div className='tabbar'>
                 <button className={tab !== 'sells'?'tab':'tab-activ'} onClick={()=>settab('sells')}> آگهی فروش</button>
@@ -125,13 +141,13 @@ const RealStateBuilder=(props)=>{
                 changefilehandller={changefilehandller}
                 numpage={numpage} setnumpage={setnumpage} 
                 setDataPostOne={setDataPostOne}/>
-                    <Fields2 numpage={numpage} 
+                    <Fields2 numpage={numpage} loading={loading}
                     role={role}
                      tab={tab}
                     setnumpage={setnumpage}
                      setDataPosttwo={setDataPosttwo} SubmitDataHandller={SubmitDataHandller}/>
                     { role?rolear.includes(role.role)?<RealStateFields3 
-                      role={role}
+                      role={role} loading={loading}
                      tab={tab}
                      numpage={numpage}
                      advisor={advisor}
@@ -148,6 +164,7 @@ const MapStateToProps=state=>{
     return{
         cityall: state.realstate.cityall,
         areaall: state.realstate.areaall,
+        loading: state.realstate.loading,
         role: state.auth.data,
         advisor: state.auth.advisor
     }

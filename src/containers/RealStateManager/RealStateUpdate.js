@@ -8,11 +8,11 @@ import { ShowAlert } from "../../store/utility/alert";
 import RealStateFieldupdate3 from "../../components/RealStateFieldsupdate/RealStateFieldupdate3";
 import AdminPannelNav from "../../components/AdminPannelNav/AdminPannelNav";
 import Spinner from "../../components/UI/spinner/Spinner";
-
+import './RealStateManager.css';
 // صفحه آپدیت ملک در پنل مدیریت
 
 const RealStateUpdate=(props)=>{
-        const {OneData, REALSTATEGETONEINIT, changefilehandller,
+        const {OneData,loading, REALSTATEGETONEINIT, changefilehandller,
             REALSTATEPATCHINIT ,cityall, getadvisorinit ,advisor, role,areaall} = props;
             
         const paramid= useParams().id;
@@ -118,7 +118,7 @@ const RealStateUpdate=(props)=>{
     }
 
     return(
-        <section className='changerole-target'>
+        <div className='changerole-target-update'>
                 <AdminPannelNav/>
 { OneData? <div className='builder'>
             
@@ -131,13 +131,13 @@ const RealStateUpdate=(props)=>{
                 numpage={numpage} setnumpage={setnumpage} 
                 setDataPostOne={setDataPostOne}/>
                     <Fields2 numpage={numpage} 
-                    OneData={OneData}
+                    OneData={OneData} loading={loading}
                      tab={tab}
                      role={role}
                     setnumpage={setnumpage}
                      setDataPosttwo={setDataPosttwo} SubmitDataHandller={SubmitDataHandller}/>
                      { role?rolear.includes(role.role)?<RealStateFieldupdate3 
-                      role={role}
+                      role={role} loading={loading}
                       OneData={OneData}
                      tab={tab} getadvisorinit={getadvisorinit}
                      numpage={numpage}
@@ -146,7 +146,7 @@ const RealStateUpdate=(props)=>{
                      setDataPostthree={setDataPostthree} SubmitDataHandller={SubmitDataHandller}
                      />:null:null}
             </div>:<Spinner/>}
-        </section>
+        </div>
     )
 }
 
@@ -156,6 +156,7 @@ const MapStateToProps=state=>{
         OneData: state.realstate.OneData,
         cityall: state.realstate.cityall,
         areaall: state.realstate.areaall,
+        loading: state.realstate.loading,
         role: state.auth.data,
         advisor: state.auth.advisor
     }

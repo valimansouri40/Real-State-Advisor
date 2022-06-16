@@ -2,8 +2,11 @@ import React from "react";
 import  './Paginate.css';
 
 const Paginate=(props)=>{
-        const {length,setpage,page}=props;
-        const pages= Math.ceil(length /20);
+        const {length, setpage, page, limit}=props;
+
+        let Limit = limit?limit:20;
+
+        const pages= Math.ceil(length /Limit);
         const scrolltopzero=()=>{
             window.scrollTo({
                 top: 0,
@@ -11,8 +14,8 @@ const Paginate=(props)=>{
                 behavior: 'smooth'
               });
         }
-    return(
-       <div className="paginatebox">
+        
+    return (length > Limit ?<div className="paginatebox">
             {page > 1?<button  onClick={(e)=>{setpage(e=>e-1);scrolltopzero()}} className="btnpage1"></button>:null}
             {page - 1 > 1?<button onClick={(e)=>{setpage(e.target.innerHTML * 1);scrolltopzero()}} className="btnpage">1</button>:null}
             {page > 3?<p  className="sp">...</p>:null}
@@ -23,8 +26,8 @@ const Paginate=(props)=>{
             {pages-1  > page?<button onClick={(e)=>{setpage(e.target.innerHTML * 1);scrolltopzero()}} className="btnpage">{pages}</button>:null}
             {pages > page?<button onClick={(e)=>{setpage(e=> e + 1);scrolltopzero()}} className="btnpage2"></button>:null}
             
-        </div>
-    )
+        </div>:null);
+    
 }
 
 export default Paginate;

@@ -1,19 +1,73 @@
 .mymarks-frame{
     width: 100% ;
-    min-height:100vh;
+    min-height:70vh;
+    margin: 1rem 0;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   flex-direction: column;
+}
+.mymarks-box{
+    width: 80%;
+    height: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(228, 224, 224);
     margin: 1rem;
-   
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    border-radius: 6px;
+    overflow: hidden;
 }
 .mymarks-boximg{
-    width: 20rem ;
-    height: 20rem;
+    width: 25rem ;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     flex-flow: row wrap;
+position: relative;
+}
+.mymarks-mark{
+    position: absolute;
+    top: 0;
+    left: 3%;
+    padding: .2rem .1rem;
+    background: rgba(106, 105, 105, 0.642);
+    padding-top: 0;
+}
+.card-btn{
+    padding: .4rem 1rem;
+    background: green;
+    border: none;
+    border-radius: 5px;
+    color: aliceblue;
+    font-size: 1.1rem;
+    word-break: keep-all;
 
+}
+.mymarks-img{
+    width: 100%;
+    height: 100%;
+}
+.cardrealstate-detail{
+    margin-right: .5rem;
 }
 .cardrealstate-boxonedetail{
     display: flex;
     margin: 1rem;
+}
+
+@media (max-width:550px){
+    .mymarks-box{
+        flex-direction: column;
+        height: 20rem;
+    }
+}
+
+@media (max-width:450px){
+    .mymarks-box{
+        flex-direction: column;
+        height: 26rem;
+    }
 }

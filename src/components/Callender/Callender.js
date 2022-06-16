@@ -6,11 +6,8 @@ import { toPersian } from "./persiannumber";
 const Callender=(props)=>{
         const {appopostinit,auth ,OneData}=props;
 
-        
-
     let date = new Date();
     
-
       let datearr= [];
 
       for(let i =0; i <= 10 ; i++){
@@ -30,7 +27,7 @@ const Callender=(props)=>{
     const [appointment, setappointment]= useState(datearr[0]);
    
     const subhandllerdfs = ()=>{
-       console.log('saiodsa saihd')
+       
        if(auth){
         const data= {
             Appointment: appointment,
@@ -40,7 +37,7 @@ const Callender=(props)=>{
             RealStateId:OneData._id,
             RealStateNumber: OneData.RealStateNumber
         }
-        console.log(data)
+       
         appopostinit(data)
         }else{
             window.location.hash = '#/login'
@@ -48,20 +45,23 @@ const Callender=(props)=>{
     }
 
     return(
+        <div className="callender-frame">
         <div className='callender-target'>
                 <div className='callender-box'>
                 <div className='callender-head-box'>
+                    <div className="callender-bx">
                     <h2 className='callender-h2'>رزرو وقت</h2>
+                    </div>
                 </div>
                 <div className='callender-date-box'>
                    <div style={{display:'flex'}} className='callender-date'>
                       
-                        <select value={appointment} onChange={(e)=>setappointment(e.target.value)} >
+                        <select className="callender-select" value={appointment} onChange={(e)=>setappointment(e.target.value)} >
                             {datearr.map(mp=>(
                                 <option >{mp}</option>
                             ))}
                         </select>
-                        <select value={time} onChange={(e)=>settime(e.target.value)} >
+                        <select className="callender-select" value={time} onChange={(e)=>settime(e.target.value)} >
                             {timearr.map(mp=>(
                                 <option>{mp}</option>
                             ))}
@@ -72,6 +72,7 @@ const Callender=(props)=>{
                         <button onClick={subhandllerdfs} className='callender-btn'>ثبت رزرو</button>
                     </div>
                 </div>
+        </div>
         </div>
     )
 }

@@ -18,11 +18,13 @@ const DeleteBox=(props)=>{
     return(
         <div className='boxdt'>
            <div className='findbox'>
-               <input type='text' className='inp' onKeyPress={keyPressHandller} onChange={(e)=>setsearch(e.target.value)} />
+               <input type='text' placeholder={window.location.hash !=="#/addcity"?"نام منطقه را وارد کنید":"نام شهر را وارد کنید"} className='inp' onKeyPress={keyPressHandller} 
+               onChange={(e)=>setsearch(e.target.value)} />
                <img src={searchIcon}  onClick={findhandller} className='find' />
                </div> 
             <div className='showdata'>
-                {data?data.length >0?<img src={deleteIcon} className='delete' onClick={deleterealstatepost}/>:null:null}
+                {data?data.length >0?<img src={deleteIcon}
+                title="حذف شهر" className='delete' onClick={deleterealstatepost}/>:null:null}
                 {data?data.length >0?array.map((mp,index)=>(
                    <> 
                    <p className='showsome' 

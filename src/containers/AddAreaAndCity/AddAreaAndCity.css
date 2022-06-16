@@ -1,0 +1,22 @@
+.addsection{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+.addareaandcity-target{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    background: rgb(65, 57, 57);
+
+}
+
+
+.googelmapbox{
+    width: 30rem;
+    height: 40rem;
+    margin: 0 2rem;
+}

@@ -1,10 +1,107 @@
 .callender-target{
     direction: ltr;
     width: 20rem;
-    height: 10rem;
-    background: chartreuse;
+    height: 14rem;
+    background: inherit;
+    border-left:1px solid rgb(139, 144, 144) ;
+    border-top:1px solid rgb(139, 144, 144) ;
+    border-right:1px solid rgb(29, 30, 31) ;
+    border-bottom:1px solid rgb(29, 30, 31) ;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    margin: 2rem;
+    border-radius: 5px;
 }
-
+.callender-box{
+    width: 100%;
+    height: 100%;
+}
 .callender-date{
     direction: ltr;
+}
+.callender-head-box{
+    direction: rtl;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.callender-bx{
+    width: 86%;
+  
+    border-bottom: 3px solid rgb(13, 66, 147);
+}
+.callender-h2{
+    margin-right: 1rem;
+    padding-bottom: .3rem;
+}
+.callender-select{
+    padding: .2rem 1rem ;
+    font-size: 1rem;
+}
+.callender-date-box{
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content:space-around ;
+}
+.callender-btn-box{
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content:space-around ;
+}
+.callender-btn{
+    padding: .4rem 1.3rem;
+    color: aliceblue;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: rgb(35, 59, 146);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+
+}
+.callender-btn:hover{
+    background:rgb(73, 94, 168) ;
+    
+}
+
+.callender-select{
+    padding: .4rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+@media (max-width:700px){
+
+    .callender-frame{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .callender-target{
+        width: 90%;
+        height: 20rem;
+        background: rgb(255, 251, 251);
+    }
+}
+
+@media (max-width:1000px){
+
+    .callender-frame{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .callender-target{
+        width: 90%;
+        height: 24rem;
+        background: rgb(255, 251, 251)
+    }
 }

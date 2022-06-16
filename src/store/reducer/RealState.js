@@ -12,7 +12,24 @@ export const initialState={
     areaall:null,
     length:null,
     focusData:null,
-    Tab: 'sell'
+    Tab: 'sell',
+    data:{
+        Tipic:"sells",
+        City: "",
+        Area: "",
+        SomeRoom: "",
+        TypeState: "",
+        Mortgage: "",
+        YearBuild: "",
+        Measure: "",
+        Parking: false,
+        OfStorage: false,
+        Pasio: false,
+        Pool: false,
+        Security: false,
+        Sona: false,
+        Assansor: false
+    }
 }
 
 
@@ -49,7 +66,7 @@ const Reducer= (state= initialState, action)=>{
              case actionType.REALSTATEGETONE:
                     return {
                            ...state,
-                          loading:false,
+                           loading:false,
                          error:false,
                          OneData:action.onedata
                          }
@@ -63,6 +80,7 @@ const Reducer= (state= initialState, action)=>{
                 return{
                     ...state,
                     cityone:action.data
+                    
                 }
                 case actionType.CITYGETALL:
                     return{
@@ -94,6 +112,18 @@ const Reducer= (state= initialState, action)=>{
                     return{
                         ...state,
                         Tab: action.data
+                    }
+                case actionType.SEARCHFIELDSCHANGE:
+                    let spobj = {...state.data};
+
+                    spobj = {
+                        ...state.data,
+                        [action.id]:action.value
+                    }
+                    
+                    return{
+                        ...state,
+                        data: spobj
                     }
             default: return state;
     }

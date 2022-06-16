@@ -9,6 +9,7 @@ import { changeprice } from "../../components/UI/CardRealState/changePrice";
 import Header from "../../components/Header/Header";
 import Spinner from "../../components/UI/spinner/Spinner";
 import Footer from "../../components/Footer/Footer";
+import CloseComponent from "../../components/CloseComponent/CloseComponent";
 
 /// بخش درخواست های من در نوبار صفحه سایت
 
@@ -19,10 +20,11 @@ const MyReqeust=(props)=>{
         const [querytab, setquerytab]=useState('sendrealstate')
         
         const objtab={mapdesign:"طراحی نقشه",Mapping:'نقشه برداری',Registrationwork:'کار های ثبتی',Advocacy:'وکالت دادگاهی',Executionandconstruction:'اجرا و ساخت',
-        ExpertofJustice:'کارشناس دادگستری',endofwork:'پایان کار', lisense:'جواز'}
+        ExpertofJustice:'کارشناس دادگستری',endofwork:'پایان کار', lisense:'جواز', "contracting": "پیمان کاری"}
         
         useEffect(()=>{
-                getallmyreqinit(1 , 30)
+            
+                getallmyreqinit(10)
         },[getallmyreqinit, querytab])
        
         const objtype= {"Buy land" : "خرید زمین با قابلیت رشد",
@@ -32,13 +34,16 @@ const MyReqeust=(props)=>{
         <div className='req-target'>
 
             <Header sendreq={sendreq} auth={auth}></Header>
-        
-            <div className='req-box' style={{width:'100%',minHeight:'100vh',
-             display:'flex',alignItems:'flex-start',
-        justifyContent:'space-around',flexFlow:'row wrap'}}>
+            <CloseComponent>
+            <div className='req-box' >
              {data? data.length === 0?<div>موردی یافت نشد!!</div>:null:<Spinner/>} 
                     {data?data.map(mp=>(
-                        <div style={{width:'30%',height:'10rem'}} className='req-card'>
+                        <div  className='req-card'>
+                            {mp.Text?
+                                    <div className='allreq-fieldboxtext'>
+                                        <p className='allreq-text'> توضیحات : {mp.Text}</p>
+                                    </div>
+                                        :null}
                            <div className='allreq-fieldbox'>
                                             <h3 className='allreq-field'> نوع درخواست : {objtype[mp.Type]}</h3>
                                         </div> 
@@ -66,21 +71,18 @@ const MyReqeust=(props)=>{
                                         {mp.Price?
                                         <div className='allreq-fieldbox'>
                                         <h3 className='allreq-field'> {changeprice(mp.Price)}</h3>
-                                    </div>
+                                        </div>
                                         :null}
-                                    {mp.Text?
-                                        <div className='allreq-fieldboxtext'>
-                                        <p className='allreq-text'> توضیحات : {mp.Text}</p>
-                                    </div>
-                                        :null}
+                                    
                           <p className='req-p'> 
-                                    {mp.Status === 'unseen'?<span>دیده نشده<img src={see} /></span>:null}
-                                    {mp.Status === 'Pending'? <span>در حال بررسی<img src={pend} /></span>:null}
-                                    {mp.Status === 'Accepted'? <span>تایید شده<img src={ok} /></span>:null}
+                                    {mp.Status === 'unseen'?<><span>دیده نشده</span><img src={see} /></>:null}
+                                    {mp.Status === 'Pending'? <><span>در حال بررسی</span><img src={pend} /></>:null}
+                                    {mp.Status === 'Accepted'? <><span>تایید شده</span><img src={ok} /></>:null}
                           </p>
                         </div>
                     )):null}
             </div>
+            </CloseComponent>
             <Footer/>
         </div>
     )
@@ -96,7 +98,7 @@ const MapStateToProps=state=>{
 const MapDispatchToProps=dispatch=>{
     return{
         sendreq:(data,authdt)=> dispatch(action.sendreq(data, authdt)),
-        getallmyreqinit:(query,page,limit)=> dispatch(action.getallmyreqinit(query,page, limit))
+        getallmyreqinit:(query)=> dispatch(action.getallmyreqinit(query))
     }
 }
 

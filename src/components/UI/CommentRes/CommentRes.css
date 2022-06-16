@@ -1,0 +1,92 @@
+.comment-textbox-img{
+    border-radius: 50%;
+}
+.comment-targetres{
+    display: none;
+}
+@media(max-width:700px){
+    .comment-targetres{
+        width: 100%;
+        display: block;
+    }
+    .comment-box{
+        width: 90%;
+        display: flex;
+        margin: 2rem auto;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        background: rgb(251, 248, 248);
+        box-shadow: 0 .2rem .3rem rgb(53, 53, 53);
+        min-height: 30rem;
+    }
+    .comment-frame{
+        width: 100%;
+    }
+    .comment-textbox{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .cooment-dateres{
+        margin-right: 2rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+    .comment-start{
+        width: 100%;
+        background-color: rgb(240, 250, 247);
+        
+    }
+    .comment-my{
+        width: 100%;
+        background-color: rgb(239, 174, 161);
+    }
+    .comment-textbox{
+        
+    }
+    .comment-text{
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+
+    }
+    .comment-createreviwe-boxres{
+        
+        display: flex;
+        border-top: 2px solid #111;
+        width: 99.8%;
+        padding: 0;
+        flex-direction: column;
+    }
+    .comment-ratebox, .comment-star{
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .comment-star{
+        width: 80%;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: -1rem;
+        border-bottom:  1px solid #111;
+    
+    }
+    .comment-textareabox{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 1rem;
+    }
+    .comment-textareabox-p{
+        width: 90%;
+        margin: 1rem auto;
+    }
+    
+}

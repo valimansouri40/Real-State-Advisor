@@ -28,7 +28,7 @@ export const setauthlogininit=(data,sine,settime)=>{
         dispatch(startauth());
         const rephash= sine.replace('#','');
             
-           console.log(rephash , data)
+          
         axios(apidomain + '/auth' + rephash,{
             method:'post',
             data:data,
@@ -87,6 +87,7 @@ export const setauthlogininit=(data,sine,settime)=>{
             }
         }).catch((er)=>{
             dispatch(errorauth())
+            ShowAlert([], 'یکی از فیلد های وارد شده صحیح نمی باشد','fail')
         })
     }
 }
@@ -138,6 +139,8 @@ export const setchangepasswordinit=(pas, url)=>{
             if(res.data){
                 
                 dispatch(setchangepassword(res.data.data));
+                window.location.reload();
+               
             }
         }).catch((er)=>{
             console.log('can not send request change password')
@@ -207,7 +210,7 @@ export const sendreq= (data, authdt)=>{
 
     return dispatch=>{
 
-        axios(apidomain + `/auth/sendreq?id=${authdt?authdt._id:null}`,{
+        axios(apidomain + `/auth/sendreq?_id=${authdt?authdt:''}`,{
             method:'post',
             data: data,
             headers:{'Authorization': `Bearea ${cookiejwt}`}
@@ -223,6 +226,7 @@ export const sendreq= (data, authdt)=>{
                 window.location.hash = '/sendsmscode';
                 localStorage.setItem('phn',  data.PhoneNumber);
                 ShowAlert([], 'لطفا کد ارسالی را وارد کنید','success')
+                dispatch(setauthlogin("#/sineup"));
             }
           
 
@@ -256,7 +260,12 @@ export const changepassword=(data)=>{
              headers:{'Authorization':`Bearer ${cookiejwt}`}
          }).then(res=>{
              if(res.data){
-                ShowAlert([], 'درخواست شما با موفقیت ثبت شد','success')
+                ShowAlert([],'رمز با موفقیت عوض شد', 'success')
+                setTimeout(() => {
+                    window.location.reload() 
+                }, 2000);
+                
+               
              }
          }).catch(er=>{
             ShowAlert([],'اطلاعات وارد شده صحیح نمی باشد','fail')

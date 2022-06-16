@@ -1,18 +1,77 @@
-.button{
-    width: 6rem;
-    padding:.5rem 0;
-    background: rgba(31, 41, 192);
+.form-button{
+    width: 70%;
+    padding:.1rem 0;
+    background: rgba(228, 224, 224, 0.482);
     outline: none;
     border: 1px solid transparent;
     border-radius: 7px;
     font-size: 2rem;
     transition: all .3s ease-in-out;
-    box-shadow: .3rem 1rem 0 rgba(17, 17, 17, 0.548);
+    box-shadow: 0 .3rem .3rem rgba(17, 17, 17, 0.548);
     position: relative;
     margin-top: 2rem;
     cursor: pointer;
+    color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.form-navlink{
+    margin-top: 1rem;
+    text-decoration: none;
+    color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 .form{
-    border: 1px solid #111;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background: rgba(146, 149, 150, 0.263);
+    border-radius: 10px;
+    box-shadow: 0 .3rem .3rem #111;
+    padding-bottom: 1rem ;
+    overflow: hidden;
+}
+.headtxt{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 100%;
+    padding: 1.5rem 0;
+    font-size: 1.5rem;
+    color: aliceblue;
+    text-align: center;
+    background: rgba(209, 204, 204, 0.591);
+}
+
+@media (max-width: 1200px){
+    .form{
+        width: 45%;
+    }
+}
+
+@media (max-width: 900px){
+    .form{
+        width: 55%;
+    }
+    .headtxt{
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 700px){
+    .form{
+        width: 65%;
+    }
+}
+
+@media (max-width: 550px){
+    .form{
+        width: 75%;
+    }
+}
+
+@media (max-width: 450px){
+    .form{
+        width: 89%;
+    }
 }

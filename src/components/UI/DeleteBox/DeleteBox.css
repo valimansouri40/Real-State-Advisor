@@ -1,0 +1,36 @@
+.findbox{
+    width: 20rem;
+    position: relative;
+}
+.find{
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%,-50%);
+    width: 20px;
+    height: 20px;
+}
+.showdata{
+    margin: 2rem 0;
+    width: 90%;
+    border-radius: 7px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+    box-shadow: 0 .2rem .2rem rgb(107, 105, 105);
+    position: relative;
+}
+.delete{
+    width: 30px;
+    height: 30px;
+    position:absolute;
+    top: -1rem;
+    left: -1rem;
+    padding: .4rem;
+    border-radius: 50%;
+    box-shadow: 0 .2rem .2rem rgb(107, 105, 105);
+}
+.showsome{
+    color: aliceblue;
+}

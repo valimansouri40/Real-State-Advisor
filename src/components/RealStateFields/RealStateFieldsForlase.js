@@ -38,8 +38,16 @@ const RealStateFieldsForlease=(props)=>{
                 setesquierph(role.PhoneNumber)
             }}
        },[role])
-        
+        useEffect(()=>{
+                setmortgage('');
+                setlease('')
+        },[tab])
         const submitHandller=()=>{
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+              });
             setnumpage(2)
            
             const data=tab === 'rahn'?{
@@ -78,8 +86,9 @@ const RealStateFieldsForlease=(props)=>{
                 EsquierPhoneNumber: esquirephtest
             }
             setDataPostOne(data)
-            setnumpage(2)
             
+            setnumpage(2)
+           
         }
         useEffect(()=>{
             setallerea(areaall)
@@ -125,12 +134,10 @@ const RealStateFieldsForlease=(props)=>{
               setesquierphts();
           }
       }
-      console.log(immediat)
+      
     return(
         <div className={numpage === 1?'leaseform': 'hidden'} >
-                <div style={{width:'40rem',height:'40rem'}} className='googelmapbox'>
-                      <Map location={location} setlocation={setlocation}></Map>
-                </div>
+               
                 <div className='formbox'>
                     <div className='selectbox'>
                     <label className='label'>   شهر</label>
@@ -190,32 +197,37 @@ const RealStateFieldsForlease=(props)=>{
 
                <div className='inpcls'><label className='label'> 
               
-               {tab === 'rahn'? 'رهن':'قیمت'}</label> <input type='number' className='inp'
+               {tab === 'rahn'? 'رهن':'قیمت'}</label> <input type='number' value={mortgage} className='inp'
                  onChange={(e)=>setmortgage(e.target.value)} /></div>
               
                {tab === 'rahn'?<div className='inpcls'><label className='label'> اجاره</label> 
-               <input type='number' className='inp' onChange={(e)=>setlease(e.target.value)} /></div>:null}
+               <input type='number' value={lease} className='inp' onChange={(e)=>setlease(e.target.value)} /></div>:null}
               
              <div className='inpcls'><label className='label'> آدرس</label> 
-               <input type='text' onChange={(e)=>settypeAdrress(e.target.value)}  /></div>
+               <input type='text' className='inp' onChange={(e)=>settypeAdrress(e.target.value)}  /></div>
                
                {role?rolear2.includes(role.role)?<>
             <div className='inpcls'><label className='label'> شماره مالک</label> 
-               <input type='tel' name='tell' value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
+               <input type='tel' className='inp' name='tell' value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
             <div className='inpcls'><label className='label'> نام مالک</label> 
-               <input type='text' name='tell' onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
+               <input type='text' className='inp' name='esquierName' onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
+              
+              
                
+            <div className="btn-box">
                {tab === 'rahn'?
                <button className={fullmortgage?'btnui-ok':'btnui'} 
                onClick={()=>setfullmortgage(e=>!e)} >رهن کامل</button>
                :null}
-
-                <button className={aggrement?'btnui-ok':'btnui'} onClick={()=>setagrement(e=>!e)}>قیمت توافقی</button>
-               
                <button className={immediat?'btnui-ok':'btnui'} onClick={()=>setimmediet(e=>!e)}>فوری</button>
-                
-                <button className='send' onClick={submitHandller}>صفحه بعد</button>
+               <button className={aggrement?'btnui-ok special':'btnui special'} onClick={()=>setagrement(e=>!e)}>پیشنهاد ویژه سایت</button>
               
+               </div>
+                <button className='send1' onClick={submitHandller}>صفحه بعد</button>
+              
+                </div>
+                <div  className='rstf-googelmapbox'>
+                      <Map location={location} setlocation={setlocation}></Map>
                 </div>
         </div>
     )

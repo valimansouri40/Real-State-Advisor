@@ -1,9 +1,104 @@
-.tab-activ{
-    background: chocolate;
-}
+
 .changerole-target{
+    width: 100%;
+    background-color: rgb(221, 211, 211);
+    display: grid;
+   grid-template-columns: 20% 80%;
+   overflow-x:hidden ;
+}
+.rstb-target{
     width: 100%;
     height: 100vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(221, 211, 211);
+    position: relative;
+  
+}
+.rstb-btn{
+    position: absolute;
+    top: .3rem ;
+    right: 1.5rem;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 .2rem .2rem rgb(56, 55, 55);
+    padding: .3rem .5rem;
+    background: rgb(231, 99, 56);
+    color: aliceblue;
+    text-decoration: none;
+    letter-spacing: -1px;
+    font-size: .9rem;
+}
+.builder{
+    width: 80%;
+    height: 90%;
+    margin:  auto;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    border-radius: 6px;
+    
+}
+.tabbar{
+    width: 100%;
+    background: inherit;
+}
+.tab{
+    padding: .4rem 1rem;
+    font-size: 1.3rem;
+    color: #111;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid inherit;
+    background: inherit;
+}
 
+.tab-activ{
+    padding: .4rem 1rem;
+    font-size: 1.3rem;
+    color: rgb(29, 47, 138);
+    border: none;
+    background: inherit;
+    outline: none;
+    border-bottom: 2px solid rgb(29, 47, 138);
+}
+
+@media (max-width: 800px){
+    .builder{
+        width: 90%;
+    }
+}
+
+@media (max-width: 740px){
+    .builder{
+        width: 96%;
+    }
+    
+}
+
+@media (max-width:700px) {
+    .rstb-target-1{
+        min-height: 140vh ;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .rstb-target-3{
+        min-height: 110vh ;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .rstb-target-2{
+        min-height: 270vh ;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+    }
+    .builder{
+        width: 96%;
+       height: 95%;
+      margin: 3rem auto;
+    }
 }

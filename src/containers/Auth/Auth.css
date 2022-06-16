@@ -1,0 +1,9 @@
+.auth{
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+    background: linear-gradient( to left ,#34333b, rgb(111, 96, 96));
+}

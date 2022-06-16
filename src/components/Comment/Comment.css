@@ -1,15 +1,130 @@
-.comment-createreviwe-box{
-    display: flex;
-}
 
+.comment-target{
+    width: 100%;
+    min-height: 28rem;
+}
 .comment-textbox{
     display: flex;
+    width: 100%;
+    position: relative;
+    margin: 0 1rem;
 }
-
+.comment-some{
+    font-size: 1.3rem;
+    width: 5rem;
+    margin-right: .5rem;
+    margin-top: .3rem;
+    border-bottom: 2px solid rgb(16, 81, 131);
+    position: relative;
+}
 .comment-start{
-    border:1px solid #111 ;
+    background: rgb(238, 226, 226);
+    box-shadow: 0 .1rem .12rem;
+    margin: .25rem 0;
+}
+.comment-not{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comment-h5{
+    font-size: 1rem;
+}
+.comment-my{
+    background: rgb(142, 155, 147);
+    box-shadow: 0 .1rem .12rem;
+    margin: .25rem 0;
+}
+.comment-name{
+    margin-right: 1rem;
+}
+.cooment-date{
+   position: absolute;
+   left: 10%;
+   top: 50%;
+   transform: translate(-50%,-50%);
+}
+.comment-text{
+    margin: 0 2rem;
+    padding: .5rem;
+}
+.comment-createreviwe-box{
+    display: flex;
+    border-top: 2px solid #111;
+    width: 99.8%;
+    height: 16rem;
+    margin-left: -140px;
+    padding: 0;
+    
+
+}
+.comment-ratebox{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.comment-titel1{
+    margin-top: 1rem;
+    border-bottom: 2px solid rgb(16, 81, 131);
+    padding: .4rem 0;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+}
+.comment-titel{
+    
+    padding: .4rem 0;
+    
+    font-size: 1.4rem;
+}
+.comment-textareabox{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;   
 }
 
-.comment-my{
-    background: cornflowerblue;
+.comment-textareabox-p{
+    font-size: 1.1rem;
+}
+.comment-textarea{
+    width: 80%;
+    
+    background: rgb(191, 188, 188);
+    border-radius: 6px;
+    max-width: 76%;
+    min-width: 76%;
+    max-height: 9rem;
+    min-height: 8rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+    height: 8rem;
+    
+}
+.comment-textarea::placeholder{
+    padding: .5rem;
+    color: rgb(64, 62, 62);
+    font-size: 1rem;
+}
+/* .comment-textarea::target-text{
+    padding: 1rem;
+} */
+
+.comment-btn{
+
+    padding: .4rem 0 ;
+    width: 83%;
+    text-align: center;
+    color: aliceblue;
+    font-size: 1.2rem;
+    background: rgb(38, 128, 53);
+    border: none;
+    border-radius: 6px;
+    outline: none;
 }

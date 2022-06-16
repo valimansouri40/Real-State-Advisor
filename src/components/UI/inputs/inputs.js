@@ -1,32 +1,31 @@
 import React from "react";
 import ok from '../../../assets/icons/icons8-circled-thin-32.png';
 import circle from '../../../assets/icons/icons8-ok-32.png'
-import classes from './input.css';
+import  './input.css';
 
 const Inputs=(props)=>{
     const {type,value,change, img,clickaddfied,id,valid,touch,eltype,setbol}= props;
 
-    let cssclass=[classes.input];
+    let cssclass=["input"];
     if(!valid && touch){
-        cssclass.push(classes.notvalid);
+        cssclass.push("notvalid");
         
     }
     
-
     let input;
     switch(type){
         case 'input':
            return input=<div>{img}<input {...eltype} value={value}
-             onChange={change} className={cssclass.join(' ')}/></div>;
+             onChange={change}  className={cssclass.join(' ')}/></div>;
             
         case 'texterea':
            return input= <textarea {...eltype} value={value}
-             onChange={change} className={classes.textarea}></textarea>;
+             onChange={change} className={"textarea"}></textarea>;
              
         case 'select':
            return input=  <div className='selectbox'>
-           <label className='label'>   {eltype.placeholder}</label>
-       <select className='select'  onChange={change}  >
+           <label className='label input-form'>   {eltype.placeholder}</label>
+       <select className='select input-form'  onChange={change}  >
        <option className='option'></option>
    {eltype.options.map(mp=>(
        <option className='option'>
@@ -43,22 +42,24 @@ const Inputs=(props)=>{
             return input = <div className='multiplebox'>
                    
                     {eltype.options.map(mp=>(
-                            <label>
+                            <label className="label-select-form">
+                                <input type='checkbox' name='areaval' onChange={(e)=>clickaddfied(e,id, mp)} />
                                 {mp}
-                                <input type='checkbox' name='areaval' onChange={(e)=>clickaddfied(e,id, mp)} /></label>
+                                </label>
                         ))}
                    
             </div>
         default:
-            input=<div   className={classes.block}>
-                {img}
-             <input {...eltype} value={value}
+            input=<div   className={"block"}>
+                <input {...eltype} value={value}
              onClick={()=>{setbol(eltype.placeholder)}}
-             onChange={change} className={cssclass.join(' ')}/></div>
+             onChange={change} className={cssclass.join(' ')}/>
+                {img}
+             </div>
     }
 
    
-    return <div className={classes.pad} >{input}</div>;
+    return <div className={"pad"} >{input}</div>;
 }
 
 export default Inputs;

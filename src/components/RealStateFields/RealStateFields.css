@@ -1,6 +1,6 @@
 
 
-.changenum1::after ,.changenum1::before{
+.changenum-1::after ,.changenum-1::before{
 
     content: "";
     width: 1.4rem;
@@ -10,17 +10,17 @@
     right: 1rem;
 }
 
-.changenum1::after{
+.changenum-1::after{
     top: 48%;
     transform: rotate(40deg);
 }
-.changenum1::before{
-    top: 51.5%;
+.changenum-1::before{
+    top: 53.5%;
     transform: rotate(-40deg);
 }
 
 
-.changenum2::after ,.changenum2::before{
+.changenum-2::after ,.changenum-2::before{
 
     content: "";
     width: 1.4rem;
@@ -30,12 +30,12 @@
     left: 1rem;
 }
 
-.changenum2::after{
+.changenum-2::after{
     top: 48%;
     transform: rotate(-40deg);
 }
-.changenum2::before{
-    top: 51.5%;
+.changenum-2::before{
+    top: 53.5%;
     transform: rotate(40deg);
 }
 
@@ -47,12 +47,23 @@
 }
 .fields{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     direction: 'rtl';
+    height: 94%;
+}
+.rstb-field{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+    width:95%;
+    position: relative;
 }
 .rstf3-sec{
-    display: flex;
+    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -60,4 +71,298 @@
 }
 .inp-no{
     border: 1px solid red;
+}
+
+
+
+.rstf-googelmapbox{
+    width: 30rem;
+    height: 30rem;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.formbox{
+    width: 50%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100%;
+    grid-gap: 10px;
+    position: relative;
+}
+.selectbox, .inpcls{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 1rem ;
+}
+
+.label{
+    font-size: 1rem;
+    color: rgb(29, 47, 138);
+    padding: .3rem 0;
+
+}
+.select{
+    font-size: 1rem;
+    padding: .2rem ;
+    width: 70%;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    background: rgb(221, 211, 211);
+}
+
+.inp{
+    background: rgb(188, 184, 184);
+    font-size: 1rem;
+    padding: .2rem ;
+    width: 67%;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+}
+.btn-box{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-right: 1rem ;
+}
+.btn-box2{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+   margin-top: 2rem;
+    margin-left: 1rem ;
+}
+
+.btnui{
+   width: 40%;
+   margin-right: .5rem;
+   padding: .3rem 0;
+   height: 2rem;
+   border:1px solid rgb(29, 47, 138);
+   border-radius: 5px;
+   margin-bottom: 1rem ;
+   color: rgb(29, 47, 138);
+   font-size: 1rem;
+}
+.btnui:hover{
+    background: rgb(160, 203, 160);
+}
+.btnui-ok{
+    width: 40%;
+    margin-right: .5rem;
+    padding: .3rem 0;
+    height: 2rem;
+    border:1px solid rgb(29, 47, 138);
+    border-radius: 5px;
+    margin-bottom: 1rem ;
+    color: rgb(29, 47, 138);
+    font-size: 1rem;
+    background: rgb(130, 179, 130);
+}
+.btn-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    margin-top: 1rem ;
+}
+
+.send1{
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-right: .5rem;
+    padding: .3rem 1rem;
+    height: 2rem;
+    border:none;
+    border-radius: 5px;
+    color: rgb(23, 23, 23);
+    font-size: 1rem;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    background: rgb(188, 184, 184);
+}
+.send2{
+    margin-right: .5rem;
+    padding: .3rem 1.7rem .3rem 1.9rem;
+    height: 2rem;
+    border:none;
+    position: relative;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    background: green;
+}
+.inputfield-textarea{
+    background: rgb(188, 184, 184);
+    font-size: 1rem;
+    padding: .2rem ;
+    width: 67%;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    max-width: 80%;
+    max-height: 2.7rem;
+    min-width: 60%;
+    min-height: 2rem ;
+    width: 75%;
+}
+.uploadimage-label{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: rgb(29, 47, 138);
+}
+.iconimg{
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+}
+.imgtarget{
+    width: 300px;
+    height: 250px;
+    position: relative;
+    margin-top: .4rem;
+}
+.setimgbox{
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+.send{
+   
+    margin-right: .5rem;
+    padding: .3rem 1rem;
+    height: 2rem;
+    border:none;
+    border-radius: 5px;
+    color: rgb(23, 23, 23);
+    font-size: 1rem;
+    box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+    background: rgb(188, 184, 184);
+}
+
+.btn-2-box{
+    width: 100%;
+    display: flex;
+    padding: .7rem 0;
+  margin-right: 1rem;
+}
+
+.spin{
+    width: .4rem;
+    height: .4rem;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 11%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: anim 1s infinite ;
+}
+.spin::before{
+    content: "";
+    width: .4rem;
+    height: .4rem;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: -.3rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: animbefore 1s infinite ;
+}
+.spin::after{
+    content: "";
+    width: .4rem;
+    height: .4rem;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: .75rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: animafter 1s infinite ;
+}
+.special{
+    width: 80%;
+    
+}
+
+@keyframes animbefore{
+    0%{
+        width: .55rem;
+    height: .55rem;
+    }
+    20%{
+        width: .48rem;
+        height: .48rem;
+    }
+    30%{
+        width: .4rem;
+        height: .4rem;
+    }
+}
+@keyframes anim{
+    34%{
+        width: .55rem;
+    height: .55rem;
+    }
+    60%{
+        width: .48rem;
+        height: .48rem;
+    }
+    60%{
+        width: .4rem;
+        height: .4rem;
+    }
+}
+
+@keyframes animafter{
+    70%{
+        width: .55rem;
+    height: .55rem;
+    }
+    90%{
+        width: .48rem;
+        height: .48rem;
+    }
+    100%{
+        width: .4rem;
+        height: .4rem;
+    }
+}
+
+
+@media (max-width:700px ){
+
+    .leaseform{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column-reverse;
+    }
+    .rstf-googelmapbox{
+        width: 20rem;
+        height: 20rem;
+        margin: 2rem 0;
+        overflow: hidden;
+    }
+    .formbox{
+        width: 90%;
+       
+    }
+    .fields{
+        flex-direction: column;
+    }
+  
 }
