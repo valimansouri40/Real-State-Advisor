@@ -117,7 +117,7 @@ const Fields2= (props)=>{
         }else{
             ShowAlert([],'حجم عکس بیشتر از 50 مگابایت است','fail')
         }
-
+        
     }
     const nextMyImage=()=>{
 

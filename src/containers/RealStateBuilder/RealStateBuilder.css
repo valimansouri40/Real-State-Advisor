@@ -76,7 +76,7 @@
     
 }
 
-@media (max-width:700px) {
+@media (max-width:1000px) {
     .rstb-target-1{
         min-height: 140vh ;
         display: flex;

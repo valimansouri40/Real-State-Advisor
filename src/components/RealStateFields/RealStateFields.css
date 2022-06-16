@@ -343,7 +343,7 @@
 }
 
 
-@media (max-width:700px ){
+@media (max-width:1000px ){
 
     .leaseform{
         display: flex;
@@ -352,7 +352,7 @@
         flex-direction: column-reverse;
     }
     .rstf-googelmapbox{
-        width: 20rem;
+        width: 90%;
         height: 20rem;
         margin: 2rem 0;
         overflow: hidden;
@@ -365,4 +365,14 @@
         flex-direction: column;
     }
   
+}
+
+@media (max-width:1000px ){
+
+    .rstf-googelmapbox{
+        width: 90%;
+        height: 30rem;
+        margin: 2rem 0;
+        overflow: hidden;
+    }
 }
