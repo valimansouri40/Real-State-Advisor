@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/gooya-faiv.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' /> -->
     <link
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -87,6 +87,16 @@
      font-size: 3vh;
      animation: open forwards 4.5s;
    }
+   @media (max-width: 500px){
+    .alert--fail{
+      font-size: 1rem;
+      letter-spacing: -1px;
+    }
+    .alert--success{
+      font-size: 1rem;
+      letter-spacing: -1px;
+    }
+   }
    /* #animdrawer{
      position: absolute;
      top: 0;
@@ -123,7 +133,6 @@
    </Style>
    <script id="data123" type="application/json" >
     
-    {"title": "My blog title", "comments":["comment 1","comment 2"]}
     </script>
   </body>
 </html>

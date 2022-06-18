@@ -64,12 +64,12 @@ function LocationMarker({location, setlocation}) {
     const map = useMapEvents({
       click(e) {
         map.locate()
-        console.log(e.latlng)
+        
         setlocation(e.latlng)
       },
       locationfound(e) {
        
-        console.log(e)
+       
         map.flyTo(e.latlng, map.getZoom())
       },
     })

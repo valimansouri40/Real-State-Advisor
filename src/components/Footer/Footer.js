@@ -60,9 +60,9 @@ const Footer=(props)=>{
             <div class="coloum-footer3">
                 <div class="inamad">
                     <h4>نماد های اعتماد</h4>
-                    <img src={enamad} alt=""/>
-                    <img width="150px" heigth="150px" src={samandehi} alt=""/>
-                    <img src={enamad} alt=""/>
+                    <img className="inamad-1" src={enamad} alt=""/>
+                    <img className="inamad-2" width="150px" heigth="150px" src={samandehi} alt=""/>
+                    <img  className="inamad-1"src={enamad} alt=""/>
                 </div>
 
                 <div class="soctioal">

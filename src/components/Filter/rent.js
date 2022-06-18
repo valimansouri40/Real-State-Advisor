@@ -11,7 +11,7 @@ import { useHistory } from "react-router-dom";
 const Rent=(props)=>{
     const {areaall,cityall,getallfilterinit,
         changefilehandller}=props;
-//    const history = useHistory();
+    const history = useHistory();
 //    const [room, setsomerom]= useState('')
   
    const [city, setcity]=useState('');
@@ -58,7 +58,12 @@ const Rent=(props)=>{
 
      
     //    window.location.search = ''
-       window.location.assign(`${st}#/search`) 
+    window.location.hash = '#/search'
+          
+    let newurl = window.location.protocol + "//" + window.location.host + '/' +  st + '#/search';
+    
+    window.history.pushState({}, '', newurl)
+ 
   
    }
    useEffect(()=>{
@@ -251,7 +256,7 @@ const Rent=(props)=>{
                <Select val={room} disabled={!typestateinc.includes(tipic)}
                   array={['همه','چهار خواب','سه خواب','دو خواب','یک خواب']} 
                 setvaluehandller={roomhandller}>تعداد اتاق خواب</Select> */}
-            <div className="searchrent-box">
+            <div className="extra">
            <button className="search-ok" onClick={searchhandller} type="submit" >جستجو</button>
            </div>
        </div>

@@ -105,3 +105,10 @@
         background: rgb(255, 251, 251)
     }
 }
+
+@media (max-width: 350px){
+    
+   .callender-date{
+       flex-direction: column;
+   }
+}

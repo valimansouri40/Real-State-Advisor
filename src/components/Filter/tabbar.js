@@ -46,7 +46,7 @@ const Tabbar= (props)=>{
         
         <div class="engineering" >
             <div
-            class="col-12 d-flex align-items-start">
+            class="align-items-start">
                 <div  class="col-3 buttons">
                     <div style={{display:'flex', alignItems:'center',justifyContent:'center'
                     ,flexDirection:'column',width:"100%"}} class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -79,8 +79,8 @@ const Tabbar= (props)=>{
                         <div class="tab-pane fade show active" id="v-pills-tarrahi">
                             <div class="slider-box ">
                                 <div class="header">
-                                    <span>نمونه کارها</span>
-                                    <p>در مورد نقشه کشی از این تجهیزات استفاده میکنیم طی 1 هفته کار تحویل داده میشه و.....</p>
+                                    <span className='header-tab-spn'>نمونه کارها</span>
+                                    <p className='header-tab-p'>در مورد نقشه کشی از این تجهیزات استفاده میکنیم طی 1 هفته کار تحویل داده میشه و.....</p>
                                 </div>
                                 <div class="col-12 row">
                                     {worksampel?worksampel.slice(0,3).map(mp=><div class="col-4 nemone-box">
@@ -115,7 +115,7 @@ const Tabbar= (props)=>{
                                         <input id="teel" type="text" placeholder="شماره تماس"/>
 
 
-                                    <input type='submit' className='submit' />
+                                    <input type='submit' className='submit' value='ثبت' />
                                 </div>
                             </form>
                         </div>

@@ -159,11 +159,14 @@ const Fields2= (props)=>{
                      onChange={(e)=>sendimage(e.target.files)} />
                      {image?<div 
                      className='imgtarget'>
-                         <img src={URL.createObjectURL(image[numimg])} width='100%' height='100%'
+                         <img src={URL.createObjectURL(image[numimg])}  width='100%' height='100%'
                            className='inputimg'/>
                          {image.length > 1?<><span className='changenum-2' onClick={lastMyImage}></span>
                         <span className='changenum-1' onClick={nextMyImage}></span></>:null}
-                     </div>:null}
+                     </div>:
+                     <img src={imgicon}  width='100%' height='100%'
+                     className='inputimg'/>
+                     }
                     </div>
             </div>
             

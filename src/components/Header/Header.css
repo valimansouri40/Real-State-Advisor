@@ -390,6 +390,9 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+  display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 .btn-add-home:hover {
   background-color: #3fc899;
@@ -601,3 +604,40 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
     margin-left: -1.7rem;
   }
 }
+@media (max-width: 350px){
+  .modal-content .modal-body form textarea {
+    margin: 0 0 10px;
+    padding: 12px 10px;
+    border-radius: 5px;
+    background: #cfd1d5;
+    border: 0;
+    max-width: 92%;
+    min-width:92% ;
+    min-height: 3rem;
+    max-height: 5rem;
+    font-size: 1rem;
+  }
+  .btn-add-home {
+    width: 100px;
+    margin-left: -.7rem;
+  }
+  .drawer-target-img{
+    width: 30px;
+    height: 30px;
+  }
+  .containerone{
+    width: 95%;
+  }
+  .header-logo-area{
+    width: 150px;
+   
+  }
+  .btn-add-home-link{
+    font-size: 10px;
+  }
+  .header-logo-area p{
+    font-size: .5rem;
+    letter-spacing: -1px;
+  }
+}
+

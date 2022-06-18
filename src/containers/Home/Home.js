@@ -26,11 +26,11 @@ const Home= (props)=>{
             getbestofadinit();
         },[])
           
-        useEffect(()=>{
-            if(window.location.hash === '#/search' && !['sell', 'rent'].includes(tab)){
-                settab('sell')
-            }
-        },[])
+        // useEffect(()=>{
+        //     if(window.location.hash === '#/search' && !['sell', 'rent'].includes(tab)){
+        //         settab('sell')
+        //     }
+        // },[])
         useEffect(()=>{
                 savetabserchboxinit(tab);
         },[tab])
@@ -42,7 +42,7 @@ const Home= (props)=>{
            <CloseComponent>
            <Logo></Logo>
             
-           <div className={!limitpath?'home-searchboxbox':'search-searchbox'}>
+           <div className={'home-searchboxbox'}>
                <div className={limitpath?'search-filters':'home-filters'}>
                    <Filter worksampel={worksampel}
                 filter={filter} tab={Tab} settab={settab}
@@ -50,12 +50,12 @@ const Home= (props)=>{
                 auth={auth} sendreq={sendreq} getallwsinit={getallwsinit} getallfilterinit={getallfilterinit}
                     areaall={areaall} changefilehandller={changefilehandller} cityall={cityall}></Filter>
                     </div> 
-                {limitpath?<SearchResult 
+                {/* {limitpath?<SearchResult 
                     REALSTATEGETALLINIT={REALSTATEGETALLINIT} 
                     length={length} filter={AllData} auth={auth}
                     addMarkinit={addMarkinit} lessmarkinit={lessmarkinit}
                     />
-                    :null}
+                    :null} */}
                 
                     {!limitpath?<>
                     <div className='home-tabs'><TabRealState

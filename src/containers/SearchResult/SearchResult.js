@@ -173,7 +173,7 @@ const SearchResult= (props)=>{
                     setvalueHandller(e.target.value, "TypeState")
                 }} name="" id="">
                
-                    <option >نوع ملک</option>
+                    <option value=''>نوع ملک</option>
                     <option >آپارتمان</option>
                     <option >ویلایی</option>
                     <option >باغ</option>
@@ -218,12 +218,10 @@ const SearchResult= (props)=>{
 
             </div>
             {filter?<div  class="type-price type-asid">
-                <select value={data.Mortgage} onChange={(e)=>{if( e.target.value !== "قیمت"){
+                <select value={data.Mortgage} onChange={(e)=>
                     setvalueHandller(e.target.value , "Mortgage")
-                }else{
-                    setvalueHandller('' , "Mortgage")
-                }}} className="type-asid-field" name="" id="">
-                     <option > قیمت</option>
+                } className="type-asid-field" name="" id="">
+                     <option value=''> قیمت</option>
                     {filter.Price.map(mp=>(
                        <option value={mp.value} >
                             {mp.text}
@@ -232,12 +230,10 @@ const SearchResult= (props)=>{
                 </select>
             </div>:null}
             { data.Tipic === 'rahn' && filter?.Lease?<div  class="type-price type-asid">
-                <select className="type-asid-field" value={data.Lease} onChange={(e)=>{if( e.target.value !== "اجاره"){
+                <select className="type-asid-field" value={data.Lease} onChange={(e)=>
                     setvalueHandller(e.target.value , "Lease")
-                }else{
-                    setvalueHandller('' , "Lease")
-                }}} name="" id="">
-                    <option > اجاره</option>
+                } name="" id="">
+                    <option value=''> اجاره</option>
                     {filter?.Lease.map(mp=>(
                        <option value={mp.value} >
                             {mp.text}
@@ -246,12 +242,10 @@ const SearchResult= (props)=>{
                 </select>
             </div>:null}
             {filter?<div  class="type-price type-asid">
-                <select className="type-asid-field" onChange={(e)=>{if( e.target.value !== "متراژ"){
+                <select className="type-asid-field" onChange={(e)=>
                     setvalueHandller(e.target.value , "Measure")
-                }else{
-                    setvalueHandller('' , "Measure")
-                }}} name="" id="">
-                     <option > متراژ</option>
+                } name="" id="">
+                     <option value='' > متراژ</option>
                     {filter.Measure.map(mp=>(
                        <option value={mp.value} >
                             {mp.text}
@@ -262,12 +256,10 @@ const SearchResult= (props)=>{
     
 
             <div class="type-room type-asid">
-                <select className="type-asid-field" onChange={(e)=>{if(e.target.value !== "تعداد خواب"){
+                <select className="type-asid-field" onChange={(e)=>
                     setvalueHandller(e.target.value, "SomeRoom")
-                }else{
-                    setvalueHandller('', "SomeRoom")
-                }}}>
-                    <option >تعداد خواب</option>
+               }>
+                    <option value=''>تعداد خواب</option>
                     <option >  یک خواب</option>
                     <option >دو خواب</option>
                     <option >سه خواب</option>
@@ -277,6 +269,7 @@ const SearchResult= (props)=>{
 
             {filter?<div class="type-age-bana type-asid">
                 <select className="type-asid-field" onChange={(e)=>setvalueHandller(e.target.value, 'YearBuild')} name="" id="">
+                <option value=''> سال ساخت</option>
                 {filter.YearBuild.map(mp=>(
                     <option value={mp.value}>{mp.text}</option>
                 ))}
@@ -286,7 +279,7 @@ const SearchResult= (props)=>{
             <div class="type-emkanat type-asid">
                 <h3 class="h3-asid">امکانات</h3>
                 <div className="box-asid">
-                    <label className="label-asid">پرکینگ</label>
+                    <label className="label-asid">پارکینگ</label>
                         <input class="mt-10" onChange={(e)=>setvalueHandller(e.target.checked, 'Parking')} type="checkbox"/> 
                 </div>
                 <div className="box-asid">

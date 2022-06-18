@@ -6,7 +6,7 @@ const Select=(props)=>{
     return(
         <div className='selectbox'>
                     <label className='label'>   {props.children}</label>
-                <select disabled={disabled} className='select' value={val?val:''} 
+                <select disabled={disabled} className='select responesive-select' value={val?val:''} 
                  onChange={(e)=>setvaluehandller(e.target.value)}  >
                 
             {array?array.map(mp=>(

@@ -54,10 +54,12 @@ const Seles=React.memo((props)=>{
             }
         })
 
-        console.log(st)
             // REALSTATEGETALLINIT(1 ,`${st}&_id=${auth._id}`,);
+            window.location.hash = '#/search'
           
-            window.location.assign(`${st}#/search`)
+            let newurl = window.location.protocol + "//" + window.location.host + '/' +  st + '#/search';
+            
+            window.history.pushState({}, '', newurl)
             
            
             //console.log(gteprice)

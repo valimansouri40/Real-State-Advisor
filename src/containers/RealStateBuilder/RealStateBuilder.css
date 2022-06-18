@@ -78,7 +78,7 @@
 
 @media (max-width:1000px) {
     .rstb-target-1{
-        min-height: 140vh ;
+        min-height: 180vh ;
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
@@ -102,3 +102,4 @@
       margin: 3rem auto;
     }
 }
+

@@ -156,7 +156,7 @@ const AllAppointments= props=>{
                                         <div className='allappointment-fieldbox'>
                                             <h3 className='allappointment-field'> نام مالک : {mp.RealStateId.EsquierName}</h3>
                                         </div></>:null}
-                                        <div className='allappointment-fieldbox'>
+                                        <div className='allappointment-fieldbox allappointment-fieldbox-res'>
                                        
                                         <button className="card-btn"><Link style={{textDecoration:"none" ,color:"#fff"}} 
                                         to={`/viewrealstate/${mp.RealStateId._id}`}> مشاهده صفحه </Link></button> 

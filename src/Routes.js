@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect, useLayoutEffect } from "react";
-import { HashRouter,Route,Redirect} from 'react-router-dom';
+import React, { Suspense } from "react";
+import { HashRouter,Route} from 'react-router-dom';
 import Auth from './containers/Auth/Auth';
 import RealStateBuilder from './containers/RealStateBuilder/RealStateBuilder';
 import MyProfile from './containers/MyProfile/MyProfile';
@@ -49,21 +49,19 @@ const Routes=(props)=>{
     {route:'/forgotpassword', compnent:Auth},{route:'/resetpassword', compnent:Auth}
     ,{route:'/sendsmscode', compnent:Auth}]
 
-        let limitRoutes=<HashRouter>
+        let limitRoutes=<>
                <Route path='/' exact  component={Home}/>
         <Route path='/search' exact  component={SearchResult}/>
         <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
         
             { routes.map((mp)=><Route path={mp.route} exact component={mp.compnent} />)}
-        </HashRouter>
+        </>
 
         if(role){
             switch(role){
                 case 'user':
-                    limitRoutes =<HashRouter>
-                         <Route path='/description/one'  component={DesciptionPagesOne}/>  
-                <Route path='/description/two'  component={DesciptionPagesTwo}/> 
-                <Route path='/description/three'  component={DesciptionPagesThree}/> 
+                    limitRoutes =<>
+                       
                     <Route path='/myprofile' exact component={MyProfile} />
                     <Route path='/myrequest' exact component={MyRequest} />
                    <Route path='/myappointments' exact component={AllAppointments} />
@@ -73,13 +71,10 @@ const Routes=(props)=>{
                     <Route path='/search' exact  component={SearchResult}/>
                     <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
                     
-                    </HashRouter>
+                    </>
                     break;
                 case 'dealer':
-                    limitRoutes=<HashRouter>
-                         <Route path='/description/one'  component={DesciptionPagesOne}/>  
-                <Route path='/description/two'  component={DesciptionPagesTwo}/> 
-                <Route path='/description/three'  component={DesciptionPagesThree}/> 
+                    limitRoutes=<> 
                     <Route path='/buildrealstatepost' exact component={RealStateBuilder} />
                     <Route path='/myprofile' exact component={MyProfile} />
                    <Route path='/myrequest' exact component={MyRequest} />
@@ -91,13 +86,11 @@ const Routes=(props)=>{
                     <Route path='/search' exact  component={SearchResult}/>
                     <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
                      
-                   </HashRouter>
+                   </>
                      break;
                 case 'advisor':
-                    limitRoutes=<HashRouter>
-                         <Route path='/description/one'  component={DesciptionPagesOne}/>  
-                <Route path='/description/two'  component={DesciptionPagesTwo}/> 
-                <Route path='/description/three'  component={DesciptionPagesThree}/> 
+                    limitRoutes=<>
+                         
                      <Route path='/buildrealstatepost' exact component={RealStateBuilder} />
                      <Route path='/myprofile' exact component={MyProfile} />
                     <Route path='/myrequest' exact component={MyRequest} />
@@ -109,10 +102,10 @@ const Routes=(props)=>{
                     <Route path='/search' exact  component={SearchResult}/>
                     <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
                     
-                    </HashRouter>
+                    </>
                     break;
                 case 'employee':
-                    limitRoutes=<HashRouter>
+                    limitRoutes=<>
                          <Route path='/description/one'  component={DesciptionPagesOne}/>  
                 <Route path='/description/two'  component={DesciptionPagesTwo}/> 
                 <Route path='/description/three'  component={DesciptionPagesThree}/> 
@@ -136,10 +129,10 @@ const Routes=(props)=>{
                     <Route  path='/changepassword' exact component={Auth}/>
                     <Route path='/alladvisorappointments' exact component={AllAppointments} />
                     <Route path='/commentmanagement' exact component={AcceptComment}/>
-                   </HashRouter>
+                   </>
                     break;
                 case 'admin':
-                    limitRoutes=<HashRouter>
+                    limitRoutes=<>
                         
                     <Route path='/' exact  component={Home}/>
                     <Route path='/search' exact  component={SearchResult}/>
@@ -163,27 +156,29 @@ const Routes=(props)=>{
                     <Route path='/commentmanagement' exact component={AcceptComment}/>
                     <Route path='/allrequest' exact component={AllRequest} />
                     <Route  path='/changepassword' exact component={Auth}/>
-                   </HashRouter>
+                   </>
                     break;
-                default: limitRoutes=<HashRouter>
-                     <Route path='/description/one'  component={DesciptionPagesOne}/>  
-                <Route path='/description/two'  component={DesciptionPagesTwo}/> 
-                <Route path='/description/three'  component={DesciptionPagesThree}/> 
+                default: limitRoutes=<>
+                      
                        <Route path='/' exact  component={Home}/>
                     <Route path='/search' exact  component={SearchResult}/>
                     <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
-                    <Route path='/*'
-                     component={Home}/>
+                    {/* <Route path='/*' component={Home}/> */}
                     { routes.map((mp)=><Route path={mp.route} exact component={mp.compnent} />)}
                     
-                </HashRouter>
+                </>
                     break
             }
         }
         
     return(
            <Suspense  fallback={<Spinner></Spinner>}>
-              {limitRoutes}
+               <HashRouter><Route path='/description/one' exact component={DesciptionPagesOne}/>  
+                <Route path='/description/two'  component={DesciptionPagesTwo}/>  
+                <Route path='/description/three'  component={DesciptionPagesThree}/>
+                {limitRoutes}
+                </HashRouter>
+              
               {/* {role && roles.includes(role) ?LimitRouter[role].map(mp=>(
                   <Route to={mp} render={()=><p style={{width:'100%', textAlign:'center'}} >not found</p>} />
               )):null} */}

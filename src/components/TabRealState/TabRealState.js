@@ -150,7 +150,13 @@ const TabRealState=(props)=>{
                    </div>
                    <div className="btn-more-box">
                         <button className="btn-more"  >
-                            <Link  style={{textDecoration:"none",color:"#fff"}} to="/search"> موارد بیشتر 
+                            <Link onClick={()=>{
+                                window.scrollTo({
+                                    top:0,
+                                    left:0,
+                                    behavior:'auto'
+                                })
+                            }} style={{textDecoration:"none",color:"#fff"}} to="/search"> موارد بیشتر 
                         </Link></button>
                    </div>
                    

@@ -105,3 +105,43 @@
         flex-flow: row wrap;
     }
 }
+
+@media (max-width: 350px){
+    .profile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .sampel-label-img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50px;
+    }
+    .small-img{
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        left: 10%;
+        bottom: 0;
+    }
+    .show{
+        margin-top: .7rem;
+    }
+    .labelnm{
+        padding: .5rem;
+        font-size: 1rem;
+        color: rgb(51, 94, 151);
+        display: block;
+    }
+    .name{
+    
+        border-radius: 6px;
+        padding: .3rem;
+        font-size: 1rem;
+        color: #111;
+    }
+    .card-btn-res{
+        margin-top: 3rem;
+    }
+}

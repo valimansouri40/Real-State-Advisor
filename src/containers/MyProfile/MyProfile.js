@@ -115,7 +115,7 @@ const MyProfile=(props)=>{
                             <p className='name'>{on?data.Password:star}</p>
                         </div>  */}
                         <div className='show' >
-                        <button className="card-btn" onClick={PatchProfile}>ارسال تغییرات</button>
+                        <button className="card-btn card-btn-res" onClick={PatchProfile}>ارسال تغییرات</button>
                             </div>
                     </div>:<Spinner/>}
                 </div>

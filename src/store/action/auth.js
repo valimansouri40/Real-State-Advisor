@@ -220,7 +220,9 @@ export const sendreq= (data, authdt)=>{
                
                 if(cookiejwt){
                     ShowAlert([], 'درخواست شما با موفقیت ثبت شد','success')
-                
+                    setTimeout(()=>{
+                        window.location.reload()
+                    },[2000])
                 
             }else {
                 window.location.hash = '/sendsmscode';

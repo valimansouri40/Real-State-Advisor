@@ -60,13 +60,14 @@ const Cooperation=(props)=>{
                 Type: 'Buy land',
                 TypeState: tipic
             }
-           
+         
             const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
             if(pattern.test(data.PhoneNumber)){
             if(data.FristName !== '' && data.City !=='' && data.Area !==''){
-                    sendreq(data, auth);
+                    sendreq(data, auth._id);
                     
             }else{
+
              ShowAlert([], 'اطلاعات وارد شده ناقص است', 'fail')
             }}else{
            ShowAlert([], 'لطفا شماره تلفن همراه خود را وارد کنید', 'fail')
@@ -83,6 +84,8 @@ const Cooperation=(props)=>{
                 Cooperation: cooperations,
                 Land: land
             }
+        
+
             const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
             if(pattern.test(data.PhoneNumber)){
             if(data.FristName !== '' && data.City !=='' && data.area !=='' ){
@@ -117,7 +120,7 @@ const Cooperation=(props)=>{
                             <form action="" class="engener-2">
                                 <div className='selectbox'>
                               <label className='label'>   شهر</label>
-                <select className='select' onChange={(e)=>setareahandller(e.target.value)}  >
+                <select className='select responesive-select' onChange={(e)=>setareahandller(e.target.value)}  >
                 <option className='option'  >
                         شهر
                     </option>
@@ -130,7 +133,7 @@ const Cooperation=(props)=>{
         
        <div className='selectbox'>
                 <label className='label'> منطقه</label>
-           <select className='select' disabled={areaall && city !== ''?false:true} 
+           <select className='select responesive-select' disabled={areaall && city !== ''?false:true} 
            onChange={(e)=>setarea(e.target.value)} >
                     <option className='option'  >
                         منطقه

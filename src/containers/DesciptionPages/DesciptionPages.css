@@ -30,3 +30,31 @@
 .ds-pa h1,.ds-pa h3 {
     margin-right: -1rem ;
 }
+
+@media (max-width: 500px) {
+   .ds-pa{
+       font-size: 1rem;
+   }
+   .ds-pa h1 , .ds-pa h3{
+       font-size: 1.2rem;
+   }
+  }
+
+  @media (max-width: 300px) {
+    .ds-pa{
+        font-size: .9rem;
+    }
+    .ds-pa h1 , .ds-pa h3{
+        font-size: 1.05rem;
+        margin-right: .6rem;
+    }
+   }
+   @media (max-width: 300px) {
+    .ds-pa{
+        font-size: .8rem;
+    }
+    .ds-pa h1 , .ds-pa h3{
+        font-size: 1rem;
+        margin-right: .6rem;
+    }
+   }

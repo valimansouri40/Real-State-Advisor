@@ -22,7 +22,7 @@ const AdvisorData= props=>{
                 headers: {'Authorization': `Bearer ${cookiejwt}`}
             }).then(res =>{
                
-                ShowAlert([],'انجام شد','succes')
+                ShowAlert([],'انجام شد','success')
             }).catch(er=>{
                 ShowAlert([],'انجام نشد','fail')
 
