@@ -44,16 +44,13 @@ const Routes=(props)=>{
 
     const {role}= props;
     const hash = window.location.hash;
-    const lmunknowe= LimitRouter['unknowe'].includes(hash.replace('#',''));
+    // const lmunknowe= LimitRouter['unknowe'].includes(hash.replace('#',''));
     let routes= [{route:'/sineup', compnent:Auth},{route:'/login', compnent:Auth},
     {route:'/forgotpassword', compnent:Auth},{route:'/resetpassword', compnent:Auth}
     ,{route:'/sendsmscode', compnent:Auth}]
 
         let limitRoutes=<>
-               <Route path='/' exact  component={Home}/>
-        <Route path='/search' exact  component={SearchResult}/>
-        <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
-        
+           
             { routes.map((mp)=><Route path={mp.route} exact component={mp.compnent} />)}
         </>
 
@@ -67,10 +64,6 @@ const Routes=(props)=>{
                    <Route path='/myappointments' exact component={AllAppointments} />
                     <Route path='/mymarks' exact component={MyMarks} />
                     <Route  path='/changepassword' exact component={Auth}/>
-                    <Route path='/' exact  component={Home}/>
-                    <Route path='/search' exact  component={SearchResult}/>
-                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
-                    
                     </>
                     break;
                 case 'dealer':
@@ -82,9 +75,7 @@ const Routes=(props)=>{
                    <Route  path='/changepassword' exact component={Auth}/>
                    <Route path='/myappointments' exact component={AllAppointments} />
                    <Route path='/alladvisorappointments' exact component={AllAppointments} />
-                   <Route path='/' exact  component={Home}/>
-                    <Route path='/search' exact  component={SearchResult}/>
-                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                  
                      
                    </>
                      break;
@@ -98,9 +89,7 @@ const Routes=(props)=>{
                     <Route path='/mymarks' exact component={MyMarks} />
                     <Route  path='/changepassword'  component={Auth}/>
                    <Route path='/myappointments' exact component={AllAppointments} />
-                   <Route path='/' exact  component={Home}/>
-                    <Route path='/search' exact  component={SearchResult}/>
-                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                  
                     
                     </>
                     break;
@@ -113,9 +102,7 @@ const Routes=(props)=>{
                     <Route path='/myprofile' exact component={MyProfile} />
                    <Route path='/myrequest' exact component={MyRequest} />
                    <Route path='/myappointments' exact component={AllAppointments} />
-                   <Route path='/' exact  component={Home}/>
-                    <Route path='/search' exact  component={SearchResult}/>
-                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+
                     
                    <Route path='/mymarks' exact component={MyMarks} />
                    <Route path='/addarea' exact component={AddAreaAndCity} />
@@ -134,9 +121,6 @@ const Routes=(props)=>{
                 case 'admin':
                     limitRoutes=<>
                         
-                    <Route path='/' exact  component={Home}/>
-                    <Route path='/search' exact  component={SearchResult}/>
-                <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
                 <Route path='/description/one'  component={DesciptionPagesOne}/>  
                 <Route path='/description/two'  component={DesciptionPagesTwo}/>  
                 <Route path='/description/three'  component={DesciptionPagesThree}/>  
@@ -160,9 +144,7 @@ const Routes=(props)=>{
                     break;
                 default: limitRoutes=<>
                       
-                       <Route path='/' exact  component={Home}/>
-                    <Route path='/search' exact  component={SearchResult}/>
-                    <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
+                       
                     {/* <Route path='/*' component={Home}/> */}
                     { routes.map((mp)=><Route path={mp.route} exact component={mp.compnent} />)}
                     
@@ -176,7 +158,11 @@ const Routes=(props)=>{
                <HashRouter><Route path='/description/one' exact component={DesciptionPagesOne}/>  
                 <Route path='/description/two'  component={DesciptionPagesTwo}/>  
                 <Route path='/description/three'  component={DesciptionPagesThree}/>
+                <Route path='/' exact  component={Home}/>
+                <Route path='/search' exact  component={SearchResult}/>
+                <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
                 {limitRoutes}
+                {/* <Route path='/*' component={Home}/>  */}
                 </HashRouter>
               
               {/* {role && roles.includes(role) ?LimitRouter[role].map(mp=>(

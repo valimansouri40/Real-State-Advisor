@@ -73,15 +73,36 @@
 
 
 @media (max-width:460px){
+    
     .modal-box{
-        width: 20rem;
-        
+        width: 19rem;
+        position: absolute;
+        left: 53%;
+    top: 34%;
+        transform: translate(-50%,-50%);
+        animation: modalanimres forwards 1s;
+    }
+    .modal-close-box{
+        position: absolute;
+        right: .5rem;
+        top: 3rem;
     }
 }
 
 @media (max-width:390px){
+    
+    .modal-close-box{
+        position: absolute;
+        right: .5rem;
+        top: 3rem;
+    }
     .modal-box{
-        width: 19rem;
+        width: 18rem;
+        position: absolute;
+        left: 53%;
+    top: 37%;
+        transform: translate(-50%,-50%);
+        animation: modalanimres forwards 1s;
     }
     .modal-close-box{
         position: absolute;
@@ -116,7 +137,7 @@
     to{
         position: absolute;
         left: 53%;
-    top: 37%;
+    top: 34%;
         transform: translate(-50%,-50%);
     }
 }

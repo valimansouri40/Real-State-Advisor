@@ -15,14 +15,14 @@ const SearchResult=(props)=>{
             userid= auth._id
         }
         
-       const searchquery = window.location.pathname;
+       const searchquery = window.location.hash;
         
-      
+    //   console.log(searchquery)
         useEffect(()=>{
 
            
-            REALSTATEGETALLINIT(page, `${searchquery.replace('/','')}${userid?"&_id=" +userid:""}` );
-        },[]);
+            REALSTATEGETALLINIT(page, `${searchquery.replace('#/search?','')}${userid?"&_id=" +userid:""}` );
+        },[searchquery, page]);
 
         const addmarkhandller= (mp)=>{
           const  data= {
@@ -31,7 +31,7 @@ const SearchResult=(props)=>{
          
          if(auth){
           addMarkinit(data)
-          REALSTATEGETALLINIT(page, `${searchquery}${userid?"&_id=" +userid:""}`)
+          REALSTATEGETALLINIT(page, `${searchquery.replace('#/search?','')}${userid?"&_id=" +userid:""}`)
           
       }else{
           window.location.hash = '#/login'

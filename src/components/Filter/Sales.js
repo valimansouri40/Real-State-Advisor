@@ -57,7 +57,7 @@ const Seles=React.memo((props)=>{
             // REALSTATEGETALLINIT(1 ,`${st}&_id=${auth._id}`,);
             window.location.hash = '#/search'
           
-            let newurl = window.location.protocol + "//" + window.location.host + '/' +  st + '#/search';
+            let newurl = window.location.protocol + "//" + window.location.host + '/' + '#/search?' + st ;
             
             window.history.pushState({}, '', newurl)
             

@@ -91,7 +91,7 @@ const SearchResult= (props)=>{
             // window.location.assign(`${'Tipic='+ tab+ ''}${st}#/search`);
             // let searchParams = new URLSearchParams(st);
             // console.log(searchParams)
-            let newurl = window.location.protocol + "//" + window.location.host + '/' +  st + '#/search';
+            let newurl = window.location.protocol + "//" + window.location.host + '/' + '#/search?'+ st ;
             
             window.history.pushState({}, '', newurl)
              REALSTATEGETALLINIT(page, `${ st }${userid?"&_id=" + userid:""}` )
@@ -126,7 +126,7 @@ const SearchResult= (props)=>{
        
     
     return(
-        <div>
+        <div className="srch-target">
 
         <Header tab={tab} settab={settab} auth={auth} sendreq={sendreq} ></Header>
         <CloseComponent>

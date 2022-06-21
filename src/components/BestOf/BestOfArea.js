@@ -52,7 +52,29 @@ const BestOfArea = (props)=>{
                     </p>
                     </div>
                 </div>):<Spinner/>}
-                
+                {bestOf?bestOf.map(mp=><div class="user">
+                    <h3 class="user-name">{mp.FristName + " " + `${mp.LastName?mp.LastName:''}`}</h3>
+                  {mp.Image? <img class="user-photo" src={`data:image/jpeg;base64${mp.Image}`} alt="" />:
+                    <img className='user-photo' src="https://img.icons8.com/ios-glyphs/30/000000/user-male-circle.png"/>}
+                    <h4 class="user-city">{`${mp.AdvisorAddress?mp.AdvisorAddress:''}`}</h4>
+                   <div className="star-box">
+                   <StaticRange
+                                rating={mp.RateAdvisor}
+                                starRatedColor="gold"
+                                numberOfStars={5}
+                                name='rating'
+                                starDimension="2vh"
+                                starSpacing="3px"
+                                /> 
+                   </div>
+                   <div className="bestof-Ad-detail">
+                       <span className="bestof-Ad-detail-spn">{mp.PhoneNumber}</span>
+                    <p class="user-description">
+                        {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima magnam natus adipisci quam a quis. */}
+                    {mp.AdvisorAddress}
+                    </p>
+                    </div>
+                </div>):<Spinner/>}
             </div>
             <h1 class="detaile-title">بهترین سایت املاک شمال ایران</h1>
             <div class="detaile">

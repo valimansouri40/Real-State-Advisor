@@ -60,7 +60,7 @@ const Rent=(props)=>{
     //    window.location.search = ''
     window.location.hash = '#/search'
           
-    let newurl = window.location.protocol + "//" + window.location.host + '/' +  st + '#/search';
+    let newurl = window.location.protocol + "//" + window.location.host + '/' +'#/search?'+ st;
     
     window.history.pushState({}, '', newurl)
  

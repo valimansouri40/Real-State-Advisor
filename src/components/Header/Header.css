@@ -594,8 +594,56 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
   .dropdown-content{
     display: none;
   }
+  .modal-content .modal-body form {
+    width: 100%;
+    min-height: 12rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-close{
+    z-index: 80000000;
+  }
+   .modal-content .modal-body form textarea {
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #cfd1d5;
+    border: 0;
+    max-width: 96%;
+    min-width:95% ;
+    min-height: 3rem;
+    max-height: 5rem;
+    font-size: .8rem;
+  }
+  .modal-content .modal-body form select{
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #cfd1d5;
+    border: 0;
+    width: 100%;
+    font-size: .8rem;
+    
+  }
+  .input-phone{
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #cfd1d5;
+    border: 0;
+  }
 }
 @media (max-width: 400px){
+  .modal-content .modal-body p {
+    padding: 1rem .5rem;
+    border-radius: 12px;
+    background:#3bb15d ;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+  }
   .containerone{
     width: 96%;
   }

@@ -35,7 +35,7 @@ const Home= (props)=>{
                 savetabserchboxinit(tab);
         },[tab])
         
-        const limitpath= path === '#/search';
+        
         return(<div >
            
            <Header tab={Tab} settab={settab} auth={auth} sendreq={sendreq}></Header>
@@ -43,7 +43,7 @@ const Home= (props)=>{
            <Logo></Logo>
             
            <div className={'home-searchboxbox'}>
-               <div className={limitpath?'search-filters':'home-filters'}>
+               <div className={'home-filters'}>
                    <Filter worksampel={worksampel}
                 filter={filter} tab={Tab} settab={settab}
                  REALSTATEGETALLINIT={REALSTATEGETALLINIT} 
@@ -57,15 +57,13 @@ const Home= (props)=>{
                     />
                     :null} */}
                 
-                    {!limitpath?<>
+                    
                     <div className='home-tabs'><TabRealState
                     addMarkinit={addMarkinit} lessmarkinit={lessmarkinit} auth={auth}
                     REALSTATEGETALLINIT={REALSTATEGETALLINIT} length={length} filter={AllData}
                     ></TabRealState>
                    <BestOfArea bestOf={bestOf}/>
                     </div>
-                    
-                    </>:null}
                     
                   
             </div>
