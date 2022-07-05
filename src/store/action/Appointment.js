@@ -31,6 +31,7 @@ export const appopostinit= (data)=>{
                 ShowAlert([],'باموفقیت انجام شد.','success');
             }
         }).catch(er=>{
+            console.clear()
             ShowAlert([],'باموفقیت انجام نشد.','fail');
         })
 
@@ -84,6 +85,7 @@ export const appogetoneinit= (id)=>{
                 
             }
         }).catch(er=>{
+            console.clear()
             console.log(er)
         })
 
@@ -112,6 +114,7 @@ export const appoupdateinit= (dt,id)=>{
                 
             }
         }).catch(er=>{
+            console.clear()
             console.log(er)
         })
 
@@ -132,7 +135,7 @@ export const deletereqs= (url)=>{
                 ShowAlert([],'با موفقیت حذف شد', 'success')
             }
         }).catch(er=>{
-            console.log(er)
+            console.clear()
             ShowAlert([],'با موفقیت حذف نشد', 'fail')
         })
 

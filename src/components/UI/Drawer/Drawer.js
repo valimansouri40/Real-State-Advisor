@@ -39,6 +39,7 @@ const Drawer= (props)=>{
                                             <li><NavLink to='/myappointments'>
                                             زمان بازدید  من</NavLink></li>
                                             <li><NavLink to='/changepassword'>تغییر رمز</NavLink></li>
+                                            <li><NavLink to='/cooperationpage'>فرصت سرمایه گذاری</NavLink></li>
                                             <li><NavLink to='/mymarks'>
                                                 علاقه مندی ها</NavLink></li> 
                                                {/* { auth.role === 'advisor'?<li><NavLink to='/buildrealstatepost'>

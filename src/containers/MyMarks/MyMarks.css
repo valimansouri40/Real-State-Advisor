@@ -9,7 +9,7 @@
 }
 .mymarks-box{
     width: 80%;
-    height: 15rem;
+    height: 16rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -18,6 +18,7 @@
     box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
     border-radius: 6px;
     overflow: hidden;
+    position: relative;
 }
 .mymarks-boximg{
     width: 25rem ;
@@ -26,7 +27,7 @@
     justify-content: space-around;
     align-items: flex-start;
     flex-flow: row wrap;
-position: relative;
+
 }
 .mymarks-mark{
     position: absolute;
@@ -61,13 +62,19 @@ position: relative;
 @media (max-width:550px){
     .mymarks-box{
         flex-direction: column;
-        height: 20rem;
+        height: 26rem;
     }
+    .cardrealstate-detail{
+        font-size: .7rem;
+    }
+    
 }
 
 @media (max-width:450px){
     .mymarks-box{
         flex-direction: column;
         height: 26rem;
+        width: 90%;
     }
+    
 }

@@ -83,8 +83,9 @@ const CardRealState=props=>{
                <h3 className='cardrealstate-detail'>  {FocusData.TypeState}</h3>
                </div>
                <div className='cardrealstate-boxonedetail' >
+               <h3 className='cardrealstate-detail'>  {FocusData.Tipic === "sells" ?"قیمت":"رهن"}   </h3>:
                <h3 className='cardrealstate-detail'>  { changeprice(FocusData.Mortgage) }  </h3>
-               <h3 className='cardrealstate-detail'> : {FocusData.Tipic === "sells" ?"قیمت":"رهن"}   </h3>
+               
              
                
                </div>

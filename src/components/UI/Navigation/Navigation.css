@@ -9,13 +9,13 @@ header .header-items .menu ul {
     display: inline-flex;
     margin-left: 10px;
   }
-  header .header-items .menu ul li a {
-    font-size: 15px;
+  .list-item-link span  {
+    font-size: 17px;
     font-weight: 500;
-    padding: 5px 10px;
+    padding: 5px 8px;
     display: inline-flex;
     border-radius: 10px;
-    color: #333333;
+    color: inherit;
   }
   header .header-items .menu ul li a svg {
     margin-left: 10px;

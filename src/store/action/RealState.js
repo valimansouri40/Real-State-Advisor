@@ -35,11 +35,12 @@ export const REALSTATEPOSTINIT=(data)=>{
         }).then(res=>{
                 if(res.data){
                     dispatch(REALSTATEPOST());
-                    window.location.reload();
+                    // window.location.reload();
                     ShowAlert([], 'ملک با موفقیت ساخته شد', 'success')
                   
                 }
         }).catch(er=>{
+            console.clear()
             dispatch(errorrealState())
             ShowAlert([],'انجام نشد','fail')
         })
@@ -82,6 +83,7 @@ export const REALSTATEGETALLINIT=(page,query, limit)=>{
                     
                 }
         }).catch(er=>{
+            console.clear()
             dispatch(errorrealState())
             // ShowAlert([],'انجام نشد','fail')
         })
@@ -109,6 +111,7 @@ export const REALSTATEGETONEINIT=(id)=>{
                 
                 }
         }).catch(er=>{
+            console.clear()
             dispatch(errorrealState())
             ShowAlert([],'انجام نشد','fail')
         })
@@ -138,6 +141,7 @@ export const REALSTATEPATCHINIT=(data,id)=>{
                     ShowAlert([], 'ملک با موفقیت بروزرسانی شد', 'success')
                 }
         }).catch(er=>{
+            console.clear()
             dispatch(errorrealState())
             ShowAlert([],'انجام نشد','fail')
         })
@@ -162,6 +166,7 @@ export const REALSTATEDELETEONEINIT=(id)=>{
                     ShowAlert([],'باموفقیت حذف شد','success')
                 }
         }).catch(er=>{
+            console.clear()
             ShowAlert([],'انجام نشد','fail')
         })
     }
@@ -236,7 +241,7 @@ export const changefilehandller=(data, path, query)=>{
                 
             }
         }).catch(er=>{
-           console.log('error writefile')
+            console.clear()
         })
     }
 }
@@ -270,7 +275,7 @@ export const realstatestartfocinit= (query)=>{
                 
                 }
             }).catch(er=>{
-                console.log(er)
+                console.clear()
             })
     }
 }

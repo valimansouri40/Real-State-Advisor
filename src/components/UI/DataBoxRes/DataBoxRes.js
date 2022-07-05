@@ -60,14 +60,14 @@ const DataBoxRes= (props)=>{
                             
                              </h2>
                     </div>:null}
-                    <div className='databoxps-block'>
+                    {OneData.SomeRoom?<div className='databoxps-block'>
                            
                              <h2 className='databoxsp-h2'>
                              <span className='databoxps-spn'>تعداد اتاق خواب:</span> 
                             <span className='databoxps-spn'> {OneData.SomeRoom} </span>
                            
                              </h2>
-                    </div>
+                    </div>:null}
                     <div className='databoxps-block'>
                     <h2 className='databoxsp-h2'>
                     <span className='databoxps-spn'> نوع ملک :</span> 

@@ -14,6 +14,7 @@ import { LimitRouter } from "./store/utility/cookie";
 import DesciptionPagesOne from "./containers/DesciptionPages/DesciptionPagesOne";
 import DesciptionPagesTwo from "./containers/DesciptionPages/DesciptionPagesTwo";
 import DesciptionPagesThree from "./containers/DesciptionPages/DesciptionPagesThree";
+import CooperationPage from "./containers/CoperationPage/CooperationPage";
 
 const AcceptComment = React.lazy(()=>{
    return import("./containers/AcceptComment/AcceptComment");
@@ -121,9 +122,6 @@ const Routes=(props)=>{
                 case 'admin':
                     limitRoutes=<>
                         
-                <Route path='/description/one'  component={DesciptionPagesOne}/>  
-                <Route path='/description/two'  component={DesciptionPagesTwo}/>  
-                <Route path='/description/three'  component={DesciptionPagesThree}/>  
                     <Route path='/buildrealstatepost' exact component={RealStateBuilder} />
                     <Route path='/myprofile' exact component={MyProfile} />
                    <Route path='/myrequest' exact component={MyRequest} />
@@ -160,6 +158,7 @@ const Routes=(props)=>{
                 <Route path='/description/three'  component={DesciptionPagesThree}/>
                 <Route path='/' exact  component={Home}/>
                 <Route path='/search' exact  component={SearchResult}/>
+                <Route path='/cooperationpage' exact  component={CooperationPage}/>
                 <Route path='/viewrealstate/:id' exact component={RealStatefulldata} />
                 {limitRoutes}
                 {/* <Route path='/*' component={Home}/>  */}

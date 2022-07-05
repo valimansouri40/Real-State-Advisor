@@ -139,7 +139,7 @@ const Header= (props)=>{
                                         <button class="btn-add-home" 
                                         onClick={modalhandller2}>
                                             <svg style={{width:'20px', height:'20px'}} class="svg-inline--fa fa-plus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M176 448a32 32 0 0 0 32 32h32a32 32 0 0 0 32-32V304h-96zm64-416h-32a32 32 0 0 0-32 32v144h96V64a32 32 0 0 0-32-32z"></path><path class="fa-primary" fill="currentColor" d="M448 240v32a32 32 0 0 1-32 32H32a32 32 0 0 1-32-32v-32a32 32 0 0 1 32-32h384a32 32 0 0 1 32 32z"></path></g></svg>
-                                       <a class="btn-add-home-link"> سپردن ملک </a></button>
+                                       <a class="btn-add-home-link"> ثبت ملک </a></button>
                                     </div>
                                     <div class="user-menu dropdown" >
                                         <button className="dropbtn btn-user-menu" 
@@ -147,16 +147,17 @@ const Header= (props)=>{
                                          onClick={()=>closeModalInit(!modalstatus, false)}>
                                              <svg class="svg-inline--fa fa-user-plus fa-w-20" style={{width:'20px', height:'20px', 
                                              marginLeft:'5px'}} aria-hidden="true" focusable="false" data-prefix="fad" data-icon="user-plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M640 224v32a16 16 0 0 1-16 16h-64v64a16 16 0 0 1-16 16h-32a16 16 0 0 1-16-16v-64h-64a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h64v-64a16 16 0 0 1 16-16h32a16 16 0 0 1 16 16v64h64a16 16 0 0 1 16 16z"></path><path class="fa-primary" fill="currentColor" d="M224 256A128 128 0 1 0 96 128a128 128 0 0 0 128 128zm89.6 32h-16.7a174.08 174.08 0 0 1-145.8 0h-16.7A134.43 134.43 0 0 0 0 422.4V464a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48v-41.6A134.43 134.43 0 0 0 313.6 288z"></path></g></svg>
+                                      
                                        <span> {!auth?"ورود و ثبت نام":`${auth.FristName} 
                                             ${'  '}
                                             ${auth.LastName? auth.LastName:''}`}
                                         </span>
-                                        <svg class="svg-inline--fa fa-angle-down fa-w-10"
+                                        {/* <svg class="svg-inline--fa fa-angle-down fa-w-10"
                                          style={{width:'20px', height:'20px', marginLeft:'5px'}}
                                           aria-hidden="true" focusable="false" data-prefix="fas"
                                            data-icon="angle-down" role="img" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor"
-                                             d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path></svg>
+                                             d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"></path></svg> */}
                                         </button>
                                        {modalstatus?auth?<ul className="dropdown-content"  
                                         style={{zIndex:'100'}} >
@@ -212,7 +213,7 @@ const Header= (props)=>{
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">    </h5>
-                            <button  class="btn-close"  ></button>
+                            {/* <button  class="btn-close"  ></button> */}
                         </div>
                         <div class="modal-body">
                             <p>

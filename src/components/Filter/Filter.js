@@ -69,9 +69,9 @@ const Filter= (props)=>{
                         <button onClick={()=>changeTab('engine')}
                          className={tab ==="engine"?"nav-link active":"nav-link2"}  >خدمات مهندسی</button>
                     </li>
-                    <li className="nav-item" >
+                    <li className="nav-item nav-item-responsive" >
                         <button onClick={()=>changeTab('cooperation')}
-                         className={tab ==="cooperation"?"nav-link active":"nav-link2"}  id="pills-Fund-tab" >فرصت سرمایه گذاری</button>
+                         className={tab ==="cooperation"?"nav-link active nav-item-responsive":"nav-link2 nav-item-responsive"}  id="pills-Fund-tab" >فرصت سرمایه گذاری</button>
                     </li></>:null}
                 </ul>
                 <div className="tab-content7" >

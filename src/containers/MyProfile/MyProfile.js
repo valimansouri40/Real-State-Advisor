@@ -77,11 +77,11 @@ const MyProfile=(props)=>{
                        
                        <label className='sampel-label' for='picture'>
                       
-                             {img?<img style={{width:'300px', height:'300px',borderRadius:'50%'}}
+                             {img?<img 
                               src={img} className='sampel-label-img'/>:null}
-                               {!img && data.Image ?<img style={{width:'300px', height:'300px',borderRadius:'50%'}}
+                               {!img && data.Image ?<img 
                               src={data.Image}  className='sampel-label-img'/>:null}
-                               {!img && !data.Image ?<img style={{width:'300px', height:'300px',borderRadius:'50%'}}
+                               {!img && !data.Image ?<img 
                               src={picture} className='sampel-label-img'/>:null}
                               {img || data.Image?<img 
                               title="برای تغییر عکس کلیک کنید"

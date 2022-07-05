@@ -35,7 +35,7 @@ export const getallmyreqinit=( query)=>{
                
             }
         }).catch(er=>{
-            console.log(er)
+            console.clear()
         })
     }
 }
@@ -65,7 +65,7 @@ export const getallreqinit=(page)=>{
                 
             }
         }).catch(er=>{
-            console.log(er)
+            console.clear()
         })
     }
 }
@@ -94,7 +94,7 @@ export const patchreqinit=( data, id)=>{
                  ShowAlert([], 'تغییرات ثبت شد', 'success')
             }
         }).catch(er=>{
-            
+            console.clear()
         })
     }
 }
@@ -117,7 +117,7 @@ export const getallfilterinit=(query)=>{
                         
                 }
         }).catch(er=>{
-            console.log(er)
+            console.clear()
         })
     }
 }

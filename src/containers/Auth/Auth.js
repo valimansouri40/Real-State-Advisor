@@ -46,7 +46,13 @@ const Auth=(props)=>{
 
     },[path])
   
-
+    useEffect(()=>{
+        if( path === '#/sendsmscode' && !localStorage.getItem('phn')){
+            let newurl = window.location.protocol + "//" + window.location.host + '#/' + 'login';
+            
+            window.history.pushState({}, '', newurl)
+        }
+    },[path])
 
     return(
         path?<>

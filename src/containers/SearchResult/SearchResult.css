@@ -20,7 +20,7 @@
 aside {
     flex: 0 0 25%;
     width: 25%;
-    height: 150vh;
+    height: 160vh;
     box-shadow: 0 .3rem .3rem rgb(62, 61, 61);
 }
 
@@ -49,10 +49,12 @@ aside {
 .type-asid-field{
     padding: .3rem 0;
     direction: rtl;
-    font-size: 1rem;
+    font-size: .7rem;
     font-weight: 500;
 }
-
+.label-asid{
+    font-size: .8rem;
+}
 .mt-10 {
     margin-top: 10px;
 }
@@ -61,7 +63,7 @@ aside {
     background-color: #fdfefe;
     border: 1px solid #eaeff5;
     padding: 8px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .search-button{
@@ -69,7 +71,7 @@ aside {
     color: aliceblue;
     border: none;
     padding: .2rem 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .button-tipic-active{
@@ -78,7 +80,7 @@ aside {
     padding: 8px;
     background-color: #3fc899;
     color: #fdfefe;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .box-asid{

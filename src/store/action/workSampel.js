@@ -43,6 +43,7 @@ export const postwsinit=(data)=>{
                 dispatch(postws())
             }
         }).catch(er=>{
+            console.clear()
             // ShowAlert([],'انجام نشد','fail')
             dispatch(errorws())
             
@@ -74,7 +75,7 @@ export const getallwsinit=(page,limit,query)=>{
                 
             }
         }).catch(er=>{
-           
+            console.clear()
             dispatch(errorws)
         })
     }
@@ -93,6 +94,7 @@ export const deletewsinit=(id)=>{
                 ShowAlert([],'با موفقیت انجام','success');  
             }
         }).catch(er=>{
+            console.clear()
             ShowAlert([],'انجام نشد','fail')
         })
     }

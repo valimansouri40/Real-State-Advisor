@@ -85,3 +85,13 @@
         background: rgb(255, 251, 251)
     }
 }
+
+@media (max-width:400px){
+    .advisordata-h3{
+        font-size: 1rem;
+    }
+    .advisordata-h4{
+        font-size: .6rem;
+        margin-top: .3rem;
+    }
+}

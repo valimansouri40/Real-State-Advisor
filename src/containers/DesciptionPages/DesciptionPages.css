@@ -22,9 +22,9 @@
     max-width: 90%;
     margin: 0 auto;
     padding: 2rem 0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: rgb(34, 33, 33);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
 }
 
 .ds-pa h1,.ds-pa h3 {
@@ -33,16 +33,16 @@
 
 @media (max-width: 500px) {
    .ds-pa{
-       font-size: 1rem;
+       font-size: .8rem;
    }
    .ds-pa h1 , .ds-pa h3{
-       font-size: 1.2rem;
+       font-size: 1rem;
    }
   }
 
   @media (max-width: 300px) {
     .ds-pa{
-        font-size: .9rem;
+        font-size: .7rem;
     }
     .ds-pa h1 , .ds-pa h3{
         font-size: 1.05rem;
@@ -51,10 +51,10 @@
    }
    @media (max-width: 300px) {
     .ds-pa{
-        font-size: .8rem;
+        font-size: .7rem;
     }
     .ds-pa h1 , .ds-pa h3{
-        font-size: 1rem;
+        font-size: .8rem;
         margin-right: .6rem;
     }
    }

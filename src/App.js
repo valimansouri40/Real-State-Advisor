@@ -10,7 +10,7 @@ import { cookiejwt } from './store/utility/cookie';
       const {setauthgetmeinit, role}= props;
      
      const path= window.location.hash;
-
+     console.clear()
      useEffect(()=>{
             if(path !== '#/search' ){
                let newurl = window.location.protocol + "//" + window.location.host + '/' +  window.location.hash;
@@ -24,14 +24,14 @@ import { cookiejwt } from './store/utility/cookie';
             
           //   window.history.pushState({}, '', newurl)
           // }
-          if(window.performance){
+          // if(window.performance){
               
-               if(performance.navigation.type === 1){
-          let newurl = window.location.protocol + "//" + window.location.host + '/' +  window.location.hash;
-            
-            window.history.pushState({}, '', newurl)
-               }
-          }
+          //      if(performance.navigation.type === 1){
+          // let newurl = window.location.protocol + "//" + window.location.host + '/' +  window.location.hash;
+          // console.clear()
+          //   window.history.pushState({}, '', newurl)
+          //      }
+          // }
           useEffect(()=>{
                if(cookiejwt){
                     setauthgetmeinit()

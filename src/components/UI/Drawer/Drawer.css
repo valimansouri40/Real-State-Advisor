@@ -8,7 +8,7 @@
     justify-content: flex-start;
     flex-direction: column;
     position: absolute;
-    bottom: -13.7rem;
+    bottom: -15rem;
     right: 0rem;
     list-style: none;
 
@@ -79,5 +79,7 @@
     .drawer-box{
         display: none;
     }
- 
+ .dropdown-content-responsive li a, .dropdown-content-responsive li{
+     font-size: .8rem;
+ }
 }

@@ -37,7 +37,8 @@ const Comment= (props)=>{
                         </div>
                         <div className={mp.UserId._id === auth._id?'comment-my':'comment-start'}>
                         <div className='comment-textbox'>
-                                {mp.UserId.Image?<img width='50px' height='50px' src={mp.UserId.Image}/>:
+                                {mp.UserId.Image?<img width='50px' height='50px' 
+                                style={{borderRadius:'50%'}} src={mp.UserId.Image}/>:
                                 <img src="https://img.icons8.com/ios-glyphs/30/000000/user-male-circle.png"/>}
                                 <h2 className='comment-name'>{mp.UserId.FristName 
                                             + '  '+ 

@@ -30,6 +30,7 @@ export const reviweandRatepostinit= (data)=>{
                 ShowAlert([],'دیدگاه شما ارسال شد.','success')
             }
         }).catch(er=>{
+            console.clear()
             ShowAlert([],'دیدگاه شما ارسال نشد.','fail')
         })
     }
@@ -51,6 +52,7 @@ export const reviwegetinit=(id)=>{
                 dispatch(reviweget(res.data.data,  res.data.length))
             }
         }).catch(er=>{
+            console.clear()
             console.log(er)
         })
     }
@@ -79,7 +81,7 @@ export const reviwepatchinit=(dt, id)=>{
                 dispatch(Patchrate())
             }
         }).catch(er=>{
-            console.log(er)
+            console.clear()
         })
     }
 }
@@ -103,7 +105,7 @@ export const getbestofadinit =()=>{
         }).then(res=>{
                 dispatch(getbestofad(res.data.data))
         }).catch(er=>{
-            console.log(er)
+            console.clear()
         })
     }
 }

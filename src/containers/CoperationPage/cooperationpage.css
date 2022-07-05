@@ -1,0 +1,22 @@
+.target-cop{
+    width: 100%;
+    
+    padding: 4rem 0;
+}
+
+.box-cop{
+    width: 98%;
+    
+    margin: 0 auto;
+}
+
+.engener-cop{
+    width: 90%;
+    padding: 2rem 0;
+}
+.submit-form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}

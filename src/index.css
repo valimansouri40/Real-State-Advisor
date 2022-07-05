@@ -21,3 +21,14 @@ code {
   width: 100%;
   height: 100vh;
 }
+@font-face {
+  font-family: 'MyFont';
+  src: local('MyFont'), url('./assets/font/IRANSansWeb_Medium.woff') format('woff');
+}
+/* @import url('./assets/font/IRANSansWeb.woff'); */
+button, input, p, h1,h2,h3, h4,h5, span, select, option, textarea, div, a{
+  /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif */
+  /* font-family: 'Iranian Sans', sans-serif; */
+  font-family: 'MyFont';
+  
+}

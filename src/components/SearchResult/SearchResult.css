@@ -60,9 +60,7 @@
       border-radius: 5px;
       color: #fff;
   }
-.field3{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+
 @media (max-width: 550px){
     .realstate-box-1{
         width: 20rem;

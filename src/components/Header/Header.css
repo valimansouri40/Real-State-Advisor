@@ -1,198 +1,3 @@
-/* @import url(assets/font/Bakh/style.css);
-*, a {
-  font: 15px iranyekanBakh;
-  direction: rtl;
-  text-decoration: none;
-  transition: all 0.3s ease-out;
-}
-
-svg {
-  transition: unset !important;
-}
-
-body {
-  background: #eeeeeec4;
-}
-
-header {
-  height: 80px;
-  border-bottom: 2px solid #cbcbcb;
-}
-header .header-items {
-  display: inline-flex;
-  width: 100%;
-  height: 80px;
-  justify-content: space-between;
-  align-items: center;
-}
-header .header-items .more {
-  display: inline-flex;
-}
-header .header-items .more .add-home {
-  margin-left: 15px;
-}
-header .header-items .more .add-home a {
-  font-size: 15px;
-  font-weight: 600;
-  padding: 5px 10px;
-  display: inline-flex;
-  border-radius: 10px;
-  color: #008000a6;
-  border: 2px solid #008000a6;
-}
-header .header-items .more .add-home a svg {
-  margin-top: 2px;
-  margin-left: 10px;
-  font-size: 18px;
-}
-header .header-items .more .add-home a:hover {
-  background: #008000a6;
-  color: #ffffff;
-}
-header .header-items .more .user {
-  position: relative;
-  cursor: pointer;
-}
-header .header-items .more .user a {
-  font-size: 15px;
-  font-weight: 600;
-  padding: 5px 10px;
-  display: inline-flex;
-  border-radius: 10px;
-  color: #333333;
-  border: 2px solid #cbcbcb;
-}
-header .header-items .more .user a svg {
-  margin-top: 2px;
-  margin-left: 10px;
-  font-size: 18px;
-}
-header .header-items .more .user a:hover {
-  background: #eeeeee;
-}
-header .header-items .more .user .user-menu {
-  position: absolute;
-  margin: 0;
-  list-style: none;
-  padding: 10px;
-  background: #ffffff;
-  border-radius: 10px;
-  width: 200px;
-  left: 30%;
-  top: 50%;
-  z-index: 1000;
-  display: none;
-}
-header .header-items .more .user .user-menu span {
-  font-size: 20px;
-  color: #3bb15d;
-  font-weight: 800;
-  cursor: auto;
-}
-header .header-items .more .user .user-menu a.dashboard {
-  border: none;
-  padding: 0;
-  margin: 5px 0 0;
-}
-header .header-items .more .user .user-menu a.dashboard:hover {
-  background: unset;
-}
-header .header-items .more .user .user-menu a.dashboard svg {
-  margin-right: 10px;
-}
-header .header-items .more .user .user-menu li a {
-  margin-bottom: 10px;
-  display: inline-flex;
-  width: 100%;
-}
-header .header-items .more .user .user-menu li a svg {
-  color: #555555;
-}
-header .header-items .more .user .user-menu li a.log-out {
-  border: 2px solid rgba(255, 0, 0, 0.56);
-}
-header .header-items .more .user .user-menu li a.log-out:hover {
-  background: rgba(255, 0, 0, 0.56);
-  color: #ffffff;
-}
-header .header-items .more .user .user-menu li a.log-out:hover svg {
-  color: #ffffff;
-}
-
-.modal-content .modal-body {
-  text-align: center;
-}
-.modal-content .modal-body form {
-  display: inline-flex;
-  flex-direction: column;
-}
-.modal-content .modal-body form input, .modal-content .modal-body form textarea, .modal-content .modal-body form select {
-  margin: 0 0 10px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  background: #eeeeee;
-  border: 0;
-}
-.modal-content .modal-body form button {
-  border: none;
-  background: #3bb15d;
-  padding: 5px 30px;
-  border-radius: 5px;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 15px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-content .modal-body p {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.show {
-  display: block !important;
-}
-
-.notvalid{
-  background: red;
-} */
-
-
-/* @font-face {
-  font-family: "XTX-Regular";
-  src: url(../font/XeroSansRegular.woff) format("woff");
-}
-@font-face {
-  font-family: "XTX-Bold";
-  src: url(../font/XTX-FNT-XEROSANS-BOLD.woff) format("woff");
-}
-@font-face {
-  font-family: "XTX-Black";
-  src: url(../font/XTX-FNT-XEROSANS-BLACK.woff) format("woff");
-}
-@font-face {
-  font-family: "IRANsans";
-  src: url("../font/IRANSansWeb_Light.woff") format("woff");
-}
-@font-face {
-  font-family: "IRANsans-Mediom";
-  src: url("../font/IRANSansWeb_Medium.woff") format("woff");
-}
-@font-face {
-  font-family: "IRANsans-Bold";
-  src: url("../font/IRANSansWeb_Bold.woff") format("woff");
-}
-@font-face {
-  font-family: "IRANsans-ultra";
-  src: url("../font/IRANSansWeb_UltraLight.woff") format("woff");
-} */
-/* body{
-    display: flex;
-    flex-direction: column;
-  } */
-
 
   .modal-content {
     position: relative;
@@ -279,7 +84,8 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
     border: 0;
   }
   .modal-content .modal-body p {
-    padding: 2rem .5rem;
+    padding: 2rem 0;
+    width: 97%;
     border-radius: 12px;
     background:#3bb15d ;
     text-align: center;
@@ -298,6 +104,7 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
   width: 90%;
   margin: 0 auto;
   border-bottom: 1px solid #373950;
+  
   position: relative;
 }
 .row {
@@ -356,9 +163,7 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
   font-size: 8px;
   font-weight: 900;
   text-align: center;
-  position: absolute;
-  top: 65%;
-  left: 15%;
+  margin-top: -1rem;
   color: #8e9091;
 }
 
@@ -381,18 +186,19 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
 }
 .btn-add-home {
   width: 120px;
-  height: 30px;
-  background-color: #f1f1f1;
+  
+  background-color: #d8d1d1;
   color: #373950;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 14px;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
   display: flex;
     align-items: center;
     justify-content: space-around;
+    box-shadow: 0 .2rem .3rem rgb(158, 154, 154);
 }
 .btn-add-home:hover {
   background-color: #3fc899;
@@ -401,7 +207,7 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
 .btn-add-home-link {
   text-decoration: none;
   color: #373950;
-  font-size: 14px;
+  font-size: 1rem;
 }
 .btn-add-home-link:hover {
   color: white;
@@ -417,10 +223,12 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
   background-color: #373950;
   color: #f1f1f1;
   border: none;
+  font-size: 1rem;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 14px;
   text-align: center;
   cursor: pointer;
+  box-shadow: 0 .2rem .3rem rgb(144, 144, 144);
 }
 
 /* Dropdown button on hover & focus */
@@ -587,7 +395,27 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
   }
 }
 
+@media (max-width: 500px){
+  .dropbtn{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #373950;
+    color: #f1f1f1;
+    border: none;
+    font-size: .8rem;
+    border-radius: 5px;
+    padding: 5px px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 .2rem .3rem rgb(144, 144, 144);
+  }
+}
 @media (max-width:450px){
+  .btn-add-home-link{
+    font-size: 13px;
+  }
   .dropbtn{
     display: none;
   }
@@ -651,6 +479,12 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
     width: 200px;
     margin-left: -1.7rem;
   }
+  .header-logo-area p{
+    font-size: .4rem;
+    letter-spacing: -1px;
+    font-weight: 100;
+  }
+  
 }
 @media (max-width: 350px){
   .modal-content .modal-body form textarea {
@@ -677,15 +511,15 @@ header .header-items .more .user .user-menu li a.log-out:hover svg {
     width: 95%;
   }
   .header-logo-area{
-    width: 150px;
+    width: 170px;
    
   }
   .btn-add-home-link{
     font-size: 10px;
   }
-  .header-logo-area p{
+  /* .header-logo-area p{
     font-size: .5rem;
     letter-spacing: -1px;
-  }
+  } */
 }
 

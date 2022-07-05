@@ -147,6 +147,7 @@
     }
     .allappointment-field{
         word-break: keep-all;
+        font-size: .7rem;
     }
 }
 
@@ -164,6 +165,9 @@
     }
     .allappointment-field{
         word-break: keep-all;
+    }
+    .card-btn{
+        font-size: .7rem;
     }
 }
 

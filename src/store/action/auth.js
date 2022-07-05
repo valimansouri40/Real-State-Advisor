@@ -42,6 +42,7 @@ export const setauthlogininit=(data,sine,settime)=>{
                     case '/login':
                         sendcookie('car',res.data.data)
                         window.location.hash = '/';
+                        localStorage.removeItem('phn');
                         window.location.reload();
                         break;
                     case '/resetpassword':
@@ -86,6 +87,7 @@ export const setauthlogininit=(data,sine,settime)=>{
                 // }
             }
         }).catch((er)=>{
+            console.clear()
             dispatch(errorauth())
             ShowAlert([], 'یکی از فیلد های وارد شده صحیح نمی باشد','fail')
         })
@@ -114,6 +116,7 @@ export const setauthgetmeinit=()=>{
                 dispatch(setauthgetme(res.data.data));
             }
         }).catch((er)=>{
+            console.clear()
             console.log('can not send request getme')
         })
     }
@@ -143,6 +146,7 @@ export const setchangepasswordinit=(pas, url)=>{
                
             }
         }).catch((er)=>{
+            console.clear()
             console.log('can not send request change password')
         })
     }
@@ -173,6 +177,7 @@ export const sensSMSinit=(dt)=>{
                 sendcookie('car',res.data.data)
             }
         }).catch(er=>{
+            console.clear()
                 dispatch(errorauth());
         })
     }
@@ -194,6 +199,7 @@ export const UpdateProfile=(data)=>{
                 window.location.reload()
             }
         }).catch(er=>{
+            console.clear()
             ShowAlert([],'تغییرات انجام نشد', 'fail')
         })
     }
@@ -234,6 +240,7 @@ export const sendreq= (data, authdt)=>{
 
             }
         }).catch(er=>{
+            console.clear()
             ShowAlert([],'اطلاعات وارد شده صحیح نمی باشد','fail')
         })
     }
@@ -270,6 +277,7 @@ export const changepassword=(data)=>{
                
              }
          }).catch(er=>{
+            console.clear()
             ShowAlert([],'اطلاعات وارد شده صحیح نمی باشد','fail')
          })
      }
@@ -303,6 +311,7 @@ export const fineduserinit=(data)=>{
               
             }
         }).catch(er=>{
+            console.clear()
            ShowAlert([],'با موفقیت انجام نشد','fail')
         })
     }
@@ -330,6 +339,7 @@ export const changeroleinit=(data, number)=>{
               
             }
         }).catch(er=>{
+            console.clear()
            ShowAlert([],'با موفقیت انجام نشد','fail')
         })
     }
@@ -358,7 +368,8 @@ export const getadvisorinit = (cityid, area )=>{
                 dispatch(getadvisor(res.data.data));
             }
         }).catch(er=>{
-            console.log(er)
+            console.clear()
+           
         })
     }
 }

@@ -34,7 +34,7 @@ export const GETALLMYMARKINIT= (rsid)=>{
                 dispatch(GETALLMYMARK(res.data.data, res.data.length))
             }
          }).catch(er=>{
-            
+            console.clear()
          })
     }
 }
@@ -64,7 +64,7 @@ export const addmarkinit= (data)=>{
                 ShowAlert([], 'نشانک اضافه شد', 'success')
             }
          }).catch(er=>{
-            
+            console.clear()
          })
     }
 }
@@ -84,7 +84,7 @@ export const lessmarkinit= (id)=>{
                 ShowAlert([], 'نشانک حذف شد', 'success')
             }
          }).catch(er=>{
-            
+            console.clear()
          })
     }
 }

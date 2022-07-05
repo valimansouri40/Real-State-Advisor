@@ -12,14 +12,12 @@
     margin-top: 2rem;
     cursor: pointer;
     color: aliceblue;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .form-navlink{
     margin-top: 1rem;
     text-decoration: none;
     color: aliceblue;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .form{
     width: 35%;
@@ -34,7 +32,6 @@
     overflow: hidden;
 }
 .headtxt{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100%;
     padding: 1.5rem 0;
     font-size: 1.5rem;

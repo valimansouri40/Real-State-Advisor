@@ -120,7 +120,7 @@ const ChangeRole=(props)=>{
                                 array={rolearr} > نقش </Select> */}
                          <div className='selectbox'>
                             <label className='label rolechg'> نقش</label>
-                    <select className='select'  
+                    <select className='select' value={!role?changeroledata.role:role}  
                     onChange={(e)=>setrole(e.target.value)} >
                                 
                         {rolearr.map(mp=>(

@@ -169,7 +169,7 @@ const Form =(props)=>{
            {path === '#/sendsmscode'?<Timer timer={timer} deleteexp={deleteexp} expiresCode={expiresCode} settime={settime} ></Timer>:null}
           <button onClick={submithandller} className={"form-button"}>ثبت {loading?<span className={"spinner"}></span>:null}</button>
             {sineupandlogin}
-            {localStorage.getItem('phn') ?<Redirect to='/sendsmscode'></Redirect>:null}
+            {/* {localStorage.getItem('phn') ?<Redirect to='/sendsmscode'></Redirect>:null} */}
         </form>
         
     )

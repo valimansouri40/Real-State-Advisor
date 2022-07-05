@@ -193,54 +193,12 @@ const Seles=React.memo((props)=>{
             )):null}
             
 </datalist></div>
-{/* <div className='extra'>
-                    <button className="extra-btn" onClick={changeextra}>امکانات بیشتر</button>
-                {filters ?<Box2 filter={filters} 
-                changeextraall={changeextraall}
-                 yaearbuild={yaearbuild} extra={extra} setyearbuild={setyearbuild}
-                 maesures={maesures} setmeasures={setmeasures} 
-                 price={price} setprice={setprice}>
-                     <div  className='selectbox'>
-                     <div  className='selectbox-bx'>
-                            {ps.map((mp, i)=><label onClick={()=>setextra(true)} for={i} title={!typestateinc.includes(tipic)?"ابتدا باید نوع ملک را مشخص کنید":""}>
-                                {mp.name}
-                                <input title={!typestateinc.includes(tipic)?"":"ابتدا باید نوع ملک را مشخص کنید"} disabled={!typestateinc.includes(tipic)}
-                                 type='checkbox' checked={mp.dis} onChange={()=>posibelhandllerr(i)}
-                                 className='check-posibel' id={i} name='pos' /></label>)}
-                         </div>
-                         </div>
-                 </Box2>:null}
-                </div> */}
+
                <Select
                 val={tipic}
                 setvaluehandller={settipichandller}
                 array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
-{/* 
-             
 
-                <div className='selectbox'>
-                               <label className='label'> قیمت </label>
-                       <select onChange={(e)=>setprice(e.target.value)} className='select'  
-                        >
-                           {filters?filters.Price.map((mp,i)=>(
-                           <option value={mp.value} className='option'>
-                                            {mp.text}</option>
-                                )):null}
-                              </select>
-                                    </div>
-                 <div className='selectbox'>
-                       <label className='label'> متراژ </label>
-                         <select onChange={(e)=>setmeasures(e.target.value)} className='select'  
-                            >
-                        {filters?filters.Measure.map((mp,i)=>(
-                        <option value={mp.value} className='option'>
-                                    {mp.text}</option>
-                        )):null}
-                              </select>
-                    </div>
-                <Select val={room} disabled={!typestateinc.includes(tipic)}
-                  array={['همه','چهار خواب','سه خواب','دو خواب','یک خواب']} 
-                setvaluehandller={roomhandller}>تعداد اتاق خواب</Select> */}
             <div className="extra">
             <button className="search-ok" onClick={searchhandller} type="submit" >جستجو
             </button>

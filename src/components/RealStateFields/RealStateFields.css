@@ -101,13 +101,13 @@
 }
 
 .label{
-    font-size: 1rem;
+    font-size: .7rem;
     color: rgb(29, 47, 138);
     padding: .3rem 0;
 
 }
 .select{
-    font-size: 1rem;
+    font-size: .7rem;
     padding: .2rem ;
     width: 70%;
     border-radius: 5px;
@@ -118,7 +118,7 @@
 
 .inp{
     background: rgb(188, 184, 184);
-    font-size: 1rem;
+    font-size: .5rem;
     padding: .2rem ;
     width: 67%;
     border-radius: 5px;
@@ -343,7 +343,11 @@
     }
 }
 
-
+@media (max-width: 1350px){
+    .fields{
+        flex-direction: column;
+    }
+}
 @media (max-width:1000px ){
 
     .leaseform{
@@ -362,10 +366,8 @@
         width: 90%;
        
     }
-    .fields{
-        flex-direction: column;
-    }
   
+    
 }
 
 @media (max-width:1000px ){
@@ -377,10 +379,19 @@
         overflow: hidden;
     }
 }
+@media (max-width: 500px){
+    .btnui-ok, .btnui{
+        font-size: .7rem;
+    }
+}
 @media (max-width: 350px){
     .inputimg{
         width: 70%;
         height: 70%;
     }
+    .send,.send1,.send2{
+        font-size: .9rem;
+    }
+   
 }
 

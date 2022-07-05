@@ -38,7 +38,7 @@
 }
 .callender-select{
     padding: .2rem 1rem ;
-    font-size: 1rem;
+    font-size: .9rem;
 }
 .callender-date-box{
     width: 100%;
@@ -49,7 +49,7 @@
 }
 .callender-btn-box{
     width: 100%;
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     align-items: center;
     justify-content:space-around ;
@@ -57,7 +57,7 @@
 .callender-btn{
     padding: .4rem 1.3rem;
     color: aliceblue;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
     background: rgb(35, 59, 146);
     border-radius: 5px;
@@ -72,7 +72,7 @@
 
 .callender-select{
     padding: .4rem 1rem;
-    font-size: 1.2rem;
+    font-size: 1.06rem;
     font-weight: 400;
 }
 

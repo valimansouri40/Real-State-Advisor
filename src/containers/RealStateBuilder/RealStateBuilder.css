@@ -76,6 +76,15 @@
     
 }
 
+@media (max-width: 1350px){
+    .rstb-target-2{
+        height: 320vh ;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+    }
+}
 @media (max-width:1000px) {
     .rstb-target-1{
         min-height: 180vh ;
@@ -89,17 +98,26 @@
         align-items: flex-start;
         justify-content: flex-start;
     }
-    .rstb-target-2{
-        min-height: 270vh ;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-
-    }
+    
     .builder{
         width: 96%;
        height: 95%;
       margin: 3rem auto;
     }
 }
+
+@media (max-width: 350px){
+    .tab , .tab-activ{
+        font-size: 1rem;
+    }
+}
+/* 
+@media (max-width:600px) {
+
+    .rstb-target-2{
+       
+    }
+} */
+
+
 

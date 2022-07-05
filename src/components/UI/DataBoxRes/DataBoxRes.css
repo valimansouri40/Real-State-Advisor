@@ -74,3 +74,17 @@
     } */
    
 }
+
+@media (max-width: 330px){
+   .databoxps-spn{
+       font-size: .9rem;
+   }
+    .databoxsp-h2{
+        font-size: .7rem
+    }
+    .dbr-box-detail-img{
+        width: 20px ;
+        height: 20px;
+        margin-left: 1rem;
+    }
+}

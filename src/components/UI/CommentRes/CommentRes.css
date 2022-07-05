@@ -87,6 +87,13 @@
     .comment-textareabox-p{
         width: 90%;
         margin: 1rem auto;
+        text-align: center;
     }
     
+}
+
+@media (max-width: 330px){
+    .gallery-label{
+        font-size: 1rem;
+    }
 }
