@@ -53,7 +53,7 @@
 
 // })
 // export default Map
-import React,{useState} from "react";
+import React,{useEffect, useRef, useState} from "react";
 import {Marker, MapContainer,TileLayer,useMapEvents,Popup} from "react-leaflet";
 // import { Icon } from "leaflet";
 // import * as parkData from "./data/skateboard-parks.json";
@@ -83,6 +83,10 @@ function LocationMarker({location, setlocation}) {
   
   const Map = (props)=>{
       const {location, setlocation}=props;
+      // const leafelt = useRef();
+      // useEffect(()=>{
+      //     console.log(leafelt.current ,'ashdusi')
+      // },[location])
   return(
     <MapContainer
       center={location?{lat: location.lat - .04, lng: location.lng }:{lat: 35.71775624430298, lng: 52.068057236962076}}

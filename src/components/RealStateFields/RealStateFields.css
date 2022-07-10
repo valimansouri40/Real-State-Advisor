@@ -113,11 +113,11 @@
     border-radius: 5px;
     border: none;
     box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
-    background: rgb(221, 211, 211);
+    background: #b7bab9;
 }
 
 .inp{
-    background: rgb(188, 184, 184);
+    background: #b7bab9;
     font-size: .5rem;
     padding: .2rem ;
     width: 67%;

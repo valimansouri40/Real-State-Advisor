@@ -211,7 +211,7 @@
 }
 .btn-add-home-link:hover {
   color: white;
-  font-size: 14px;
+ 
 }
 
 /* Dropdown Button */
@@ -388,6 +388,12 @@
   text-decoration: none;
   color: #111;
   border-bottom: 1px solid rgb(54, 172, 61);
+}
+
+@media (min-width:700px){
+  .cooperationpage, .cooperationpage a{
+    display: none;
+  }
 }
 @media (min-width:991px) {
   .drawer-target{

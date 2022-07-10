@@ -157,7 +157,7 @@ const Seles=React.memo((props)=>{
                 {/* <Select array={} setvaluehandller={}></Select> */}
                 <div className='selectbox'>
                               <label className='label'>   شهر</label>
-                              <input type="search"  list="sellscity" className="select-search"
+                              <input type="search"  list="sellscity" className="select-search filter-box"
                 value={city}
                 name="sl1"
                 onChange={(e)=>setareahandller(e.target.value)} />
@@ -174,7 +174,7 @@ const Seles=React.memo((props)=>{
         
        <div className='selectbox'>
                 <label className='label'> منطقه</label>
-                <input type="search" list="sellsarea" className="select-search"
+                <input type="search" list="sellsarea" className="select-search filter-box"
                 value={area}
                 name="sl2"
                 onChange={(e)=>setareahl(e.target.value)}
@@ -196,6 +196,7 @@ const Seles=React.memo((props)=>{
 
                <Select
                 val={tipic}
+                selectRes={true}
                 setvaluehandller={settipichandller}
                 array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
 

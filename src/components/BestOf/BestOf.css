@@ -324,9 +324,7 @@
 }
 
 @media (max-width: 576px) {
-    .detaile {
-      display: block;
-    }
+
     .item-detaile {
       width: 100%;
     }
@@ -345,6 +343,9 @@
     .footer-copy-right {
       display: block;
       text-align: center;
+    }
+    .detaile {
+      display: none;
     }
   }
   

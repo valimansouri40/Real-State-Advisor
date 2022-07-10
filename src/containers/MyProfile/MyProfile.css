@@ -68,7 +68,7 @@
 .sampel-label-img{
     width: 300px;
     height: 300px;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 .small-img{
     width: 35px;
@@ -93,7 +93,14 @@
     font-size: 1.2rem;
     color: #111;
 }
-
+.changepass{
+    text-decoration: none ;
+    margin-right: 1rem;
+    padding: .6rem 2rem;
+    border-radius: 8px;
+    background: #38c696;
+    color: aliceblue;
+}
 @media (max-width: 800px){
 
     .req-card{
@@ -144,6 +151,8 @@
         margin-top: 3rem;
     }
 }
+
+
 
 @media (max-width: 310px){
     .sampel-label-img{

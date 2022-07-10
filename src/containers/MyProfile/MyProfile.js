@@ -8,6 +8,7 @@ import Header from "../../components/Header/Header";
 import Spinner from "../../components/UI/spinner/Spinner";
 import Footer from "../../components/Footer/Footer";
 import CloseComponent from "../../components/CloseComponent/CloseComponent";
+import { NavLink } from "react-router-dom";
 
 /// نمایش و تغییر اطلاعات کاربر در نوبار صفحه
 
@@ -102,6 +103,7 @@ const MyProfile=(props)=>{
                             className='name'
                              value={on.LastName} />
                         </div>
+                        
                         <div className='show' >
                             <label className='labelnm' >شماره تلفن</label>
                             <span className='name'>  {data.PhoneNumber}</span>
@@ -114,8 +116,10 @@ const MyProfile=(props)=>{
                             <label className='labelnm'>رمز</label>
                             <p className='name'>{on?data.Password:star}</p>
                         </div>  */}
+
                         <div className='show' >
                         <button className="card-btn card-btn-res" onClick={PatchProfile}>ارسال تغییرات</button>
+                        <NavLink className='changepass' to='/changepassword'>تغییر رمز</NavLink>
                             </div>
                     </div>:<Spinner/>}
                 </div>

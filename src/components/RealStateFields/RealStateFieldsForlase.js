@@ -59,8 +59,8 @@ const RealStateFieldsForlease=(props)=>{
                 TypeState:typestate,
                 YearBuild: years,
                 Measure: measure,
-                Lease: lease,
-                Mortgage:mortgage,
+                Lease: Number(lease.replace(/,/g, "")),
+                Mortgage:Number(mortgage.replace(/,/g, "")),
                 Immediatly: immediat,
                 Aggrement: aggrement,
                 Location: location,
@@ -76,7 +76,7 @@ const RealStateFieldsForlease=(props)=>{
                 TypeState:typestate,
                 YearBuild: years,
                 Measure: measure,
-                Mortgage:mortgage,
+                Mortgage:Number(mortgage.replace(/,/g, "")),
                 Immediatly: immediat,
                 FullMortgage: fullmortgage,
                 Aggrement: aggrement,
@@ -120,6 +120,8 @@ const RealStateFieldsForlease=(props)=>{
          setcityandareaid(strid) 
           seterea(oneeria.areaName);
           setareadetail(oneeria)
+          console.log(oneeria)
+          setlocation({lat:oneeria.latitude, lng:oneeria.longtitude })
         }else{
                 seterea();
           }
@@ -135,6 +137,30 @@ const RealStateFieldsForlease=(props)=>{
           }
       }
       
+
+      const addcommaToNumber =(e, setval)=>{
+        const pattern = ['1','2','3','4','5','6','7','8','9','0'];
+        // console.log(e.replace(/(\d{3})/g, ",$1"))
+        
+         let addcomma ='';
+            for(let i = 0; i<= e.length - 1; i++){
+                    // pattern.map(mp=> {if(mp === e[i]){
+                        
+                    //         console.log('valid', e.length)
+                    // }})
+                    for(let j = 0; j<= pattern.length - 1; j++) {
+                    if(e[i] === pattern[j]){
+                       addcomma =  addcomma + e[i]
+                    }
+                }
+                    
+            }
+         
+             addcomma = addcomma.split( /(?=(?:\d{3})+(?:\.|$))/g ).join( "," );
+            //  console.log(addcomma.split( /(?=(?:\d{3})+(?:\.|$))/g ))
+            setval( addcomma);
+    
+      }
     return(
         <div className={numpage === 1?'leaseform': 'hidden'} >
                
@@ -197,11 +223,11 @@ const RealStateFieldsForlease=(props)=>{
 
                <div className='inpcls'><label className='label'> 
               
-               {tab === 'rahn'? 'رهن':'قیمت'}</label> <input type='number' value={mortgage} className='inp'
-                 onChange={(e)=>setmortgage(e.target.value)} /></div>
+               {tab === 'rahn'? 'رهن':'قیمت'}</label> <input id="price" type='text' value={mortgage} className='inp'
+                 onChange={(e)=>addcommaToNumber(e.target.value, setmortgage)} /></div>
               
                {tab === 'rahn'?<div className='inpcls'><label className='label'> اجاره</label> 
-               <input type='number' value={lease} className='inp' onChange={(e)=>setlease(e.target.value)} /></div>:null}
+               <input type='text' value={lease} className='inp' onChange={(e)=>addcommaToNumber(e.target.value, setlease)} /></div>:null}
               
              <div className='inpcls'><label className='label'> آدرس</label> 
                <input type='text' className='inp' onChange={(e)=>settypeAdrress(e.target.value)}  /></div>
@@ -232,6 +258,5 @@ const RealStateFieldsForlease=(props)=>{
         </div>
     )
 }
-
 
 export default RealStateFieldsForlease;

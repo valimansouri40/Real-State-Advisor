@@ -6,7 +6,7 @@ import { ShowAlert } from '../../store/utility/alert';
 
 const Tabbar= (props)=>{
     const {worksampel,sendreq, auth , tab,getallwsinit}=props;
-    // const [numpgws, setnumpgws]=useState(1);
+    const [numpgws, setnumpgws]=useState();
     const [tabs, settabs]=useState('mapdesign')
     const switcharr= ['Registrationwork','Advocacy', 'ExpertofJustice', 'endofwork', 'lisense']
     const changeTabs=(e)=>{
@@ -17,7 +17,13 @@ const Tabbar= (props)=>{
         getallwsinit(1, 5, `Tab=${tabs}`);
     },[ tabs])
         
-    
+    const setheihthandller =(i)=>{
+        if(i !== numpgws){
+        setnumpgws(i)
+    }else{
+        setnumpgws();
+    }
+    }
 
     const submithandller=(e)=>{
             
@@ -77,17 +83,36 @@ const Tabbar= (props)=>{
                 <div class="col-9 shows">
                 <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-tarrahi">
+                        <form onSubmit={submithandller} class="engener">
+                                <span>ثبت درخواست گرفتن طراحی نقشه</span>
+                                <div class="foormm">
+
+                                        <input id="namee" type="text" placeholder="نام و نام خانوادگی"/>
+                                        <input id="teel" type="text" placeholder="شماره تماس"/>
+
+
+                                    <input style={{marginBottom: '1rem'}} type='submit' className='search-ok' value='ثبت' />
+                                </div>
+                            </form>
                             <div class="slider-box ">
                                 <div class="header">
                                     <span className='header-tab-spn'>نمونه کارها</span>
-                                    <p className='header-tab-p'>در مورد نقشه کشی از این تجهیزات استفاده میکنیم طی 1 هفته کار تحویل داده میشه و.....</p>
+                                    {worksampel?.length === 0?<p className='header-tab-p'>در مورد نقشه کشی از این تجهیزات استفاده میکنیم طی 1 هفته کار تحویل داده میشه و.....</p>
+                                :null}
                                 </div>
                                 <div class="col-12 row">
-                                    {worksampel?worksampel.slice(0,3).map(mp=><div class="col-4 nemone-box">
+                                    {worksampel?worksampel.slice(0,3).map((mp,i)=><div class={`nemone-box 
+//     ${i === numpgws?'more-text':'small-text'}`}
+
+onClick={()=>setheihthandller(i)}>
                                         
-                                           {!switcharr.includes(tabs)?<div className='sampels'>
+                                           {!switcharr.includes(tabs)?<div  className='sampels'>
                                                 <img className='sampels-img' src={`data:image/jpeg;base64,${mp.Image}`} alt=""/>
-                                            <h3 className='sampels-h3'>{mp.Text}</h3></div>:
+                                            {/* <h3 className='sampels-h3'>{mp.Text}</h3> */}
+                                            <p className='paragraph'>
+                                            {i === numpgws ? mp.Text :mp.Text.length > 30?mp.Text.slice(0,30)+  "...":mp.Text  }
+                                                </p>
+                                            </div>:
                                             <p className='paragraph'>{mp.Passage}</p>}
                                         
                                     </div>):null}
@@ -107,17 +132,7 @@ const Tabbar= (props)=>{
 
 
                             </div>
-                            <form onSubmit={submithandller} class="engener">
-                                <span>ثبت درخواست گرفتن طراحی نقشه</span>
-                                <div class="foormm">
-
-                                        <input id="namee" type="text" placeholder="نام و نام خانوادگی"/>
-                                        <input id="teel" type="text" placeholder="شماره تماس"/>
-
-
-                                    <input type='submit' className='submit' value='ثبت' />
-                                </div>
-                            </form>
+                            
                         </div>
                     </div>
                </div>         
@@ -129,3 +144,19 @@ const Tabbar= (props)=>{
 
 
 export default Tabbar;
+
+// {worksampel?worksampel.slice(0,3).map((mp,i)=>(
+//     <div class={`col-4 nemone-box 
+//     ${i === numpgws?'more-text':'small-text'}`}>
+        
+//            {!switcharr.includes(tabs)?<div className='sampels'>
+//                 <img className='sampels-img' src={`data:image/jpeg;base64,${mp.Image}`} alt=""/>
+//             {/* <h3 className='sampels-h3'>{mp.Text}</h3> */}
+//             <p className='paragraph'onClick={()=>setnumpgws(1)}>
+//                 {/* {i === numpgws ? mp.Text :mp.Text.length > 30?mp.Text.slice(0,30)+  "...":mp.Text  } */}
+//                 </p>
+//             </div>:
+//             <p className='paragraph'>{mp.Passage}</p>}
+        
+//     </div>
+//     )):null}

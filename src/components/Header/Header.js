@@ -101,6 +101,10 @@ const Header= (props)=>{
                 closeModalInit(false, false)
             }
         }
+        let deviceWidth = window.innerWidth;
+        window.addEventListener('resize',()=>{
+            deviceWidth = window.innerWidth;
+        })
         return(
             <React.Fragment>
             <header  onClick={closehandller}>
@@ -163,15 +167,18 @@ const Header= (props)=>{
                                         style={{zIndex:'100'}} >
                                             <li>
                                                 ناحیه کاربری</li>
+                                                 {deviceWidth <= 700?<li className="cooperationpage">
+                                                <NavLink  to='/cooperationpage'>فرصت سرمایه گذاری</NavLink></li>:null}
                                           <li>
+                                              
                                           <NavLink to='/myrequest'>پیگیری درخواست ها</NavLink>
                                           </li>
                                             <li><NavLink to='/myprofile'>
                                             ویرایش نام کاربری</NavLink></li>
-                                            
+                                           
                                             <li><NavLink to='/myappointments'>
                                             زمان بازدید  من</NavLink></li>
-                                            <li><NavLink to='/changepassword'>تغییر رمز</NavLink></li>
+                                            
                                             <li><NavLink to='/mymarks'>
                                                 علاقه مندی ها</NavLink></li> 
                                                {/* { auth.role === 'advisor'?<li><NavLink to='/buildrealstatepost'>
@@ -193,6 +200,8 @@ const Header= (props)=>{
                                         ایجاد حساب</NavLink></li>
                                         <li><NavLink to='/login'>ورود به حساب</NavLink></li>
                                         <li><NavLink to='/forgotpassword'>پسورد خود را فراموش کردم</NavLink></li>
+                                        {deviceWidth <= 700?<li className="cooperationpage">
+                                                <NavLink  to='/cooperationpage'>فرصت سرمایه گذاری</NavLink></li>:null}
                                         </ul>
                                         :null}
                                     </div>

@@ -1,0 +1,146 @@
+.desres-target{
+    width: 100%;
+    margin: 3rem 0;
+}
+.desres-frame{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   margin: 4rem 0;
+}
+.desres-box{
+    width: 80%;
+    background: rgb(143, 140, 140);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 4rem;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+    
+}
+.drsres-box-h1{
+   
+    height: 4rem;
+    
+    background: red;
+}
+.desres-h1{
+    color: aliceblue;
+    font-size: 1.3rem;
+    padding: 1rem 0;
+}
+.desres-p{
+    color: #111;
+    font-size: 1rem;
+    
+}
+.desres-box::before{
+    content: "";
+    width: 100%;
+    background: rgb(8, 8, 8);
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    transition: all 2s ease;
+}
+
+.des-nav{
+    text-decoration: none;
+    width: 95%;
+}
+/* .desres-box:link , .desres-box:visited{
+    height: 4rem;
+} */
+.desres-product-box{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+.desres-box-active{
+    
+    height: 24.1rem; 
+    transition: all 1s ease;
+}
+.desres-box-back{
+    height: 4rem;
+    transition: all 1s ease;
+}
+.desres-img{
+    width: 200px;
+    height: 160px;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px){
+    .desres-target{
+        display: none;
+    }
+}
+@media(max-width: 600px){
+    .desres-box-active{
+        height: 26rem;
+    }
+}
+@media (max-width: 520px){
+    .desres-h1{
+        color: aliceblue;
+        font-size: 1rem;
+        margin-top: .5rem;
+    }
+    .desres-p{
+        font-size: .95rem;
+        margin-bottom: .7rem;
+    }
+    .desres-box-active{
+        height: 26rem;
+    }
+}
+
+@media (max-width: 420px){
+    .desres-h1{
+        color: aliceblue;
+        font-size: .9rem;
+        margin-top: .5rem;
+    }
+    .desres-p{
+        font-size: .85rem;
+        margin-bottom: .7rem;
+    }
+}
+
+@media (max-width: 370px){
+    .desres-h1{
+        color: aliceblue;
+        font-size: .8rem;
+        margin-top: .5rem;
+    }
+    .desres-p{
+        font-size: .75rem;
+        margin-bottom: .7rem;
+    }
+}
+
+@media (max-width: 330px){
+    .desres-h1{
+        color: aliceblue;
+        font-size: .8rem;
+        margin: .5rem;
+    }
+    .desres-p{
+        font-size: .75rem;
+        margin-bottom: .7rem;
+    }
+    .desres-box{
+        width: 90%;
+    }
+}

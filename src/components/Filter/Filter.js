@@ -10,7 +10,15 @@ const Filter= (props)=>{
             worksampel ,changefilehandller, auth, sendreq}=props;
             // const arraytab=['sell', 'rent','engine','cooperation'];
            
-
+           window.addEventListener('resize', ()=>{ 
+                
+               if(window.innerWidth <= 700 && tab === "cooperation" ){
+                settab('sell')
+            }
+        })
+          
+               
+         
         useEffect(()=>{
             const search= window.location.search;
             
@@ -56,7 +64,7 @@ const Filter= (props)=>{
     <div className="container">
         <div className="row justify-content-md-center">
             <div className="col-9 search-box">
-                <ul className="nav nav-pills mb-3" >
+                <ul className="nav-pills" >
                     <li className="nav-item" >
                         <button onClick={()=>changeTab('sell')} 
                         className={tab ==="sell"?"nav-link active":"nav-link2"} >خرید ملک</button>

@@ -19,7 +19,7 @@ const Home= (props)=>{
             savetabserchboxinit, getallfilterinit,AllData, changefilehandller,getallwsinit,filter,
             worksampel, auth, sendreq, REALSTATEGETALLINIT}= props;
         const [tab, settab]=useState(Tab);
-        const path= window.location.hash;
+       
 
         useEffect(()=>{
             changefilehandller(null, 'getallcity', '');

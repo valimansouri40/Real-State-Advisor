@@ -3,15 +3,17 @@ import Spinner from "../UI/spinner/Spinner";
 import "./BestOf.css"
 import StaticRange from 'react-star-ratings'
 import { Link } from "react-router-dom";
+import DescriptionRes from '../UI/DescriptionRes/DescriptionRes';
+
 
 const BestOfArea = (props)=>{
                 const {bestOf}= props;
               
     return(
         <section class="bestPlace">
-        <h1 class="best-place-title">بهترین مناطق</h1>
+        {/* <h1 class="best-place-title">بهترین مناطق</h1> */}
         <main>
-            <div class="row-pic">
+            {/* <div class="row-pic">
                 <div class="left-baner-pic">
                 <img width="100%" height="100%"  src={require('../../assets/1.jpg')}/>
                     <p class="pic-title">دماوند</p>
@@ -26,7 +28,7 @@ const BestOfArea = (props)=>{
                         <img width="100%" height="100%"  src={require('../../assets/3.jpg')}/>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <h1 class="profile-title">همکاران</h1>
             <div class="profiless">
                 {bestOf?bestOf.map(mp=><div class="user">
@@ -55,6 +57,7 @@ const BestOfArea = (props)=>{
                 
             </div>
             <h1 class="detaile-title">بهترین سایت املاک شمال ایران</h1>
+            <DescriptionRes></DescriptionRes>
             <div class="detaile">
             <Link to='/description/one' class="item-detaile">
                 

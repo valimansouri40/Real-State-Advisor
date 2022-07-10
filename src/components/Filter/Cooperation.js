@@ -116,7 +116,7 @@ const Cooperation=(props)=>{
                 <div class="col-9 shows">
                     <div class="tab-content" id="v-pills-tabContent2">
                        
-                        <div class="tab-pane fade" id="v-pills-mosharekat" role="tabpanel" aria-labelledby="v-pills-mosharekat-tab">
+                        <div class="tab-pane fade" id="v-pills-mosharekat" >
                             <form action="" class="engener-2">
                                 <div className='selectbox'>
                               <label className='label'>   شهر</label>
@@ -147,6 +147,7 @@ const Cooperation=(props)=>{
 </select></div>
 
                 <Select val={tipic}
+                selectRes={true}
                 setvaluehandller={settipichandller}
                 array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
                             </form>
@@ -167,7 +168,7 @@ const Cooperation=(props)=>{
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input   onChange={()=>setland(e=>!e)} type="checkbox"  
+                                        <input    onChange={()=>setland(e=>!e)} type="checkbox"  
                                         id="flexCheckChecked" />
                                         <label class="form-check-label" for="flexCheckChecked">
                                             من آمادگی سرمایه گذاری در زمین برای مشارکت در ساخت را دارم
