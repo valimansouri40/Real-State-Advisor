@@ -58,6 +58,9 @@
   .dropdown-content-responsive a:hover {
     background-color: #ddd;
   }
+  .logout{
+      cursor: pointer;
+  }
   .drw-navlink{
       width: 100%;
       display: flex;

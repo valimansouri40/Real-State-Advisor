@@ -91,7 +91,7 @@ const BuildSampel=(props)=>{
         'ExpertofJustice':' کارشناس دادگستری',
         'endofwork':' پایان کار',
         'lisense':'جواز',
-        'contracting':'پیمان کاری'}
+        }
     return(
         <div className='changerole-target'>
             <AdminPannelNav/>
@@ -106,7 +106,6 @@ const BuildSampel=(props)=>{
                         <button class={tabs !== 'ExpertofJustice'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='ExpertofJustice' >کارشناس دادگستری</button>
                         <button class={tabs !== 'endofwork'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='endofwork' >پایان کار</button>
                         <button class={tabs !== 'lisense'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='lisense' >جواز</button>
-                        <button class={tabs !== 'contracting'?"nav-link-sampel":"nav-link-sampel-active"} onClick={changeTabs} value='contracting' >پیمان کاری</button>
                     
                     </div>
                     <div className='sampel-form' >

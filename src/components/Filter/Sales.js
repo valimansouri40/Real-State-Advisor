@@ -71,11 +71,11 @@ const Seles=React.memo((props)=>{
     
     const setareahandller=(e)=>{
         
-        if(e && e !== 'شهر'){
+        if(e && e !== 'همه'){
             const citid= cityall.find(er=>  er.name === e);
             setcity(e)
-          
-           changefilehandller(null, 'getallarea',`id=${citid._id}`)
+            
+           changefilehandller(null, 'getallarea',`id=${citid.id}`)
            setarea('')
    }else{
     setcity('')
@@ -120,7 +120,7 @@ const Seles=React.memo((props)=>{
     //     setps(obj)
     //   }
       const setareahl=(e)=>{
-          if(e !== 'منطقه'){
+          if(e !== 'همه'){
               setarea(e)
           }else{
               setarea('')
@@ -161,9 +161,9 @@ const Seles=React.memo((props)=>{
                 value={city}
                 name="sl1"
                 onChange={(e)=>setareahandller(e.target.value)} />
-                <datalist  id="sellscity" value={city !==''?city: 'شهر'}   >
+                <datalist  id="sellscity" value={city !==''?city: 'همه'}   >
                 <option className='option'  >
-                        شهر
+                        همه
                     </option>
             {cityall?cityall.map(mp=>(
                 <option className='option'>
@@ -184,7 +184,7 @@ const Seles=React.memo((props)=>{
             >
                    
                     <option className='option'>
-                        منطقه
+                        همه
                     </option>
             {areaall?areaall.map(mp=>(
                 <option className='option' 
@@ -198,7 +198,7 @@ const Seles=React.memo((props)=>{
                 val={tipic}
                 selectRes={true}
                 setvaluehandller={settipichandller}
-                array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
+                array={[' (همه) نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک </Select>
 
             <div className="extra">
             <button className="search-ok" onClick={searchhandller} type="submit" >جستجو

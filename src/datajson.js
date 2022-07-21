@@ -82,7 +82,7 @@ export const sineup= {
         LastName:{
             eltype:{
                 type:"name",
-                placeholder:'فامیل'
+                placeholder:'نام فامیل'
             },
             validation:{
                 required:true,

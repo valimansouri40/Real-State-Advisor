@@ -19,9 +19,9 @@ const RealStateFields3 = (props)=>{
         <section className={numpage === 3?'rstf3-sec': 'hidden'}>
             <div className='rstf3-target'>
                     <div className='rstf3-box'>
-                    <div className='selectbox'>
+                    <div className='selectbox page-three'>
                     <label className='label'>  مشاور املاک</label>
-                <select className='select'  onChange={(e)=>setAdvisorHandller(e.target.value)}  >
+                <select className='select responesive-select '  onChange={(e)=>setAdvisorHandller(e.target.value)}  >
                 <option className='option'  >
                 مشاور املاک
                     </option>
@@ -33,7 +33,7 @@ const RealStateFields3 = (props)=>{
         </div>
         <div className="btn-box2">
         <button className='send' onClick={()=>setnumpage(2)}>بازگشت</button>
-        <button className='send2' onClick={SubmitDataHandller}>{!loading?"ارسال":<>درحال ارسال<span className="spin">
+        <button className='send2' disabled={loading} onClick={SubmitDataHandller}>{!loading?"ارسال":<>درحال ارسال<span className="spin">
             </span></>}</button>
         </div>
         </div>

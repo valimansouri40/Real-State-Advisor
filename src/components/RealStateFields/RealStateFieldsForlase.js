@@ -100,11 +100,11 @@ const RealStateFieldsForlease=(props)=>{
              const citid= cityall.find(er=>  er.name === e);
              setcity(e)
             
-            changefilehandller(null, 'getallarea',`id=${citid._id}`)
+            changefilehandller(null, 'getallarea',`id=${citid.id}`)
             
     }else{
         const citid= cityall.find(er=>  er.name === role.City[e].name);
-            changefilehandller(null, 'getallarea',`id=${citid._id}`)
+            changefilehandller(null, 'getallarea',`id=${citid.id}`)
         setcity(role.City[e].name);
         setcityid(role.City[e]._id);
 
@@ -116,11 +116,12 @@ const RealStateFieldsForlease=(props)=>{
           if(e && e !== 'منطقه'){
           
           const oneeria= areaall.find(rs=> rs.areaName === e);
-         const strid = JSON.stringify(oneeria.CityId) + JSON.stringify(oneeria.Id) * 1;
+         
+         const strid = JSON.stringify(oneeria.CityId) + JSON.stringify(oneeria.Id) + '1000' * 1;
          setcityandareaid(strid) 
           seterea(oneeria.areaName);
           setareadetail(oneeria)
-          console.log(oneeria)
+          
           setlocation({lat:oneeria.latitude, lng:oneeria.longtitude })
         }else{
                 seterea();
@@ -144,10 +145,7 @@ const RealStateFieldsForlease=(props)=>{
         
          let addcomma ='';
             for(let i = 0; i<= e.length - 1; i++){
-                    // pattern.map(mp=> {if(mp === e[i]){
-                        
-                    //         console.log('valid', e.length)
-                    // }})
+                   
                     for(let j = 0; j<= pattern.length - 1; j++) {
                     if(e[i] === pattern[j]){
                        addcomma =  addcomma + e[i]
@@ -167,7 +165,7 @@ const RealStateFieldsForlease=(props)=>{
                 <div className='formbox'>
                     <div className='selectbox'>
                     <label className='label'>   شهر</label>
-                <select className='select' onChange={(e)=>setvaluehandller(e.target.value)}  >
+                <select className='select responesive-select' onChange={(e)=>setvaluehandller(e.target.value)}  >
                 <option className='option'  >
                         شهر
                     </option>
@@ -184,7 +182,7 @@ const RealStateFieldsForlease=(props)=>{
         
      {role?rolear.includes(role.role) && allerea?  <div className='selectbox'>
                 <label className='label'> منطقه</label>
-           <select className='select' disabled={allerea && city !== ''?false:true} 
+           <select className='select responesive-select' disabled={allerea && city !== ''?false:true} 
            onChange={(e)=>setareahandller(e.target.value)} >
                     <option className='option'  >
                         منطقه
@@ -198,7 +196,7 @@ const RealStateFieldsForlease=(props)=>{
  </div>:null:null}
 { role?!rolear.includes(role.role) && role.CitysAndAreas.length > 0? <div className='selectbox'>
                 <label className='label'> منطقه</label>
-           <select className='select' disabled={cityid && city !== ''?false:true} 
+           <select className='select responesive-select' disabled={cityid && city !== ''?false:true} 
            onChange={(e)=>setareahandller(e.target.value)} >
                     <option className='option'  >
                         منطقه
@@ -210,33 +208,33 @@ const RealStateFieldsForlease=(props)=>{
 </select>
  </div>:null:null}
    
-            <Select val={typestate} setvaluehandller={settypestate}
+            <Select selectRes={true} val={typestate} setvaluehandller={settypestate}
                             array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']}
                             >نوع ملک</Select>
 
                 <div className='inpcls'><label className='label'>متراژ</label>
-                 <input type='number' className='inp' onChange={(e)=>setmesure(e.target.value)} /></div>
+                 <input type='number' className='inp inp-res inp-one' onChange={(e)=>setmesure(e.target.value)} /></div>
                
                 <div className='inpcls'><label className='label'>
-                     سال بنا</label> <input type='number' min='1' className='inp'
+                     سال بنا</label> <input type='number' min='1' className='inp inp-res inp-one'
                       onChange={(e)=>setyears(e.target.value)} /></div>
 
                <div className='inpcls'><label className='label'> 
               
-               {tab === 'rahn'? 'رهن':'قیمت'}</label> <input id="price" type='text' value={mortgage} className='inp'
+               {tab === 'rahn'? 'رهن':'قیمت'}</label> <input id="price" type='text' value={mortgage} className='inp inp-res inp-one'
                  onChange={(e)=>addcommaToNumber(e.target.value, setmortgage)} /></div>
               
                {tab === 'rahn'?<div className='inpcls'><label className='label'> اجاره</label> 
-               <input type='text' value={lease} className='inp' onChange={(e)=>addcommaToNumber(e.target.value, setlease)} /></div>:null}
+               <input type='text' value={lease} className='inp inp-res inp-one' onChange={(e)=>addcommaToNumber(e.target.value, setlease)} /></div>:null}
               
              <div className='inpcls'><label className='label'> آدرس</label> 
-               <input type='text' className='inp' onChange={(e)=>settypeAdrress(e.target.value)}  /></div>
+               <input type='text' className='inp inp-res inp-one' onChange={(e)=>settypeAdrress(e.target.value)}  /></div>
                
                {role?rolear2.includes(role.role)?<>
             <div className='inpcls'><label className='label'> شماره مالک</label> 
-               <input type='tel' className='inp' name='tell' value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
+               <input type='tel' className='inp inp-res inp-one' name='tell' value={esquireph} onChange={(e)=>setesquierphhandller(e.target.value)}  /></div>
             <div className='inpcls'><label className='label'> نام مالک</label> 
-               <input type='text' className='inp' name='esquierName' onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
+               <input type='text' className='inp inp-res inp-one' name='esquierName' onChange={(e)=>setesquiername(e.target.value)}  /></div></>:null:null}
               
               
                

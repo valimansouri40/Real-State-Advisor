@@ -155,7 +155,7 @@ const Form =(props)=>{
            
     }
 
-    let twicesendsms= path === '#/sendsmscode'?<p style={{cursor:'pointer',color:'blue'}}
+    let twicesendsms= path === '#/sendsmscode'?<p style={{margin:"1rem 0",cursor:'pointer',color:'#fff',}}
      onClick={twiceSendSMSHandller} className={"twice"}> ارسال دوباره کد</p>:null;
 
      

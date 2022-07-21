@@ -99,6 +99,10 @@
   box-shadow: 0 .1rem .2rem #111;
   margin-bottom: -1.9rem;
 }
+.search-ok:disabled{
+  background: #999999;
+  cursor: not-allowed;
+}
 .extra{
   
   position: relative;
@@ -625,6 +629,7 @@ z-index: 1000;
   background-color: transparent;
   font-size: 1rem;
   padding: .4rem 1.2rem;
+  white-space: nowrap;
 }
 .select-responsive{
    padding: .5rem 1.4rem;
@@ -638,6 +643,7 @@ z-index: 1000;
 @media (max-width: 1070px){
   .search .search-box li .nav-link.active, .nav-link2{
     font-size: 1rem;
+    white-space: nowrap;
   }
   .container{
     width: 90%;
@@ -962,15 +968,16 @@ z-index: 1000;
       margin-top: 3rem;
     }
   .nav-link2{
-      font-size: .8rem;
-      margin: 0 .1rem;
-      padding: .4rem .1rem;
+      font-size: 1rem;
+      padding: .4rem .4rem;
+      margin: 0 .4rem;
       font-weight: 700;
+      
   }
   .search .search-box li .nav-link.active{
-    font-size: .8rem;
-    padding: .4rem .1rem;
-    margin: 0 .1rem;
+    font-size: 1rem;
+    padding: .4rem .4rem;
+    margin: 0 .4rem;
     font-weight: 700;
   }
   /* .kharid{
@@ -997,14 +1004,14 @@ z-index: 1000;
 @media(max-width: 468px){
 
   .nav-link2{
-    font-size: .7rem;
+    font-size: .9rem;
     margin: 0 .35rem;
-    padding: .4rem 0;
+    padding: .4rem .3rem;
 }
 .search .search-box li .nav-link.active{
-  font-size: .7rem;
+  font-size: .9rem;
   padding: .4rem .3rem;
-  margin: 0 .1rem;
+  margin: 0 .3rem;
 }
 }
 @media( max-width: 450px){
@@ -1020,12 +1027,12 @@ z-index: 1000;
     margin-top: -2rem;
   }
   .nav-link2{
-      font-size: .7rem;
+      font-size: .9rem;
       margin: 0 .35rem;
       padding: .4rem 0;
   }
   .search .search-box li .nav-link.active{
-    font-size: .7rem;
+    font-size: .9rem;
     padding: .4rem .3rem;
     margin: 0 .1rem;
   }
@@ -1036,7 +1043,7 @@ z-index: 1000;
     }
 
     .label{
-      font-size: .7rem;
+      font-size: .9rem;
     }
   .container{
     width: 99%;
@@ -1069,12 +1076,12 @@ z-index: 1000;
 }
 @media (max-width: 394px){
   .nav-link2{
-    font-size: 8px;
+    font-size: .8rem;
     margin: 0 .35rem;
     padding: .4rem 0;
 }
 .search .search-box li .nav-link.active{
-  font-size: 9px;
+  font-size: .8rem;
   padding: .4rem .3rem;
   margin: 0 .1rem;
 }
@@ -1086,12 +1093,6 @@ z-index: 1000;
   letter-spacing: -1px;
 }
 
-.search .search-box li .nav-link.active{
-font-size: 10px;
-padding: .4rem .3rem;
-margin: 0 .1rem;
-letter-spacing: -1px;
-}
 }
 @media (max-width:350px){
   .nav-link-cop{
@@ -1102,21 +1103,16 @@ letter-spacing: -1px;
     
   }
   .nav-link2{
-    font-size: 9px;
+    font-size: .8rem;
     margin: 0 .15rem;
     padding: .4rem 0;
 }
 .search .search-box li .nav-link.active{
-  font-size: 10px;
+  font-size:.8rem;
   padding: .4rem .15rem;
   
 }
-  .search .search-box li .nav-link.active{
-    font-size: .7rem;
-    padding: .4rem .1rem;
-    margin:0  4px;
-    /* margin: 0 .1rem; */
-  }
+  
  
   /* .kharid, .rents{
   width: 100%;
@@ -1133,7 +1129,7 @@ letter-spacing: -1px;
     margin-top: 3rem;
   }
     .label{
-      font-size: .7rem;
+      font-size: .9rem;
     }
   .container{
     width: 99%;
@@ -1147,12 +1143,12 @@ letter-spacing: -1px;
 
 @media (max-width: 318px){
   .nav-link2{
-    font-size: 8px;
+    font-size: .73rem;
     margin: 0 .15rem;
     padding: .4rem 0;
 }
 .search .search-box li .nav-link.active{
-  font-size: 9px;
+  font-size: .73rem;
   padding: .4rem .3rem;
   margin: 0 .1rem;
 }
@@ -1164,12 +1160,12 @@ letter-spacing: -1px;
     margin: 0 .3rem;
   }
   .nav-link2{
-    font-size: 7px;
+    font-size: .6rem;
     margin: 0 .2rem;
     padding: .4rem 0;
 }
 .search .search-box li .nav-link.active{
-  font-size: 8px;
+  font-size: .6rem;
   padding: .4rem .1rem;
   margin: 0 .1rem;
 }
@@ -1211,7 +1207,7 @@ letter-spacing: -1px;
   }
  
     .label{
-      font-size: .7rem;
+      font-size: .8rem;
     }
   .container{
     width: 99%;

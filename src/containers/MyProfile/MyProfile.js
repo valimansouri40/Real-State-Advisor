@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 /// نمایش و تغییر اطلاعات کاربر در نوبار صفحه
 
 const MyProfile=(props)=>{
-        const {UpdateProfile,setauthgetmeinit, data, sendreq} = props;
+        const {loading,UpdateProfile,setauthgetmeinit, data, sendreq} = props;
         const [img, setimg]=useState();
         const [on, seton]= useState();        
 
@@ -36,15 +36,18 @@ const MyProfile=(props)=>{
         useEffect(()=>{
                 setauthgetmeinit()
         },[setauthgetmeinit])
-        
+        // let [dis, setdis]= useState(false);
         const PatchProfile=()=>{
+            // setdis(true)
             let addim= on;
             if(img){
                addim.Image = img
             }
-           
-          UpdateProfile(on);
+            UpdateProfile(on );
+          
           setauthgetmeinit();
+          
+            //    setdis(false)
         }
         
         const changevaluehandller=(e)=>{
@@ -118,7 +121,7 @@ const MyProfile=(props)=>{
                         </div>  */}
 
                         <div className='show' >
-                        <button className="card-btn card-btn-res" onClick={PatchProfile}>ارسال تغییرات</button>
+                        <button disabled={loading} className="card-btn card-btn-res" onClick={PatchProfile}>ارسال تغییرات</button>
                         <NavLink className='changepass' to='/changepassword'>تغییر رمز</NavLink>
                             </div>
                     </div>:<Spinner/>}
@@ -132,7 +135,8 @@ const MyProfile=(props)=>{
 const MapStateToProps=state=>{
 
     return{
-         data: state.auth.data
+         data: state.auth.data,
+         loading: state.auth.loading
     }
 }
 
@@ -140,7 +144,7 @@ const MapDispatchToProps=dispatch=>{
     return{
         setauthgetmeinit:()=>dispatch(action.setauthgetmeinit()),
         sendreq:(data,authdt)=> dispatch(action.sendreq(data, authdt)),
-         UpdateProfile:(data)=> dispatch(action.UpdateProfile(data))
+         UpdateProfile:(data,jk)=> dispatch(action.UpdateProfile(data,jk))
     }
 }
 

@@ -5,7 +5,7 @@ import { ShowAlert } from '../../store/utility/alert';
 
 
 const Tabbar= (props)=>{
-    const {worksampel,sendreq, auth , tab,getallwsinit}=props;
+    const {worksampel,loading ,sendreq, auth , tab,getallwsinit}=props;
     const [numpgws, setnumpgws]=useState();
     const [tabs, settabs]=useState('mapdesign')
     const switcharr= ['Registrationwork','Advocacy', 'ExpertofJustice', 'endofwork', 'lisense']
@@ -26,7 +26,7 @@ const Tabbar= (props)=>{
     }
 
     const submithandller=(e)=>{
-            
+            e.preventDefault()
         const data={
             FristName: e.target[0].value,
             PhoneNumber: e.target[1].value,
@@ -38,6 +38,7 @@ const Tabbar= (props)=>{
         const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
             if(pattern.test(data.PhoneNumber)){
             if(data.FristName !== '' ){
+                
                 sendreq(data, auth?._id);
             }else{
                 ShowAlert([], 'اطلاعات وارد شده ناقص است', 'fail')
@@ -91,7 +92,7 @@ const Tabbar= (props)=>{
                                         <input id="teel" type="text" placeholder="شماره تماس"/>
 
 
-                                    <input style={{marginBottom: '1rem'}} type='submit' className='search-ok' value='ثبت' />
+                                    <input disabled={loading} style={{marginBottom: '1rem'}} type='submit' className='search-ok' value='ثبت' />
                                 </div>
                             </form>
                             <div class="slider-box ">

@@ -77,7 +77,7 @@ const ChangeRole=(props)=>{
         const setvaluehandller= (e)=>{
             if(e && e !== 'شهر'){
              const citid= cityall.find(er=>  er.name === e);
-            changefilehandller(null, 'getallarea',`id=${citid._id}`)
+            changefilehandller(null, 'getallarea',`id=${citid.id}`)
     }
    }
 

@@ -7,7 +7,7 @@ import DescriptionLayoyt from "../../components/DescriptionLayoyt/DescriptionLay
 import './cooperationpage.css'
 
 const CooperationPage=(props)=>{
-    const {areaall,cityall, changefilehandller,auth, sendreq}=props;
+    const {areaall,cityall, changefilehandller,auth, sendreq,loading}=props;
     
     const [tb, settb]= useState('Buy land');
     const [city, setcity]=useState('');
@@ -34,7 +34,7 @@ const CooperationPage=(props)=>{
             const citid= cityall.find(er=>  er.name === e);
             setcity(e)
           
-           changefilehandller(null, 'getallarea',`id=${citid._id}`)
+           changefilehandller(null, 'getallarea',`id=${citid.id}`)
    }
 
     }
@@ -66,7 +66,7 @@ const CooperationPage=(props)=>{
             const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
             if(pattern.test(data.PhoneNumber)){
             if(data.FristName !== '' && data.City !=='' && data.Area !==''){
-                    sendreq(data, auth._id);
+                    sendreq(data, auth?._id);
                     
             }else{
 
@@ -149,7 +149,7 @@ const CooperationPage=(props)=>{
 </select></div>
 
                 <Select val={tipic}
-                setvaluehandller={settipichandller}
+                selectRes={true} setvaluehandller={settipichandller}
                 array={['نوع ملک','آپارتمان','ویلایی','تجاری','صنعتی','باغ','مزروعی']} >نوع ملک</Select>
                             </form>
                             <form onSubmit={submithandller} class="engener-cop submit-form">
@@ -175,7 +175,7 @@ const CooperationPage=(props)=>{
                                             من آمادگی سرمایه گذاری در زمین برای مشارکت در ساخت را دارم
                                         </label>
                                     </div></>:null}
-                                    <input className="search-ok" type='submit' value='ثبت'/>
+                                    <input disabled={loading} className="search-ok" type='submit' value='ثبت'/>
                                 
                             </form>
                         </div>
@@ -193,7 +193,8 @@ const MapStateToProps=state=>{
     return{
         areaall: state.realstate.areaall,
         cityall: state.realstate.cityall,
-        auth: state.auth.data
+        auth: state.auth.data,
+        loading: state.auth.loading
     }
 }
 

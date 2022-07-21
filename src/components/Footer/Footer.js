@@ -22,7 +22,7 @@ const Footer=(props)=>{
 
     return(
         <footer class="footer">
-        <section class="footer-email">
+        {/* <section class="footer-email">
             <p>با عضویت در خبرنامه سایت از آخرین خبرهای سایت باخبر شوید</p>
             <div class="form-Newsletter">
 
@@ -30,7 +30,7 @@ const Footer=(props)=>{
                 <button class="Newsletter-btn" type="submit">عضویت</button>
 
             </div>
-        </section>
+        </section> */}
         <section class="footer-min">
 
             <div class="coloum-footer1">

@@ -32,7 +32,7 @@ export const appopostinit= (data)=>{
             }
         }).catch(er=>{
             console.clear()
-            ShowAlert([],'باموفقیت انجام نشد.','fail');
+            ShowAlert([],'رزرو کرده اید','fail');
         })
 
     }

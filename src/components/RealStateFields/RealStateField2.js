@@ -138,17 +138,22 @@ const Fields2= (props)=>{
         }
         
     }
+    let innerWidth = window.innerWidth;
+    document.addEventListener('resize',()=>{
+        innerWidth = window.innerWidth;
+    })
+    
     return(
         <div className={numpage === 2?'fields':'hidden'} >
             <div className='rstb-field'>
-            <InputField val={sub} setval={setsub} >عنوان</InputField>
+            <InputField  val={sub} setval={setsub} >عنوان</InputField>
             <div className='selectbox'>
                     <label className='label'>   توضیحات</label>
                     <textarea value={explain} className='inputfield-textarea' 
                     onChange={e=>setexplain(e.target.value)}></textarea>
                     </div>
-            <InputField val={masahat} setval={setmasahat} >مساحت (متر مبع)</InputField>
-            <InputField val={floors} setval={setfloors} >تعداد طبقات</InputField>
+            <InputField  val={masahat} setval={setmasahat} >مساحت (متر مبع)</InputField>
+            <InputField  val={floors} setval={setfloors} >تعداد طبقات</InputField>
             <div className='setimgbox'>
                     <label className='uploadimage-label' for='img'>  <span className='labeltxt'> افزودن تصویر</span>
                     <img src={imgicon} className='iconimg' />
@@ -171,12 +176,12 @@ const Fields2= (props)=>{
             </div>
             
             <div className='rstb-field'>
-            <Select val={someroom} array={['','یک خواب','دو خواب','سه خواب','چهار خواب']} setvaluehandller={setsomerom}>تعداد اتاق خواب</Select>
-            <Select val={propertyDirection} array={['','شرقی','غربی','جنوبی','شمالی']} setvaluehandller={setpropertyDirection}>جهت نما</Select>
-            <Select val={balcony} array={['',"آجر","سنگ","سایر"]} setvaluehandller={setbalcony}>نوع نما</Select>
-            <Select val={flooring} array={['','پارکت','سرامیک','موزاییک']} setvaluehandller={setflooring}>کفپوش</Select>
-            <Select val={kitchen} array={['',"چوبی","ممبران","ام دی اف","بدون کابینت","سایر"]} setvaluehandller={setkitchen}>آشپز خانه</Select>
-            <Select val={service} array={['',"ایرانی","فرنگی","ایرانی و فرنگی"]} setvaluehandller={setservice}>سرویس</Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={someroom} array={['','یک خواب','دو خواب','سه خواب','چهار خواب']} setvaluehandller={setsomerom}>تعداد اتاق خواب</Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={propertyDirection} array={['','شرقی','غربی','جنوبی','شمالی']} setvaluehandller={setpropertyDirection}>جهت نما</Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={balcony} array={['',"آجر","سنگ","سایر"]} setvaluehandller={setbalcony}>نوع نما</Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={flooring} array={['','پارکت','سرامیک','موزاییک']} setvaluehandller={setflooring}>کفپوش</Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={kitchen} array={['',"چوبی","ممبران","ام دی اف","بدون کابینت","سایر"]} setvaluehandller={setkitchen}>آشپز خانه</Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={service} array={['',"ایرانی","فرنگی","ایرانی و فرنگی"]} setvaluehandller={setservice}>سرویس</Select>
             <CheckBox val={parking} changeval={setparking} >پارکینگ</CheckBox>
             <CheckBox val={ofstorage} changeval={setofstorage} >انباری</CheckBox>
             <CheckBox val={sona} changeval={setsona} >سونا</CheckBox>
@@ -186,12 +191,12 @@ const Fields2= (props)=>{
             </div>
             
             <div className='rstb-field'>
-            <Select val={coolerSystem} array={["","کولر","هواساز","فاقد"]} setvaluehandller={setcoolerSystem}> سیستم سرمایشی </Select>
-            <Select val={heaterSystem} array={["","شوفاژ","هواساز","پکیج","بخاری"]} setvaluehandller={setheaterSystem}> سیستم گرمایشی </Select>
-            <Select val={propertySituation} array={["","تخلیه","در دست مالک","در دست مستاجر"]} setvaluehandller={setpropertySituation}> وضعیت اسکان ملک </Select>
-            <Select val={documentSituation} array={["","شخصی","تعاونی","اوقافی","زمین شهری","قولنامه ای"]} setvaluehandller={setdocumentSituation}> وضعیت سند </Select>
-            <Select val={documentOnership} array={["","شش دانگ","مشاعی"]} setvaluehandller={setdocumentOnership}> مالکیت سند </Select>
-            <Select val={entry} array={["","از حیاط","از خیابان","از محوطه"]} setvaluehandller={setentry}> ورودی ملک </Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={coolerSystem} array={["","کولر","هواساز","فاقد"]} setvaluehandller={setcoolerSystem}> سیستم سرمایشی </Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={heaterSystem} array={["","شوفاژ","هواساز","پکیج","بخاری"]} setvaluehandller={setheaterSystem}> سیستم گرمایشی </Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={propertySituation} array={["","تخلیه","در دست مالک","در دست مستاجر"]} setvaluehandller={setpropertySituation}> وضعیت اسکان ملک </Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={documentSituation} array={["","شخصی","تعاونی","اوقافی","زمین شهری","قولنامه ای"]} setvaluehandller={setdocumentSituation}> وضعیت سند </Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={documentOnership} array={["","شش دانگ","مشاعی"]} setvaluehandller={setdocumentOnership}> مالکیت سند </Select>
+            <Select selectRes={innerWidth < 1250?true:false} val={entry} array={["","از حیاط","از خیابان","از محوطه"]} setvaluehandller={setentry}> ورودی ملک </Select>
             
             <CheckBox val={pasio} changeval={setpasio} >پاسیو</CheckBox>
             <CheckBox val={pool} changeval={setpool} >استخر</CheckBox>

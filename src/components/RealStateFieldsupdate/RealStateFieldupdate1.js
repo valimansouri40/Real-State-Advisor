@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from '../UI/Button/Button';
 import Map from '../UI/GoogleMaps/GoogleMaps';
 import Select from "../UI/Select/Select";
 import './RealStateFields.css';
@@ -92,13 +91,11 @@ const RealStateFieldupdate1=(props)=>{
              const citid= cityall.find(er=>  er.name === e);
              setcity(e)
 
-            changefilehandller(null, 'getallarea',`id=${citid._id}`)
+            changefilehandller(null, 'getallarea',`id=${citid.id}`)
             
     }else{
         seterea('')
-        // const citid= cityall.find(er=>  er.name === role.City[e].name);
-        //     changefilehandller(null, 'getallarea',`id=${citid._id}`)
-        //     console.log('vali',citid)
+        
         setcity('');
         setcityid('');
 
@@ -135,7 +132,7 @@ const RealStateFieldupdate1=(props)=>{
                 <div className='formbox'>
                     <div className='selectbox'>
                     <label className='label'>   شهر</label>
-                <select className='select'   onChange={(e)=>setvaluehandller(e.target.value)}  >
+                <select className='select '   onChange={(e)=>setvaluehandller(e.target.value)}  >
                 <option className='option'  >
                        شهر
                     </option>
@@ -211,9 +208,10 @@ const RealStateFieldupdate1=(props)=>{
                
                <button className={fullmortgage?'btnui-ok':'btnui'} onClick={()=>setfullmortgage(e=>!e)} >رهن کامل</button>:null}
                {/* <Button val={aggrement} setvalue={()=>setagrement(true)} >قیمت توافقی</Button> */}
-               <button className={aggrement?'btnui-ok':'btnui'} onClick={()=>setagrement(e=>!e)}>پیشنهاد ویژه سایت</button>
                 {/* <Button val={immediat} setvalue={setimmediet} >فوری</Button> */}
-               <button className={immediat?'btnui-ok':'btnui'} onClick={()=>setimmediet(e=>!e)}>فوری</button>
+               <button className={immediat?'btnui-ok ':'btnui '} onClick={()=>setimmediet(e=>!e)}>فوری</button>
+               <button style={{width:'80%'}} className={aggrement?'btnui-ok special':'btnui special'} onClick={()=>setagrement(e=>!e)}>پیشنهاد ویژه سایت</button>
+               
                 </div>
                 <button className='send1' onClick={submitHandller}>صفحه بعد</button>
                 </div>

@@ -33,7 +33,7 @@
 }
 .builder{
     width: 80%;
-    height: 90%;
+    height: 94%;
     margin:  auto;
     box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
     border-radius: 6px;
@@ -78,7 +78,7 @@
 
 @media (max-width: 1350px){
     .rstb-target-2{
-        height: 320vh ;
+        height: 160rem ;
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
@@ -87,13 +87,13 @@
 }
 @media (max-width:1000px) {
     .rstb-target-1{
-        min-height: 180vh ;
+        min-height: 104rem ;
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
     }
     .rstb-target-3{
-        min-height: 110vh ;
+        min-height: 57rem ;
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;

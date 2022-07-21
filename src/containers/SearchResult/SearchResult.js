@@ -66,7 +66,6 @@ const SearchResult= (props)=>{
                 [id]:value
             }
 
-            // console.log(spobj);
             setdata(spobj)
         }
         let userid= null;
@@ -112,8 +111,7 @@ const SearchResult= (props)=>{
             if(e && e !== 'شهر' && e !== ""){
                 const citid= cityall.find(er=>  er.name === e);
                 setvalueHandller(e, "City");
-              
-               changefilehandller("", 'getallarea',`id=${citid._id}`)
+               changefilehandller("", 'getallarea',`id=${citid.id}`)
             //    setarea('')
             // setvalueHandller("", "Area");
        }else{
@@ -169,7 +167,6 @@ const SearchResult= (props)=>{
                 </div>
             <div class="type-home type-asid">
                 <select className="type-asid-field" onChange={(e)=>{
-                    console.log()
                     setvalueHandller(e.target.value, "TypeState")
                 }} name="" id="">
                

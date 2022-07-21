@@ -12,6 +12,10 @@
     background: red;
     width: 80%;
 }
+.send2:disabled{
+    cursor: not-allowed;
+    background: rgb(153, 152, 152);
+}
 .changenum1::after{
     top: 48%;
     transform: rotate(40deg);
@@ -21,7 +25,9 @@
     transform: rotate(-40deg);
 }
 
-
+.special{
+    width: 80%;
+}
 .changenum2::after ,.changenum2::before{
 
     content: "";

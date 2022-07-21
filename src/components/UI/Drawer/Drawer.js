@@ -52,7 +52,7 @@ const Drawer= (props)=>{
                                                 درخواست های بازدید ملک های من
                                                 </NavLink></li>
                                                 </>:null }
-                                            <li onClick={()=>deletecookie()}>
+                                            <li className="logout" onClick={()=>deletecookie()}>
                                             خروج از حساب</li>
                                         </ul>:
                                         <ul onClick={()=>closeModalInit(false, false)} className="dropdown-content-responsive"  
@@ -72,6 +72,7 @@ const Drawer= (props)=>{
                                         <li><NavLink to='/forgotpassword'>پسورد خود را فراموش کردم</NavLink></li>
                                         <li onClick={setmodal} >
                                         استخدام همکار</li>
+                                        <li><NavLink to='/cooperationpage'>فرصت سرمایه گذاری</NavLink></li>
                                         </ul>
                                         :null}
        { drw?<ul  className="drawer-box" onClick={()=>closeModalInit(false, false)}>

@@ -5,9 +5,9 @@ import { ShowAlert } from "../../store/utility/alert";
 
 
 const Cooperation=(props)=>{
-    const {areaall,cityall, changefilehandller,auth, sendreq}=props;
+    const {areaall,cityall,loading, changefilehandller,auth, sendreq}=props;
     
-    const [tb, settb]= useState('Buy land');
+    const [tb, settb]= useState('Buyland');
     const [city, setcity]=useState('');
     const [area, setarea]= useState('');
     const [tipic, settipic]= useState('')
@@ -32,7 +32,7 @@ const Cooperation=(props)=>{
             const citid= cityall.find(er=>  er.name === e);
             setcity(e)
           
-           changefilehandller(null, 'getallarea',`id=${citid._id}`)
+           changefilehandller(null, 'getallarea',`id=${citid.id}`)
    }
 
     }
@@ -44,14 +44,15 @@ const Cooperation=(props)=>{
 
     const changetb=(e)=>{
         settb(e.target.value)
+        
     }
 
 
     const submithandller=(e)=>{
         e.preventDefault()
         let data;
-
-        if(tb === 'Buy land'){
+        
+        if(tb === 'Buyland'){
             data={
                 FristName:Name,
                 PhoneNumber: PhoneNumber,
@@ -60,11 +61,12 @@ const Cooperation=(props)=>{
                 Type: 'Buy land',
                 TypeState: tipic
             }
+            console.log('vali2')
          
             const pattern = new RegExp('^(\\0|0)?9\\d{9}$');
             if(pattern.test(data.PhoneNumber)){
             if(data.FristName !== '' && data.City !=='' && data.Area !==''){
-                    sendreq(data, auth._id);
+                    sendreq(data, auth?._id);
                     
             }else{
 
@@ -107,8 +109,8 @@ const Cooperation=(props)=>{
             <div class="col-12 d-flex align-items-start-cop">
                 
                     <div class="nav-pills3"  >
-                        <button class={tb !== 'Buy land'?"nav-link-cop ":"nav-links-active"}
-                         onClick={changetb} value='Buy land'>خرید زمین با قابلیت رشد</button>
+                        <button class={tb !== 'Buyland'?"nav-link-cop ":"nav-links-active"}
+                         onClick={changetb} value='Buyland'>خرید زمین با قابلیت رشد</button>
                         <button class={tb !== 'coopration'?"nav-link-cop ":"nav-links-active"} 
                         onClick={changetb} value='coopration'>مشارکت در ساخت</button>
                     </div>
@@ -174,7 +176,7 @@ const Cooperation=(props)=>{
                                             من آمادگی سرمایه گذاری در زمین برای مشارکت در ساخت را دارم
                                         </label>
                                     </div></>:null}
-                                    <input className="search-ok" type='submit' value='ثبت'/>
+                                    <input disabled={loading} className="search-ok" type='submit' value='ثبت'/>
                                 </div>
                             </form>
                         </div>

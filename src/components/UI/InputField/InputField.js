@@ -5,7 +5,7 @@ const InputField=(props)=>{
     const {setval, val}= props;
 return(
     <div className='inpcls'><label className='label'>{props.children}</label> <input type='text'
-     className='inp' value={val} onChange={e=>setval(e.target.value)} /></div>
+     className='inp inp-res' value={val} onChange={e=>setval(e.target.value)} /></div>
 )
 }
 

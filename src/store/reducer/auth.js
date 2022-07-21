@@ -17,6 +17,11 @@ export const initialstate={
 
  const Reducer=(state=initialstate,action)=>{
     switch(action.type){
+        case actiontype.UPDATEPROFILE:
+            return{
+                ...state,
+                loading: false
+            }
         case actiontype.SENDREQ:
             return{
                 ...state,

@@ -6,7 +6,7 @@ import Cooperation from "./Cooperation";
 import Tabbar from "./tabbar";
 
 const Filter= (props)=>{
-        const {tab, settab,getallwsinit ,getallfilterinit, areaall,cityall,REALSTATEGETALLINIT, filter,
+        const {tab, settab,getallwsinit ,getallfilterinit, areaall,loading,cityall,REALSTATEGETALLINIT, filter,
             worksampel ,changefilehandller, auth, sendreq}=props;
             // const arraytab=['sell', 'rent','engine','cooperation'];
            
@@ -47,10 +47,10 @@ const Filter= (props)=>{
                      changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Rent>;
                     break;
                 case 'engine':
-                    tabShow=<Tabbar getallwsinit={getallwsinit} tab={tab} worksampel={worksampel} auth={auth} sendreq={sendreq}></Tabbar>;
+                    tabShow=<Tabbar getallwsinit={getallwsinit} tab={tab} loading={loading} worksampel={worksampel} auth={auth} sendreq={sendreq}></Tabbar>;
                     break;
                 case 'cooperation':
-                    tabShow= <Cooperation tab={tab} auth={auth} sendreq={sendreq} changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Cooperation>;
+                    tabShow= <Cooperation tab={tab} auth={auth} sendreq={sendreq} loading={loading} changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Cooperation>;
                     break;
                 default: tabShow= <Seles getallfilterinit={getallfilterinit} filters={filter}
                  changefilehandller={changefilehandller} areaall={areaall} cityall={cityall}></Seles>;

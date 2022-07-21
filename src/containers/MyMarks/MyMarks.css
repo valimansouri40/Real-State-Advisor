@@ -45,6 +45,7 @@
     color: aliceblue;
     font-size: 1.1rem;
     word-break: keep-all;
+    white-space: nowrap;
 
 }
 .mymarks-img{

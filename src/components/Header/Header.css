@@ -103,7 +103,7 @@
 .containerone {
   width: 90%;
   margin: 0 auto;
-  border-bottom: 1px solid #373950;
+  border-bottom: 3px solid #373950;
   
   position: relative;
 }
@@ -486,9 +486,9 @@
     margin-left: -1.7rem;
   }
   .header-logo-area p{
-    font-size: .4rem;
-    letter-spacing: -1px;
+    font-size: .6rem;
     font-weight: 100;
+    white-space: nowrap;
   }
   
 }

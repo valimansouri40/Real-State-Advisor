@@ -13,6 +13,9 @@ body {
   flex-direction: column; */
 }
 
+:root{
+  --blue-dark: #373a50;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

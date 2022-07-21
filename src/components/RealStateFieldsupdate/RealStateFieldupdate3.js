@@ -34,7 +34,7 @@ const RealStateFieldupdate3 = (props)=>{
         </select>
         <div className="btn-box2">
         <button className='send' onClick={()=>setnumpage(2)}>بازگشت</button>
-        <button className='send2' onClick={SubmitDataHandller}>{!loading?"ارسال":<>درحال ارسال<span className="spin">
+        <button className='send2' disabled={loading} onClick={SubmitDataHandller}>{!loading?"ارسال":<>درحال ارسال<span className="spin">
             </span></>}</button>
             </div>
         </div>

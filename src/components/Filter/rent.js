@@ -76,7 +76,7 @@ const Rent=(props)=>{
            const citid= cityall.find(er=>  er.name === e);
            setcity(e)
          
-          changefilehandller(null, 'getallarea',`id=${citid._id}`)
+          changefilehandller(null, 'getallarea',`id=${citid.id}`)
   }else{
       setcity('')
       setarea('')
@@ -170,7 +170,7 @@ const Rent=(props)=>{
                             onChange={(e)=>setareahandller(e.target.value)} />
                             <datalist className='select' id="sellscity" value={city !==''?city: 'شهر'}   >
                             <option className='option'  >
-                                    شهر
+                                    همه
                                 </option>
                         {cityall?cityall.map(mp=>(
                             <option className='option'>
@@ -190,7 +190,7 @@ const Rent=(props)=>{
                         >
                             
                                 <option className='option'>
-                                    منطقه
+                                    همه
                                 </option>
                         {areaall?areaall.map(mp=>(
                             <option className='option' 

@@ -80,6 +80,9 @@
 .show{
     margin-top: .7rem;
 }
+.card-btn:disabled{
+    background: #999999;
+}
 .labelnm{
     padding: .5rem;
     font-size: 1.2rem;
@@ -100,6 +103,10 @@
     border-radius: 8px;
     background: #38c696;
     color: aliceblue;
+}
+.card-btn:disabled{
+    cursor: not-allowed;
+    background: #999999;
 }
 @media (max-width: 800px){
 

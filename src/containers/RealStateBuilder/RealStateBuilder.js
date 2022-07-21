@@ -123,7 +123,7 @@ const RealStateBuilder=(props)=>{
             ShowAlert(errorhandller, 'را وارد نکردید', 'fail')
         }
     }
-    const lmrole=['advisor','dealer']
+    // const lmrole=['advisor','dealer']
     return(
         <section className={`rstb-target ${responsive}` }>
               <Link className="rstb-btn"

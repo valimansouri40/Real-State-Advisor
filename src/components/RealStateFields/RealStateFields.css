@@ -133,6 +133,7 @@
     flex-direction: column;
     margin-right: 1rem ;
 }
+
 .btn-box2{
     width: 100%;
     display: flex;
@@ -231,9 +232,9 @@
 }
 .imgtarget{
     width: 300px;
-    height: 250px;
+    height: 280px;
     position: relative;
-    
+
 }
 .setimgbox{
     margin-top: 1rem;
@@ -294,10 +295,7 @@
     transform: translate(-50%, -50%);
     animation: animafter 1s infinite ;
 }
-.special{
-    width: 80%;
-    
-}
+
 
 @keyframes animbefore{
     0%{
@@ -342,10 +340,42 @@
         height: .4rem;
     }
 }
+.inp-one{
+    width: 83%;
+    height: 1.7rem;
 
+}
+.page-three{
+    margin-top: 2rem;
+    
+    width: 20rem;
+}
+.special{
+    grid-template-rows: 100%;
+    width: 80%;
+    /* padding: 1rem 3rem;     */
+}
 @media (max-width: 1350px){
     .fields{
         flex-direction: column;
+    }
+    .inp-res{
+        width: 80%;
+        height: 2rem;
+        font-size: .8rem;
+    }
+    .inputfield-textarea{
+        background: rgb(188, 184, 184);
+        font-size: 1rem;
+        padding: .2rem ;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+        max-width: 90%;
+        max-height: 3.5rem;
+        min-width: 60%;
+        min-height: 3.5rem ;
+        width: 90%;
     }
 }
 @media (max-width:1000px ){
@@ -377,6 +407,35 @@
         height: 30rem;
         margin: 2rem 0;
         overflow: hidden;
+    }
+    
+}
+@media (max-width: 700px){
+    .formbox{
+        grid-template-columns: 90%;
+    }
+    .send1{
+        position: absolute;
+        bottom: -10%;
+        left: 50%;
+    }
+    .inp-res{
+        width: 90%;
+        height: 2rem;
+        font-size: .8rem;
+    }
+    .inputfield-textarea{
+        background: rgb(188, 184, 184);
+        font-size: 1rem;
+        padding: .2rem ;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 .1rem .3rem rgb(99, 97, 97);
+        max-width: 90%;
+        max-height: 3.5rem;
+        min-width: 60%;
+        min-height: 3.5rem ;
+        width: 90%;
     }
 }
 @media (max-width: 500px){

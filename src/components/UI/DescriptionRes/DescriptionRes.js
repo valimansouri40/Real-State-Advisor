@@ -4,7 +4,7 @@ import './DescriptionRes.css';
 
 
 
-const DescriptionRes= (props)=>{
+const DescriptionRes= ()=>{
     
     const [selectDes, setselectDes]= useState();
 
@@ -17,7 +17,7 @@ const DescriptionRes= (props)=>{
             
             setselectDes(id)
         }
-        console.log(selectDes)
+        
     }
    
 
@@ -51,9 +51,13 @@ const DescriptionRes= (props)=>{
                     <div className='desres-product-box'>
                         <p className='desres-p'>
                         •	همیشه بهترین فایل خود را آگهی ‌کنید.
+                        <br/>
         •	متن را به نحوی بنویسید که رقیبان نتوانند مکان فایل راحدس بزنند.
+        <br/>
+           
            •	تا حد ممکن از نوشتن کلمات معادل فارسی استفاده کنید.
-        •	در آگهی روزنامه کم‌ترین کلمات مفید و ضروری را به 
+        
+        <br/> •	در آگهی روزنامه کم‌ترین کلمات مفید و ضروری را به 
 
                         </p>
                         <div className='desres-box-img'>
@@ -66,6 +70,7 @@ const DescriptionRes= (props)=>{
                     <h1 className='desres-h1'>
                     پارامترهای خرید یک ملک مناسب
                     </h1>
+                    <NavLink className='des-nav' to='/description/three'>
                    
                     <div className='desres-product-box'>
                         <p className='desres-p'>
@@ -77,7 +82,7 @@ const DescriptionRes= (props)=>{
                         </div>
 
                     </div>
-                    
+                    </NavLink>
                 </div>
             </div>
         </div>

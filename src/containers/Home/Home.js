@@ -16,7 +16,7 @@ import CloseComponent from "../../components/CloseComponent/CloseComponent";
 
 const Home= (props)=>{
         const {areaall,cityall,length,Tab , getbestofadinit,bestOf,  addMarkinit, lessmarkinit, 
-            savetabserchboxinit, getallfilterinit,AllData, changefilehandller,getallwsinit,filter,
+            savetabserchboxinit,loading, getallfilterinit,AllData, changefilehandller,getallwsinit,filter,
             worksampel, auth, sendreq, REALSTATEGETALLINIT}= props;
         const [tab, settab]=useState(Tab);
        
@@ -44,7 +44,7 @@ const Home= (props)=>{
             
            <div className={'home-searchboxbox'}>
                <div className={'home-filters'}>
-                   <Filter worksampel={worksampel}
+                   <Filter worksampel={worksampel} loading={loading}
                 filter={filter} tab={Tab} settab={settab}
                  REALSTATEGETALLINIT={REALSTATEGETALLINIT} 
                 auth={auth} sendreq={sendreq} getallwsinit={getallwsinit} getallfilterinit={getallfilterinit}
@@ -85,7 +85,8 @@ const MapStateToProps=state=>{
         filter: state.request.filter,
         length: state.realstate.length,
         Tab: state.realstate.Tab,
-        bestOf: state.rate.bestOfAdvisor
+        bestOf: state.rate.bestOfAdvisor,
+        loading: state.auth.loading
     }
 }
 

@@ -191,7 +191,7 @@ const Header= (props)=>{
                                                 درخواست های بازدید ملک های من
                                                 </NavLink></li>
                                                 </>:null }
-                                            <li onClick={()=>deletecookie()}>
+                                            <li className="logout" onClick={()=>deletecookie()}>
                                             خروج از حساب</li>
                                         </ul>:
                                         <ul className="dropdown-content"  

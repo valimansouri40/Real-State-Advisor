@@ -68,11 +68,11 @@ const RealStateManager=(props)=>{
             if(e && e !== 'شهر' && rolear.includes(role.role)){
          const citid= cityall.find(er=>  er.name === e);
          setcity(e)
-        changefilehandller(null, 'getallarea',`id=${citid._id}`)
+        changefilehandller(null, 'getallarea',`id=${citid.id}`)
      
 }else{
     const citid= cityall.find(er=>  er.name === role.City[e].name);
-        changefilehandller(null, 'getallarea',`id=${citid._id}`)
+        changefilehandller(null, 'getallarea',`id=${citid.id}`)
     setcity(role.City[e].name);
     setcityid(role.City[e]._id);
 

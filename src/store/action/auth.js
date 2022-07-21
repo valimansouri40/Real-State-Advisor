@@ -37,7 +37,7 @@ export const setauthlogininit=(data,sine,settime)=>{
             if(res.data){
                 
                 dispatch(setauthlogin(sine));
-
+                if(!res.data.error){
                 switch(rephash){
                     case '/login':
                         sendcookie('car',res.data.data)
@@ -65,6 +65,9 @@ export const setauthlogininit=(data,sine,settime)=>{
                         window.location.reload();
                     break;
                 }
+            }else if(res.data.error){
+                ShowAlert([], res.data.error, "fail");
+            }
                 // if(rephash === '/login' || rephash === '/resetpassword'){
                 //     sendcookie('car',res.data.data)
                 //     window.location.hash = '/';
@@ -86,10 +89,11 @@ export const setauthlogininit=(data,sine,settime)=>{
 
                 // }
             }
-        }).catch((er)=>{
+        }).catch((er,ms)=>{
             console.clear()
+            // console.log(JSON.stringify(er.message),ms)
             dispatch(errorauth())
-            ShowAlert([], 'یکی از فیلد های وارد شده صحیح نمی باشد','fail')
+            ShowAlert([], 'این شماره قبلا ثبت شده است ','fail')
         })
     }
 }
@@ -117,7 +121,7 @@ export const setauthgetmeinit=()=>{
             }
         }).catch((er)=>{
             console.clear()
-            console.log('can not send request getme')
+            // console.log('can not send request getme')
         })
     }
 };
@@ -147,7 +151,7 @@ export const setchangepasswordinit=(pas, url)=>{
             }
         }).catch((er)=>{
             console.clear()
-            console.log('can not send request change password')
+            // console.log('can not send request change password')
         })
     }
 };
@@ -183,11 +187,15 @@ export const sensSMSinit=(dt)=>{
     }
 }
 
-
-export const UpdateProfile=(data)=>{
+export const updateprof =()=>{
+        return{
+            type: action.UPDATEPROFILE
+        }
+}
+export const UpdateProfile=(data, btndis)=>{
 
     return dispatch=>{
-
+        dispatch(startauth());
         axios(apidomain + `/auth/updateprofile/${data._id}`,{
             method:'patch',
             data: data,
@@ -196,9 +204,12 @@ export const UpdateProfile=(data)=>{
 
             if(res.data){
                 ShowAlert([], 'تغییرات با موفقیت انجام شد','success');
+                dispatch(updateprof());
                 window.location.reload()
             }
+            btndis = true
         }).catch(er=>{
+            dispatch(errorauth());
             console.clear()
             ShowAlert([],'تغییرات انجام نشد', 'fail')
         })
@@ -215,7 +226,7 @@ export const SENDREQ=()=>{
 export const sendreq= (data, authdt)=>{
 
     return dispatch=>{
-
+        dispatch(startauth())
         axios(apidomain + `/auth/sendreq?_id=${authdt?authdt:''}`,{
             method:'post',
             data: data,
@@ -231,8 +242,8 @@ export const sendreq= (data, authdt)=>{
                     },[2000])
                 
             }else {
-                window.location.hash = '/sendsmscode';
                 localStorage.setItem('phn',  data.PhoneNumber);
+                window.location.hash = '/sendsmscode';
                 ShowAlert([], 'لطفا کد ارسالی را وارد کنید','success')
                 dispatch(setauthlogin("#/sineup"));
             }
@@ -241,6 +252,7 @@ export const sendreq= (data, authdt)=>{
             }
         }).catch(er=>{
             console.clear()
+            dispatch(errorauth())
             ShowAlert([],'اطلاعات وارد شده صحیح نمی باشد','fail')
         })
     }
